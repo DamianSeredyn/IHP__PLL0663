@@ -1,0 +1,34 @@
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/VCO_selection.sch
+.subckt VCO_selection VCO_sel after_000111 111 gd VP after_001111 110 101 f5
+*.PININFO gd:B VP:B after_000111:I 111:I after_001111:I 110:I 101:I f5:I VCO_sel:O
+x11 VP gd after_000111 net1 111 NAND_2in_dek
+x14 VP gd net1 VCO_sel net2 net3 NAND_3in_dek
+x1 VP gd after_001111 net2 110 NAND_2in_dek
+x2 VP gd 101 net3 f5 NAND_2in_dek
+.ends
+
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/NAND_2in_dek.sym # of pins=5
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/NAND_2in_dek.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/NAND_2in_dek.sch
+.subckt NAND_2in_dek VP GND a y b
+*.PININFO y:O GND:B a:I VP:B b:I
+MM1 y a net1 GND sg13_lv_nmos w=0.15u l=0.13u ng=1
+MM3 net1 b GND GND sg13_lv_nmos w=0.15u l=0.13u ng=1
+MM2 y b VP VP sg13_lv_pmos w=0.15u l=0.13u ng=1
+MM4 y a VP VP sg13_lv_pmos w=0.15u l=0.13u ng=1
+.ends
+
+
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/NAND_3in_dek.sym # of pins=6
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/NAND_3in_dek.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/NAND_3in_dek.sch
+.subckt NAND_3in_dek VP GND a y b c
+*.PININFO y:O GND:B a:I VP:B b:I c:I
+MM1 y a net2 GND sg13_lv_nmos w=0.15u l=0.13u ng=1
+MM3 net2 b net1 GND sg13_lv_nmos w=0.15u l=0.13u ng=1
+MM4 net1 c GND GND sg13_lv_nmos w=0.15u l=0.13u ng=1
+MM7 y c VP VP sg13_lv_pmos w=0.15u l=0.13u ng=1
+MM2 y a VP VP sg13_lv_pmos w=0.15u l=0.13u ng=1
+MM5 y b VP VP sg13_lv_pmos w=0.15u l=0.13u ng=1
+.ends
+

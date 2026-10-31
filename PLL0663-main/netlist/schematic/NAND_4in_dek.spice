@@ -1,0 +1,12 @@
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/NAND_4in_dek.sch
+.subckt NAND_4in_dek VP GND a y b c d
+*.PININFO y:O GND:B a:I VP:B b:I c:I d:I
+MM1 y a net2 GND sg13_lv_nmos w=0.15u l=0.13u ng=1
+MM3 net3 c net1 GND sg13_lv_nmos w=0.15u l=0.13u ng=1
+MM4 net1 d GND GND sg13_lv_nmos w=0.15u l=0.13u ng=1
+MM7 y c VP VP sg13_lv_pmos w=0.15u l=0.13u ng=1
+MM2 y a VP VP sg13_lv_pmos w=0.15u l=0.13u ng=1
+MM5 y b VP VP sg13_lv_pmos w=0.15u l=0.13u ng=1
+MM6 y d VP VP sg13_lv_pmos w=0.15u l=0.13u ng=1
+MM8 net2 b net3 GND sg13_lv_nmos w=0.15u l=0.13u ng=1
+.ends

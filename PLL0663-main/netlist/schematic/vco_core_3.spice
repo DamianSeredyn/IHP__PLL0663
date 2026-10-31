@@ -1,0 +1,35 @@
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/vco/vco_core_3.sch
+.subckt vco_core_3 vp gnd out in en5 nen5 nen11 en11
+*.PININFO in:I vp:B out:O gnd:B en5:I en11:I nen11:I nen5:I
+MM1 pgt in gnd gnd sg13_lv_nmos w=0.8u l=4.25*4u ng=1
+MM2 pgt pgt vp vp sg13_lv_pmos w=1.2u l=4.25*4u ng=1
+x1 vp pgt out 1th in gnd vco_delay_cell_3
+x2 vp pgt 1th 2th in gnd vco_delay_cell_3
+x3 vp pgt 2th 3th in gnd vco_delay_cell_3
+x4 vp pgt 3th 4th in gnd vco_delay_cell_3
+x7 vp pgt 5th out in gnd vco_delay_cell_3
+x8 vp pgt 11_1st 6th in gnd vco_delay_cell_3
+x9 vp pgt 6th 7th in gnd vco_delay_cell_3
+x10 vp pgt 7th 8th in gnd vco_delay_cell_3
+x11 vp pgt 8th 9th in gnd vco_delay_cell_3
+x12 vp pgt 9th 10th in gnd vco_delay_cell_3
+x13 vp pgt 10th 11_lst in gnd vco_delay_cell_3
+MM4 11_1st nen11 4th vp sg13_lv_pmos w=0.3u l=0.15u ng=1
+MM5 11_1st en11 4th gnd sg13_lv_nmos w=0.3u l=0.15u ng=1
+MM3 5th nen11 11_lst vp sg13_lv_pmos w=0.3u l=0.15u ng=1
+MM6 5th en11 11_lst gnd sg13_lv_nmos w=0.3u l=0.15u ng=1
+MM7 5th nen5 4th vp sg13_lv_pmos w=0.3u l=0.15u ng=1
+MM8 5th en5 4th gnd sg13_lv_nmos w=0.3u l=0.15u ng=1
+.ends
+
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/vco/vco_delay_cell_3.sym # of pins=6
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/vco/vco_delay_cell_3.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/vco/vco_delay_cell_3.sch
+.subckt vco_delay_cell_3 vp pgt in out ngt gnd
+*.PININFO in:I out:O gnd:B vp:B pgt:B ngt:B
+MM23 up pgt vp vp sg13_lv_pmos w=1.2u l=4.25*4u ng=1
+MM24 out in up vp sg13_lv_pmos w=1.2u l=4.25*2u ng=1
+MM25 out in dn gnd sg13_lv_nmos w=0.8u l=4.25*2u ng=1
+MM26 dn ngt gnd gnd sg13_lv_nmos w=0.8u l=4.25*4u ng=1
+.ends
+

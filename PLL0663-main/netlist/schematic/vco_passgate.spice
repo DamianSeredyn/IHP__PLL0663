@@ -1,0 +1,6 @@
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/vco/vco_passgate.sch
+.subckt vco_passgate en_ VP GND en IO OI
+*.PININFO OI:B IO:B VP:B GND:B en_:I en:I
+MM1 IO en OI GND sg13_lv_nmos w=2.5u l=0.13u ng=1
+MM2 IO en_ OI VP sg13_lv_pmos w=2.5u l=0.13u ng=1
+.ends

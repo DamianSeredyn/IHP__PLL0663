@@ -1,0 +1,8 @@
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/PFD/PFD_NOR.sch
+.subckt PFD_NOR vp A B Out gd
+*.PININFO vp:I gd:I B:I A:I Out:O
+MM1 Out A net1 vp sg13_lv_pmos w=0.3u l=0.15u ng=1
+MM4 net1 B vp vp sg13_lv_pmos w=0.3u l=0.15u ng=1
+MM2 Out A gd gd sg13_lv_nmos w=0.3u l=0.15u ng=1
+MM3 Out B gd gd sg13_lv_nmos w=0.3u l=0.15u ng=1
+.ends

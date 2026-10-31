@@ -1,0 +1,74 @@
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/MUX_8to1.sch
+.subckt MUX_8to1 gd vp A0 out in1 in2 in3 in4 in5 in6 in7 A1 in8 A2
+*.PININFO gd:B vp:B out:O in1:I in2:I in3:I in4:I in5:I in6:I in7:I in8:I A0:I A1:I A2:I
+x9 A0 net1 vp gd inverter_x4
+x10 A1 net2 vp gd inverter_x4
+x11 A2 net3 vp gd inverter_x4
+x28 out_unb out vp gd inverter_x4
+x29 in4 net8 vp gd inverter_x4
+x30 in8 net4 vp gd inverter_x4
+x31 in7 net5 vp gd inverter_x4
+x32 in6 net6 vp gd inverter_x4
+x33 in5 net7 vp gd inverter_x4
+x34 in1 net11 vp gd inverter_x4
+x35 in2 net10 vp gd inverter_x4
+x36 in3 net9 vp gd inverter_x4
+x13 en1_ en1 vp gd inverter_x4
+x15 en2_ en2 vp gd inverter_x4
+x17 en3_ en3 vp gd inverter_x4
+x19 en4_ en4 vp gd inverter_x4
+x21 en5_ en5 vp gd inverter_x4
+x23 en6_ en6 vp gd inverter_x4
+x25 en7_ en7 vp gd inverter_x4
+x27 en8_ en8 vp gd inverter_x4
+x12 vp gd net3 en1_ net2 net1 NAND_3in
+x14 vp gd net2 en2_ net3 A0 NAND_3in
+x16 vp gd net1 en3_ net3 A1 NAND_3in
+x18 vp gd net3 en4_ A1 A0 NAND_3in
+x20 vp gd net1 en5_ net2 A2 NAND_3in
+x22 vp gd net2 en6_ A2 A0 NAND_3in
+x24 vp gd net1 en7_ A2 A1 NAND_3in
+x26 vp gd A2 en8_ A1 A0 NAND_3in
+x1 en8_ vp gd en8 net4 out_unb passgate
+x2 en4_ vp gd en4 net8 out_unb passgate
+x3 en7_ vp gd en7 net5 out_unb passgate
+x4 en3_ vp gd en3 net9 out_unb passgate
+x5 en6_ vp gd en6 net6 out_unb passgate
+x6 en2_ vp gd en2 net10 out_unb passgate
+x7 en5_ vp gd en5 net7 out_unb passgate
+x8 en1_ vp gd en1 net11 out_unb passgate
+.ends
+
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/inverter_x4.sym # of pins=4
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/inverter_x4.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/inverter_x4.sch
+.subckt inverter_x4 IN OUT VP GND
+*.PININFO IN:I VP:B OUT:O GND:B
+MM1 OUT IN GND GND sg13_lv_nmos w=0.60u l=0.13u ng=1
+MM2 OUT IN VP VP sg13_lv_pmos w=0.60u l=0.13u ng=1
+.ends
+
+
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/NAND_3in.sym # of pins=6
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/NAND_3in.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/NAND_3in.sch
+.subckt NAND_3in VP GND a y b c
+*.PININFO y:O GND:B a:I VP:B b:I c:I
+MM1 y a net2 GND sg13_lv_nmos w=0.3u l=0.13u ng=1
+MM3 net2 b net1 GND sg13_lv_nmos w=0.3u l=0.13u ng=1
+MM4 net1 c GND GND sg13_lv_nmos w=0.3u l=0.13u ng=1
+MM7 y c VP VP sg13_lv_pmos w=0.15u l=0.13u ng=1
+MM2 y a VP VP sg13_lv_pmos w=0.15u l=0.13u ng=1
+MM5 y b VP VP sg13_lv_pmos w=0.15u l=0.13u ng=1
+.ends
+
+
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/passgate.sym # of pins=6
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/passgate.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/passgate.sch
+.subckt passgate in_p vp gnd in_n A B
+*.PININFO in_n:I in_p:I vp:B gnd:B B:B A:B
+MM4 B in_p A vp sg13_lv_pmos w=0.3u l=0.15u ng=1
+MM5 B in_n A gnd sg13_lv_nmos w=0.3u l=0.15u ng=1
+.ends
+

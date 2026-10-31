@@ -1,0 +1,8 @@
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/NOR_2in.sch
+.subckt NOR_2in vp gd A Out B
+*.PININFO Out:O gd:B A:I vp:B B:I
+MM3 Out A gd gd sg13_lv_nmos w=0.15u l=0.13u ng=1
+MM2 Out B net1 vp sg13_lv_pmos w=0.15u l=0.13u ng=1
+MM4 net1 A vp vp sg13_lv_pmos w=0.15u l=0.13u ng=1
+MM5 Out B gd gd sg13_lv_nmos w=0.15u l=0.13u ng=1
+.ends

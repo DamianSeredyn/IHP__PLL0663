@@ -1,0 +1,20 @@
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/misc/buffer_hv.sch
+.subckt buffer_hv vph in out gd
+*.PININFO in:I out:O vph:I gd:I
+MM1 buf_stage_1 in vph vph sg13_hv_pmos w=4u l=0.45u ng=1
+MM2 buf_stage_1 in gd gd sg13_hv_nmos w=4u l=0.45u ng=1
+MM3 net1 buf_stage_1 vph vph sg13_hv_pmos w=4u l=0.45u ng=1
+MM4 net1 buf_stage_1 gd gd sg13_hv_nmos w=4u l=0.45u ng=1
+MM5 buf_stage_2 net1 vph vph sg13_hv_pmos w=3u l=0.45u ng=1
+MM6 buf_stage_2 net1 gd gd sg13_hv_nmos w=3u l=0.45u ng=1
+MM7 net2 buf_stage_2 vph vph sg13_hv_pmos w=3u l=0.45u ng=1
+MM8 net2 buf_stage_2 gd gd sg13_hv_nmos w=3u l=0.45u ng=1
+MM9 buf_stage_3 net2 vph vph sg13_hv_pmos w=2u l=0.45u ng=1
+MM10 buf_stage_3 net2 gd gd sg13_hv_nmos w=2u l=0.45u ng=1
+MM11 net3 buf_stage_3 vph vph sg13_hv_pmos w=2u l=0.45u ng=1
+MM12 net3 buf_stage_3 gd gd sg13_hv_nmos w=2u l=0.45u ng=1
+MM13 buf_stage_4 net3 vph vph sg13_hv_pmos w=1u l=0.45u ng=1
+MM14 buf_stage_4 net3 gd gd sg13_hv_nmos w=1u l=0.45u ng=1
+MM15 out buf_stage_4 vph vph sg13_hv_pmos w=1u l=0.45u ng=1
+MM16 out buf_stage_4 gd gd sg13_hv_nmos w=1u l=0.45u ng=1
+.ends

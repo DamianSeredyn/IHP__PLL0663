@@ -1,0 +1,16 @@
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/vco/0_buf.sch
+.subckt 0_buf vp gnd out in
+*.PININFO in:I out:O vp:B gnd:B
+MM9 3th 2th vp vp sg13_lv_pmos w=2.5u l=0.13u ng=1
+MM10 3th 2th gnd gnd sg13_lv_nmos w=2.5u l=0.13u ng=1
+MM11 2th 1th vp vp sg13_lv_pmos w=2.4u l=0.13u ng=1
+MM12 2th 1th gnd gnd sg13_lv_nmos w=1.2u l=0.13u ng=1
+MM1 4th 3th vp vp sg13_lv_pmos w=5u l=0.13u ng=1
+MM2 4th 3th gnd gnd sg13_lv_nmos w=5u l=0.13u ng=1
+MM3 5th 4th vp vp sg13_lv_pmos w=10u l=0.13u ng=1
+MM4 5th 4th gnd gnd sg13_lv_nmos w=10u l=0.13u ng=1
+MM5 out 5th vp vp sg13_lv_pmos w=10u l=0.13u ng=1 m=2
+MM6 out 5th gnd gnd sg13_lv_nmos w=10u l=0.13u ng=1 m=2
+MM7 1th in gnd gnd sg13_lv_nmos w=0.8u l=0.13u ng=1
+MM8 1th in vp vp sg13_lv_pmos w=1.5u l=0.13u ng=1
+.ends

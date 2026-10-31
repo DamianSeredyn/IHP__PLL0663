@@ -1,0 +1,19 @@
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/misc/debug_level_shifter.sch
+.subckt debug_level_shifter vph out vpl in gd
+*.PININFO in:I out:O gd:I vph:I vpl:I
+MM1 1_stage_out in vpl vpl sg13_lv_pmos w=2u l=0.45u ng=1
+MM3 1_stage_out in net1 gd sg13_lv_nmos w=1u l=0.45u ng=1
+MM4 net1 in gd gd sg13_lv_nmos w=1u l=0.45u ng=1
+MM2 2_stage_out 1_stage_out vpl vpl sg13_lv_pmos w=2u l=0.45u ng=1
+MM5 2_stage_out 1_stage_out net4 gd sg13_lv_nmos w=1u l=0.45u ng=1
+MM6 net4 1_stage_out gd gd sg13_lv_nmos w=1u l=0.45u ng=1
+MM7 net2 3_stage_out vph vph sg13_hv_pmos w=1u l=0.45u ng=1
+MM8 3_stage_out 2_stage_out gd gd sg13_hv_nmos w=4u l=0.45u ng=1
+MM9 4 1_stage_out net2 vph sg13_hv_pmos w=1u l=0.45u ng=1
+MM10 3_stage_out 2_stage_out net3 vph sg13_hv_pmos w=2u l=0.45u ng=1
+MM11 net3 4 vph vph sg13_hv_pmos w=2u l=0.45u ng=1
+MM12 4 1_stage_out gd gd sg13_hv_nmos w=2u l=0.45u ng=1
+MM15 out 3_stage_out vph vph sg13_hv_pmos w=2u l=0.45u ng=1
+MM14 out 3_stage_out net5 gd sg13_hv_nmos w=1u l=0.45u ng=1
+MM13 net5 3_stage_out gd gd sg13_hv_nmos w=1u l=0.45u ng=1
+.ends

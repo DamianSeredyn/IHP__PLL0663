@@ -1,0 +1,8 @@
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/PFD/PFD_buffor.sch
+.subckt PFD_buffor gnd vp out in
+*.PININFO gnd:B vp:B in:I out:B
+MM1 out_stage1 in gnd gnd sg13_lv_nmos w=0.4u l=0.75u ng=1
+MM4 out_stage1 in vp vp sg13_lv_pmos w=0.4u l=0.75u ng=1
+MM2 out out_stage1 gnd gnd sg13_lv_nmos w=0.4u l=0.75u ng=1
+MM3 out out_stage1 vp vp sg13_lv_pmos w=0.4u l=0.75u ng=1
+.ends

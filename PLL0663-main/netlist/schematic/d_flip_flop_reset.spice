@@ -1,0 +1,36 @@
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/d_flip_flop_reset.sch
+.subckt d_flip_flop_reset q VP GND q_ clk d reset
+*.PININFO GND:B clk:I VP:B d:I q:O q_:O reset:I
+x2 VP GND q q_ net3 reset NAND_3in_x3
+x5 VP GND net3 net4 d reset NAND_3in_x3
+x6 VP GND net2 net1 clk reset NAND_3in_x3
+x4 VP GND net1 q q_ NAND_2in_x2
+x3 VP GND net4 net2 net1 NAND_2in_x2
+x1 VP GND net1 net3 clk net4 NAND_3in_x3
+.ends
+
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/NAND_3in_x3.sym # of pins=6
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/NAND_3in_x3.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/NAND_3in_x3.sch
+.subckt NAND_3in_x3 VP GND a y b c
+*.PININFO y:O GND:B a:I VP:B b:I c:I
+MM1 y a net2 GND sg13_lv_nmos w=1.20u l=0.13u ng=1
+MM5 y b VP VP sg13_lv_pmos w=0.3u l=0.13u ng=1
+MM3 net2 b net1 GND sg13_lv_nmos w=1.20u l=0.13u ng=1
+MM4 net1 c GND GND sg13_lv_nmos w=1.20u l=0.13u ng=1
+MM2 y a VP VP sg13_lv_pmos w=0.3u l=0.13u ng=1
+MM6 y c VP VP sg13_lv_pmos w=0.3u l=0.13u ng=1
+.ends
+
+
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/NAND_2in_x2.sym # of pins=5
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/NAND_2in_x2.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/NAND_2in_x2.sch
+.subckt NAND_2in_x2 VP GND a y b
+*.PININFO y:O GND:B a:I VP:B b:I
+MM1 y a net1 GND sg13_lv_nmos w=0.6u l=0.13u ng=1
+MM2 y b VP VP sg13_lv_pmos w=0.3u l=0.13u ng=1
+MM3 net1 b GND GND sg13_lv_nmos w=0.6u l=0.13u ng=1
+MM4 y a VP VP sg13_lv_pmos w=0.3u l=0.13u ng=1
+.ends
+

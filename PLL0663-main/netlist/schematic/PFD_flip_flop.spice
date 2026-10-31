@@ -1,0 +1,58 @@
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/PFD/PFD_flip_flop.sch
+.subckt PFD_flip_flop clk rst D Q NQ vp gd
+*.PININFO D:I Q:O NQ:O clk:I rst:I gd:I vp:I
+x8 clk vp post_NOR 1 gd clk_n PFD_passgate
+x4 clk vp 2 3 gd clk_n PFD_passgate
+x7 clk_n vp NQ 3 gd clk PFD_passgate
+x3 vp rst 3 Q gd PFD_NOR
+x5 vp rst 2 post_NOR gd PFD_NOR
+x1 clk_n vp D 1 gd clk PFD_passgate
+MM1 gd 1 gd gd sg13_lv_nmos w=10u l=5u ng=1
+MM2 gd 3 gd gd sg13_lv_nmos w=10u l=5u ng=1
+MM3 gd 2 gd gd sg13_lv_nmos w=10u l=5u ng=1
+x9 1 2 vp gd PFD_inverter_x8
+x6 Q NQ vp gd PFD_inverter_x8
+x2 clk clk_n vp gd PFD_inverter_x4
+.ends
+
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/PFD/PFD_passgate.sym # of pins=6
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/PFD/PFD_passgate.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/PFD/PFD_passgate.sch
+.subckt PFD_passgate in_n vp A B gnd in_p
+*.PININFO in_n:I in_p:I vp:B gnd:B B:B A:B
+MM4 B in_p A vp sg13_lv_pmos w=0.3u l=0.15u ng=1
+MM5 B in_n A gnd sg13_lv_nmos w=0.3u l=0.15u ng=1
+.ends
+
+
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/PFD/PFD_NOR.sym # of pins=5
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/PFD/PFD_NOR.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/PFD/PFD_NOR.sch
+.subckt PFD_NOR vp A B Out gd
+*.PININFO vp:I gd:I B:I A:I Out:O
+MM1 Out A net1 vp sg13_lv_pmos w=0.3u l=0.15u ng=1
+MM4 net1 B vp vp sg13_lv_pmos w=0.3u l=0.15u ng=1
+MM2 Out A gd gd sg13_lv_nmos w=0.3u l=0.15u ng=1
+MM3 Out B gd gd sg13_lv_nmos w=0.3u l=0.15u ng=1
+.ends
+
+
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/PFD/PFD_inverter_x8.sym # of pins=4
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/PFD/PFD_inverter_x8.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/PFD/PFD_inverter_x8.sch
+.subckt PFD_inverter_x8 IN OUT VP GND
+*.PININFO IN:I VP:B OUT:O GND:B
+MM1 OUT IN GND GND sg13_lv_nmos w=1.20u l=0.13u ng=1
+MM2 OUT IN VP VP sg13_lv_pmos w=1.20u l=0.13u ng=1
+.ends
+
+
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/PFD/PFD_inverter_x4.sym # of pins=4
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/PFD/PFD_inverter_x4.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/PFD/PFD_inverter_x4.sch
+.subckt PFD_inverter_x4 IN OUT VP GND
+*.PININFO IN:I VP:B OUT:O GND:B
+MM1 OUT IN GND GND sg13_lv_nmos w=0.60u l=0.13u ng=1
+MM2 OUT IN VP VP sg13_lv_pmos w=0.60u l=0.13u ng=1
+.ends
+

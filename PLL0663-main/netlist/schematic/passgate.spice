@@ -1,0 +1,6 @@
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/passgate.sch
+.subckt passgate in_p vp gnd in_n A B
+*.PININFO in_n:I in_p:I vp:B gnd:B B:B A:B
+MM4 B in_p A vp sg13_lv_pmos w=0.3u l=0.15u ng=1
+MM5 B in_n A gnd sg13_lv_nmos w=0.3u l=0.15u ng=1
+.ends

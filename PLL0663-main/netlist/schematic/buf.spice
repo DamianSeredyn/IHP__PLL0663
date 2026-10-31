@@ -1,0 +1,12 @@
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/buf/buf.sch
+.subckt buf VDD INPUT OUT GND
+*.PININFO INPUT:I VDD:B GND:B OUT:O
+MM9 OUT net3 VDD VDD sg13_hv_pmos w=10u l=0.4u ng=1 m=12
+MM6 net3 net2 VDD VDD sg13_hv_pmos w=10u l=0.4u ng=1 m=4
+MM4 net2 net1 VDD VDD sg13_hv_pmos w=10u l=0.4u ng=1 m=2
+MM2 net1 INPUT VDD VDD sg13_hv_pmos w=10u l=0.4u ng=1
+MM1 OUT net3 GND GND sg13_hv_nmos w=10u l=0.45u ng=1 m=12
+MM3 net3 net2 GND GND sg13_hv_nmos w=10u l=0.45u ng=1 m=4
+MM5 net2 net1 GND GND sg13_hv_nmos w=10u l=0.45u ng=1 m=2
+MM7 net1 INPUT GND GND sg13_hv_nmos w=10u l=0.45u ng=1
+.ends

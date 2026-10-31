@@ -1,0 +1,24 @@
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/XNOR.sch
+.subckt XNOR VP GND a y b
+*.PININFO y:O GND:B a:I VP:B b:I
+MM1 y a net1 GND sg13_lv_nmos w=0.15u l=0.13u ng=1
+MM3 net1 _b GND GND sg13_lv_nmos w=0.15u l=0.13u ng=1
+MM2 net2 a VP VP sg13_lv_pmos w=0.15u l=0.13u ng=1 m=4
+MM4 net3 _a VP VP sg13_lv_pmos w=0.15u l=0.13u ng=1 m=4
+MM5 y _a net4 GND sg13_lv_nmos w=0.15u l=0.13u ng=1
+MM6 net4 b GND GND sg13_lv_nmos w=0.15u l=0.13u ng=1
+MM7 y b net2 VP sg13_lv_pmos w=0.15u l=0.13u ng=1 m=4
+MM8 y _b net3 VP sg13_lv_pmos w=0.15u l=0.13u ng=1 m=4
+x1 a _a VP GND inverter
+x2 b _b VP GND inverter
+.ends
+
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/inverter.sym # of pins=4
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/inverter.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/inverter.sch
+.subckt inverter IN OUT VP GND
+*.PININFO IN:I VP:B OUT:O GND:B
+MM1 OUT IN GND GND sg13_lv_nmos w=0.15u l=0.13u ng=1
+MM2 OUT IN VP VP sg13_lv_pmos w=0.15u l=0.13u ng=1
+.ends
+

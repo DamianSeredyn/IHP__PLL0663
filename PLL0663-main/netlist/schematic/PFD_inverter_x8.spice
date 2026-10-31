@@ -1,0 +1,6 @@
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/PFD/PFD_inverter_x8.sch
+.subckt PFD_inverter_x8 IN OUT VP GND
+*.PININFO IN:I VP:B OUT:O GND:B
+MM1 OUT IN GND GND sg13_lv_nmos w=1.20u l=0.13u ng=1
+MM2 OUT IN VP VP sg13_lv_pmos w=1.20u l=0.13u ng=1
+.ends

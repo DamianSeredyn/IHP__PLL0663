@@ -1,0 +1,28 @@
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/charge_pump/vbias.sch
+.subckt vbias vp gd vbias
+*.PININFO vbias:O gd:B vp:B
+MM5 net1 iref vp vp sg13_lv_pmos w=1.2u l=0.6u ng=1
+MM6 vbias net1 net2 gd sg13_lv_nmos w=3.6u l=0.6u ng=1
+MM2 net2 net2 gd gd sg13_lv_nmos w=1.2u l=0.6u ng=1
+MM3 gd gd gd gd sg13_lv_nmos w=1.86u l=0.6u ng=1
+MM7 vp vp vp vp sg13_lv_pmos w=1.375u l=0.6u ng=1
+RR1 net1 vbias 509.4 $SUB=gd $[rppd] w=1e-6 l=1.7e-6 b=0
+x1 vp iref gd curr_source
+.ends
+
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/charge_pump/curr_source.sym # of pins=3
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/charge_pump/curr_source.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/charge_pump/curr_source.sch
+.subckt curr_source vp iref gd
+*.PININFO vp:B gd:B iref:O
+MM9 net3 net3 gd gd sg13_lv_nmos w=1u l=0.6u ng=1
+MM4 iref iref vp vp sg13_lv_pmos w=1.4u l=0.6u ng=1
+MM5 net2 iref vp vp sg13_lv_pmos w=1.2u l=0.6u ng=1
+MM10 iref net2 net1 gd sg13_lv_nmos w=1.2u l=0.6u ng=1
+MM1 net2 net2 gd gd sg13_lv_nmos w=1.4u l=0.6u ng=1
+MM3 vp vp net3 gd sg13_lv_nmos w=1u l=0.6u ng=1
+MM6 vp net3 iref gd sg13_lv_nmos w=1u l=0.6u ng=1
+MM2 gd gd gd gd sg13_lv_nmos w=0.4u l=0.6u ng=1
+RR2 net1 gd 509.4 $SUB=gd $[rppd] w=1e-6 l=1.7e-6 b=0
+.ends
+
