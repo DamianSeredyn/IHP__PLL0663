@@ -1,0 +1,83 @@
+# Logfile created on 2026-11-01 00:11:05 +0100 by logger.rb/v1.5.3
+2026-11-01 00:11:05 +0100: Memory Usage (456684K) : Starting running IHP-SG13CMOS5L Klayout DRC antenna runset on /foss/designs/CHIP-PLL/PLL0663-main/layout/klayout/TOP/PLL0663.gds
+2026-11-01 00:11:05 +0100: Memory Usage (456684K) : Ruby Version for klayout: 3.2.3
+2026-11-01 00:11:05 +0100: Memory Usage (472240K) : Loading database to memory is complete.
+2026-11-01 00:11:05 +0100: Memory Usage (472240K) : IHP-SG13CMOS5L Klayout DRC antenna runset output at: /foss/designs/CHIP-PLL/PLL0663-main/layout/klayout/TOP/drc_run_PLL0663/PLL0663_PLL0663_antenna.lyrdb
+2026-11-01 00:11:05 +0100: Memory Usage (472240K) : Evaluate switches.
+2026-11-01 00:11:05 +0100: Memory Usage (472240K) : KLayout will use 10 thread(s) in tiling mode.
+2026-11-01 00:11:05 +0100: Memory Usage (472240K) : deep mode is enabled for antenna table.
+2026-11-01 00:11:05 +0100: Memory Usage (472240K) : Read in polygons from layers.
+2026-11-01 00:11:05 +0100: Memory Usage (475032K) : activ_drw has 9893 polygons
+2026-11-01 00:11:05 +0100: Memory Usage (475160K) : gatpoly_drw has 10426 polygons
+2026-11-01 00:11:05 +0100: Memory Usage (485016K) : cont_drw has 1623510 polygons
+2026-11-01 00:11:05 +0100: Memory Usage (485016K) : nsd_block has 0 polygons
+2026-11-01 00:11:05 +0100: Memory Usage (485016K) : metal1_drw has 28462 polygons
+2026-11-01 00:11:05 +0100: Memory Usage (485016K) : metal2_drw has 14416 polygons
+2026-11-01 00:11:05 +0100: Memory Usage (485016K) : psd_drw has 2462 polygons
+2026-11-01 00:11:05 +0100: Memory Usage (485016K) : digisub_drw has 0 polygons
+2026-11-01 00:11:05 +0100: Memory Usage (485016K) : via1_drw has 52268 polygons
+2026-11-01 00:11:05 +0100: Memory Usage (485016K) : via2_drw has 67500 polygons
+2026-11-01 00:11:05 +0100: Memory Usage (485016K) : metal3_drw has 7690 polygons
+2026-11-01 00:11:05 +0100: Memory Usage (485016K) : nwell_drw has 3933 polygons
+2026-11-01 00:11:05 +0100: Memory Usage (485016K) : nbulay_drw has 0 polygons
+2026-11-01 00:11:05 +0100: Memory Usage (485016K) : pwell_block has 0 polygons
+2026-11-01 00:11:05 +0100: Memory Usage (485016K) : via3_drw has 96742 polygons
+2026-11-01 00:11:05 +0100: Memory Usage (485016K) : metal4_drw has 1238 polygons
+2026-11-01 00:11:05 +0100: Memory Usage (485016K) : topvia1_drw has 39479 polygons
+2026-11-01 00:11:05 +0100: Memory Usage (485016K) : topmetal1_drw has 706 polygons
+2026-11-01 00:11:05 +0100: Memory Usage (485016K) : recog_diode has 76 polygons
+2026-11-01 00:11:05 +0100: Memory Usage (485016K) : recog_esd has 0 polygons
+2026-11-01 00:11:05 +0100: Memory Usage (485272K) : text_drw has 3874 polygons
+2026-11-01 00:11:05 +0100: Memory Usage (485272K) : Total no. of polygons in the design is 1962675
+2026-11-01 00:11:05 +0100: Memory Usage (485272K) : Loaded TECH DRC rules values from /foss/pdks/ihp-sg13cmos5l/libs.tech/klayout/python/sg13cmos5l_pycell_lib/sg13cmos5l_tech_mod.json
+2026-11-01 00:11:05 +0100: Memory Usage (485272K) : Loaded default DRC rules values from /foss/pdks/ihp-sg13cmos5l/libs.tech/klayout/tech/drc/rule_decks/sg13cmos5l_tech_default.json
+2026-11-01 00:11:05 +0100: Memory Usage (486040K) : Total area of the design is 1102500.0 um^2.
+2026-11-01 00:11:05 +0100: Memory Usage (486040K) : The design dimensions are 1050.0 um * 1050.0 um.
+2026-11-01 00:11:05 +0100: Memory Usage (486040K) : Starting general IHP-SG13CMOS5L derivations.
+2026-11-01 00:11:06 +0100: Memory Usage (491032K) : Starting IHP-SG13CMOS5L DRC rules.
+2026-11-01 00:11:06 +0100: Memory Usage (491032K) : Starting 7.1 Antenna Rules table
+2026-11-01 00:11:06 +0100: Memory Usage (491192K) : Executing rule Ant.a
+2026-11-01 00:11:07 +0100: Memory Usage (550496K) : Executing rule Ant.c
+2026-11-01 00:11:07 +0100: Memory Usage (550496K) : Starting cumulative antenna ratio calculations
+2026-11-01 00:11:07 +0100: Memory Usage (550496K) : Evaluating metal1_drw ratio
+2026-11-01 00:11:10 +0100: Memory Usage (553952K) : Evaluating via1_drw ratio
+2026-11-01 00:11:13 +0100: Memory Usage (553952K) : Evaluating metal2_drw ratio
+2026-11-01 00:11:17 +0100: Memory Usage (553952K) : Evaluating via2_drw ratio
+2026-11-01 00:11:20 +0100: Memory Usage (553952K) : Evaluating metal3_drw ratio
+2026-11-01 00:11:24 +0100: Memory Usage (570848K) : Evaluating via3_drw ratio
+2026-11-01 00:11:29 +0100: Memory Usage (570848K) : Evaluating metal4_drw ratio
+2026-11-01 00:11:36 +0100: Memory Usage (598240K) : Evaluating topvia1_drw ratio
+2026-11-01 00:11:41 +0100: Memory Usage (599136K) : Evaluating topmetal1_drw ratio
+2026-11-01 00:11:49 +0100: Memory Usage (639584K) : Evaluating diode presence
+2026-11-01 00:11:50 +0100: Memory Usage (639584K) : Creating base layer with all individual ratios and diode flag
+2026-11-01 00:11:51 +0100: Memory Usage (639584K) : Executing rules Ant.b and Ant.e
+2026-11-01 00:11:51 +0100: Memory Usage (639584K) : Executing Ant.b_Metal1
+2026-11-01 00:11:51 +0100: Memory Usage (639584K) : Executing Ant.e_Metal1
+2026-11-01 00:11:51 +0100: Memory Usage (639584K) : Evaluating cumulative ratio after Metal2
+2026-11-01 00:11:51 +0100: Memory Usage (639584K) : Executing Ant.b_Metal2
+2026-11-01 00:11:51 +0100: Memory Usage (639584K) : Executing Ant.e_Metal2
+2026-11-01 00:11:51 +0100: Memory Usage (639584K) : Evaluating cumulative ratio after Metal3
+2026-11-01 00:11:51 +0100: Memory Usage (639584K) : Executing Ant.b_Metal3
+2026-11-01 00:11:51 +0100: Memory Usage (639584K) : Executing Ant.e_Metal3
+2026-11-01 00:11:51 +0100: Memory Usage (639584K) : Evaluating cumulative ratio after Metal4
+2026-11-01 00:11:51 +0100: Memory Usage (639584K) : Executing Ant.b_Metal4
+2026-11-01 00:11:52 +0100: Memory Usage (639584K) : Executing Ant.e_Metal4
+2026-11-01 00:11:52 +0100: Memory Usage (639584K) : Evaluating cumulative ratio after TopMetal1
+2026-11-01 00:11:52 +0100: Memory Usage (639584K) : Executing Ant.b_TopMetal1
+2026-11-01 00:11:52 +0100: Memory Usage (639584K) : Executing Ant.e_TopMetal1
+2026-11-01 00:11:52 +0100: Memory Usage (639584K) : Executing rules Ant.d and Ant.f
+2026-11-01 00:11:52 +0100: Memory Usage (639584K) : Evaluating cumulative ratio after Via1
+2026-11-01 00:11:52 +0100: Memory Usage (639584K) : Executing Ant.d_Via1
+2026-11-01 00:11:52 +0100: Memory Usage (639584K) : Executing Ant.f_Via1
+2026-11-01 00:11:52 +0100: Memory Usage (639584K) : Evaluating cumulative ratio after Via2
+2026-11-01 00:11:52 +0100: Memory Usage (639584K) : Executing Ant.d_Via2
+2026-11-01 00:11:52 +0100: Memory Usage (639584K) : Executing Ant.f_Via2
+2026-11-01 00:11:52 +0100: Memory Usage (639584K) : Evaluating cumulative ratio after Via3
+2026-11-01 00:11:52 +0100: Memory Usage (639584K) : Executing Ant.d_Via3
+2026-11-01 00:11:52 +0100: Memory Usage (639584K) : Executing Ant.f_Via3
+2026-11-01 00:11:52 +0100: Memory Usage (639584K) : Evaluating cumulative ratio after TopVia1
+2026-11-01 00:11:52 +0100: Memory Usage (639584K) : Executing Ant.d_TopVia1
+2026-11-01 00:11:52 +0100: Memory Usage (639584K) : Executing Ant.f_TopVia1
+2026-11-01 00:11:52 +0100: Memory Usage (639584K) : Executing rule Ant.g
+2026-11-01 00:11:53 +0100: Memory Usage (639584K) : Executing rule Ant.h
+2026-11-01 00:11:52 +0100: Memory Usage (639712K) : Executing rule Ant.i
