@@ -153,7 +153,7 @@ C {devices/code_shown.sym} -530 210 0 0 {name=MODEL only_toplevel=true
 format="tcleval( @value )"
 value=".lib cornerMOSlv.lib mos_tt
 "}
-C {/foss/designs/CHIP-PLL/schematics/divider/schematics/Divider_top.sym} 340 460 0 0 {name=x1}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/Divider_top.sym} 340 460 0 0 {name=x1}
 C {lab_wire.sym} -520 320 0 0 {name=p15 sig_type=std_logic lab=reset
 }
 C {gnd.sym} -520 420 0 0 {name=l1 lab=0
@@ -164,7 +164,7 @@ C {vsource.sym} -520 370 0 0 {name=V4 value="PWL(
 + 200.1n 0)" savecurrent=false}
 C {lab_wire.sym} 220 420 0 0 {name=p16 sig_type=std_logic lab=reset
 =======
-C \{/foss/designs/CHIP-PLL/schematics/divider/schematics/Divider_top.sym}
+C \{/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/Divider_top.sym}
 C {capa.sym} 170 610 0 0 {name=C1
 m=1
 value=50f

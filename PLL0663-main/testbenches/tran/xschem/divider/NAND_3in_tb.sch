@@ -86,4 +86,4 @@ C {lab_wire.sym} -210 -100 3 0 {name=p12 sig_type=std_logic lab=c
 }
 C {lab_wire.sym} 130 -100 2 0 {name=p14 sig_type=std_logic lab=y
 }
-C {/foss/designs/CHIP-PLL/divider/schematics/NAND_3in.sym} -40 -120 0 0 {name=x1}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/NAND_3in.sym} -40 -120 0 0 {name=x1}

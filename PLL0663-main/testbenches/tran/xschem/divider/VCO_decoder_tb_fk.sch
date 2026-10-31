@@ -102,7 +102,7 @@ C {lab_wire.sym} 140 360 2 0 {name=p22 sig_type=std_logic lab=VP
 }
 C {gnd.sym} 190 340 0 0 {name=l9 lab=0
 }
-C {VCO_decoder_cells.sym} -40 430 0 0 {name=x1}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/VCO_decoder_cells.sym} -40 430 0 0 {name=x1}
 C {lab_wire.sym} -210 360 2 1 {name=p56 sig_type=std_logic lab=c1}
 C {lab_wire.sym} -210 380 2 1 {name=p58 sig_type=std_logic lab=c2}
 C {lab_wire.sym} -210 400 2 1 {name=p60 sig_type=std_logic lab=f0}

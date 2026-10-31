@@ -70,7 +70,7 @@ C {lab_wire.sym} 680 -10 0 0 {name=p4 sig_type=std_logic lab=out_pb
 }
 C {lab_wire.sym} 410 -130 0 0 {name=p5 sig_type=std_logic lab=vdd
 }
-C {/foss/designs/CHIP-PLL/schematics/vco/vco_cell/vco_core_2.sym} 100 -10 0 0 {name=x2}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/vco/vco_core_2.sym} 100 -10 0 0 {name=x2}
 C {gnd.sym} -240 290 0 0 {name=l4 lab=0
 }
 C {lab_wire.sym} -160 150 0 0 {name=p6 sig_type=std_logic lab=in
@@ -92,7 +92,7 @@ footprint=1206
 device="ceramic capacitor"}
 C {gnd.sym} 680 70 0 0 {name=l6 lab=0
 }
-C {/foss/designs/CHIP-PLL/schematics/divider/schematics/inverter.sym} 160 280 0 0 {name=x14}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/inverter.sym} 160 280 0 0 {name=x14}
 C {lab_wire.sym} 110 280 0 0 {name=p8 sig_type=std_logic lab=en5
 }
 C {lab_wire.sym} 270 280 0 0 {name=p10 sig_type=std_logic lab=nen5
@@ -102,7 +102,7 @@ C {lab_wire.sym} 160 210 0 0 {name=p11 sig_type=std_logic lab=vdd
 }
 C {gnd.sym} 160 350 0 0 {name=l7 lab=0
 }
-C {/foss/designs/CHIP-PLL/schematics/divider/schematics/inverter.sym} 500 280 0 0 {name=x3}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/inverter.sym} 500 280 0 0 {name=x3}
 C {lab_wire.sym} 450 280 0 0 {name=p12 sig_type=std_logic lab=en5
 }
 C {lab_wire.sym} 610 280 0 0 {name=p13 sig_type=std_logic lab=en11
@@ -112,7 +112,7 @@ C {lab_wire.sym} 500 210 0 0 {name=p14 sig_type=std_logic lab=vdd
 }
 C {gnd.sym} 500 350 0 0 {name=l8 lab=0
 }
-C {/foss/designs/CHIP-PLL/schematics/divider/schematics/inverter.sym} 170 480 0 0 {name=x4}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/inverter.sym} 170 480 0 0 {name=x4}
 C {lab_wire.sym} 120 480 0 0 {name=p15 sig_type=std_logic lab=en11
 }
 C {lab_wire.sym} 280 480 0 0 {name=p16 sig_type=std_logic lab=nen11
@@ -133,5 +133,5 @@ C {lab_wire.sym} -90 40 0 0 {name=p21 sig_type=std_logic lab=nen11
 C {connector.sym} -150 -40 0 0 {name=c8 footprint=connector(1,1)}
 C {connector.sym} -120 20 0 0 {name=c9 footprint=connector(1,1)}
 C {connector.sym} -150 40 0 0 {name=c10 footprint=connector(1,1)}
-C {/foss/designs/CHIP-PLL/schematics/vco/vco_cell/0_buf.sym} 450 80 0 0 {name=x1}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/vco/0_buf.sym} 450 80 0 0 {name=x1}
 C {connector.sym} -120 -60 0 0 {name=c6 footprint=connector(1,1)}

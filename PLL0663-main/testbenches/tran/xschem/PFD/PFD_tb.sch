@@ -174,10 +174,10 @@ value=".lib cornerMOSlv.lib mos_ff
 .lib cornerMOSCAP.lib moscap_tt
 
 "}
-C {/foss/designs/CHIP-PLL/schematics/misc/buffer_hv.sym} -280 -80 0 0 {name=x2}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/misc/buffer_hv.sym} -280 -80 0 0 {name=x2}
 C {lab_wire.sym} -450 -80 0 0 {name=p5 sig_type=std_logic lab=CRef_prebuf}
 C {devices/vsource.sym} -760 -60 0 0 {name=Vp1 value="dc 0 ac 0 PULSE(\{Vp\} 0 63u 1p 1p 1 2"}
 C {lab_wire.sym} -760 -160 0 0 {name=p6 sig_type=std_logic lab=rst}
 C {lab_wire.sym} -250 -50 0 0 {name=p7 sig_type=std_logic lab=rst}
 C {lab_wire.sym} -220 -160 0 0 {name=p8 sig_type=std_logic lab=vp}
-C {PFD_cell_2.sym} -40 -50 0 0 {name=x1}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/PFD/PFD_cell_2.sym} -40 -50 0 0 {name=x1}

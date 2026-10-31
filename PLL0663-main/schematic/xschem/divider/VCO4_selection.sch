@@ -165,12 +165,12 @@ C {lab_wire.sym} 1800 -2370 2 0 {name=p56 sig_type=std_logic lab=f1}
 C {lab_wire.sym} 1800 -2350 2 0 {name=p57 sig_type=std_logic lab=f0}
 C {ipin.sym} 1780 -2370 0 0 {name=p58 lab=f1}
 C {ipin.sym} 1780 -2350 0 0 {name=p61 lab=f0}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/NAND_3in_dek.sym} 2330 -2440 0 0 {name=x1}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/NAND_3in_dek.sym} 2330 -2600 0 0 {name=x2}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/NAND_3in_dek.sym} 2330 -2680 0 0 {name=x3}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/NAND_3in_dek.sym} 2330 -2760 0 0 {name=x4}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/NAND_2in_dek.sym} 2330 -2520 0 0 {name=x7}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/NAND_2in_dek.sym} 2900 -2600 0 0 {name=x8}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/NAND_2in_dek.sym} 2900 -2500 0 0 {name=x9}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/inverter_dek.sym} 2550 -2420 0 0 {name=x5}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/NAND_4in_dek.sym} 2740 -2710 0 0 {name=x6}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/NAND_3in_dek.sym} 2330 -2440 0 0 {name=x1}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/NAND_3in_dek.sym} 2330 -2600 0 0 {name=x2}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/NAND_3in_dek.sym} 2330 -2680 0 0 {name=x3}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/NAND_3in_dek.sym} 2330 -2760 0 0 {name=x4}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/NAND_2in_dek.sym} 2330 -2520 0 0 {name=x7}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/NAND_2in_dek.sym} 2900 -2600 0 0 {name=x8}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/NAND_2in_dek.sym} 2900 -2500 0 0 {name=x9}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/inverter_dek.sym} 2550 -2420 0 0 {name=x5}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/NAND_4in_dek.sym} 2740 -2710 0 0 {name=x6}

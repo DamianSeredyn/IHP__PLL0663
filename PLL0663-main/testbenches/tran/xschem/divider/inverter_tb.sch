@@ -39,7 +39,7 @@ plot v(out) v(in)
 plot X1.VP
 .endc
 "}
-C {/foss/designs/CHIP-PLL/divider/inverter.sym} 0 0 0 0 {name=x1}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/inverter.sym} 0 0 0 0 {name=x1}
 C {vsource.sym} -170 0 0 0 {name=V1 value=1.2 savecurrent=false}
 C {vsource.sym} -90 50 0 0 {name=V2 value="PULSE(0 1.2 0 10p 10p 3.335n 6.67n)" savecurrent=false}
 C {capa.sym} 110 40 0 0 {name=C1

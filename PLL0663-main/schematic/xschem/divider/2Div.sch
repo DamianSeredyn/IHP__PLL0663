@@ -129,10 +129,10 @@ C {lab_pin.sym} -710 150 1 0 {name=p15 sig_type=std_logic lab=div16}
 C {lab_pin.sym} -340 150 1 0 {name=p26 sig_type=std_logic lab=div32}
 C {lab_pin.sym} 30 150 1 0 {name=p40 sig_type=std_logic lab=div64}
 C {lab_pin.sym} 390 150 1 0 {name=p43 sig_type=std_logic lab=div128}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/d_flip_flop.sym} -520 190 0 0 {name=x3}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/d_flip_flop.sym} -150 190 0 0 {name=x4}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/d_flip_flop.sym} 220 190 0 0 {name=x7}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/d_flip_flop.sym} -520 20 0 0 {name=x1}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/d_flip_flop.sym} -150 20 0 0 {name=x2}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/d_flip_flop.sym} 220 20 0 0 {name=x5}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/d_flip_flop.sym} 590 20 0 0 {name=x6}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/d_flip_flop.sym} -520 190 0 0 {name=x3}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/d_flip_flop.sym} -150 190 0 0 {name=x4}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/d_flip_flop.sym} 220 190 0 0 {name=x7}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/d_flip_flop.sym} -520 20 0 0 {name=x1}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/d_flip_flop.sym} -150 20 0 0 {name=x2}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/d_flip_flop.sym} 220 20 0 0 {name=x5}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/d_flip_flop.sym} 590 20 0 0 {name=x6}

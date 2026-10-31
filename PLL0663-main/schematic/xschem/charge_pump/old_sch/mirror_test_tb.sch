@@ -281,7 +281,7 @@ C {lab_pin.sym} -230 -330 2 0 {name=p1 sig_type=std_logic lab=vout}
 C {lab_pin.sym} -80 -340 2 0 {name=p18 sig_type=std_logic lab=vout}
 C {lab_pin.sym} -740 -130 0 1 {name=p19 sig_type=std_logic lab=biasn}
 C {lab_pin.sym} -810 -330 0 1 {name=p21 sig_type=std_logic lab=biasn}
-C {/foss/designs/CHIP-PLL/charge_pump/vbias.sym} -690 -430 0 0 {name=x1}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/charge_pump/vbias.sym} -690 -430 0 0 {name=x1}
 C {gnd.sym} -520 -430 0 0 {name=Vbias2 lab=0}
 C {lab_pin.sym} -530 -390 0 1 {name=p23 sig_type=std_logic lab=biasn}
 C {lab_wire.sym} -520 -450 0 0 {name=p24 sig_type=std_logic lab=vp}

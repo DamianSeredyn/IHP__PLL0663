@@ -110,35 +110,35 @@ C {lab_wire.sym} -100 180 2 0 {name=p13 sig_type=std_logic lab=VCO5_sel}
 C {lab_wire.sym} 170 0 0 0 {name=p16 sig_type=std_logic lab=VCO_in}
 C {lab_wire.sym} 140 -130 2 0 {name=p17 sig_type=std_logic lab=VP}
 C {lab_wire.sym} 140 -40 2 0 {name=p18 sig_type=std_logic lab=gd}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/inverter_dek.sym} 140 -80 0 0 {name=x2}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/passgate_scaled.sym} 200 210 0 0 {name=x3}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/inverter_dek.sym} 140 -80 0 0 {name=x2}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/passgate_scaled.sym} 200 210 0 0 {name=x3}
 C {lab_wire.sym} 240 240 2 0 {name=p19 sig_type=std_logic lab=gd}
 C {lab_wire.sym} 240 140 2 0 {name=p22 sig_type=std_logic lab=VP}
 C {lab_wire.sym} 280 190 2 0 {name=p23 sig_type=std_logic lab=out}
 C {lab_wire.sym} 140 60 2 0 {name=p25 sig_type=std_logic lab=VP}
 C {lab_wire.sym} 140 150 2 0 {name=p26 sig_type=std_logic lab=gd}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/inverter_dek.sym} 140 110 0 0 {name=x4}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/passgate_scaled.sym} 420 20 0 0 {name=x5}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/inverter_dek.sym} 140 110 0 0 {name=x4}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/passgate_scaled.sym} 420 20 0 0 {name=x5}
 C {lab_wire.sym} 460 50 2 0 {name=p24 sig_type=std_logic lab=gd}
 C {lab_wire.sym} 460 -50 2 0 {name=p27 sig_type=std_logic lab=VP}
 C {lab_wire.sym} 500 0 2 0 {name=p28 sig_type=std_logic lab=out}
 C {lab_wire.sym} 360 -130 2 0 {name=p29 sig_type=std_logic lab=VP}
 C {lab_wire.sym} 360 -40 2 0 {name=p30 sig_type=std_logic lab=gd}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/inverter_dek.sym} 360 -80 0 0 {name=x6}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/passgate_scaled.sym} 420 210 0 0 {name=x7}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/inverter_dek.sym} 360 -80 0 0 {name=x6}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/passgate_scaled.sym} 420 210 0 0 {name=x7}
 C {lab_wire.sym} 460 240 2 0 {name=p31 sig_type=std_logic lab=gd}
 C {lab_wire.sym} 460 140 2 0 {name=p32 sig_type=std_logic lab=VP}
 C {lab_wire.sym} 500 190 2 0 {name=p33 sig_type=std_logic lab=out}
 C {lab_wire.sym} 360 60 2 0 {name=p34 sig_type=std_logic lab=VP}
 C {lab_wire.sym} 360 150 2 0 {name=p35 sig_type=std_logic lab=gd}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/inverter_dek.sym} 360 110 0 0 {name=x8}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/passgate_scaled.sym} 640 20 0 0 {name=x9}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/inverter_dek.sym} 360 110 0 0 {name=x8}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/passgate_scaled.sym} 640 20 0 0 {name=x9}
 C {lab_wire.sym} 680 50 2 0 {name=p36 sig_type=std_logic lab=gd}
 C {lab_wire.sym} 680 -50 2 0 {name=p37 sig_type=std_logic lab=VP}
 C {lab_wire.sym} 720 0 2 0 {name=p38 sig_type=std_logic lab=out}
 C {lab_wire.sym} 580 -130 2 0 {name=p39 sig_type=std_logic lab=VP}
 C {lab_wire.sym} 580 -40 2 0 {name=p40 sig_type=std_logic lab=gd}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/inverter_dek.sym} 580 -80 0 0 {name=x10}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/inverter_dek.sym} 580 -80 0 0 {name=x10}
 C {lab_wire.sym} 170 190 0 0 {name=p41 sig_type=std_logic lab=VCO2_in}
 C {lab_wire.sym} 390 0 0 0 {name=p42 sig_type=std_logic lab=VCO3_in}
 C {lab_wire.sym} 390 190 0 0 {name=p43 sig_type=std_logic lab=VCO4_in}
@@ -148,4 +148,4 @@ C {lab_wire.sym} 100 110 0 0 {name=p47 sig_type=std_logic lab=VCO2_sel}
 C {lab_wire.sym} 320 -80 0 0 {name=p49 sig_type=std_logic lab=VCO3_sel}
 C {lab_wire.sym} 320 110 0 0 {name=p48 sig_type=std_logic lab=VCO4_sel}
 C {lab_wire.sym} 540 -80 0 0 {name=p50 sig_type=std_logic lab=VCO5_sel}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/vco_passgate_mux.sym} 200 20 0 0 {name=x1}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/vco_passgate_mux.sym} 200 20 0 0 {name=x1}

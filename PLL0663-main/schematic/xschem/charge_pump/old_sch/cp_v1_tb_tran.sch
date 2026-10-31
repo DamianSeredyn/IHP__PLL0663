@@ -56,4 +56,4 @@ value="PULSE(0 1.2 150n 10p 10p 30n 200n)" savecurrent=false}
 C {gnd.sym} 630 -330 0 0 {name=l5 lab=0}
 C {lab_pin.sym} 270 -390 0 1 {name=p6 sig_type=std_logic lab=up}
 C {lab_pin.sym} 630 -390 0 1 {name=p7 sig_type=std_logic lab=dn}
-C {/foss/designs/CHIP-PLL/charge_pump/cp_v1_no_mirror.sym} 330 -160 0 0 {name=x1}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/charge_pump/old_sch/cp_v1_no_mirror.sym} 330 -160 0 0 {name=x1}

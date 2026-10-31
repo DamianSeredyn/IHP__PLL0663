@@ -68,7 +68,7 @@ C {gnd.sym} -380 -60 0 0 {name=l2 lab=0}
 C {vsource.sym} -130 -30 0 0 {name=Vrst
 value=1.2 savecurrent=false}
 C {gnd.sym} -130 10 0 0 {name=l1 lab=0}
-C {/foss/designs/CHIP-PLL/schematics/charge_pump/charge_pump_cell_newbias.sym} -380 -150 0 0 {name=x1}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/charge_pump/charge_pump_cell_newbias.sym} -380 -150 0 0 {name=x1}
 C {lab_pin.sym} 230 -170 2 0 {name=p2 sig_type=std_logic lab=vout}
 C {res.sym} 70 -100 0 0 {name=R1
 value=25k

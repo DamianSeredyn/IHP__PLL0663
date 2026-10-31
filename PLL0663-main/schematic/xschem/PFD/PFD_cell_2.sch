@@ -143,28 +143,28 @@ C {lab_wire.sym} 560 370 0 0 {name=p18 sig_type=std_logic lab=gnd}
 C {lab_wire.sym} 560 250 0 0 {name=p19 sig_type=std_logic lab=vp}
 C {lab_wire.sym} 660 370 0 0 {name=p46 sig_type=std_logic lab=gnd}
 C {lab_wire.sym} 660 250 0 0 {name=p49 sig_type=std_logic lab=vp}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/PFD/PFD_passgate.sym} -500 -30 0 1 {name=x1}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/PFD/PFD_passgate.sym} -260 -30 0 0 {name=x3}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/NAND_2in.sym} 390 -50 0 1 {name=x7}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/PFD/PFD_passgate.sym} -500 -30 0 1 {name=x1}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/PFD/PFD_passgate.sym} -260 -30 0 0 {name=x3}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/NAND_2in.sym} 390 -50 0 1 {name=x7}
 C {noconn.sym} 120 -170 0 1 {name=l1}
 C {lab_wire.sym} -310 100 0 0 {name=p37 sig_type=std_logic lab=vp}
 C {lab_wire.sym} -70 -90 0 0 {name=p10 sig_type=std_logic lab=vp}
 C {lab_wire.sym} -70 30 0 0 {name=p14 sig_type=std_logic lab=gnd}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/PFD/PFD_buffor.sym} -180 -30 0 1 {name=x8}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/PFD/PFD_buffor.sym} -180 -30 0 1 {name=x8}
 C {lab_wire.sym} 40 20 0 1 {name=p7 sig_type=std_logic lab=gnd}
 C {lab_wire.sym} 40 -90 0 1 {name=p8 sig_type=std_logic lab=vp}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/PFD/PFD_flip_flop.sym} -110 -230 0 0 {name=x11}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/PFD/PFD_flip_flop.sym} -110 -230 0 0 {name=x11}
 C {lab_wire.sym} -180 -300 0 0 {name=p9 sig_type=std_logic lab=vp}
 C {lab_wire.sym} -580 -30 0 0 {name=p11 sig_type=std_logic lab=vp}
 C {lab_wire.sym} -180 -110 0 0 {name=p12 sig_type=std_logic lab=gnd}
 C {lab_wire.sym} -340 -230 0 0 {name=p13 sig_type=std_logic lab=vp}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/PFD/PFD_flip_flop.sym} -120 100 0 0 {name=x12}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/PFD/PFD_flip_flop.sym} -120 100 0 0 {name=x12}
 C {lab_wire.sym} -190 30 0 0 {name=p15 sig_type=std_logic lab=vp}
 C {lab_wire.sym} -190 220 0 0 {name=p38 sig_type=std_logic lab=gnd}
 C {noconn.sym} 110 160 0 1 {name=l2}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/PFD/PFD_inverter_x4.sym} 560 310 0 0 {name=x2}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/PFD/PFD_inverter_x4.sym} 660 310 0 0 {name=x4}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/PFD/PFD_inverter_x4.sym} 690 -170 0 0 {name=x5}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/PFD/PFD_inverter_x4.sym} 570 -170 0 0 {name=x6}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/PFD/PFD_inverter_x4.sym} -770 -110 0 0 {name=x9}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/PFD/PFD_inverter_x4.sym} 40 -30 0 1 {name=x10}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/PFD/PFD_inverter_x4.sym} 560 310 0 0 {name=x2}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/PFD/PFD_inverter_x4.sym} 660 310 0 0 {name=x4}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/PFD/PFD_inverter_x4.sym} 690 -170 0 0 {name=x5}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/PFD/PFD_inverter_x4.sym} 570 -170 0 0 {name=x6}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/PFD/PFD_inverter_x4.sym} -770 -110 0 0 {name=x9}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/PFD/PFD_inverter_x4.sym} 40 -30 0 1 {name=x10}

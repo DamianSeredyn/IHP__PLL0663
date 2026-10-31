@@ -94,11 +94,11 @@ C {lab_wire.sym} -240 -190 2 0 {name=p43 sig_type=std_logic lab=t1
 }
 C {lab_wire.sym} -240 -170 2 0 {name=p44 sig_type=std_logic lab=t2
 }
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/buf/buf_lp.sym} 670 -230 0 0 {name=x2}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/buf/buf_lp.sym} 670 -230 0 0 {name=x2}
 C {lab_pin.sym} -230 -90 2 0 {name=p46 sig_type=std_logic lab=VPHIGH}
 C {iopin.sym} -250 -90 2 0 {name=p47 lab=VPHIGH}
 C {ipin.sym} -260 -170 2 1 {name=p40 lab=t2}
 C {ipin.sym} -260 -190 2 1 {name=p41 lab=t1}
 C {ipin.sym} -260 -210 2 1 {name=p45 lab=t0}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/misc/mux8to1.sym} 80 30 0 0 {name=x1}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/misc/debug_level_shifter.sym} 490 -90 0 0 {name=x3}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/misc/mux8to1.sym} 80 30 0 0 {name=x1}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/misc/debug_level_shifter.sym} 490 -90 0 0 {name=x3}

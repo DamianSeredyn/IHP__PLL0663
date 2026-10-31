@@ -266,10 +266,10 @@ C {lab_wire.sym} 520 -1420 2 0 {name=p142 sig_type=std_logic lab=000000_n}
 C {lab_wire.sym} 160 -1500 0 0 {name=p72 sig_type=std_logic lab=f0}
 C {lab_wire.sym} 790 -820 0 0 {name=p49 sig_type=std_logic lab=f0}
 C {lab_wire.sym} 790 -800 0 0 {name=p73 sig_type=std_logic lab=f1}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/3bit_to_8_outs.sym} 390 -1790 0 0 {name=x6}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/row_section_decoding.sym} 330 -1410 0 0 {name=x7}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/VCO2_selection.sym} 390 -970 0 0 {name=x4}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/VCO4_selection.sym} 970 -940 0 0 {name=x2}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/VCO_selection.sym} 1630 -930 0 0 {name=x1}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/VCO3_selection.sym} 1640 -1370 0 0 {name=x5}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/VCO5_selection.sym} 1610 -1810 0 0 {name=x3}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/3bit_to_8_outs.sym} 390 -1790 0 0 {name=x6}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/row_section_decoding.sym} 330 -1410 0 0 {name=x7}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/VCO2_selection.sym} 390 -970 0 0 {name=x4}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/VCO4_selection.sym} 970 -940 0 0 {name=x2}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/VCO_selection.sym} 1630 -930 0 0 {name=x1}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/VCO3_selection.sym} 1640 -1370 0 0 {name=x5}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/VCO5_selection.sym} 1610 -1810 0 0 {name=x3}

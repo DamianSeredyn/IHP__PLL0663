@@ -151,7 +151,7 @@ C {lab_wire.sym} -50 110 0 0 {name=p15 sig_type=std_logic lab=a1
 }
 C {lab_wire.sym} -70 110 0 0 {name=p16 sig_type=std_logic lab=a2
 }
-C {/foss/designs/CHIP-PLL/schematics/top/PLL_top.sym} 50 -70 0 0 {name=xPLL}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/top/PLL_top.sym} 50 -70 0 0 {name=xPLL}
 C {devices/vsource.sym} -770 330 0 0 {name=Vp1 value="dc \{Vp\} ac 0 PULSE(\{Vp\} 0 2u 1n 1n 1 2)"}
 C {lab_wire.sym} -770 230 0 0 {name=p17 sig_type=std_logic lab=rst}
 C {lab_wire.sym} -190 -10 0 0 {name=p18 sig_type=std_logic lab=rst}
@@ -173,7 +173,7 @@ C {lab_wire.sym} -770 380 0 0 {name=p39 sig_type=std_logic lab=gd}
 C {devices/vsource.sym} -880 330 0 0 {name=Vp2 value="dc 0"}
 C {lab_wire.sym} -880 260 0 0 {name=p40 sig_type=std_logic lab=gd}
 C {devices/gnd.sym} -880 410 0 0 {name=l2 lab=GND}
-C {/foss/designs/CHIP-PLL/schematics/misc/RC_filter.sym} 670 0 0 0 {name=x1}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/misc/RC_filter.sym} 670 0 0 0 {name=x1}
 C {lab_wire.sym} 660 80 0 0 {name=p41 sig_type=std_logic lab=gd}
 C {noconn.sym} 220 120 0 0 {name=l1}
 C {noconn.sym} 200 120 0 0 {name=l3}

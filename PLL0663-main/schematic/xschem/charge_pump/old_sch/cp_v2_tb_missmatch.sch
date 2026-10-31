@@ -55,4 +55,4 @@ value="PULSE(0 1.2 200n 10p 10p 40n 200n)" savecurrent=false}
 C {gnd.sym} 750 -670 0 0 {name=l5 lab=0}
 C {lab_pin.sym} 390 -730 0 1 {name=p6 sig_type=std_logic lab=upb}
 C {lab_pin.sym} 750 -730 0 1 {name=p7 sig_type=std_logic lab=dn}
-C {/foss/designs/CHIP-PLL/charge_pump/cp2_simple_ideal.sym} 470 -380 0 0 {name=x2}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/charge_pump/old_sch/cp2_simple_ideal.sym} 470 -380 0 0 {name=x2}

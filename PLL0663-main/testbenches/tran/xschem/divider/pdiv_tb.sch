@@ -113,7 +113,7 @@ C {lab_wire.sym} 220 370 0 0 {name=p27 sig_type=std_logic lab=d4
 }
 C {lab_wire.sym} 230 270 0 0 {name=p53 sig_type=std_logic lab=reset
 }
-C {/foss/designs/CHIP-PLL/schematics/divider/schematics/pdiv.sym} 400 320 0 0 {name=x1}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/pdiv.sym} 400 320 0 0 {name=x1}
 C {lab_wire.sym} 230 250 0 0 {name=p1 sig_type=std_logic lab=clk
 }
 C {lab_wire.sym} -340 250 0 0 {name=p3 sig_type=std_logic lab=reset

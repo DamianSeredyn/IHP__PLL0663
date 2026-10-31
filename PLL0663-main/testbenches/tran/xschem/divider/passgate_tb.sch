@@ -60,7 +60,7 @@ C {gnd.sym} -380 30 0 0 {name=l1 lab=0
 }
 C {lab_wire.sym} -370 110 0 0 {name=p2 sig_type=std_logic lab=in
 }
-C {/foss/designs/CHIP-PLL/divider/inverter.sym} 100 -70 0 0 {name=x3}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/inverter.sym} 100 -70 0 0 {name=x3}
 C {vsource.sym} -260 90 0 0 {name=V3 value="PULSE(0 1.2 0 10p 10p 26.68n 53.36n)" savecurrent=false}
 C {lab_wire.sym} -260 50 0 0 {name=p4 sig_type=std_logic lab=en
 }
@@ -68,7 +68,7 @@ C {lab_wire.sym} 160 -70 1 0 {name=p5 sig_type=std_logic lab=en_
 }
 C {lab_wire.sym} 250 0 0 0 {name=p6 sig_type=std_logic lab=out_pg
 }
-C {/foss/designs/CHIP-PLL/divider/inverter.sym} 280 0 0 0 {name=x4}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/inverter.sym} 280 0 0 0 {name=x4}
 C {lab_wire.sym} 370 0 0 0 {name=p7 sig_type=std_logic lab=out_inv
 }
 C {lab_wire.sym} 90 40 0 0 {name=p1 sig_type=std_logic lab=en
@@ -102,4 +102,4 @@ C {lab_wire.sym} 280 50 0 0 {name=p21 sig_type=std_logic lab=gnd!
 }
 C {lab_wire.sym} 380 80 0 0 {name=p22 sig_type=std_logic lab=gnd!
 }
-C {/foss/designs/CHIP-PLL/divider/passgate.sym} 160 20 0 0 {name=x1}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/passgate.sym} 160 20 0 0 {name=x1}

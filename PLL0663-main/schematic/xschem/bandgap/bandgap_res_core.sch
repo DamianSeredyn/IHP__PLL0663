@@ -182,4 +182,4 @@ C {lab_wire.sym} 290 140 3 0 {name=p8 sig_type=std_logic lab=gd
 C {opin.sym} 200 -90 1 0 {name=p9 lab=d1}
 C {opin.sym} 360 -90 1 0 {name=p13 lab=d8}
 C {lab_wire.sym} 550 -560 0 0 {name=p14 sig_type=std_logic lab=vg}
-C {/foss/designs/CHIP-PLL/schematics/bandgap/opamp_folded_pmos.sym} 580 -370 0 0 {name=x1}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/bandgap/opamp_folded_pmos.sym} 580 -370 0 0 {name=x1}

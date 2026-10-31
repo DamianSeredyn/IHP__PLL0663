@@ -110,5 +110,5 @@ C {vsource.sym} 680 -240 0 0 {name=Vibias value=0 savecurrent=true}
 C {lab_wire.sym} 680 -290 3 0 {name=p2 sig_type=std_logic lab=bias}
 C {lab_wire.sym} 510 -280 3 0 {name=p3 sig_type=std_logic lab=vp}
 C {vsource.sym} 870 -310 1 1 {name=Vioff value=xvioff savecurrent=false}
-C {/foss/designs/master/bandgap_res/opamp_folded.sym} 1000 -310 0 0 {name=x1}
-C {/foss/designs/master/bandgap_res/const_gm_bias.sym} 420 -180 0 0 {name=x2}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/bandgap/opamp_folded.sym} 1000 -310 0 0 {name=x1}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/bandgap/const_gm_bias.sym} 420 -180 0 0 {name=x2}

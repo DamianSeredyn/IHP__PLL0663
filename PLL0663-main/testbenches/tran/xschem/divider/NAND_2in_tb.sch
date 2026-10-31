@@ -76,4 +76,4 @@ C {lab_wire.sym} 290 360 3 0 {name=p11 sig_type=std_logic lab=b
 }
 C {lab_wire.sym} 630 380 2 0 {name=p14 sig_type=std_logic lab=y
 }
-C {/foss/designs/CHIP-PLL/divider/schematics/NAND_2in.sym} 460 360 0 0 {name=x1}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/NAND_2in.sym} 460 360 0 0 {name=x1}

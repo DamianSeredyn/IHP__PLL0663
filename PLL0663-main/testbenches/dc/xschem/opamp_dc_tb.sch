@@ -72,8 +72,8 @@ C {lab_wire.sym} 490 0 3 0 {name=p1 sig_type=std_logic lab=gd}
 C {vsource.sym} 670 -210 1 0 {name=Vibias value=0 savecurrent=true}
 C {lab_wire.sym} 720 -210 0 0 {name=p2 sig_type=std_logic lab=bias}
 C {lab_wire.sym} 490 -360 3 0 {name=p3 sig_type=std_logic lab=vp}
-C {/foss/designs/master/bandgap_res/opamp_folded.sym} 1050 -310 0 0 {name=x1}
-C {/foss/designs/CHIP-PLL/schematics/bandgap/const_gm_bias.sym} 400 -120 0 0 {name=x2}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/bandgap/opamp_folded.sym} 1050 -310 0 0 {name=x1}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/bandgap/const_gm_bias.sym} 400 -120 0 0 {name=x2}
 C {netlist.sym} 20 -830 0 0 {name=s1 
 value="
 .lib cornerMOShv.lib mos_tt

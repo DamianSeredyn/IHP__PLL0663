@@ -67,4 +67,4 @@ value=".lib cornerMOSlv.lib mos_tt
 
 
 "}
-C {/foss/designs/CHIP-PLL/schematics/charge_pump/curr_source.sym} -100 -410 0 0 {name=x1}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/charge_pump/curr_source.sym} -100 -410 0 0 {name=x1}

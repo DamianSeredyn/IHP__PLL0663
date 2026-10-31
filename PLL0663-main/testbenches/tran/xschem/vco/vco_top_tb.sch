@@ -42,7 +42,7 @@ N -210 470 -210 520 {lab=GND}
 N -210 370 -210 410 {lab=gd}
 N -370 180 -370 210 {lab=gd}
 N 300 90 300 110 {lab=gd}
-C {/foss/designs/CHIP-PLL/schematics/vco/vco_cell/vco_top.sym} -80 30 0 0 {name=x1}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/vco/vco_top.sym} -80 30 0 0 {name=x1}
 C {devices/code_shown.sym} -1160 -780 0 0 {name=NGSPICE only_toplevel=false
 value="
 .temp=25

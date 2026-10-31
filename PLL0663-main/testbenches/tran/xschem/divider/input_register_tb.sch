@@ -226,7 +226,7 @@ C {lab_wire.sym} 480 380 2 0 {name=p17 sig_type=std_logic lab=d7
 C {lab_wire.sym} 480 400 2 0 {name=p18 sig_type=std_logic lab=d8
 
 }
-C {/foss/designs/CHIP-PLL/schematics/divider/schematics/input_register.sym} 320 330 0 0 {name=x1}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/input_register.sym} 320 330 0 0 {name=x1}
 C {lab_wire.sym} 480 420 2 0 {name=p19 sig_type=std_logic lab=d9
 }
 C {lab_wire.sym} 480 440 2 0 {name=p21 sig_type=std_logic lab=d10

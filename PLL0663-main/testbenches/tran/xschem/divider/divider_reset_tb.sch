@@ -139,9 +139,9 @@ C {lab_wire.sym} 210 450 2 0 {name=p12 sig_type=std_logic lab=div64
 }
 C {gnd.sym} 250 310 3 0 {name=l10 lab=0
 }
-C {/foss/designs/CHIP-PLL/schematics/divider/schematics/div_with_reset.sym} 40 380 0 0 {name=x1}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/div_with_reset.sym} 40 380 0 0 {name=x1}
 C {lab_wire.sym} -170 260 2 0 {name=p33 sig_type=std_logic lab=VP
 }
-C {/foss/designs/CHIP-PLL/schematics/divider/schematics/inverter_x4.sym} -190 330 0 0 {name=x8}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/inverter_x4.sym} -190 330 0 0 {name=x8}
 C {gnd.sym} -190 380 0 0 {name=l9 lab=0
 }

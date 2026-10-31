@@ -292,8 +292,8 @@ C {vsource.sym} 690 -1260 0 0 {name=Vip
 value=0 savecurrent=false}
 C {vsource.sym} 690 -1010 0 0 {name=Vin
 value=0 savecurrent=false}
-C {/foss/designs/CHIP-PLL/charge_pump/vbias.sym} 430 -1000 0 0 {name=x1}
-C {/foss/designs/CHIP-PLL/charge_pump/vbias_p.sym} 430 -1200 0 0 {name=x2}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/charge_pump/vbias.sym} 430 -1000 0 0 {name=x1}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/charge_pump/old_sch/vbias_p.sym} 430 -1200 0 0 {name=x2}
 C {lab_pin.sym} 580 -1020 2 0 {name=p2 sig_type=std_logic lab=vp}
 C {lab_pin.sym} 580 -1220 2 0 {name=p3 sig_type=std_logic lab=vp}
 C {lab_pin.sym} 580 -1200 0 1 {name=p19 sig_type=std_logic lab=gd}
@@ -308,7 +308,7 @@ m=3
 model=sg13_lv_pmos
 spiceprefix=X
 }
-C {/foss/designs/CHIP-PLL/charge_pump/curr_source.sym} -160 -1120 0 0 {name=x3}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/charge_pump/curr_source.sym} -160 -1120 0 0 {name=x3}
 C {sg13g2_pr/sg13_lv_pmos.sym} 50 -1300 0 0 {name=M4
 l=0.15u
 w=2u

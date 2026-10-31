@@ -15,7 +15,7 @@ N 220 10 300 10 {lab=out}
 N 510 10 660 10 {lab=out_pb}
 N 400 -110 400 -40 {lab=vdd}
 N 400 60 400 100 {lab=0}
-C {/foss/designs/CHIP-PLL/vco/vco_cell/vco_cell.sym} 70 10 0 0 {name=x2}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/vco/vco_cell.sym} 70 10 0 0 {name=x2}
 C {vsource.sym} -160 20 0 0 {name=V1 value=1 savecurrent=false}
 C {gnd.sym} 220 30 0 0 {name=l1 lab=0
 }
@@ -50,7 +50,7 @@ C {gnd.sym} -210 90 0 0 {name=l2 lab=0
 C {connector.sym} 660 10 0 1 {name=c2 footprint=connector(1,1)}
 C {lab_wire.sym} 600 10 0 0 {name=p4 sig_type=std_logic lab=out_pb
 }
-C {/foss/designs/CHIP-PLL/buf/buf.sym} 400 10 0 0 {name=x1}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/buf/buf.sym} 400 10 0 0 {name=x1}
 C {gnd.sym} 400 100 0 0 {name=l3 lab=0
 }
 C {lab_wire.sym} 400 -110 0 0 {name=p5 sig_type=std_logic lab=vdd

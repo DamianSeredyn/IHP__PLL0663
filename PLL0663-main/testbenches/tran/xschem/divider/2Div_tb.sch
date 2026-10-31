@@ -127,4 +127,4 @@ C {lab_wire.sym} 150 80 2 0 {name=p17 sig_type=std_logic lab=div128
 }
 C {gnd.sym} 150 200 0 0 {name=l4 lab=0
 }
-C {/foss/designs/CHIP-PLL/schematics/divider/schematics/2Div.sym} -20 0 0 0 {name=x1}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/2Div.sym} -20 0 0 0 {name=x1}

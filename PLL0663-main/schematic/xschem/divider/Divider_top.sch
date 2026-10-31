@@ -124,6 +124,6 @@ C {lab_pin.sym} 200 140 2 0 {name=p30 sig_type=std_logic lab=a2}
 C {ipin.sym} 180 200 0 0 {name=p20 lab=rst}
 C {lab_pin.sym} 200 200 2 0 {name=p21 sig_type=std_logic lab=rst}
 C {lab_pin.sym} 320 380 2 1 {name=p22 sig_type=std_logic lab=rst}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/2Div.sym} -270 440 0 0 {name=x1}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/MUX_8to1.sym} 120 420 0 0 {name=x2}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/pdiv.sym} 500 430 0 0 {name=x3}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/2Div.sym} -270 440 0 0 {name=x1}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/MUX_8to1.sym} 120 420 0 0 {name=x2}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/pdiv.sym} 500 430 0 0 {name=x3}

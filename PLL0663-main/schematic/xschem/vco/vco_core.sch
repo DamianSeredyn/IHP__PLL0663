@@ -238,14 +238,14 @@ C {lab_wire.sym} 1690 -20 0 0 {name=p63 sig_type=std_logic lab=5th
 }
 C {lab_wire.sym} -410 280 0 0 {name=p64 sig_type=std_logic lab=11_1st
 }
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/vco/vco_delay_cell.sym} 110 -470 0 0 {name=x5}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/vco/vco_delay_cell.sym} 430 -470 0 0 {name=x6}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/vco/vco_delay_cell.sym} 750 -470 0 0 {name=x14}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/vco/vco_delay_cell.sym} 1070 -470 0 0 {name=x15}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/vco/vco_delay_cell.sym} 1810 -310 0 0 {name=x16}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/vco/vco_delay_cell.sym} 1430 280 0 0 {name=x17}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/vco/vco_delay_cell.sym} 1050 280 0 0 {name=x18}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/vco/vco_delay_cell.sym} 730 280 0 0 {name=x19}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/vco/vco_delay_cell.sym} 410 280 0 0 {name=x20}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/vco/vco_delay_cell.sym} 90 280 0 0 {name=x21}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/vco/vco_delay_cell.sym} -230 280 0 0 {name=x22}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/vco/vco_delay_cell.sym} 110 -470 0 0 {name=x5}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/vco/vco_delay_cell.sym} 430 -470 0 0 {name=x6}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/vco/vco_delay_cell.sym} 750 -470 0 0 {name=x14}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/vco/vco_delay_cell.sym} 1070 -470 0 0 {name=x15}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/vco/vco_delay_cell.sym} 1810 -310 0 0 {name=x16}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/vco/vco_delay_cell.sym} 1430 280 0 0 {name=x17}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/vco/vco_delay_cell.sym} 1050 280 0 0 {name=x18}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/vco/vco_delay_cell.sym} 730 280 0 0 {name=x19}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/vco/vco_delay_cell.sym} 410 280 0 0 {name=x20}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/vco/vco_delay_cell.sym} 90 280 0 0 {name=x21}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/vco/vco_delay_cell.sym} -230 280 0 0 {name=x22}

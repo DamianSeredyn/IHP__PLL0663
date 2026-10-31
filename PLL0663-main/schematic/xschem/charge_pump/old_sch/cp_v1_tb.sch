@@ -56,7 +56,7 @@ C {lab_pin.sym} 400 -550 0 0 {name=p2 sig_type=std_logic lab=upb}
 C {lab_pin.sym} 760 -570 0 1 {name=p9 sig_type=std_logic lab=vp}
 C {lab_pin.sym} 760 -550 0 1 {name=p10 sig_type=std_logic lab=vout}
 C {gnd.sym} 760 -530 0 0 {name=l7 lab=0}
-C {/foss/designs/CHIP-PLL/charge_pump/cp_v1_no_mirror.sym} 580 -550 0 0 {name=x1}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/charge_pump/old_sch/cp_v1_no_mirror.sym} 580 -550 0 0 {name=x1}
 C {vsource.sym} 1020 -470 0 0 {name=Vvp1
 value=0.6 savecurrent=false}
 C {gnd.sym} 1020 -440 0 0 {name=l4 lab=0}

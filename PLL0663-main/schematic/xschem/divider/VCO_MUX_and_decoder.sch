@@ -89,7 +89,7 @@ N -540 340 -520 340 {lab=VCO3_sel}
 N -540 360 -520 360 {lab=VCO4_sel}
 N 50 -10 70 -10 {lab=VCO5_sel}
 N -540 380 -520 380 {lab=VCO5_sel}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/VCO_MUX.sym} 570 -100 0 0 {name=x2}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/VCO_MUX.sym} 570 -100 0 0 {name=x2}
 C {iopin.sym} -540 -360 2 0 {name=p46 lab=gd}
 C {lab_wire.sym} -520 -360 2 0 {name=p53 sig_type=std_logic lab=gd}
 C {iopin.sym} -540 -340 2 0 {name=p54 lab=VP}
@@ -164,10 +164,10 @@ C {lab_wire.sym} 70 -50 2 0 {name=p75 sig_type=std_logic lab=VCO4_11_sel}
 C {lab_wire.sym} 70 -30 2 0 {name=p76 sig_type=std_logic lab=VCO4_5_sel}
 C {lab_wire.sym} 70 -10 2 0 {name=p77 sig_type=std_logic lab=VCO5_sel}
 C {lab_wire.sym} 400 -10 2 1 {name=p78 sig_type=std_logic lab=VCO5_sel}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/NOR_2in.sym} -100 120 0 0 {name=x4}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/NOR_2in.sym} -100 120 0 0 {name=x4}
 C {lab_wire.sym} 70 100 2 0 {name=p79 sig_type=std_logic lab=VP}
 C {lab_wire.sym} 70 120 2 0 {name=p80 sig_type=std_logic lab=gd}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/inverter.sym} 120 140 0 0 {name=x5}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/inverter.sym} 120 140 0 0 {name=x5}
 C {lab_wire.sym} 120 100 0 1 {name=p81 sig_type=std_logic lab=VP}
 C {lab_wire.sym} 120 180 2 0 {name=p82 sig_type=std_logic lab=gd}
 C {lab_wire.sym} 70 220 2 0 {name=p83 sig_type=std_logic lab=VP}
@@ -201,8 +201,8 @@ C {opin.sym} -540 360 0 1 {name=p106 lab=VCO4_sel}
 C {lab_wire.sym} -520 360 2 0 {name=p107 sig_type=std_logic lab=VCO4_sel}
 C {opin.sym} -540 380 0 1 {name=p109 lab=VCO5_sel}
 C {lab_wire.sym} -520 380 2 0 {name=p108 sig_type=std_logic lab=VCO5_sel}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/NOR_2in.sym} -100 240 0 0 {name=x3}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/NOR_2in.sym} -100 360 0 0 {name=x6}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/inverter.sym} 120 260 0 0 {name=x7}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/inverter.sym} 120 380 0 0 {name=x8}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/VCO_decoder_cells.sym} -100 -100 0 0 {name=x9}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/NOR_2in.sym} -100 240 0 0 {name=x3}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/NOR_2in.sym} -100 360 0 0 {name=x6}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/inverter.sym} 120 260 0 0 {name=x7}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/inverter.sym} 120 380 0 0 {name=x8}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/VCO_decoder_cells.sym} -100 -100 0 0 {name=x9}

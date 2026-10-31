@@ -123,16 +123,16 @@ C {lab_wire.sym} 920 -580 2 1 {name=p15 sig_type=std_logic lab=f3}
 C {lab_wire.sym} 980 -580 2 1 {name=p16 sig_type=std_logic lab=f2}
 C {lab_wire.sym} 1030 -580 2 1 {name=p17 sig_type=std_logic lab=f1}
 C {lab_wire.sym} 1090 -580 2 1 {name=p27 sig_type=std_logic lab=f0}
-C {/foss/designs/CHIP-PLL/schematics/vco/vco_cell/vco_top.sym} 870 -210 0 0 {name=x2}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/vco/vco_top.sym} 870 -210 0 0 {name=x2}
 C {lab_pin.sym} 1750 -190 2 0 {name=p42 sig_type=std_logic lab=vp}
-C {/foss/designs/CHIP-PLL/schematics/buf/buf.sym} 2460 -290 0 0 {name=xBUF}
-C {/foss/designs/CHIP-PLL/schematics/divider/schematics/d_flip_flop.sym} 1580 -180 0 0 {name=xOutFlipFlop}
-C {/foss/designs/CHIP-PLL/schematics/misc/level_shifter.sym} 2230 -270 0 0 {name=xLS}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/buf/buf.sym} 2460 -290 0 0 {name=xBUF}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/d_flip_flop.sym} 1580 -180 0 0 {name=xOutFlipFlop}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/misc/level_shifter.sym} 2230 -270 0 0 {name=xLS}
 C {lab_pin.sym} 2140 -360 2 0 {name=p32 sig_type=std_logic lab=vp}
 C {lab_pin.sym} 2190 -360 2 0 {name=p33 sig_type=std_logic lab=vph}
-C {/foss/designs/CHIP-PLL/schematics/divider/schematics/inverter_x2.sym} 1850 -210 0 0 {name=x3}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/inverter_x2.sym} 1850 -210 0 0 {name=x3}
 C {lab_wire.sym} 1840 -260 0 0 {name=p50 sig_type=std_logic lab=vp}
-C {/foss/designs/CHIP-PLL/schematics/divider/schematics/inverter_x4.sym} 1970 -210 0 0 {name=x4}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/inverter_x4.sym} 1970 -210 0 0 {name=x4}
 C {lab_wire.sym} 1970 -260 0 0 {name=p34 sig_type=std_logic lab=vp}
 C {lab_wire.sym} 2460 -390 0 0 {name=p35 sig_type=std_logic lab=vph}
 C {lab_wire.sym} 1800 -210 0 0 {name=p57 sig_type=std_logic lab=out_PLL_divided}

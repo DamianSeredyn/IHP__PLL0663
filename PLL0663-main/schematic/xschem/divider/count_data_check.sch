@@ -143,12 +143,12 @@ C {lab_pin.sym} 1040 50 2 0 {name=p95 sig_type=std_logic lab=GND}
 C {lab_pin.sym} 1070 70 2 0 {name=p33 sig_type=std_logic lab=out}
 C {lab_pin.sym} 680 30 0 0 {name=p34 sig_type=std_logic lab=and012}
 C {lab_pin.sym} 680 70 0 0 {name=p35 sig_type=std_logic lab=and345}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/NAND_3in.sym} 460 10 0 0 {name=x7}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/NAND_3in.sym} 460 110 0 0 {name=x8}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/NOR_2in.sym} 890 50 0 0 {name=x9}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/XNOR.sym} -30 -30 0 0 {name=x1}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/XNOR.sym} -30 40 0 0 {name=x2}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/XNOR.sym} -30 110 0 0 {name=x3}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/XNOR.sym} -30 180 0 0 {name=x4}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/XNOR.sym} -30 250 0 0 {name=x5}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/XNOR.sym} -30 320 0 0 {name=x6}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/NAND_3in.sym} 460 10 0 0 {name=x7}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/NAND_3in.sym} 460 110 0 0 {name=x8}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/NOR_2in.sym} 890 50 0 0 {name=x9}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/XNOR.sym} -30 -30 0 0 {name=x1}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/XNOR.sym} -30 40 0 0 {name=x2}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/XNOR.sym} -30 110 0 0 {name=x3}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/XNOR.sym} -30 180 0 0 {name=x4}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/XNOR.sym} -30 250 0 0 {name=x5}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/XNOR.sym} -30 320 0 0 {name=x6}

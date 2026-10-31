@@ -30,8 +30,8 @@ N 110 -20 110 -0 {lab=gd}
 N 540 -300 540 -250 {lab=vp}
 N 110 -300 110 -250 {lab=vp}
 N 0 -300 110 -300 {lab=vp}
-C {/foss/designs/CHIP-PLL/schematics/bandgap/bandgap_res_core.sym} 400 -170 0 0 {name=xbandgap}
-C {/foss/designs/CHIP-PLL/schematics/bandgap/const_gm_bias.sym} 20 -40 0 0 {name=xbias}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/bandgap/bandgap_res_core.sym} 400 -170 0 0 {name=xbandgap}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/bandgap/const_gm_bias.sym} 20 -40 0 0 {name=xbias}
 C {ipin.sym} 0 -300 0 0 {name=p1 lab=vp}
 C {ipin.sym} 0 0 0 0 {name=p2 lab=gd}
 C {opin.sym} 660 -170 0 0 {name=p3 lab=vref

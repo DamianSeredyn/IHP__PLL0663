@@ -92,7 +92,7 @@ C {ipin.sym} -320 -60 0 0 {name=p1 lab=in}
 C {iopin.sym} -440 -320 0 1 {name=p3 lab=vp
 }
 C {opin.sym} 1610 -170 0 0 {name=p4 lab=out}
-C {/foss/designs/CHIP-PLL/vco/vco_cell/vco_delay_cell_3BL.sym} 120 -170 0 0 {name=x1}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/vco/vco_delay_cell_3BL.sym} 120 -170 0 0 {name=x1}
 C {lab_wire.sym} -40 -170 0 0 {name=p5 sig_type=std_logic lab=out
 }
 C {lab_wire.sym} -40 -210 0 0 {name=p10 sig_type=std_logic lab=pgt
@@ -150,10 +150,10 @@ C {lab_wire.sym} -200 20 0 0 {name=p2 sig_type=std_logic lab=gnd
 }
 C {lab_wire.sym} -200 -160 0 0 {name=p14 sig_type=std_logic lab=pgt
 }
-C {/foss/designs/CHIP-PLL/vco/vco_cell/vco_delay_cell_3BL.sym} 440 -170 0 0 {name=x2}
-C {/foss/designs/CHIP-PLL/vco/vco_cell/vco_delay_cell_3BL.sym} 760 -170 0 0 {name=x3}
-C {/foss/designs/CHIP-PLL/vco/vco_cell/vco_delay_cell_3BL.sym} 1080 -170 0 0 {name=x4}
-C {/foss/designs/CHIP-PLL/vco/vco_cell/vco_delay_cell_3BL.sym} 1400 -170 0 0 {name=x5}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/vco/vco_delay_cell_3BL.sym} 440 -170 0 0 {name=x2}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/vco/vco_delay_cell_3BL.sym} 760 -170 0 0 {name=x3}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/vco/vco_delay_cell_3BL.sym} 1080 -170 0 0 {name=x4}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/vco/vco_delay_cell_3BL.sym} 1400 -170 0 0 {name=x5}
 C {capa.sym} 270 100 0 0 {name=C3
 m=1
 value=\{cap1\}

@@ -245,7 +245,7 @@ m=3
 model=sg13_lv_pmos
 spiceprefix=X
 }
-C {/foss/designs/CHIP-PLL/charge_pump/curr_source.sym} 20 -560 0 0 {name=x1}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/charge_pump/curr_source.sym} 20 -560 0 0 {name=x1}
 C {lab_pin.sym} 170 -580 0 0 {name=p8 sig_type=std_logic lab=vp}
 C {lab_pin.sym} 170 -540 0 1 {name=p19 sig_type=std_logic lab=gd}
 C {lab_pin.sym} 280 -570 0 0 {name=p20 sig_type=std_logic lab=vp}

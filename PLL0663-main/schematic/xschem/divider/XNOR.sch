@@ -157,5 +157,5 @@ C {lab_pin.sym} 70 -170 0 0 {name=p26 sig_type=std_logic lab=b}
 C {lab_pin.sym} 240 40 0 0 {name=p27 sig_type=std_logic lab=b}
 C {lab_pin.sym} 240 -170 0 0 {name=p28 sig_type=std_logic lab=_b}
 C {lab_pin.sym} 240 -260 0 0 {name=p29 sig_type=std_logic lab=_a}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/inverter.sym} -170 50 0 0 {name=x1}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/inverter.sym} -170 170 0 0 {name=x2}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/inverter.sym} -170 50 0 0 {name=x1}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/inverter.sym} -170 170 0 0 {name=x2}

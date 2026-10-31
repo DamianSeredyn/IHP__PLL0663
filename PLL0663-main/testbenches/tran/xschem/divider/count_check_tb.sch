@@ -88,7 +88,7 @@ C {gnd.sym} 110 660 0 0 {name=l3 lab=0
 }
 C {gnd.sym} 960 310 0 0 {name=l4 lab=0
 }
-C {/foss/designs/CHIP-PLL/divider/schematics/count_data_check.sym} 710 470 0 0 {name=x1}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/count_data_check.sym} 710 470 0 0 {name=x1}
 C {lab_wire.sym} 520 220 0 0 {name=p1 sig_type=std_logic lab=VP
 }
 C {lab_wire.sym} 520 480 0 0 {name=p3 sig_type=std_logic lab=VP

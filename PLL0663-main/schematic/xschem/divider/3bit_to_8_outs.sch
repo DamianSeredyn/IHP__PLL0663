@@ -120,7 +120,7 @@ C {opin.sym} 70 300 0 1 {name=p12 lab=coarse_4}
 C {opin.sym} 70 320 0 1 {name=p3 lab=coarse_5}
 C {opin.sym} 70 340 0 1 {name=p5 lab=coarse_6}
 C {opin.sym} 70 360 0 1 {name=p17 lab=coarse_7}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/inverter_dek.sym} 390 0 0 0 {name=x1}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/inverter_dek.sym} 390 0 0 0 {name=x1}
 C {lab_wire.sym} 390 50 3 0 {name=p29 sig_type=std_logic lab=gd}
 C {lab_wire.sym} 390 -50 1 0 {name=p31 sig_type=std_logic lab=VP}
 C {lab_wire.sym} 390 200 3 0 {name=p32 sig_type=std_logic lab=gd}
@@ -133,7 +133,7 @@ C {lab_wire.sym} 350 0 0 0 {name=p40 sig_type=std_logic lab=c0}
 C {lab_wire.sym} 460 150 0 1 {name=p41 sig_type=std_logic lab=c1_n}
 C {lab_wire.sym} 460 290 0 1 {name=p42 sig_type=std_logic lab=c2_n}
 C {lab_wire.sym} 460 0 0 1 {name=p43 sig_type=std_logic lab=c0_n}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/NAND_3in_dek.sym} 750 -20 0 0 {name=x4}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/NAND_3in_dek.sym} 750 -20 0 0 {name=x4}
 C {lab_wire.sym} 920 -40 2 0 {name=p30 sig_type=std_logic lab=VP}
 C {lab_wire.sym} 920 -20 2 0 {name=p44 sig_type=std_logic lab=gd}
 C {lab_wire.sym} 1040 0 2 0 {name=p45 sig_type=std_logic lab=coarse_0}
@@ -206,20 +206,20 @@ C {lab_wire.sym} 90 300 2 0 {name=p13 sig_type=std_logic lab=coarse_4}
 C {lab_wire.sym} 90 320 2 0 {name=p15 sig_type=std_logic lab=coarse_5}
 C {lab_wire.sym} 90 340 2 0 {name=p16 sig_type=std_logic lab=coarse_6}
 C {lab_wire.sym} 90 360 2 0 {name=p18 sig_type=std_logic lab=coarse_7}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/inverter_dek.sym} 390 150 0 0 {name=x2}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/inverter_dek.sym} 390 290 0 0 {name=x3}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/inverter_dek.sym} 970 440 0 0 {name=x8}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/inverter_dek.sym} 970 290 0 0 {name=x9}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/inverter_dek.sym} 970 140 0 0 {name=x10}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/inverter_dek.sym} 970 0 0 0 {name=x11}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/inverter_dek.sym} 1550 440 0 0 {name=x12}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/inverter_dek.sym} 1550 290 0 0 {name=x13}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/inverter_dek.sym} 1550 140 0 0 {name=x15}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/inverter_dek.sym} 1550 0 0 0 {name=x16}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/NAND_3in_dek.sym} 750 120 0 0 {name=x5}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/NAND_3in_dek.sym} 750 270 0 0 {name=x6}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/NAND_3in_dek.sym} 750 420 0 0 {name=x7}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/NAND_3in_dek.sym} 1330 420 0 0 {name=x14}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/NAND_3in_dek.sym} 1330 270 0 0 {name=x17}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/NAND_3in_dek.sym} 1330 120 0 0 {name=x18}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/NAND_3in_dek.sym} 1330 -20 0 0 {name=x19}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/inverter_dek.sym} 390 150 0 0 {name=x2}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/inverter_dek.sym} 390 290 0 0 {name=x3}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/inverter_dek.sym} 970 440 0 0 {name=x8}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/inverter_dek.sym} 970 290 0 0 {name=x9}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/inverter_dek.sym} 970 140 0 0 {name=x10}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/inverter_dek.sym} 970 0 0 0 {name=x11}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/inverter_dek.sym} 1550 440 0 0 {name=x12}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/inverter_dek.sym} 1550 290 0 0 {name=x13}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/inverter_dek.sym} 1550 140 0 0 {name=x15}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/inverter_dek.sym} 1550 0 0 0 {name=x16}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/NAND_3in_dek.sym} 750 120 0 0 {name=x5}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/NAND_3in_dek.sym} 750 270 0 0 {name=x6}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/NAND_3in_dek.sym} 750 420 0 0 {name=x7}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/NAND_3in_dek.sym} 1330 420 0 0 {name=x14}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/NAND_3in_dek.sym} 1330 270 0 0 {name=x17}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/NAND_3in_dek.sym} 1330 120 0 0 {name=x18}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/NAND_3in_dek.sym} 1330 -20 0 0 {name=x19}

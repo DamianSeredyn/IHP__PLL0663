@@ -48,7 +48,7 @@ N 550 260 550 280 {lab=0}
 N 690 230 710 230 {lab=out}
 N 640 170 640 200 {lab=VP}
 N 640 260 640 280 {lab=0}
-C {/foss/designs/CHIP-PLL/schematics/divider/schematics/VCO_MUX.sym} 350 210 0 0 {name=x1}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/VCO_MUX.sym} 350 210 0 0 {name=x1}
 C {devices/code_shown.sym} 180 -340 0 0 {name=MODEL only_toplevel=true
 format="tcleval( @value )"
 value=".lib cornerMOSlv.lib mos_tt
@@ -174,12 +174,12 @@ C {lab_wire.sym} 530 140 2 0 {name=p22 sig_type=std_logic lab=VP
 }
 C {gnd.sym} 580 120 0 0 {name=l9 lab=0
 }
-C {/foss/designs/CHIP-PLL/schematics/divider/schematics/inverter.sym} 550 230 0 0 {name=x2}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/inverter.sym} 550 230 0 0 {name=x2}
 C {lab_wire.sym} 550 170 2 0 {name=p27 sig_type=std_logic lab=VP
 }
 C {gnd.sym} 550 280 0 0 {name=l10 lab=0
 }
-C {/foss/designs/CHIP-PLL/schematics/divider/schematics/inverter.sym} 640 230 0 0 {name=x3}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/inverter.sym} 640 230 0 0 {name=x3}
 C {gnd.sym} 640 280 0 0 {name=l11 lab=0
 }
 C {lab_wire.sym} 640 170 2 0 {name=p23 sig_type=std_logic lab=VP

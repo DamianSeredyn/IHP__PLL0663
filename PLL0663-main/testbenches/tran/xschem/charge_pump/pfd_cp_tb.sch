@@ -24,12 +24,12 @@ N 910 -70 910 -40 {lab=vout}
 C {lab_pin.sym} 800 -100 0 1 {name=p9 sig_type=std_logic lab=vp}
 C {lab_pin.sym} 800 -80 0 1 {name=p10 sig_type=std_logic lab=vout}
 C {gnd.sym} 800 -60 0 0 {name=l7 lab=0}
-C {/foss/designs/CHIP-PLL/charge_pump/cp_v1_no_mirror.sym} 620 -80 0 0 {name=x1}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/charge_pump/old_sch/cp_v1_no_mirror.sym} 620 -80 0 0 {name=x1}
 C {vsource.sym} 50 -370 0 0 {name=Vvp
 value=\{Vp\} savecurrent=false}
 C {gnd.sym} 50 -340 0 0 {name=l16 lab=0}
 C {lab_pin.sym} 50 -400 0 0 {name=p47 sig_type=std_logic lab=vp}
-C {/foss/designs/CHIP-PLL/PFD/PFD_cell.sym} -160 -80 0 0 {name=x2}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/PFD/PFD_cell.sym} -160 -80 0 0 {name=x2}
 C {devices/vsource.sym} -390 -20 0 0 {name=Vco value="dc 0 ac 0 pulse(0 \{Vp\} \{dly\} 10n 10n \{T/2\} \{T\}) "}
 C {devices/vsource.sym} -460 -80 0 0 {name=Vref value="dc 0 ac 0 pulse(0 \{Vp\} \{T/2\} 10n 10n \{T/2\} \{T\}) "}
 C {gnd.sym} -390 10 0 0 {name=l1 lab=0}

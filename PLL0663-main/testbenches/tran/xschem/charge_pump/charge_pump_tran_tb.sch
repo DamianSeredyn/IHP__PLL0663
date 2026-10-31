@@ -67,7 +67,7 @@ C {lab_pin.sym} -1010 -60 0 1 {name=p7 sig_type=std_logic lab=up}
 C {lab_pin.sym} -1010 50 0 1 {name=p8 sig_type=std_logic lab=dn}
 C {gnd.sym} -600 -10 0 0 {name=l8 lab=0}
 C {lab_pin.sym} -600 -200 0 0 {name=p9 sig_type=std_logic lab=vp}
-C {/foss/designs/CHIP-PLL/schematics/charge_pump/charge_pump_cell_newbias.sym} -600 -100 0 0 {name=x1}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/charge_pump/charge_pump_cell_newbias.sym} -600 -100 0 0 {name=x1}
 C {res.sym} -330 -50 0 0 {name=R1
 value=25k
 footprint=1206

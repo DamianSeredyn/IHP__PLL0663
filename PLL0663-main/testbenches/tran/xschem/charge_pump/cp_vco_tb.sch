@@ -90,10 +90,10 @@ ic=0.6
 footprint=1206
 device="ceramic capacitor"}
 C {gnd.sym} 370 -110 0 0 {name=l14 lab=0}
-C {/foss/designs/CHIP-PLL/vco/vco_cell_7.sym} 710 -160 0 0 {name=x1}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/vco/vco_cell_7.sym} 710 -160 0 0 {name=x1}
 C {lab_wire.sym} 120 -190 0 0 {name=p16 sig_type=std_logic lab=vout
 }
-C {/foss/designs/CHIP-PLL/charge_pump/cp2_cs.sym} -170 -190 0 0 {name=x2}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/charge_pump/old_sch/cp2_cs.sym} -170 -190 0 0 {name=x2}
 C {lab_wire.sym} 10 -210 0 0 {name=p5 sig_type=std_logic lab=vp
 }
 C {gnd.sym} 20 -170 0 0 {name=l5 lab=0}

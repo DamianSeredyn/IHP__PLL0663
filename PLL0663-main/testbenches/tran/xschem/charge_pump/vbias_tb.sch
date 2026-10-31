@@ -30,7 +30,7 @@ show all
 .endc
 "}
 C {gnd.sym} -320 70 0 0 {name=l5 lab=0}
-C {/foss/designs/CHIP-PLL/schematics/charge_pump/vbias.sym} -470 70 0 0 {name=x1}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/charge_pump/vbias.sym} -470 70 0 0 {name=x1}
 C {devices/code_shown.sym} -530 230 0 0 {name=MODEL2 only_toplevel=true
 format="tcleval( @value )"
 value=".lib cornerMOSlv.lib mos_ff

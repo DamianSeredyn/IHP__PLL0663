@@ -20,8 +20,8 @@ N 180 -160 180 -10 {lab=gd}
 N 0 -10 180 -10 {lab=gd}
 N 260 -240 500 -240 {lab=vref_res}
 N 440 -120 500 -120 {lab=vref_sb}
-C {/foss/designs/CHIP-PLL/schematics/bandgap/bandgap_selfbias_top.sym} 240 -120 0 0 {name=x1}
-C {/foss/designs/CHIP-PLL/schematics/bandgap/bandgap_res_top.sym} 60 -240 0 0 {name=x2}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/bandgap/bandgap_selfbias_top.sym} 240 -120 0 0 {name=x1}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/bandgap/bandgap_res_top.sym} 60 -240 0 0 {name=x2}
 C {noconn.sym} 290 -200 0 1 {name=l1}
 C {ipin.sym} 0 -350 0 0 {name=p1 lab=vp}
 C {ipin.sym} 0 -10 0 0 {name=p2 lab=gd}

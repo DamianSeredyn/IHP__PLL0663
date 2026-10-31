@@ -62,7 +62,7 @@ C {lab_wire.sym} 630 640 3 0 {name=p11 sig_type=std_logic lab=b
 }
 C {lab_wire.sym} 970 660 2 0 {name=p14 sig_type=std_logic lab=y
 }
-C {XNOR.sym} 800 640 0 0 {name=x1}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/XNOR.sym} 800 640 0 0 {name=x1}
 C {gnd.sym} 980 640 0 0 {name=l2 lab=0
 }
 C {gnd.sym} 970 750 0 0 {name=l3 lab=0

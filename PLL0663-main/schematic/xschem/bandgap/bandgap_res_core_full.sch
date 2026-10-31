@@ -168,7 +168,7 @@ b=0
 m=1
 value="expr_eng(  ( 70.0e-6 / @w + 260.0 * ( (@b + 1)* @l + ( 1.081*( @w + 6.0e-9 ) + 0.18e-6 )*@b ) / ( @w + 6.0e-9 ) ) / @m  )"
 }
-C {/foss/designs/CHIP-PLL/schematics/bandgap/opamp_folded.sym} 580 -370 0 0 {name=x1}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/bandgap/opamp_folded.sym} 580 -370 0 0 {name=x1}
 C {sg13cmos5l_pr/rppd.sym} 40 100 0 0 {name=R5
 w=2e-6
 l=37.5e-6

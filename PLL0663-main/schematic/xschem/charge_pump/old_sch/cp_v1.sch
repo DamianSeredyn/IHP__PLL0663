@@ -327,4 +327,4 @@ C {lab_pin.sym} 350 -240 0 1 {name=p43 sig_type=std_logic lab=net7}
 C {lab_pin.sym} 350 -670 0 1 {name=p44 sig_type=std_logic lab=net6}
 C {lab_pin.sym} 830 -660 0 1 {name=p45 sig_type=std_logic lab=net5}
 C {lab_pin.sym} 210 -250 0 1 {name=p47 sig_type=std_logic lab=net2}
-C {/foss/designs/CHIP-PLL/charge_pump/amp_sz.sym} 840 -470 0 0 {name=x1}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/charge_pump/old_sch/amp_sz.sym} 840 -470 0 0 {name=x1}

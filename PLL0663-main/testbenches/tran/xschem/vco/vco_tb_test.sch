@@ -24,7 +24,7 @@ N 220 10 300 10 {lab=out}
 N 300 -90 300 10 {lab=out}
 N 340 10 450 10 {lab=out_pb}
 N 340 -60 340 10 {lab=out_pb}
-C {/foss/designs/CHIP-PLL/vco/vco_cell.sym} 70 10 0 0 {}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/vco/vco_cell.sym} 70 10 0 0 {}
 C {vsource.sym} -160 20 0 0 {name=V1 value=1 savecurrent=false}
 C {gnd.sym} 220 30 0 0 {name=l1 lab=0
 }

@@ -34,7 +34,7 @@ N 120 -10 220 -10 {lab=div64}
 N 120 10 220 10 {lab=div128}
 N 120 -150 140 -150 {lab=0}
 N 120 -130 140 -130 {lab=VP}
-C {/foss/designs/CHIP-PLL/divider/schematics/2Div.sym} -30 -70 0 0 {name=x2}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/2Div.sym} -30 -70 0 0 {name=x2}
 C {vsource.sym} -710 -120 0 0 {name=V1 value=\{vdd\} savecurrent=false}
 C {vsource.sym} -710 60 0 0 {name=V2 value="PULSE(0 \{vdd\} 0 100p 100p 1.5625n 3.125n)" savecurrent=false}
 C {gnd.sym} -710 -70 0 0 {name=l1 lab=0
@@ -101,7 +101,7 @@ C {lab_wire.sym} 200 -150 0 0 {name=p21 sig_type=std_logic lab=a2
 }
 C {lab_wire.sym} -200 -150 2 1 {name=p1 sig_type=std_logic lab=clk
 }
-C {/foss/designs/CHIP-PLL/divider/schematics/MUX_8to1.sym} 370 -90 0 0 {name=x1}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/MUX_8to1.sym} 370 -90 0 0 {name=x1}
 C {lab_wire.sym} 200 -130 2 1 {name=p3 sig_type=std_logic lab=clk
 }
 C {gnd.sym} 140 -150 3 0 {name=l4 lab=0

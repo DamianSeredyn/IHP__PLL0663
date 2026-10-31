@@ -288,7 +288,7 @@ footprint=1206
 device="ceramic capacitor"}
 C {lab_wire.sym} 0 630 0 0 {name=p34 sig_type=std_logic lab=gnd}
 C {lab_wire.sym} 0 140 0 0 {name=p35 sig_type=std_logic lab=gnd}
-C {CHIP-PLL/schematics/divider/inverter_x4.sym} -40 -320 0 0 {name=x3}
-C {CHIP-PLL/schematics/divider/inverter_x4.sym} 50 220 0 0 {name=x4}
-C {CHIP-PLL/schematics/PFD/PFD_buffor.sym} 340 -170 0 0 {name=x1}
-C {CHIP-PLL/schematics/PFD/PFD_buffor.sym} 390 310 0 0 {name=x5}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/inverter_x4.sym} -40 -320 0 0 {name=x3}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/inverter_x4.sym} 50 220 0 0 {name=x4}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/PFD/PFD_buffor.sym} 340 -170 0 0 {name=x1}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/PFD/PFD_buffor.sym} 390 310 0 0 {name=x5}

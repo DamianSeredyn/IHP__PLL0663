@@ -340,6 +340,6 @@ C {lab_pin.sym} -330 -570 0 1 {name=p41 sig_type=std_logic lab=net53}
 C {lab_pin.sym} -260 -530 0 1 {name=p42 sig_type=std_logic lab=net78}
 C {lab_pin.sym} -460 -400 0 1 {name=p8 sig_type=std_logic lab=bias}
 C {lab_pin.sym} -130 -130 0 1 {name=p44 sig_type=std_logic lab=gd}
-C {/foss/designs/CHIP-PLL/schematics/charge_pump/vbias.sym} -640 -420 0 0 {name=x1}
-C {/foss/designs/CHIP-PLL/schematics/charge_pump/curr_source.sym} -1180 -690 0 0 {name=x2}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/charge_pump/vbias.sym} -640 -420 0 0 {name=x1}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/charge_pump/curr_source.sym} -1180 -690 0 0 {name=x2}
 C {lab_pin.sym} 40 -120 0 1 {name=p28 sig_type=std_logic lab=vout}

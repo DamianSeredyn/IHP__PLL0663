@@ -43,15 +43,15 @@ C {ipin.sym} 460 -1040 0 0 {name=p27 lab=000000}
 C {lab_wire.sym} 480 -1040 2 0 {name=p28 sig_type=std_logic lab=000000}
 C {lab_wire.sym} 800 -800 2 0 {name=p3 sig_type=std_logic lab=VP}
 C {lab_wire.sym} 800 -780 2 0 {name=p4 sig_type=std_logic lab=gd}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/NAND_2in_dek.sym} 630 -780 0 0 {name=x1}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/NAND_2in_dek.sym} 630 -780 0 0 {name=x1}
 C {lab_wire.sym} 800 -870 2 0 {name=p5 sig_type=std_logic lab=VP}
 C {lab_wire.sym} 800 -850 2 0 {name=p6 sig_type=std_logic lab=gd}
 C {lab_wire.sym} 1240 -790 2 0 {name=p7 sig_type=std_logic lab=VCO5_11_sel}
 C {lab_wire.sym} 1210 -830 2 0 {name=p8 sig_type=std_logic lab=VP}
 C {lab_wire.sym} 1210 -810 2 0 {name=p9 sig_type=std_logic lab=gd}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/NAND_2in_dek.sym} 1040 -810 0 0 {name=x2}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/NAND_2in_dek.sym} 1040 -810 0 0 {name=x2}
 C {lab_wire.sym} 460 -870 0 0 {name=p10 sig_type=std_logic lab=000}
 C {lab_wire.sym} 460 -850 0 0 {name=p11 sig_type=std_logic lab=after_000011_n}
 C {lab_wire.sym} 460 -780 0 0 {name=p12 sig_type=std_logic lab=000000}
 C {lab_wire.sym} 460 -800 0 0 {name=p13 sig_type=std_logic lab=010}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/NAND_2in_dek.sym} 630 -850 0 0 {name=x3}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/NAND_2in_dek.sym} 630 -850 0 0 {name=x3}

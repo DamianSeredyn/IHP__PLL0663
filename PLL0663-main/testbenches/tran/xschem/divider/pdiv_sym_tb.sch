@@ -162,7 +162,7 @@ C {lab_wire.sym} 480 440 2 0 {name=p11 sig_type=std_logic lab=div32
 }
 C {lab_wire.sym} 480 460 2 0 {name=p12 sig_type=std_logic lab=div64
 }
-C {/foss/designs/CHIP-PLL/divider/schematics/count_data_check.sym} 760 470 0 0 {name=x2}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/count_data_check.sym} 760 470 0 0 {name=x2}
 C {gnd.sym} 940 400 3 0 {name=l2 lab=0
 }
 C {lab_wire.sym} 970 380 2 0 {name=p13 sig_type=std_logic lab=VP
@@ -241,12 +241,12 @@ C {lab_wire.sym} 480 760 2 0 {name=p27 sig_type=std_logic lab=div64
 }
 C {gnd.sym} 110 180 0 0 {name=l13 lab=0
 }
-C {/foss/designs/CHIP-PLL/divider/schematics/inverter_x4.sym} 1130 360 0 0 {name=x8}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/inverter_x4.sym} 1130 360 0 0 {name=x8}
 C {lab_wire.sym} 1150 290 2 0 {name=p33 sig_type=std_logic lab=VP
 }
 C {gnd.sym} 1130 420 0 0 {name=l22 lab=0
 }
-C {/foss/designs/CHIP-PLL/divider/schematics/d_flip_flop.sym} 1600 710 0 0 {name=x19}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/d_flip_flop.sym} 1600 710 0 0 {name=x19}
 C {gnd.sym} 1780 720 3 0 {name=l33 lab=0
 }
 C {lab_wire.sym} 1810 700 2 0 {name=p45 sig_type=std_logic lab=VP
@@ -285,13 +285,13 @@ footprint=1206
 device="ceramic capacitor"}
 C {gnd.sym} 120 440 0 0 {name=l1 lab=0
 }
-C {/foss/designs/CHIP-PLL/divider/schematics/passgate_scaled.sym} 1650 170 0 0 {name=x3}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/passgate_scaled.sym} 1650 170 0 0 {name=x3}
 C {lab_wire.sym} 1710 80 2 0 {name=p1 sig_type=std_logic lab=VP
 }
 C {gnd.sym} 1690 210 0 0 {name=l4 lab=0
 }
-C {/foss/designs/CHIP-PLL/divider/schematics/NAND_3in.sym} 830 -20 0 0 {name=x4}
-C {/foss/designs/CHIP-PLL/divider/schematics/NOR_2in.sym} 1190 70 0 0 {name=x5}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/NAND_3in.sym} 830 -20 0 0 {name=x4}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/NOR_2in.sym} 1190 70 0 0 {name=x5}
 C {lab_wire.sym} 1000 -40 2 0 {name=p4 sig_type=std_logic lab=VP
 }
 C {gnd.sym} 1000 -20 0 0 {name=l12 lab=0
@@ -300,12 +300,12 @@ C {lab_wire.sym} 1360 50 2 0 {name=p26 sig_type=std_logic lab=VP
 }
 C {gnd.sym} 1360 70 0 0 {name=l19 lab=0
 }
-C {/foss/designs/CHIP-PLL/divider/schematics/inverter.sym} 1480 90 0 0 {name=x6}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/inverter.sym} 1480 90 0 0 {name=x6}
 C {lab_wire.sym} 1500 20 2 0 {name=p30 sig_type=std_logic lab=VP
 }
 C {gnd.sym} 1480 150 0 0 {name=l20 lab=0
 }
-C {/foss/designs/CHIP-PLL/divider/schematics/NAND_3in.sym} 840 150 0 0 {name=x7}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/NAND_3in.sym} 840 150 0 0 {name=x7}
 C {lab_wire.sym} 1010 130 2 0 {name=p31 sig_type=std_logic lab=VP
 }
 C {gnd.sym} 1010 150 0 0 {name=l21 lab=0
@@ -324,7 +324,7 @@ C {lab_wire.sym} 670 150 0 0 {name=p38 sig_type=std_logic lab=d4
 }
 C {lab_wire.sym} 1630 130 0 0 {name=p39 sig_type=std_logic lab=clk
 }
-C {/foss/designs/CHIP-PLL/divider/schematics/passgate_scaled.sym} 1650 380 0 0 {name=x9}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/passgate_scaled.sym} 1650 380 0 0 {name=x9}
 C {gnd.sym} 1690 420 0 0 {name=l23 lab=0
 }
 C {lab_wire.sym} 1820 680 0 0 {name=p42 sig_type=std_logic lab=out_div
@@ -336,4 +336,4 @@ C {lab_wire.sym} 1340 130 2 0 {name=p40 sig_type=std_logic lab=bypass
 }
 C {lab_wire.sym} 980 30 2 0 {name=p43 sig_type=std_logic lab=d012}
 C {lab_wire.sym} 1040 160 2 0 {name=p44 sig_type=std_logic lab=d345}
-C {/foss/designs/CHIP-PLL/schematics/divider/schematics/div_with_reset.sym} 310 390 0 0 {name=x1}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/div_with_reset.sym} 310 390 0 0 {name=x1}

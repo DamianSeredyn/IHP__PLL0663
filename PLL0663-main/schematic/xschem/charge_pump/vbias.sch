@@ -106,4 +106,4 @@ spiceprefix=X
   mm_ok=1
 value="expr_eng(  ( 70.0e-6 / @w + 260.0 * ( (@b + 1)* @l + ( 1.081*( @w + 6.0e-9 ) + 0.18e-6 )*@b ) / ( @w + 6.0e-9 ) ) / @m  )"
 }
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/charge_pump/curr_source.sym} 340 -350 0 0 {name=x1}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/charge_pump/curr_source.sym} 340 -350 0 0 {name=x1}

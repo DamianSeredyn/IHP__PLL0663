@@ -126,9 +126,9 @@ mm_ok=1
 model=sg13_lv_nmos
 spiceprefix=X
 }
-C {/foss/designs/CHIP-PLL/schematics/charge_pump/charge_pump_cell.sym} 160 -160 0 0 {name=x1}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/charge_pump/charge_pump_cell.sym} 160 -160 0 0 {name=x1}
 C {lab_pin.sym} 570 -160 0 0 {name=p9 sig_type=std_logic lab=out_cp2}
-C {/foss/designs/CHIP-PLL/schematics/vco/vco_cell/vco_core_0.sym} 790 -310 0 0 {name=x2}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/vco/vco_core_0.sym} 790 -310 0 0 {name=x2}
 C {/foss/pdks/ihp-sg13cmos5l/libs.tech/xschem/sg13cmos5l_pr/sg13_lv_nmos.sym} 590 -90 1 0 {name=M3
 l=10u
 w=10u

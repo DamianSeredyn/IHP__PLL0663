@@ -55,10 +55,10 @@ C {gnd.sym} -160 290 0 0 {name=l2 lab=0
 C {connector.sym} 570 -10 0 1 {name=c2 footprint=connector(1,1)}
 C {lab_wire.sym} 570 -10 0 0 {name=p4 sig_type=std_logic lab=out_pb
 }
-C {/foss/designs/CHIP-PLL/schematics/buf/buf.sym} 420 -10 0 0 {name=x1}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/buf/buf.sym} 420 -10 0 0 {name=x1}
 C {lab_wire.sym} 420 -100 0 0 {name=p5 sig_type=std_logic lab=vdd
 }
-C {/foss/designs/CHIP-PLL/schematics/vco/vco_cell/vco_core_0_meas.sym} 100 -10 0 0 {name=x2}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/vco/vco_core_0_meas.sym} 100 -10 0 0 {name=x2}
 C {gnd.sym} -240 290 0 0 {name=l4 lab=0
 }
 C {lab_wire.sym} -160 150 0 0 {name=p6 sig_type=std_logic lab=in
