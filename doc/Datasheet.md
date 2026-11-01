@@ -27,13 +27,15 @@ filter is **external** (off-chip).
 
 ## 2. Block diagram
 
-![PLL block diagram](img/PLL_top.png)
+<p align="center">
+  <img src="img/PLL_top.png" alt="PLL top-level schematic (PLL_top)" width="90%"><br>
+  <em>Figure 1: PLL top-level schematic (<code>PLL_top</code>)</em>
+</p>
 
-*Figure 1: PLL top-level schematic (`PLL_top`).*
-
-![Chip top level](img/Chip_top.png)
-
-*Figure 2: chip top-level schematic (`Chip_top`).*
+<p align="center">
+  <img src="img/Chip_top.png" alt="chip top-level schematic (Chip_top)" width="90%"><br>
+  <em>Figure 2: chip top-level schematic (<code>Chip_top</code>)</em>
+</p>
 
 ## 3. Pin description
 
@@ -45,7 +47,7 @@ supplied from `vph`; all circuits inside the PLL are supplied from `vp` (1.2 V).
 |---|---|---|---|
 | `gd` | supply | 0 V | Ground |
 | `vp` | supply | 1.2 V | Core supply (all circuits inside the PLL) |
-| `vph` | supply | 3.3 V | 3.3 V supply of the output buffers and level_shifter only |
+| `vph` | supply | 3.3 V | 3.3 V supply of the input buffers only |
 | `vp_bandgap` | supply | 3.3 V | Bandgap supply |
 | `clk_ref` | in | 3.3 V | Reference clock (32 kHz) |
 | `rst` | in | 3.3 V | Reset, active high; resets all elements of the PLL |
@@ -73,19 +75,23 @@ The serial word is 12 bits long:
 
 The register content is valid only after the transmission of the last bit (D11) is complete.
 
+<p align="center">
+  <img src="img/input_register.png" alt="input register (input_register)" width="90%"><br>
+  <em>Figure 3: input register (<code>input_register</code>)</em>
+</p>
+
 TODO: bit order on the line (assumed D0 first, D11 last), timing diagram (setup/hold of `data_in`
 and `data_en` with respect to `clk_in`, maximum `clk_in` frequency), active level of `data_en`,
 debug multiplexer codes and the signal selected by each code.
 
 ### 3.2 Output buffer and level shifters
 
-![Output buffer](img/buf.png)
-
-*Figure 3: output buffer (`buf`).*
-
-![Level shifter](img/level_shifter.png)
-
-*Figure 4: level shifter (`level_shifter`).*
+<table>
+<tr>
+<td align="center" width="50%"><img src="img/buf.png" alt="output buffer (buf)" width="100%"><br><em>Figure 4: output buffer (<code>buf</code>)</em></td>
+<td align="center" width="50%"><img src="img/level_shifter.png" alt="level shifter (level_shifter)" width="100%"><br><em>Figure 5: level shifter (<code>level_shifter</code>)</em></td>
+</tr>
+</table>
 
 TODO: short description (which pins use them, 3.3 V to 1.2 V translation).
 
@@ -126,47 +132,72 @@ Conditions: process corner `mos_tt`, `vp` = 1.2 V, `vph` = 3.3 V, 27 °C unless 
 
 ### 6.1 Phase-frequency detector (PFD)
 
-![PFD](img/PFD_cell_2.png)
+<p align="center">
+  <img src="img/PFD_cell_2.png" alt="PFD cell (PFD_cell_2)" width="90%"><br>
+  <em>Figure 6: PFD cell (<code>PFD_cell_2</code>)</em>
+</p>
 
-*Figure 5: PFD cell (`PFD_cell_2`).*
+<p align="center">
+  <img src="img/PFD_flip_flop.png" alt="PFD flip-flop (PFD_flip_flop)" width="90%"><br>
+  <em>Figure 7: PFD flip-flop (<code>PFD_flip_flop</code>)</em>
+</p>
 
 TODO: topology, dead zone / reset delay, input frequency range.
 
 ### 6.2 Charge pump (CP)
 
-![Charge pump](img/charge_pump_cell.png)
+<p align="center">
+  <img src="img/charge_pump_cell.png" alt="charge pump cell (charge_pump_cell)" width="90%"><br>
+  <em>Figure 8: charge pump cell (<code>charge_pump_cell</code>)</em>
+</p>
 
-*Figure 6: charge pump cell (`charge_pump_cell`).*
+<table>
+<tr>
+<td align="center" width="50%"><img src="img/curr_source.png" alt="current source (curr_source)" width="100%"><br><em>Figure 9: current source (<code>curr_source</code>)</em></td>
+<td align="center" width="50%"><img src="img/vbias.png" alt="bias generator (vbias)" width="100%"><br><em>Figure 10: bias generator (<code>vbias</code>)</em></td>
+</tr>
+</table>
 
 TODO: topology, output current, up/down matching, output voltage range.
 
 ### 6.3 Voltage-controlled oscillators (VCO) and VCO decoder
 
-![VCO](img/vco_top.png)
+<p align="center">
+  <img src="img/vco_top.png" alt="VCO top level (vco_top)" width="90%"><br>
+  <em>Figure 11: VCO top level (<code>vco_top</code>)</em>
+</p>
 
-*Figure 7: VCO top level (`vco_top`).*
+<p align="center">
+  <img src="img/VCO_MUX_and_decoder.png" alt="VCO multiplexer and decoder (VCO_MUX_and_decoder)" width="90%"><br>
+  <em>Figure 12: VCO multiplexer and decoder (<code>VCO_MUX_and_decoder</code>)</em>
+</p>
 
-![VCO core 1](img/vco_core_1.png)
+<p align="center">
+  <img src="img/vco_core_0.png" alt="VCO core 0 (vco_core_0)" width="90%"><br>
+  <em>Figure 13: VCO core 0 (<code>vco_core_0</code>)</em>
+</p>
 
-*Figure 8: VCO core 1 (`vco_core_1`).*
+<p align="center">
+  <img src="img/vco_core_1.png" alt="VCO core 1 (vco_core_1)" width="90%"><br>
+  <em>Figure 14: VCO core 1 (<code>vco_core_1</code>)</em>
+</p>
 
-![VCO core 2](img/vco_core_2.png)
+<p align="center">
+  <img src="img/vco_core_2.png" alt="VCO core 2 (vco_core_2)" width="90%"><br>
+  <em>Figure 15: VCO core 2 (<code>vco_core_2</code>)</em>
+</p>
 
-*Figure 9: VCO core 2 (`vco_core_2`).*
+<p align="center">
+  <img src="img/vco_core_3.png" alt="VCO core 3 (vco_core_3)" width="90%"><br>
+  <em>Figure 16: VCO core 3 (<code>vco_core_3</code>)</em>
+</p>
 
-![VCO core 3](img/vco_core_3.png)
+<p align="center">
+  <img src="img/vco_core_4.png" alt="VCO core 4 (vco_core_4)" width="90%"><br>
+  <em>Figure 17: VCO core 4 (<code>vco_core_4</code>)</em>
+</p>
 
-*Figure 10: VCO core 3 (`vco_core_3`).*
-
-![VCO core 4](img/vco_core_4.png)
-
-*Figure 11: VCO core 4 (`vco_core_4`).*
-
-![VCO core 5](img/vco_core_5.png)
-
-*Figure 12: VCO core 5 (`vco_core_5`).*
-
-The PLL contains five VCO cores (`vco_core_1` – `vco_core_5`), each covering a part of the output
+The PLL contains five VCO cores (`vco_core_0` – `vco_core_4`), each covering a part of the output
 frequency range. The VCO decoder selects which VCO is active.
 
 TODO: oscillator topology, frequency range of each VCO, what drives the decoder
@@ -174,9 +205,10 @@ TODO: oscillator topology, frequency range of each VCO, what drives the decoder
 
 ### 6.4 Divider
 
-![Divider](img/Divider_top.png)
-
-*Figure 13: divider top level (`Divider_top`).*
+<p align="center">
+  <img src="img/Divider_top.png" alt="divider top level (Divider_top)" width="90%"><br>
+  <em>Figure 18: divider top level (<code>Divider_top</code>)</em>
+</p>
 
 The output of the VCO is divided by 2 to form `out`, therefore `f_out = N × f_ref / 2`. With
 `f_ref` = 32 kHz the minimum ratio N = 2 gives the lowest output frequency of 32 kHz.
@@ -203,11 +235,45 @@ section 7 were obtained with:
 | Loop bandwidth | TODO |
 | Phase margin | TODO |
 
-![External loop filter](img/RC_filter.png)
-
-*Figure 14: external loop filter (`RC_filter`).*
+<p align="center">
+  <img src="img/RC_filter.png" alt="external loop filter (RC_filter)" width="90%"><br>
+  <em>Figure 19: external loop filter (<code>RC_filter</code>)</em>
+</p>
 
 Topology: the filter node `in` is connected to `vout`. C2 connects `vout` to ground, and in parallel to it R1 in series with C1 connects `vout` to ground.
+
+### 6.7 Debug output multiplexer
+
+The debug output multiplexer routes one of the internal test signals to `debug_out`. The selected
+signal is set by the 2-bit debug code (D10 – D11) written through the input register (section 3.1).
+The multiplexer output is buffered by a low-power buffer (`buf_lp`). These blocks are intended for
+testing and debugging only.
+
+<p align="center">
+  <img src="img/mux8to1.png" alt="8-to-1 multiplexer (mux8to1)" width="90%"><br>
+  <em>Figure 20: 8-to-1 multiplexer (<code>mux8to1</code>)</em>
+</p>
+
+<p align="center">
+  <img src="img/buf_lp.png" alt="debug output buffer (buf_lp)" width="90%"><br>
+  <em>Figure 21: debug output buffer (<code>buf_lp</code>)</em>
+</p>
+
+Signals connected to the inputs of `mux8to1`:
+
+| Mux input | Signal | Description |
+|---|---|---|
+| in1 | `out_PLL_divided` | PLL output signal after the divider |
+| in2 | `vco_out_buffered` | buffered VCO output |
+| in3 | `cvco` | VCO clock |
+| in4 | `cref` | reference clock |
+| in5 | `DOWN` | PFD DOWN signal |
+| in6 | `UP` | PFD UP signal |
+| in7 | `gd` | tied to ground (unused) |
+| in8 | `gd` | tied to ground (unused) |
+
+TODO: select code of each input. `mux8to1` has 8 inputs (3 select bits) while the debug code in the
+input register is 2 bits wide (D10 – D11), describe how the select lines are driven.
 
 ## 7. Simulation results
 

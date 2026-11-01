@@ -18,8 +18,8 @@ N 60 -360 120 -360 {lab=#net1}
 N 120 -380 120 -360 {lab=#net1}
 N 120 -260 260 -260 {lab=vbias}
 N 120 -280 120 -260 {lab=vbias}
-N 120 -220 130 -220 {lab=gd}
-N 120 -100 130 -100 {lab=gd}
+N 120 -220 170 -220 {lab=gd}
+N 120 -100 170 -100 {lab=gd}
 N 160 -410 180 -410 {lab=iref}
 N 120 -460 120 -440 {lab=vp}
 N 110 -410 120 -410 {lab=vp}
@@ -47,8 +47,8 @@ C {iopin.sym} 540 -330 0 0 {name=p21 lab=gd}
 C {iopin.sym} 530 -370 0 0 {name=p22 lab=vp}
 C {lab_pin.sym} 540 -350 0 1 {name=p1 sig_type=std_logic lab=iref}
 C {lab_pin.sym} 120 -40 0 1 {name=p2 sig_type=std_logic lab=gd}
-C {lab_pin.sym} 130 -100 0 1 {name=p3 sig_type=std_logic lab=gd}
-C {lab_pin.sym} 130 -220 0 1 {name=p4 sig_type=std_logic lab=gd}
+C {lab_pin.sym} 170 -100 0 1 {name=p3 sig_type=std_logic lab=gd}
+C {lab_pin.sym} 170 -220 0 1 {name=p4 sig_type=std_logic lab=gd}
 C {lab_pin.sym} 330 -80 0 1 {name=p6 sig_type=std_logic lab=gd}
 C {lab_pin.sym} 570 -80 0 1 {name=p7 sig_type=std_logic lab=vp}
 C {sg13cmos5l_pr/sg13_lv_pmos.sym} 140 -410 0 1 {name=M5
