@@ -22,7 +22,7 @@ N 140 -180 170 -180 {lab=vref_res}
 N 140 -160 170 -160 {lab=vref_sb}
 N -180 170 -150 170 {lab=vph}
 C {chip_top.sym} 0 80 0 0 {name=x1}
-C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/bandgap/bandgap_top.sym} -10 -170 0 0 {name=x2}
+C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/bandgap/bandgap_top.sym} -10 -170 0 0 {name=x2}
 C {ipin.sym} -190 70 0 0 {name=p7 lab=rst}
 C {ipin.sym} -310 -60 0 0 {name=p1 lab=vp}
 C {ipin.sym} -310 -30 0 0 {name=p2 lab=gd}
