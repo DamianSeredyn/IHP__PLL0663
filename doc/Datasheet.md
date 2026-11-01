@@ -70,8 +70,8 @@ The serial word is 12 bits long:
 
 | Bits | Field |
 |---|---|
-| D0 – D9 | divider code (10 bits) |
-| D10 – D11 | code of the debug output multiplexer (2 bits, selects the signal routed to `debug_out`) |
+| D0 – D8 | divider code (10 bits) |
+| D9 – D11 | code of the debug output multiplexer (3 bits, selects the signal routed to `debug_out`) |
 
 The register content is valid only after the transmission of the last bit (D11) is complete.
 
@@ -232,8 +232,6 @@ section 7 were obtained with:
 | R1 | 50 kΩ |
 | C1 | 100 pF |
 | C2 (if used) | 1 µF |
-| Loop bandwidth | TODO |
-| Phase margin | TODO |
 
 <p align="center">
   <img src="img/RC_filter.png" alt="external loop filter (RC_filter)" width="90%"><br>
