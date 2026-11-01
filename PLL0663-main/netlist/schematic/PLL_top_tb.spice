@@ -1,0 +1,78 @@
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/testbenches/tran/xschem/top/PLL_top_tb.sch
+**.subckt PLL_top_tb
+Vref clk_ref gd dc 0 ac 0 pulse(0 {Vph} {T/2} 10n 10n {T/2} {T})
+Vp Vp gd dc {Vp}
+Vph Vph gd dc {Vph}
+C1 out gd 20p
+V8 d4 gd 0
+V9 d5 gd 0
+V11 d0 gd 1.2
+V10 d1 gd 1.2
+V12 d2 gd 0
+V7 d3 gd 0
+V5 a1 gd 1.2
+V6 a0 gd 1.2
+V13 a2 gd 1.2
+xTOP gd vp out vph clk_ref rst gd gd clk_in debug_out vout gd gd gd TOP
+Vp1 rst gd dc {Vp} ac 0 PULSE({Vp} 0 2u 1n 1n 1 2)
+Vp2 gd GND dc 0
+x1 net1 gd RC_filter
+* noconn #net7
+* noconn #net6
+* noconn #net5
+* noconn #net4
+* noconn #net2
+* noconn #net3
+* noconn #debug_out
+**** begin user architecture code
+ .lib cornerMOSlv.lib mos_tt
+.lib cornerMOShv.lib mos_tt
+.lib cornerRES.lib res_typ
+.lib cornerDIO.lib dio_tt
+.lib cornerHBT.lib hbt_typ
+.lib cornerCAP.lib cap_typ
+
+.temp=25
+.param T = 31.25u
+.option  method=gear reltol=1e-3 gmin=1e-15 abstol=1e-12 rshunt=10e12
+.options cshunt=10f
+.param Vp=1.2
+.param Vph=3.3
+.control
+
+* Operating Point Analysis
+
+
+
+write PLL_top_tb.raw
+set appendwrite
+save v(gd) v(vp) v(rst) v(out) v(xPLL.cvco) v(xPLL.cref) v(xPLL.UP) v(xPLL.DOWN) v(xPLL.vout) v(xPLL.vco_out_prebuff) v(xPLL.vout_aftRC) v(xPLL.vco_out_buffered) v(xPLL.out_PLL_divided) v(xPLL.pre_LS) v(xPLL.aft_LS) i(vp) i(vph)
+tran 0.1n 3m
+meas tran t1 WHEN v(out)=1.65 RISE=1 FROM=0.7m
+meas tran t2 WHEN v(out)=1.65 RISE=2 FROM=0.7m
+meas tran period PARAM='t2-t1'
+meas tran freq PARAM='1/period'
+
+write PLL_prad.raw
+.endc
+
+
+**** end user architecture code
+**.ends
+
+.inc /foss/designs/IHP__PLL0663/PLL0663-main/netlist/pex/TOP.pex.spice
+
+
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/misc/RC_filter.sym # of pins=2
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/misc/RC_filter.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/misc/RC_filter.sch
+.subckt RC_filter in gd
+*.ipin in
+*.ipin gd
+R1 in net1 50k
+C1 net1 gd 40p
+C2 in gd 700p
+.ends
+
+.GLOBAL GND
+.end
