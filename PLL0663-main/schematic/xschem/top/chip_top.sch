@@ -73,10 +73,10 @@ N 280 250 340 250 {lab=gd}
 N 280 270 340 270 {lab=gd}
 N 640 180 680 180 {lab=vph}
 C {PLL_top.sym} 60 -80 0 0 {name=x2}
-C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/input_register.sym} -290 270 0 0 {name=x1}
-C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/misc/buffer_hv.sym} -630 290 0 0 {name=x3}
-C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/misc/buffer_hv.sym} -630 160 0 0 {name=x4}
-C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/misc/buffer_hv.sym} -630 40 0 0 {name=x5}
+C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/input_register.sym} -290 270 0 0 {name=x1}
+C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/misc/buffer_hv.sym} -630 290 0 0 {name=x3}
+C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/misc/buffer_hv.sym} -630 160 0 0 {name=x4}
+C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/misc/buffer_hv.sym} -630 40 0 0 {name=x5}
 C {ipin.sym} -530 -310 0 0 {name=p1 lab=vp}
 C {ipin.sym} -530 -280 0 0 {name=p2 lab=gd}
 C {ipin.sym} -790 40 0 0 {name=p3 lab=clk_in}
@@ -97,11 +97,12 @@ C {lab_wire.sym} -680 70 0 0 {name=p17 sig_type=std_logic lab=gd}
 C {lab_wire.sym} -720 220 0 0 {name=p18 sig_type=std_logic lab=gd}
 C {lab_wire.sym} -720 240 0 0 {name=p19 sig_type=std_logic lab=vp}
 C {lab_wire.sym} -720 350 0 0 {name=p20 sig_type=std_logic lab=gd}
-C {/foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/misc/Test_mux.sym} 490 200 0 0 {name=x6}
+C {/foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/misc/Test_mux.sym} 490 200 0 0 {name=x6}
 C {ipin.sym} -530 -350 0 0 {name=p21 lab=vph}
 C {lab_wire.sym} 680 140 0 0 {name=p22 sig_type=std_logic lab=gd}
 C {lab_wire.sym} 680 160 0 0 {name=p23 sig_type=std_logic lab=vp}
 C {opin.sym} 770 200 0 0 {name=p24 lab=debug_out}
 C {lab_wire.sym} 280 250 0 0 {name=p29 sig_type=std_logic lab=gd}
 C {lab_wire.sym} 280 270 0 0 {name=p30 sig_type=std_logic lab=gd}
-C {lab_wire.sym} 680 180 0 0 {name=p31 sig_type=std_logic lab=vph}
+C {lab_wire.sym} 680 180 0 0 {name=p31 sig_type=std_logic lab=vph_debug}
+C {ipin.sym} -530 -240 0 0 {name=p25 lab=vph_debug}
