@@ -8,7 +8,7 @@ Phase-locked loop in IHP SG13CMOS5L · Release v1.0.0
 
 PLL0663 is a phase-locked loop for the IHP SG13CMOS5L process. It consists of a
 phase-frequency detector (PFD), a charge pump (CP), several voltage-controlled oscillators (VCO)
-selected by a VCO decoder, a programmable divider, an input register and an on-chip bandgap reference. The loop
+selected by a VCO decoder, a programmable divider, an input register and a bandgap block with two on-chip voltage references. The loop
 filter is **external** (off-chip).
 
 ### Key features
@@ -17,10 +17,10 @@ filter is **external** (off-chip).
 - Reference frequency: 32 kHz
 - Divider ratio N: 2 – 9984; `f_out = N × f_ref / 2` (the output is divided by 2)
 - Core supply `vp` 1.2 V; all circuits inside the PLL run from 1.2 V
-- 3.3 V supply `vph` for the input buffers only; bandgap supply `vp_bandgap` 3.3 V
+- 3.3 V supply `vph` for the input buffers only; bandgap supply `vp_bandgap` 3.3 V or 1.8 V, depending on the reference under test (section 6.5)
 - Serial input register (`clk_in`, `data_in`, `data_en`) for the divider code and the debug multiplexer code
 - Debug output (`debug_out`) with a multiplexer for internal test signals
-- On-chip bandgap reference
+- Two on-chip bandgap voltage references (`bandgap_res`, `bandgap_selfbias`), outputs `vref_res` and `vref_sb`
 - Power consumption up to 100 mW (at the highest output frequency)
 - Lock time: 1 ms (see section 7 for conditions)
 - Silicon area: 1050 µm × 1050 µm including sealring (1.1025 mm²)
@@ -39,8 +39,8 @@ filter is **external** (off-chip).
 
 ## 3. Pin description
 
-Pin names are those of the extracted top-level subcircuit. All signal pins and the supplies `vph`
-and `vp_bandgap` are in the 3.3 V domain; `vp` is the 1.2 V core supply. Only the input buffers are
+Pin names are those of the extracted top-level subcircuit. All signal pins and the supply `vph`
+are in the 3.3 V domain; the bandgap supply `vp_bandgap` is 3.3 V or 1.8 V (section 6.5); `vp` is the 1.2 V core supply. Only the input buffers are
 supplied from `vph`; all circuits inside the PLL are supplied from `vp` (1.2 V).
 
 | Pin | Direction | Domain | Description |
@@ -48,7 +48,7 @@ supplied from `vph`; all circuits inside the PLL are supplied from `vp` (1.2 V).
 | `gd` | supply | 0 V | Ground |
 | `vp` | supply | 1.2 V | Core supply (all circuits inside the PLL) |
 | `vph` | supply | 3.3 V | 3.3 V supply of the input buffers only |
-| `vp_bandgap` | supply | 3.3 V | Bandgap supply |
+| `vp_bandgap` | supply | 3.3 V / 1.8 V | Bandgap supply: 3.3 V for `bandgap_res`, 1.8 V for `bandgap_selfbias` (section 6.5) |
 | `clk_ref` | in | 3.3 V | Reference clock (32 kHz) |
 | `rst` | in | 3.3 V | Reset, active high; resets all elements of the PLL |
 | `clk_in` | in | 3.3 V | Input register: external clock of the serial interface |
@@ -57,8 +57,8 @@ supplied from `vph`; all circuits inside the PLL are supplied from `vp` (1.2 V).
 | `out` | out | 3.3 V | PLL output clock |
 | `vout` | analog | 3.3 V | Charge-pump / VCO control node, connection of the external loop filter |
 | `debug_out` | out | 3.3 V | Output of the debug multiplexer (internal test signals, selected via the input register) |
-| `vref_sb` | analog | 3.3 V | Bandgap pin (TODO: exact function) |
-| `vref_res` | analog | 3.3 V | Bandgap pin (TODO: exact function) |
+| `vref_sb` | analog | – | Reference voltage output of `bandgap_selfbias` (no internal buffer) |
+| `vref_res` | analog | – | Reference voltage output of `bandgap_res` (no internal buffer) |
 
 ### 3.1 Input register
 
@@ -70,7 +70,7 @@ The serial word is 12 bits long:
 
 | Bits | Field |
 |---|---|
-| D0 – D8 | divider code (10 bits) |
+| D0 – D8 | divider code (9 bits) |
 | D9 – D11 | code of the debug output multiplexer (3 bits, selects the signal routed to `debug_out`) |
 
 The register content is valid only after the transmission of the last bit (D11) is complete.
@@ -102,7 +102,9 @@ TODO: pad ring floorplan (position of every pad) as an image or table.
 | Parameter | Min | Typ | Max | Unit |
 |---|---|---|---|---|
 | Core supply `vp` | 1.08 | 1.2 | 1.32 | V |
-| 3.3 V supplies `vph`, `vp_bandgap` | 3.1 | 3.3 | 3.5 | V |
+| 3.3 V supply `vph` | 3.1 | 3.3 | 3.5 | V |
+| Bandgap supply `vp_bandgap` (`bandgap_res`) | 2.97 | 3.3 | 3.63 | V |
+| Bandgap supply `vp_bandgap` (`bandgap_selfbias`) | 1.62 | 1.8 | 1.98 | V |
 | Temperature | -25 | 27 | 125 | °C |
 | Reference frequency | – | 32 | – | kHz |
 
@@ -124,9 +126,26 @@ Conditions: process corner `mos_tt`, `vp` = 1.2 V, `vph` = 3.3 V, 27 °C unless 
 | Charge-pump current | TODO | TODO | TODO | µA | TODO |
 | VCO gain | TODO | TODO | TODO | MHz/V | TODO |
 | Phase noise / jitter | TODO | TODO | TODO | – | TODO or "not characterised" |
-| Bandgap output voltage | TODO | TODO | TODO | V | TODO |
-| Bandgap temperature coefficient | TODO | TODO | TODO | ppm/°C | TODO or "not characterised" |
-| Bandgap supply current | TODO | TODO | TODO | µA | TODO |
+| Output voltage `vref_res` (`bandgap_res`) | 1.203 | 1.209 | 1.209 | V | section 6.5 |
+| Output voltage `vref_sb` (`bandgap_selfbias`) | 0.744 | 0.812 | 0.88 | V | section 6.5 |
+| Temperature coefficient (`bandgap_res`) | – | 10.1 | 22.1 | ppm/°C | section 6.5 |
+| Temperature coefficient (`bandgap_selfbias`) | – | 10.5 | 38.8 | ppm/°C | section 6.5 |
+| Supply current (`bandgap_res`) | 0.368 | 0.407 | 0.436 | mA | section 6.5 |
+| Supply current (`bandgap_selfbias`) | 8.186 | 38.033 | 85.617 | µA | section 6.5 |
+
+Bandgap values: typical = `mos_tt`; min / max = extremes over the simulated corners (section 6.5).
+
+### 5.1 Supply current
+
+| Supply | Min | Nominal | Max | Unit | Conditions |
+|---|---|---|---|---|---|
+| `vp` (1.2 V core) | TODO | TODO | TODO | mA | TODO: output frequency / divider ratio, corner, temperature, supply |
+| `vph` (3.3 V input buffers) | TODO | TODO | TODO | mA | TODO |
+
+Nominal: `mos_tt`, `vp` = 1.2 V, `vph` = 3.3 V, 27 °C. Min / max: TODO (extremes over the corners,
+temperature -25 – 125 °C and supply ranges of section 4).
+
+The current of the bandgap supply `vp_bandgap` is given in section 6.5.
 
 ## 6. Functional description
 
@@ -213,15 +232,62 @@ TODO: oscillator topology, frequency range of each VCO, what drives the decoder
 The output of the VCO is divided by 2 to form `out`, therefore `f_out = N × f_ref / 2`. With
 `f_ref` = 32 kHz the minimum ratio N = 2 gives the lowest output frequency of 32 kHz.
 
-The divider code is 10 bits wide (D0 – D9) and is written through the input register
+The divider code is 9 bits wide (D0 – D8) and is written through the input register
 (section 3.1).
 
-TODO: structure, encoding of the 10-bit code into the ratio 2 – 9984, timing of changes.
+TODO: structure, encoding of the 9-bit code into the ratio 2 – 9984, timing of changes.
 
 ### 6.5 Bandgap reference
-TODO: topology, output voltage and which pin carries it (`vref_sb`, `vref_res`), what it is used for
-inside the chip, supply range (`vp_bandgap`), start-up behaviour, simulated temperature and supply
-dependence.
+
+The bandgap block (`bandgap_top`) contains two independent voltage references, `bandgap_res` and
+`bandgap_selfbias`. Both are supplied from the same supply pins (`vp_bandgap`, `gd`), so the supply
+voltage must be chosen according to the reference under test:
+
+| Reference | Output pin | Designed for `vp_bandgap` |
+|---|---|---|
+| `bandgap_res` | `vref_res` | 3.3 V |
+| `bandgap_selfbias` | `vref_sb` | 1.8 V |
+
+Applying 3.3 V to `bandgap_selfbias` does not damage it, but changes the reference voltage it
+generates.
+
+The reference voltage must be measured at the output pin of the selected reference (`vref_res` for
+`bandgap_res`, `vref_sb` for `bandgap_selfbias`). The outputs have no internal buffer stages, so large
+loads must be avoided during tests; external voltage buffers are recommended.
+
+Simulation results over process corners:
+
+**`bandgap_res`** (pin `vref_res`)
+
+| Corner | `vp_bandgap` [V] | V_ref [V] | I_supply [mA] | P_supply [mW] | TC [ppm/°C] |
+|---|---|---|---|---|---|
+| `mos_tt` | 3.3 | 1.209 | 0.407 | 1.343 | 10.136 |
+| `mos_ss` | 2.97 | 1.207 | 0.368 | 1.095 | 22.053 |
+| `mos_ff` | 3.63 | 1.203 | 0.436 | 1.585 | 20.763 |
+
+**`bandgap_selfbias`** (pin `vref_sb`)
+
+| Corner | `vp_bandgap` [V] | V_ref [V] | I_supply [µA] | P_supply [µW] | TC [ppm/°C] |
+|---|---|---|---|---|---|
+| `mos_tt` | 1.8 | 0.812 | 38.033 | 68.46 | 10.487 |
+| `mos_ss` | 1.62 | 0.744 | 8.186 | 13.261 | 13.096 |
+| `mos_ff` | 1.98 | 0.880 | 85.617 | 169.522 | 38.808 |
+
+#### Test connection of the bandgap
+
+- `vp_bandgap`: TODO (3.3 V for `bandgap_res`, 1.8 V for `bandgap_selfbias`; decoupling, how to switch the supply)
+- Output `vref_res` / `vref_sb`: TODO (measurement with a high-impedance instrument or an external voltage buffer; maximum allowed load)
+- TODO: other connections required during the bandgap test
+
+<!-- Uncomment after adding the file to doc/img/:
+<p align="center">
+  <img src="img/bandgap_test_setup.png" alt="bandgap test connection" width="90%"><br>
+  <em>Figure N: proposed connection of the bandgap for testing</em>
+</p>
+-->
+
+TODO: topology of both references, schematic figures, temperature range used for the TC, start-up
+behaviour, whether the references are used inside the chip.
 
 ### 6.6 External loop filter
 The loop filter is not part of the chip and is connected to `vout`. The simulated results in
@@ -243,7 +309,7 @@ Topology: the filter node `in` is connected to `vout`. C2 connects `vout` to gro
 ### 6.7 Debug output multiplexer
 
 The debug output multiplexer routes one of the internal test signals to `debug_out`. The selected
-signal is set by the 2-bit debug code (D10 – D11) written through the input register (section 3.1).
+signal is set by the 3-bit debug code (D9 – D11) written through the input register (section 3.1).
 The multiplexer output is buffered by a low-power buffer (`buf_lp`). These blocks are intended for
 testing and debugging only.
 
@@ -270,8 +336,7 @@ Signals connected to the inputs of `mux8to1`:
 | in7 | `gd` | tied to ground (unused) |
 | in8 | `gd` | tied to ground (unused) |
 
-TODO: select code of each input. `mux8to1` has 8 inputs (3 select bits) while the debug code in the
-input register is 2 bits wide (D10 – D11), describe how the select lines are driven.
+TODO: select code (D9 – D11) of each input.
 
 ## 7. Simulation results
 
@@ -303,6 +368,32 @@ TODO: Magic version and extraction options.
 4. Write the divider code and the debug multiplexer code serially into the input register using
    `clk_in`, `data_in` and `data_en` (section 3.1, 6.4).
 5. Wait for lock (about 1 ms in simulation).
+
+### 8.1 Proposed connection for physical tests
+
+| Pin | Proposed connection |
+|---|---|
+| `gd` | Ground |
+| `vp` | 1.2 V supply (TODO: decoupling) |
+| `vph` | 3.3 V supply (TODO: decoupling) |
+| `vp_bandgap` | 3.3 V (`bandgap_res`) or 1.8 V (`bandgap_selfbias`) |
+| `clk_ref` | 32 kHz reference clock source |
+| `rst` | TODO: source (active high) |
+| `clk_in`, `data_in`, `data_en` | TODO: source of the serial interface (e.g. microcontroller / FPGA), 3.3 V levels |
+| `vout` | External loop filter (section 6.6): R1 = 50 kΩ, C1 = 100 pF, C2 = 1 µF |
+| `out` | TODO: load / instrument |
+| `debug_out` | TODO: load / instrument |
+| `vref_res`, `vref_sb` | High-impedance instrument or external voltage buffer (section 6.5) |
+
+TODO: schematic of the proposed test connection. Add the image to `doc/img/` and uncomment the
+figure below.
+
+<!-- Uncomment after adding the file to doc/img/:
+<p align="center">
+  <img src="img/test_setup.png" alt="proposed test connection" width="90%"><br>
+  <em>Figure N: proposed connection of PLL0663 for physical tests</em>
+</p>
+-->
 
 ## 9. Physical implementation
 
@@ -336,3 +427,4 @@ Details and reports: `release/v.1.0.0/ReleaseNote.md` and `PLL0663-main/verifica
 | Version | Date | Changes |
 |---|---|---|
 | 1.0.0 | TODO | Initial release |
+
