@@ -20,11 +20,11 @@ meta:
 
 # --- Die (chip) --------------------------------------------------------------
 DIE_GDS: /foss/designs/IHP__PLL0663/PLL0663-main/layout/klayout/TOP/PLL0663_for_bonding.gds
-# DIE_CELL: "{design}_logo_fill"  # default: top cell of DIE_GDS
+DIE_CELL: "PLL0663"
 
 # Layers copied into the extracted die view (IHP SG13CMOS5L):
 DIE_EXTRACT_LAYERS: ["9/0", "125/0", "126/0"]   # Passiv, TopVia1, TopMetal1
-DIE_EXTRACT_GDS: dir::layout/{design}_TM1.gds.gz
+DIE_EXTRACT_GDS: dir::layout/{design}.gds.gz
 DIE_EXTRACT_CELL: "PLL0663"
 DIE_KEEP_LABELS: false            # do not copy DIE_PAD_LABEL_LAYER into extract
 
@@ -106,7 +106,7 @@ IMAGE_REGION: full                # package (footprint + bond table) | full
 # relative to the label position.
 SHEET_KEEP: true
 SHEET_FIELDS:
-  Request: "JKU IICQC - {design}"
+  Request: "JKU IICQC - {design}" # to be changed
   Date: "{date}"
   MPW: "IHP SG13CMOS5L"
   Die: "{design} - v.{version}"
@@ -117,7 +117,7 @@ SHEET_FIELDS:
   "Die-thickness": "200 um"
   "Extra Info": "{wire_count} wires, min gap {min_gap_um} um, mount the lid with its white dot at pin 1"
   "Qty packaged": "10"
-  "Qty naked": "20"
+  "Qty naked": "30"
   "Die Attach": "conductive epoxy"
   "Wire": "Gold, {bondwire_width_um} um"
 
@@ -131,8 +131,7 @@ LID: Glued
 # entry matches no text on the sheet.
 SHEET_TEXT_SCALE:
   "Request": 0.7
-
-#  "QFN32(5x5)": 0.7
+  "QFN24(5x5)": 0.7
 
 # --- Pinout ------------------------------------------------------------------
 # Package pin number -> die pad name (TopMetal1.text label on the pad).
@@ -147,36 +146,36 @@ SHEET_TEXT_SCALE:
 # (e.g. EPAD: ["VSS"]) only if spare ground pads are left unbonded.
 PINOUT:
   # Left side, top to bottom (pins 1-6) -> die west pads (top to bottom)
-  1:  ~                # NC
-  2:  "rst"                # rst input
-  3:  "clk_ref"                # Reference clock input
-  4:  "out"                     # TOBEADDED
-  5:  "vph"                     # TOBEADDED
-  6:  ~                      #TOBEADDED
+  1:  ~                
+  2:  "rst"                
+  3:  "clk_ref"                
+  4:  "out"                     
+  5:  "vph"                    
+  6:  ~                      
 
   # Bottom side, left to right (pins 7-12) -> die south pads (left to right)
-  7:  "data_in"                     # core ground
-  8:  "data_en"             # sram_0_out (XOR-reduced SRAM data)
-  9:  ~            # counter2_value[0] (LSB)
-  10: "gd1"              # counter2_value[1]
-  11: ~             # counter2_value[2]
-  12: "gd2"            # counter2_value[3]
+  7:  "data_in"                     
+  8:  "data_en"         
+  9:  ~            
+  10: "gd1"           
+  11: ~           
+  12: "gd2"           
   
 
   # Right side, bottom to top (pins 13-18) -> die east pads (bottom to top)
-  13: "clk_in"             # counter2_value[4]
-  14: "debug_out"             # counter2_value[5]
-  15: "vout"            # counter2_value[6]
-  16: "vph_debug"            # counter2_value[7] (MSB)
-  17: ~             # inverter2.vin1  (via padres)
-  18: ~             # inverter2.vin2  (via padres)
+  13: "clk_in"            
+  14: "debug_out"        
+  15: "vout"           
+  16: "vph_debug"      
+  17: ~            
+  18: ~            
  
   # top side, right to left (pins 19-24) -> die north pads (right to left)
-  19: "vref_res"             # inverter2.vout1 (via padbare)
-  20: "vref_sb"             # inverter2.vout2 (via padbare)
-  21: "vp"           # inverter1.vout1
-  22: "vp_bandgap"         # inverter1.vout2
-  23: "vp"           # inverter1.vout3
-  24: ~            # inverter1.vout4
+  19: "vref_res"            
+  20: "vref_sb"           
+  21: "vp"         
+  22: "vp_bandgap"       
+  23: "vp"          
+  24: ~         
 
 
