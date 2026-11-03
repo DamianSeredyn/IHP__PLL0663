@@ -1,0 +1,16 @@
+03-Nov-2026 21:01:41 | INFO    | Your Klayout version is: KLayout 0.30.12
+03-Nov-2026 21:01:41 | INFO    | Running SG13CMOS5L LVS checks on design /foss/designs/CHIP-PLL/PLL0663-main/layout/klayout/TOP/PLL0663.gds on cell PLL0663
+03-Nov-2026 21:02:37 | INFO    | ==============================================================================
+03-Nov-2026 21:02:37 | INFO    | Important Summary
+03-Nov-2026 21:02:37 | INFO    | +------------------+--------------------------------------------------------------------------------------------+
+03-Nov-2026 21:02:37 | INFO    | | Status           | PASS                                                                                       |
+03-Nov-2026 21:02:37 | INFO    | | Mode             | COMPARE                                                                                    |
+03-Nov-2026 21:02:37 | INFO    | | Outcome          | Comparison mode: PASS (netlists match).                                                    |
+03-Nov-2026 21:02:37 | INFO    | | Layout           | PLL0663.gds                                                                                |
+03-Nov-2026 21:02:37 | INFO    | | Top Cell         | PLL0663                                                                                    |
+03-Nov-2026 21:02:37 | INFO    | | Results Dir      | /foss/designs/CHIP-PLL/PLL0663-main/layout/klayout/TOP/lvs_run_PLL0663_2026_11_03_21_01_41 |
+03-Nov-2026 21:02:37 | INFO    | | Warnings         | 0                                                                                          |
+03-Nov-2026 21:02:37 | INFO    | | Errors           | 0                                                                                          |
+03-Nov-2026 21:02:37 | INFO    | | Run Time (s)     | 56.332                                                                                     |
+03-Nov-2026 21:02:37 | INFO    | +------------------+--------------------------------------------------------------------------------------------+
+03-Nov-2026 21:02:37 | INFO    | ==============================================================================

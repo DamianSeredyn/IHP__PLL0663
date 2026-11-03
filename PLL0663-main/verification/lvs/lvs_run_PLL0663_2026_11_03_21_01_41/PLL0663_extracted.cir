@@ -1,0 +1,1276 @@
+* Extracted by KLayout with SG13CMOS5L LVS runset on : 03/11/2026 21:01
+
+.SUBCKT PLL0663 NA1 NA2 clk_in clk_ref data_en data_in debug_out gd out rst
++ vout vp vph vph_debug vref_res vref_sb
+X$50 gd rst gd gd sg13cmos5l_IOPadAnalog
+X$51 gd clk_ref gd gd sg13cmos5l_IOPadAnalog
+X$52 gd vref_res gd gd sg13cmos5l_IOPadAnalog
+X$53 gd vref_sb gd gd sg13cmos5l_IOPadAnalog
+X$54 gd vout gd gd sg13cmos5l_IOPadAnalog
+X$55 gd NA1 gd gd sg13cmos5l_IOPadAnalog
+X$56 gd debug_out gd gd sg13cmos5l_IOPadAnalog
+X$57 gd clk_in gd gd sg13cmos5l_IOPadAnalog
+X$58 gd data_en gd gd sg13cmos5l_IOPadAnalog
+X$59 gd NA2 gd gd sg13cmos5l_IOPadAnalog
+X$78 gd data_in gd gd sg13cmos5l_IOPadAnalog
+X$111737 gd clk_in vp data_in data_en vph_debug debug_out out vph clk_ref rst
++ vout chip_top
+X$121267 gd gd gd sg13cmos5l_DCPDiode
+X$121268 gd gd gd sg13cmos5l_DCNDiode
+X$121269 gd gd gd sg13cmos5l_DCPDiode
+X$121270 gd gd gd sg13cmos5l_DCNDiode
+M$1 gd gd vp gd sg13_hv_nmos L=0.6u W=1513.6u AS=689.216p AD=698.72p
++ PS=1862.08u PD=1866.4u rfmode=0
+D$173 gd gd dantenna A=0.2304p P=1.92u m=2
+M$347 gd vp gd gd sg13_hv_nmos L=9.5u W=252u AS=53.28p AD=47.88p PS=299.84u
++ PD=262.64u rfmode=0
+M$354 gd vp gd gd sg13_hv_nmos L=0.5u W=216u AS=41.04p AD=46.44p PS=225.12u
++ PD=262.32u rfmode=0
+M$373 vp vp gd vp sg13_hv_pmos L=0.5u W=700u AS=135.1p AD=135.1p PS=752.6u
++ PD=752.6u rfmode=0
+.ENDS PLL0663
+
+.SUBCKT sg13cmos5l_DCNDiode anode cathode cathode$1
+D$1 anode cathode$1 dantenna A=35.0028p P=58.08u m=1
+D$2 anode cathode dantenna A=35.0028p P=58.08u m=1
+.ENDS sg13cmos5l_DCNDiode
+
+.SUBCKT sg13cmos5l_DCPDiode cathode anode anode$1
+D$1 anode$1 cathode dpantenna A=35.0028p P=58.08u m=1
+D$2 anode cathode dpantenna A=35.0028p P=58.08u m=1
+.ENDS sg13cmos5l_DCPDiode
+
+.SUBCKT sg13cmos5l_IOPadAnalog iovss|vss pad|padres iovdd iovdd$1
+X$2 iovdd pad|padres pad|padres pad|padres pad|padres pad|padres pad|padres
++ pad|padres pad|padres pad|padres pad|padres sg13cmos5l_Clamp_P20N0D
+X$5 iovss|vss pad|padres pad|padres pad|padres pad|padres pad|padres pad|padres
++ pad|padres pad|padres pad|padres pad|padres sg13cmos5l_Clamp_N20N0D
+D$1 iovss|vss pad|padres dantenna A=1.984p P=7.48u m=1
+D$2 pad|padres iovdd$1 dpantenna A=3.1872p P=11.24u m=1
+D$3 pad|padres iovdd dpantenna A=35.0028p P=58.08u m=2
+D$5 iovss|vss pad|padres dantenna A=35.0028p P=58.08u m=2
+.ENDS sg13cmos5l_IOPadAnalog
+
+.SUBCKT chip_top gd clk_in vp data_in data_en vph_debug debug_out out vph
++ clk_ref rst vout
+X$2 vp vph_debug gd debug_out \$77 \$90 \$72 \$75 \$71 \$68 gd gd \$46 \$45
++ \$40 Test_mux
+X$32 gd vp \$45 \$12 \$40 \$27 \$41 \$29 \$39 \$31 \$36 \$43 \$35 \$32 \$2 \$3
++ \$46 input_register
+X$44 gd \$35 \$32 \$29 \$31 \$43 \$27 \$41 \$39 vp \$36 \$72 \$90 vph out \$77
++ \$75 \$68 vout rst \$71 clk_ref PLL_top
+X$66 gd \$I12 vp clk_in \$3 buffer_hv
+X$67 gd \$I11 vp data_en \$2 buffer_hv
+X$68 gd \$I10 vp data_in \$12 buffer_hv
+.ENDS chip_top
+
+.SUBCKT sg13cmos5l_Clamp_N20N0D iovss pad pad$1 pad$2 pad$3 pad$4 pad$5 pad$6
++ pad$7 pad$8 pad$9
+M$1 iovss \$3 pad iovss sg13_hv_nmos L=0.6u W=8.8u AS=4.664p AD=4.004p
++ PS=15.32u PD=10.62u rfmode=0
+M$3 iovss \$3 pad$1 iovss sg13_hv_nmos L=0.6u W=8.8u AS=4.004p AD=4.004p
++ PS=10.62u PD=10.62u rfmode=0
+M$5 iovss \$3 pad$2 iovss sg13_hv_nmos L=0.6u W=8.8u AS=4.004p AD=4.004p
++ PS=10.62u PD=10.62u rfmode=0
+M$7 iovss \$3 pad$3 iovss sg13_hv_nmos L=0.6u W=8.8u AS=4.004p AD=4.004p
++ PS=10.62u PD=10.62u rfmode=0
+M$9 iovss \$3 pad$4 iovss sg13_hv_nmos L=0.6u W=8.8u AS=4.004p AD=4.004p
++ PS=10.62u PD=10.62u rfmode=0
+M$11 iovss \$3 pad$5 iovss sg13_hv_nmos L=0.6u W=8.8u AS=4.004p AD=4.004p
++ PS=10.62u PD=10.62u rfmode=0
+M$13 iovss \$3 pad$6 iovss sg13_hv_nmos L=0.6u W=8.8u AS=4.004p AD=4.004p
++ PS=10.62u PD=10.62u rfmode=0
+M$15 iovss \$3 pad$7 iovss sg13_hv_nmos L=0.6u W=8.8u AS=4.004p AD=4.004p
++ PS=10.62u PD=10.62u rfmode=0
+M$17 iovss \$3 pad$8 iovss sg13_hv_nmos L=0.6u W=8.8u AS=4.004p AD=4.004p
++ PS=10.62u PD=10.62u rfmode=0
+M$19 iovss \$3 pad$9 iovss sg13_hv_nmos L=0.6u W=8.8u AS=4.004p AD=4.664p
++ PS=10.62u PD=15.32u rfmode=0
+R$21 iovss \$3 iovss rppd w=0.5u l=3.54u ps=0u b=0 m=1
+.ENDS sg13cmos5l_Clamp_N20N0D
+
+.SUBCKT sg13cmos5l_Clamp_P20N0D iovdd pad pad$1 pad$2 pad$3 pad$4 pad$5 pad$6
++ pad$7 pad$8 pad$9
+M$1 iovdd \$5 pad iovdd sg13_hv_pmos L=0.6u W=26.64u AS=14.1192p AD=12.1212p
++ PS=44.2u PD=30.28u rfmode=0
+M$3 iovdd \$5 pad$1 iovdd sg13_hv_pmos L=0.6u W=26.64u AS=12.1212p AD=12.1212p
++ PS=30.28u PD=30.28u rfmode=0
+M$5 iovdd \$5 pad$2 iovdd sg13_hv_pmos L=0.6u W=26.64u AS=12.1212p AD=12.1212p
++ PS=30.28u PD=30.28u rfmode=0
+M$7 iovdd \$5 pad$3 iovdd sg13_hv_pmos L=0.6u W=26.64u AS=12.1212p AD=12.1212p
++ PS=30.28u PD=30.28u rfmode=0
+M$9 iovdd \$5 pad$4 iovdd sg13_hv_pmos L=0.6u W=26.64u AS=12.1212p AD=12.1212p
++ PS=30.28u PD=30.28u rfmode=0
+M$11 iovdd \$5 pad$5 iovdd sg13_hv_pmos L=0.6u W=26.64u AS=12.1212p AD=12.1212p
++ PS=30.28u PD=30.28u rfmode=0
+M$13 iovdd \$5 pad$6 iovdd sg13_hv_pmos L=0.6u W=26.64u AS=12.1212p AD=12.1212p
++ PS=30.28u PD=30.28u rfmode=0
+M$15 iovdd \$5 pad$7 iovdd sg13_hv_pmos L=0.6u W=26.64u AS=12.1212p AD=12.1212p
++ PS=30.28u PD=30.28u rfmode=0
+M$17 iovdd \$5 pad$8 iovdd sg13_hv_pmos L=0.6u W=26.64u AS=12.1212p AD=12.1212p
++ PS=30.28u PD=30.28u rfmode=0
+M$19 iovdd \$5 pad$9 iovdd sg13_hv_pmos L=0.6u W=26.64u AS=12.1212p AD=14.1192p
++ PS=30.28u PD=44.2u rfmode=0
+R$41 iovdd \$5 iovdd rppd w=0.5u l=12.9u ps=0u b=0 m=1
+.ENDS sg13cmos5l_Clamp_P20N0D
+
+.SUBCKT Test_mux VP VPHIGH ground debug_out in1 in2 in3 in4 in5 in6 in7 in8 t0
++ t1 t2
+X$1 ground \$28 \$25 VPHIGH VP debug_level_shifter
+X$3 ground \$25 debug_out VP buf_lp
+X$4 ground VP t0 t1 t2 in8 in7 in6 in5 in4 \$28 in3 in1 in2 mux8to1
+.ENDS Test_mux
+
+.SUBCKT PLL_top gd d5 d4 d1 d2 d3 d0 a2 a1 vp a0 cvco vco_out_buffered vph out
++ out_PLL_divided cref UP vout rst DOWN clk_ref
+X$25 gd \$312 vp rst \$314 buffer_hv
+X$26 gd \$I1491 vp clk_ref cref buffer_hv
+X$53 gd \$314 vp DOWN cvco UP cref PFD_cell_2
+X$89 gd \$258 \$241 vph vp level_shifter
+X$90 gd \$260 vp out_PLL_divided inverter_x2
+X$91 \$260 vp gd \$258 inverter_x4_top
+X$103 gd out vph \$241 buf
+X$439 vp gd \$314 d0 d1 d2 d3 d4 d5 a0 a1 a2 vco_out_buffered cvco Divider_top
+X$462 gd vp vout vco_out_buffered a1 a2 d2 d1 d0 a0 d5 d4 d3 vco_top
+X$505 gd vp \$307 \$314 inverter_x4
+X$506 out_PLL_divided \$243 vco_out_buffered \$243 gd vp d_flip_flop
+M$1 gd vp gd gd sg13_lv_nmos L=5u W=240u AS=51.6p AD=51.6p PS=290.32u
++ PD=290.32u rfmode=0
+M$25 gd gd gd gd sg13_lv_nmos L=1.8u W=1.52u AS=0.5168p AD=0.5168p PS=5.08u
++ PD=5.08u rfmode=0
+M$28 gd \$I1502 \$I1502 gd sg13_lv_nmos L=1.8u W=0.6u AS=0.204p AD=0.204p
++ PS=1.88u PD=1.88u rfmode=0
+R$29 gd gd gd rppd w=1u l=0.5u ps=0u b=0 m=1
+M$30 gd gd gd gd sg13_lv_nmos L=0.6u W=8.32u AS=2.8288p AD=2.8288p PS=21.4u
++ PD=21.4u rfmode=0
+M$31 vp vp vp vp sg13_lv_pmos L=0.6u W=4.55u AS=1.547p AD=1.547p PS=11.14u
++ PD=11.14u rfmode=0
+M$32 \$I1519 \$I1507 vp vp sg13_lv_pmos L=0.6u W=1.65u AS=0.561p AD=0.561p
++ PS=3.98u PD=3.98u rfmode=0
+M$34 vout \$307 \$I1502 vp sg13_lv_pmos L=0.6u W=1.8u AS=0.612p AD=0.612p
++ PS=4.28u PD=4.28u rfmode=0
+M$35 vp \$I1502 \$I1502 vp sg13_lv_pmos L=1.8u W=1.8u AS=0.612p AD=0.612p
++ PS=4.28u PD=4.28u rfmode=0
+M$36 vp UP \$I1510 vp sg13_lv_pmos L=0.6u W=1u AS=0.34p AD=0.34p PS=2.68u
++ PD=2.68u rfmode=0
+M$37 \$I1511 \$I1510 vout vp sg13_lv_pmos L=0.6u W=1u AS=0.34p AD=0.34p
++ PS=2.68u PD=2.68u rfmode=0
+M$38 vp \$I1513 \$I1503 vp sg13_lv_pmos L=0.6u W=1u AS=0.34p AD=0.34p PS=2.68u
++ PD=2.68u rfmode=0
+M$40 \$I1510 UP gd gd sg13_lv_nmos L=0.6u W=1u AS=0.34p AD=0.34p PS=2.68u
++ PD=2.68u rfmode=0
+M$42 \$I1517 \$I1500 \$I1507 vp sg13_lv_pmos L=0.6u W=1.6u AS=0.544p AD=0.544p
++ PS=3.88u PD=3.88u rfmode=0
+M$43 \$I1511 \$I1500 \$I1519 vp sg13_lv_pmos L=0.6u W=1.6u AS=0.544p AD=0.544p
++ PS=3.88u PD=3.88u rfmode=0
+M$44 vp \$I1507 \$I1517 vp sg13_lv_pmos L=0.6u W=1.6u AS=0.544p AD=0.544p
++ PS=3.88u PD=3.88u rfmode=0
+M$45 \$I1509 DOWN vout gd sg13_lv_nmos L=0.6u W=1u AS=0.34p AD=0.34p PS=2.68u
++ PD=2.68u rfmode=0
+M$46 \$I1501 \$I1503 gd gd sg13_lv_nmos L=0.6u W=4.8u AS=1.152p AD=1.152p
++ PS=7.84u PD=7.84u rfmode=0
+M$49 \$I1501 \$I1500 \$I1503 gd sg13_lv_nmos L=0.6u W=4.8u AS=1.152p AD=1.152p
++ PS=7.84u PD=7.84u rfmode=0
+M$53 \$I1505 \$I1503 gd gd sg13_lv_nmos L=0.6u W=1.6u AS=0.544p AD=0.544p
++ PS=3.88u PD=3.88u rfmode=0
+M$54 gd \$I1503 \$I1504 gd sg13_lv_nmos L=0.6u W=1.6u AS=0.544p AD=0.544p
++ PS=3.88u PD=3.88u rfmode=0
+M$55 \$I1507 \$I1500 \$I1508 gd sg13_lv_nmos L=0.6u W=1.6u AS=0.544p AD=0.544p
++ PS=3.88u PD=3.88u rfmode=0
+M$56 \$I1505 \$I1500 \$I1509 gd sg13_lv_nmos L=0.6u W=1.6u AS=0.544p AD=0.544p
++ PS=3.88u PD=3.88u rfmode=0
+M$57 \$I1508 \$I1500 \$I1504 gd sg13_lv_nmos L=0.6u W=1.6u AS=0.544p AD=0.544p
++ PS=3.88u PD=3.88u rfmode=0
+M$58 \$I1520 \$I1521 \$I1500 gd sg13_lv_nmos L=0.6u W=3.6u AS=1.224p AD=1.224p
++ PS=7.88u PD=7.88u rfmode=0
+M$59 gd \$I1520 \$I1520 gd sg13_lv_nmos L=0.6u W=1.2u AS=0.408p AD=0.408p
++ PS=3.08u PD=3.08u rfmode=0
+R$60 \$I1500 \$I1521 gd rppd w=1u l=1.7u ps=0u b=0 m=1
+M$61 vp \$I1523 \$I1521 vp sg13_lv_pmos L=0.6u W=1.2u AS=0.408p AD=0.408p
++ PS=3.08u PD=3.08u rfmode=0
+R$64 gd \$I1527 gd rppd w=1u l=1.7u ps=0u b=0 m=1
+R$65 gd \$I1533 gd rppd w=1u l=1.7u ps=0u b=0 m=1
+M$68 gd \$I1525 \$I1525 gd sg13_lv_nmos L=0.6u W=1.4u AS=0.476p AD=0.476p
++ PS=3.48u PD=3.48u rfmode=0
+M$69 gd \$I1531 \$I1531 gd sg13_lv_nmos L=0.6u W=1.4u AS=0.476p AD=0.476p
++ PS=3.48u PD=3.48u rfmode=0
+M$70 vp \$I1513 \$I1525 vp sg13_lv_pmos L=0.6u W=1.2u AS=0.408p AD=0.408p
++ PS=3.08u PD=3.08u rfmode=0
+M$71 vp \$I1523 \$I1531 vp sg13_lv_pmos L=0.6u W=1.2u AS=0.408p AD=0.408p
++ PS=3.08u PD=3.08u rfmode=0
+M$72 gd \$I1524 \$I1524 gd sg13_lv_nmos L=0.6u W=1u AS=0.34p AD=0.34p PS=2.68u
++ PD=2.68u rfmode=0
+M$73 vp vp \$I1524 gd sg13_lv_nmos L=0.6u W=1u AS=0.34p AD=0.34p PS=2.68u
++ PD=2.68u rfmode=0
+M$74 vp \$I1524 \$I1513 gd sg13_lv_nmos L=0.6u W=1u AS=0.34p AD=0.34p PS=2.68u
++ PD=2.68u rfmode=0
+M$75 gd \$I1530 \$I1530 gd sg13_lv_nmos L=0.6u W=1u AS=0.34p AD=0.34p PS=2.68u
++ PD=2.68u rfmode=0
+M$76 vp vp \$I1530 gd sg13_lv_nmos L=0.6u W=1u AS=0.34p AD=0.34p PS=2.68u
++ PD=2.68u rfmode=0
+M$77 vp \$I1530 \$I1523 gd sg13_lv_nmos L=0.6u W=1u AS=0.34p AD=0.34p PS=2.68u
++ PD=2.68u rfmode=0
+M$78 \$I1513 \$I1513 vp vp sg13_lv_pmos L=0.6u W=1.4u AS=0.476p AD=0.476p
++ PS=3.48u PD=3.48u rfmode=0
+M$79 \$I1523 \$I1523 vp vp sg13_lv_pmos L=0.6u W=1.4u AS=0.476p AD=0.476p
++ PS=3.48u PD=3.48u rfmode=0
+M$80 \$I1513 \$I1525 \$I1527 gd sg13_lv_nmos L=0.6u W=1.2u AS=0.408p AD=0.408p
++ PS=3.08u PD=3.08u rfmode=0
+M$81 \$I1523 \$I1531 \$I1533 gd sg13_lv_nmos L=0.6u W=1.2u AS=0.408p AD=0.408p
++ PS=3.08u PD=3.08u rfmode=0
+.ENDS PLL_top
+
+.SUBCKT input_register GND VP d10 d d9 d8 d0 d7 d1 d6 d2 d5 d3 d4 data_en
++ clk_in d11
+X$91 GND VP \$4 \$8 inverter_x4
+X$95 d1 d0 \$4 \$I18 GND VP d_flip_flop
+X$96 d0 d \$4 \$I17 GND VP d_flip_flop
+X$99 d2 d1 \$4 \$I16 GND VP d_flip_flop
+X$100 d3 d2 \$4 \$I15 GND VP d_flip_flop
+X$101 d4 d3 \$4 \$I14 GND VP d_flip_flop
+X$102 d5 d4 \$4 \$I13 GND VP d_flip_flop
+X$103 d7 d6 \$4 \$I12 GND VP d_flip_flop
+X$104 d11 d10 \$4 \$I11 GND VP d_flip_flop
+X$105 d10 d9 \$4 \$I10 GND VP d_flip_flop
+X$106 d9 d8 \$4 \$I9 GND VP d_flip_flop
+X$107 d8 d7 \$4 \$I8 GND VP d_flip_flop
+X$108 d6 d5 \$4 \$I7 GND VP d_flip_flop
+X$109 GND clk_in data_en \$8 VP NAND_2in_x2
+.ENDS input_register
+
+.SUBCKT mux8to1 gd vp A0 A1 A2 in8 in7 in6 in5 in4 out in3 in1 in2
+X$163 vp gd \$130 \$24 \$115 \$117 passgate
+X$164 vp gd \$61 \$24 \$63 \$64 passgate
+X$165 vp gd \$23 \$24 \$19 \$20 passgate
+X$167 vp gd \$171 \$24 \$151 \$172 passgate
+X$168 vp gd \$150 \$24 \$152 \$132 passgate
+X$169 vp gd \$203 \$24 \$204 \$174 passgate
+X$170 vp gd \$90 \$24 \$91 \$93 passgate
+X$171 vp gd \$57 \$24 \$50 \$33 passgate
+X$172 gd vp \$150 in3 inverter_x4
+X$173 gd vp \$117 \$115 inverter_x4
+X$174 gd vp \$90 in5 inverter_x4
+X$175 gd vp \$12 A0 inverter_x4
+X$176 gd vp \$3 A1 inverter_x4
+X$177 gd vp \$172 \$151 inverter_x4
+X$178 gd vp \$20 \$19 inverter_x4
+X$179 gd vp \$64 \$63 inverter_x4
+X$180 gd vp \$14 A2 inverter_x4
+X$186 gd vp \$57 in7 inverter_x4
+X$187 gd vp \$23 in8 inverter_x4
+X$188 gd vp \$33 \$50 inverter_x4
+X$189 gd vp out \$24 inverter_x4
+X$191 gd vp \$174 \$204 inverter_x4
+X$192 gd vp \$130 in4 inverter_x4
+X$193 gd vp \$203 in1 inverter_x4
+X$195 gd vp \$61 in6 inverter_x4
+X$196 gd vp \$93 \$91 inverter_x4
+X$197 gd vp \$132 \$152 inverter_x4
+X$198 gd vp \$171 in2 inverter_x4
+X$199 \$14 A0 A1 \$115 vp gd NAND_3in
+X$200 \$3 A0 \$14 \$151 vp gd NAND_3in
+X$201 A2 A0 A1 \$19 vp gd NAND_3in
+X$203 \$3 A0 A2 \$63 vp gd NAND_3in
+X$204 \$12 A1 A2 \$50 vp gd NAND_3in
+X$205 \$14 \$12 \$3 \$204 vp gd NAND_3in
+X$206 \$12 A2 \$3 \$91 vp gd NAND_3in
+X$207 \$12 A1 \$14 \$152 vp gd NAND_3in
+.ENDS mux8to1
+
+.SUBCKT debug_level_shifter gd in out vph vpl
+M$1 gd 1_stage_out \$I73 gd sg13_lv_nmos L=0.45u W=1u AS=0.34p AD=0.19p
++ PS=2.68u PD=1.38u rfmode=0
+M$2 \$I73 1_stage_out \$19 gd sg13_lv_nmos L=0.45u W=1u AS=0.19p AD=0.34p
++ PS=1.38u PD=2.68u rfmode=0
+M$3 gd in \$I15 gd sg13_lv_nmos L=0.45u W=1u AS=0.34p AD=0.19p PS=2.68u
++ PD=1.38u rfmode=0
+M$4 \$I15 in 1_stage_out gd sg13_lv_nmos L=0.45u W=1u AS=0.19p AD=0.34p
++ PS=1.38u PD=2.68u rfmode=0
+M$5 gd 3_stage_out \$I185 gd sg13_hv_nmos L=0.45u W=1u AS=0.34p AD=0.19p
++ PS=2.68u PD=1.38u rfmode=0
+M$6 \$I185 3_stage_out out gd sg13_hv_nmos L=0.45u W=1u AS=0.19p AD=0.34p
++ PS=1.38u PD=2.68u rfmode=0
+M$7 out 3_stage_out vph vph sg13_hv_pmos L=0.45u W=2u AS=0.53p AD=0.53p
++ PS=4.06u PD=4.06u rfmode=0
+M$9 \$44 4 vph vph sg13_hv_pmos L=0.45u W=2u AS=0.53p AD=0.38p PS=4.06u
++ PD=2.76u rfmode=0
+M$11 \$44 \$19 3_stage_out vph sg13_hv_pmos L=0.45u W=2u AS=0.38p AD=0.53p
++ PS=2.76u PD=4.06u rfmode=0
+M$13 4 1_stage_out \$I115 vph sg13_hv_pmos L=0.45u W=1u AS=0.34p AD=0.19p
++ PS=2.68u PD=1.38u rfmode=0
+M$14 \$I115 3_stage_out vph vph sg13_hv_pmos L=0.45u W=1u AS=0.19p AD=0.34p
++ PS=1.38u PD=2.68u rfmode=0
+M$15 4 1_stage_out gd gd sg13_hv_nmos L=0.45u W=2u AS=0.53p AD=0.53p PS=4.06u
++ PD=4.06u rfmode=0
+M$17 gd \$19 3_stage_out gd sg13_hv_nmos L=0.45u W=4u AS=0.91p AD=0.91p
++ PS=6.82u PD=6.82u rfmode=0
+M$21 \$19 1_stage_out vpl vpl sg13_lv_pmos L=0.45u W=2u AS=0.53p AD=0.53p
++ PS=4.06u PD=4.06u rfmode=0
+M$23 1_stage_out in vpl vpl sg13_lv_pmos L=0.45u W=2u AS=0.53p AD=0.53p
++ PS=4.06u PD=4.06u rfmode=0
+.ENDS debug_level_shifter
+
+.SUBCKT buf_lp gnd INPUT OUT vdd
+M$1 gnd INPUT \$6 gnd sg13_hv_nmos L=0.45u W=2u AS=0.455p AD=0.38p PS=4.32u
++ PD=3.52u rfmode=0
+M$5 gnd \$6 \$21 gnd sg13_hv_nmos L=0.45u W=4u AS=0.76p AD=0.76p PS=7.04u
++ PD=7.04u rfmode=0
+M$13 gnd \$21 \$26 gnd sg13_hv_nmos L=0.45u W=6u AS=1.14p AD=1.14p PS=10.56u
++ PD=10.56u rfmode=0
+M$25 gnd \$26 OUT gnd sg13_hv_nmos L=0.45u W=8u AS=1.52p AD=1.595p PS=14.08u
++ PD=14.88u rfmode=0
+M$41 vdd INPUT \$6 vdd sg13_hv_pmos L=0.4u W=3u AS=0.6825p AD=0.57p PS=5.57u
++ PD=4.52u rfmode=0
+M$45 vdd \$6 \$21 vdd sg13_hv_pmos L=0.4u W=6u AS=1.14p AD=1.14p PS=9.04u
++ PD=9.04u rfmode=0
+M$53 vdd \$21 \$26 vdd sg13_hv_pmos L=0.4u W=9u AS=1.71p AD=1.71p PS=13.56u
++ PD=13.56u rfmode=0
+M$65 vdd \$26 OUT vdd sg13_hv_pmos L=0.4u W=12u AS=2.28p AD=2.3925p PS=18.08u
++ PD=19.13u rfmode=0
+.ENDS buf_lp
+
+.SUBCKT Divider_top VP gd rst d0 d1 d2 d3 d4 d5 a0 a1 a2 clk out_div
+X$19 VP gd d2 d3 d4 d5 \$37 d0 d1 out_div rst pdiv
+X$25 VP a0 a1 a2 gd \$I89 \$I90 \$I91 \$I92 \$I93 \$37 \$I94 clk \$I97 MUX_8to1
+X$43 VP gd \$I89 \$I91 \$I90 \$I93 \$I92 \$I94 \$I97 clk 2Div
+.ENDS Divider_top
+
+.SUBCKT inverter_x4_top IN VP GND OUT
+M$1 VP IN OUT VP sg13_lv_pmos L=0.13u W=0.6u AS=0.204p AD=0.204p PS=1.88u
++ PD=1.88u rfmode=0
+M$2 GND IN OUT GND sg13_lv_nmos L=0.13u W=0.6u AS=0.204p AD=0.204p PS=1.88u
++ PD=1.88u rfmode=0
+.ENDS inverter_x4_top
+
+.SUBCKT level_shifter gd in out vph vpl
+M$1 gd 1_stage_out \$I61 gd sg13_lv_nmos L=0.45u W=1u AS=0.34p AD=0.19p
++ PS=2.68u PD=1.38u rfmode=0
+M$2 \$I61 1_stage_out \$19 gd sg13_lv_nmos L=0.45u W=1u AS=0.19p AD=0.34p
++ PS=1.38u PD=2.68u rfmode=0
+M$3 gd in \$I63 gd sg13_lv_nmos L=0.45u W=1u AS=0.34p AD=0.19p PS=2.68u
++ PD=1.38u rfmode=0
+M$4 \$I63 in 1_stage_out gd sg13_lv_nmos L=0.45u W=1u AS=0.19p AD=0.34p
++ PS=1.38u PD=2.68u rfmode=0
+M$5 gd 3_stage_out \$I204 gd sg13_hv_nmos L=0.45u W=1u AS=0.34p AD=0.19p
++ PS=2.68u PD=1.38u rfmode=0
+M$6 \$I204 3_stage_out out gd sg13_hv_nmos L=0.45u W=1u AS=0.19p AD=0.34p
++ PS=1.38u PD=2.68u rfmode=0
+M$7 out 3_stage_out vph vph sg13_hv_pmos L=0.45u W=2u AS=0.53p AD=0.53p
++ PS=4.06u PD=4.06u rfmode=0
+M$9 \$44 4 vph vph sg13_hv_pmos L=0.45u W=2u AS=0.53p AD=0.38p PS=4.06u
++ PD=2.76u rfmode=0
+M$11 \$44 \$19 3_stage_out vph sg13_hv_pmos L=0.45u W=2u AS=0.38p AD=0.53p
++ PS=2.76u PD=4.06u rfmode=0
+M$13 4 1_stage_out \$I154 vph sg13_hv_pmos L=0.45u W=1u AS=0.34p AD=0.19p
++ PS=2.68u PD=1.38u rfmode=0
+M$14 \$I154 3_stage_out vph vph sg13_hv_pmos L=0.45u W=1u AS=0.19p AD=0.34p
++ PS=1.38u PD=2.68u rfmode=0
+M$15 4 1_stage_out gd gd sg13_hv_nmos L=0.45u W=2u AS=0.53p AD=0.53p PS=4.06u
++ PD=4.06u rfmode=0
+M$17 gd \$19 3_stage_out gd sg13_hv_nmos L=0.45u W=4u AS=0.91p AD=0.91p
++ PS=6.82u PD=6.82u rfmode=0
+M$21 \$19 1_stage_out vpl vpl sg13_lv_pmos L=0.45u W=2u AS=0.53p AD=0.53p
++ PS=4.06u PD=4.06u rfmode=0
+M$23 1_stage_out in vpl vpl sg13_lv_pmos L=0.45u W=2u AS=0.53p AD=0.53p
++ PS=4.06u PD=4.06u rfmode=0
+.ENDS level_shifter
+
+.SUBCKT inverter_x2 GND OUT VP IN
+M$1 GND IN OUT GND sg13_lv_nmos L=0.13u W=0.3u AS=0.102p AD=0.102p PS=1.28u
++ PD=1.28u rfmode=0
+M$2 VP IN OUT VP sg13_lv_pmos L=0.13u W=0.3u AS=0.102p AD=0.102p PS=1.28u
++ PD=1.28u rfmode=0
+.ENDS inverter_x2
+
+.SUBCKT PFD_cell_2 gnd rst vp DOWN cVco UP cRef
+X$7 gnd cRef pre_up vp flip_flop_reset vp PFD_flip_flop
+X$14 \$59 \$52 vp gnd PFD_buffor
+X$21 gnd cVco pre_down vp flip_flop_reset vp PFD_flip_flop
+X$37 pre_up post_nand pre_down vp gnd NAND_2in
+X$38 gnd vp \$59 post_nand PFD_inverter_x4
+X$39 gnd vp \$28 pre_up PFD_inverter_x4
+X$40 gnd vp DOWN \$25 PFD_inverter_x4
+X$41 gnd vp \$25 pre_down PFD_inverter_x4
+X$42 gnd vp UP \$28 PFD_inverter_x4
+X$43 gnd vp \$29 rst PFD_inverter_x4
+X$44 vp gnd flip_flop_reset \$52 rst \$29 PFD_passgate
+X$46 vp gnd flip_flop_reset vp \$29 rst PFD_passgate
+M$1 gnd rst UP gnd sg13_lv_nmos L=0.15u W=0.45u AS=0.153p AD=0.153p PS=1.58u
++ PD=1.58u rfmode=0
+M$2 DOWN rst gnd gnd sg13_lv_nmos L=0.15u W=0.45u AS=0.153p AD=0.153p PS=1.58u
++ PD=1.58u rfmode=0
+.ENDS PFD_cell_2
+
+.SUBCKT vco_top gd VP vco_in out c1 c2 f2 f1 f0 c0 f5 f4 f3
+X$1 VP gd out \$78 \$88 \$101 \$28 \$52 \$30 \$72 \$2 \$9 \$84 VCO_MUX
+X$13 \$199 gd \$I456 \$132 \$219 \$113 \$226 \$I455 vco_core_2
+X$24 \$107 \$76 gd \$105 vco_core_0
+X$33 gd \$129 \$128 \$155 \$70 \$179 \$43 \$164 vco_core_1
+X$45 gd c2 c1 c0 f0 f1 f2 f3 f4 f5 VP \$132 \$113 \$70 \$55 \$37 \$30 \$2 \$43
++ VCO_decoder_cells
+X$141 gd \$52 VP \$51 0_buf
+X$142 gd \$101 VP \$105 0_buf
+X$143 gd \$72 VP \$226 0_buf
+X$144 gd \$84 VP \$179 0_buf
+X$171 \$2 \$7 VP \$3 gd VP vco_passgate
+X$174 \$78 \$224 VP \$199 gd VP vco_passgate
+X$175 \$88 \$150 VP \$129 gd VP vco_passgate
+X$176 \$28 \$49 VP \$27 gd VP vco_passgate
+X$177 \$30 \$81 VP \$76 gd VP vco_passgate
+X$191 gd \$9 VP \$17 0_buf
+X$238 \$17 \$3 gd \$11 vco_core_4
+X$249 gd \$27 \$I460 \$37 \$46 \$51 \$55 \$I457 vco_core_3
+X$257 VP gd vco_in \$107 \$81 \$30 PFD_passgate
+X$258 VP gd vco_in \$155 \$150 \$88 PFD_passgate
+X$259 VP gd vco_in \$219 \$224 \$78 PFD_passgate
+X$260 VP gd vco_in \$46 \$49 \$28 PFD_passgate
+X$261 VP gd vco_in \$11 \$7 \$2 PFD_passgate
+X$264 gd VP \$57 \$55 \$37 NOR_2in
+X$265 gd VP \$235 \$113 \$132 NOR_2in
+X$266 gd VP \$160 \$43 \$70 NOR_2in
+M$1 \$3 \$7 gd gd sg13_lv_nmos L=0.13u W=0.3u AS=0.102p AD=0.102p PS=1.28u
++ PD=1.28u rfmode=0
+M$2 \$219 \$224 gd gd sg13_lv_nmos L=0.13u W=0.3u AS=0.102p AD=0.102p PS=1.28u
++ PD=1.28u rfmode=0
+M$3 \$199 \$224 gd gd sg13_lv_nmos L=0.13u W=0.3u AS=0.102p AD=0.102p PS=1.28u
++ PD=1.28u rfmode=0
+M$4 \$27 \$49 gd gd sg13_lv_nmos L=0.13u W=0.3u AS=0.102p AD=0.102p PS=1.28u
++ PD=1.28u rfmode=0
+M$5 \$107 \$81 gd gd sg13_lv_nmos L=0.13u W=0.3u AS=0.102p AD=0.102p PS=1.28u
++ PD=1.28u rfmode=0
+M$6 \$155 \$150 gd gd sg13_lv_nmos L=0.13u W=0.3u AS=0.102p AD=0.102p PS=1.28u
++ PD=1.28u rfmode=0
+M$7 \$129 \$150 gd gd sg13_lv_nmos L=0.13u W=0.3u AS=0.102p AD=0.102p PS=1.28u
++ PD=1.28u rfmode=0
+M$8 \$11 \$7 gd gd sg13_lv_nmos L=0.13u W=0.3u AS=0.102p AD=0.102p PS=1.28u
++ PD=1.28u rfmode=0
+M$9 \$76 \$81 gd gd sg13_lv_nmos L=0.13u W=0.3u AS=0.102p AD=0.102p PS=1.28u
++ PD=1.28u rfmode=0
+M$10 \$46 \$49 gd gd sg13_lv_nmos L=0.13u W=0.3u AS=0.102p AD=0.102p PS=1.28u
++ PD=1.28u rfmode=0
+M$11 gd \$37 \$I460 gd sg13_lv_nmos L=0.13u W=0.15u AS=0.1005p AD=0.1005p
++ PS=1.34u PD=1.34u rfmode=0
+M$12 gd \$43 \$164 gd sg13_lv_nmos L=0.13u W=0.15u AS=0.1005p AD=0.1005p
++ PS=1.34u PD=1.34u rfmode=0
+M$13 gd \$70 \$128 gd sg13_lv_nmos L=0.13u W=0.15u AS=0.1005p AD=0.1005p
++ PS=1.34u PD=1.34u rfmode=0
+M$14 gd \$55 \$I457 gd sg13_lv_nmos L=0.13u W=0.15u AS=0.1005p AD=0.1005p
++ PS=1.34u PD=1.34u rfmode=0
+M$15 gd \$132 \$I456 gd sg13_lv_nmos L=0.13u W=0.15u AS=0.1005p AD=0.1005p
++ PS=1.34u PD=1.34u rfmode=0
+M$16 gd \$113 \$I455 gd sg13_lv_nmos L=0.13u W=0.15u AS=0.1005p AD=0.1005p
++ PS=1.34u PD=1.34u rfmode=0
+M$17 gd \$88 \$150 gd sg13_lv_nmos L=0.13u W=0.15u AS=0.1005p AD=0.1005p
++ PS=1.34u PD=1.34u rfmode=0
+M$18 gd \$78 \$224 gd sg13_lv_nmos L=0.13u W=0.15u AS=0.1005p AD=0.1005p
++ PS=1.34u PD=1.34u rfmode=0
+M$19 gd \$235 \$78 gd sg13_lv_nmos L=0.13u W=0.15u AS=0.1005p AD=0.1005p
++ PS=1.34u PD=1.34u rfmode=0
+M$20 gd \$28 \$49 gd sg13_lv_nmos L=0.13u W=0.15u AS=0.1005p AD=0.1005p
++ PS=1.34u PD=1.34u rfmode=0
+M$21 gd \$160 \$88 gd sg13_lv_nmos L=0.13u W=0.15u AS=0.1005p AD=0.1005p
++ PS=1.34u PD=1.34u rfmode=0
+M$22 gd \$57 \$28 gd sg13_lv_nmos L=0.13u W=0.15u AS=0.1005p AD=0.1005p
++ PS=1.34u PD=1.34u rfmode=0
+M$23 gd \$30 \$81 gd sg13_lv_nmos L=0.13u W=0.15u AS=0.1005p AD=0.1005p
++ PS=1.34u PD=1.34u rfmode=0
+M$24 gd \$2 \$7 gd sg13_lv_nmos L=0.13u W=0.15u AS=0.1005p AD=0.1005p PS=1.34u
++ PD=1.34u rfmode=0
+M$25 VP \$37 \$I460 VP sg13_lv_pmos L=0.13u W=0.15u AS=0.1005p AD=0.1005p
++ PS=1.34u PD=1.34u rfmode=0
+M$26 VP \$43 \$164 VP sg13_lv_pmos L=0.13u W=0.15u AS=0.1005p AD=0.1005p
++ PS=1.34u PD=1.34u rfmode=0
+M$27 VP \$70 \$128 VP sg13_lv_pmos L=0.13u W=0.15u AS=0.1005p AD=0.1005p
++ PS=1.34u PD=1.34u rfmode=0
+M$28 VP \$55 \$I457 VP sg13_lv_pmos L=0.13u W=0.15u AS=0.1005p AD=0.1005p
++ PS=1.34u PD=1.34u rfmode=0
+M$29 VP \$132 \$I456 VP sg13_lv_pmos L=0.13u W=0.15u AS=0.1005p AD=0.1005p
++ PS=1.34u PD=1.34u rfmode=0
+M$30 VP \$113 \$I455 VP sg13_lv_pmos L=0.13u W=0.15u AS=0.1005p AD=0.1005p
++ PS=1.34u PD=1.34u rfmode=0
+M$31 VP \$88 \$150 VP sg13_lv_pmos L=0.13u W=0.15u AS=0.1005p AD=0.1005p
++ PS=1.34u PD=1.34u rfmode=0
+M$32 VP \$78 \$224 VP sg13_lv_pmos L=0.13u W=0.15u AS=0.1005p AD=0.1005p
++ PS=1.34u PD=1.34u rfmode=0
+M$33 VP \$235 \$78 VP sg13_lv_pmos L=0.13u W=0.15u AS=0.1005p AD=0.1005p
++ PS=1.34u PD=1.34u rfmode=0
+M$34 VP \$28 \$49 VP sg13_lv_pmos L=0.13u W=0.15u AS=0.1005p AD=0.1005p
++ PS=1.34u PD=1.34u rfmode=0
+M$35 VP \$160 \$88 VP sg13_lv_pmos L=0.13u W=0.15u AS=0.1005p AD=0.1005p
++ PS=1.34u PD=1.34u rfmode=0
+M$36 VP \$57 \$28 VP sg13_lv_pmos L=0.13u W=0.15u AS=0.1005p AD=0.1005p
++ PS=1.34u PD=1.34u rfmode=0
+M$37 VP \$30 \$81 VP sg13_lv_pmos L=0.13u W=0.15u AS=0.1005p AD=0.1005p
++ PS=1.34u PD=1.34u rfmode=0
+M$38 VP \$2 \$7 VP sg13_lv_pmos L=0.13u W=0.15u AS=0.1005p AD=0.1005p PS=1.34u
++ PD=1.34u rfmode=0
+.ENDS vco_top
+
+.SUBCKT buf gnd OUT vdd INPUT
+M$1 gnd INPUT \$22 gnd sg13_hv_nmos L=0.45u W=10u AS=2.275p AD=1.9p PS=14.32u
++ PD=11.52u rfmode=0
+M$5 gnd \$22 \$19 gnd sg13_hv_nmos L=0.45u W=20u AS=3.8p AD=3.8p PS=23.04u
++ PD=23.04u rfmode=0
+M$13 gnd \$19 \$3 gnd sg13_hv_nmos L=0.45u W=40u AS=7.6p AD=7.6p PS=46.08u
++ PD=46.08u rfmode=0
+M$29 gnd \$3 OUT gnd sg13_hv_nmos L=0.45u W=120u AS=22.8p AD=23.175p PS=138.24u
++ PD=141.04u rfmode=0
+M$77 vdd INPUT \$22 vdd sg13_hv_pmos L=0.4u W=10u AS=2.275p AD=1.9p PS=14.32u
++ PD=11.52u rfmode=0
+M$81 vdd \$22 \$19 vdd sg13_hv_pmos L=0.4u W=20u AS=3.8p AD=3.8p PS=23.04u
++ PD=23.04u rfmode=0
+M$89 vdd \$19 \$3 vdd sg13_hv_pmos L=0.4u W=40u AS=7.6p AD=7.6p PS=46.08u
++ PD=46.08u rfmode=0
+M$105 vdd \$3 OUT vdd sg13_hv_pmos L=0.4u W=120u AS=22.8p AD=23.175p PS=138.24u
++ PD=141.04u rfmode=0
+.ENDS buf
+
+.SUBCKT buffer_hv gd \$15 vph in out
+M$1 gd \$29 out gd sg13_hv_nmos L=0.45u W=1u AS=0.34p AD=0.34p PS=2.68u
++ PD=2.68u rfmode=0
+M$2 \$17 \$19 gd gd sg13_hv_nmos L=0.45u W=3u AS=0.72p AD=0.57p PS=5.44u
++ PD=4.14u rfmode=0
+M$5 gd \$17 \$16 gd sg13_hv_nmos L=0.45u W=2u AS=0.38p AD=0.38p PS=2.76u
++ PD=2.76u rfmode=0
+M$7 gd \$16 \$14 gd sg13_hv_nmos L=0.45u W=2u AS=0.38p AD=0.38p PS=2.76u
++ PD=2.76u rfmode=0
+M$9 gd \$14 \$29 gd sg13_hv_nmos L=0.45u W=1u AS=0.19p AD=0.34p PS=1.38u
++ PD=2.68u rfmode=0
+M$10 gd in \$15 gd sg13_hv_nmos L=0.45u W=4u AS=0.91p AD=0.76p PS=6.82u
++ PD=5.52u rfmode=0
+M$14 gd \$15 \$18 gd sg13_hv_nmos L=0.45u W=4u AS=0.76p AD=0.76p PS=5.52u
++ PD=5.52u rfmode=0
+M$18 gd \$18 \$19 gd sg13_hv_nmos L=0.45u W=3u AS=0.57p AD=0.72p PS=4.14u
++ PD=5.44u rfmode=0
+M$21 \$17 \$19 vph vph sg13_hv_pmos L=0.45u W=3u AS=0.72p AD=0.57p PS=5.44u
++ PD=4.14u rfmode=0
+M$24 vph \$17 \$16 vph sg13_hv_pmos L=0.45u W=2u AS=0.38p AD=0.38p PS=2.76u
++ PD=2.76u rfmode=0
+M$26 vph \$16 \$14 vph sg13_hv_pmos L=0.45u W=2u AS=0.38p AD=0.38p PS=2.76u
++ PD=2.76u rfmode=0
+M$28 vph \$14 \$29 vph sg13_hv_pmos L=0.45u W=1u AS=0.19p AD=0.34p PS=1.38u
++ PD=2.68u rfmode=0
+M$29 vph \$29 out vph sg13_hv_pmos L=0.45u W=1u AS=0.34p AD=0.34p PS=2.68u
++ PD=2.68u rfmode=0
+M$30 vph in \$15 vph sg13_hv_pmos L=0.45u W=4u AS=0.91p AD=0.76p PS=6.82u
++ PD=5.52u rfmode=0
+M$34 vph \$15 \$18 vph sg13_hv_pmos L=0.45u W=4u AS=0.76p AD=0.76p PS=5.52u
++ PD=5.52u rfmode=0
+M$38 vph \$18 \$19 vph sg13_hv_pmos L=0.45u W=3u AS=0.57p AD=0.72p PS=4.14u
++ PD=5.44u rfmode=0
+.ENDS buffer_hv
+
+.SUBCKT 2Div vp gd div128 div32 div64 div8 div16 div4 div2 in
+X$4 div16 \$30 div8 \$30 gd vp d_flip_flop
+X$5 div4 \$46 div2 \$46 gd vp d_flip_flop
+X$7 div128 \$6 div64 \$6 gd vp d_flip_flop
+X$8 div2 \$65 in \$65 gd vp d_flip_flop
+X$9 div32 \$28 div16 \$28 gd vp d_flip_flop
+X$10 div8 \$39 div4 \$39 gd vp d_flip_flop
+X$11 div64 \$5 div32 \$5 gd vp d_flip_flop
+.ENDS 2Div
+
+.SUBCKT MUX_8to1 vp A0 A1 A2 gd in8 in7 in6 in5 in4 out in3 in1 in2
+X$23 vp gd \$92 \$25 \$71 \$72 passgate
+X$24 vp gd \$196 \$25 \$182 \$198 passgate
+X$25 vp gd \$143 \$25 \$128 \$130 passgate
+X$26 vp gd \$52 \$25 \$55 \$41 passgate
+X$27 vp gd \$110 \$25 \$111 \$93 passgate
+X$28 vp gd \$221 \$25 \$230 \$213 passgate
+X$29 vp gd \$171 \$25 \$164 \$145 passgate
+X$36 vp gd \$22 \$25 \$19 \$21 passgate
+X$40 gd vp \$110 in5 inverter_x4
+X$41 gd vp \$130 \$128 inverter_x4
+X$42 gd vp \$52 in7 inverter_x4
+X$43 gd vp \$171 in3 inverter_x4
+X$44 gd vp \$3 A1 inverter_x4
+X$45 gd vp \$21 \$19 inverter_x4
+X$46 gd vp \$72 \$71 inverter_x4
+X$47 gd vp \$13 A2 inverter_x4
+X$48 gd vp \$11 A0 inverter_x4
+X$50 gd vp \$198 \$182 inverter_x4
+X$51 gd vp \$22 in8 inverter_x4
+X$52 gd vp \$145 \$164 inverter_x4
+X$53 gd vp \$92 in6 inverter_x4
+X$54 gd vp \$93 \$111 inverter_x4
+X$55 gd vp \$196 in2 inverter_x4
+X$56 gd vp \$41 \$55 inverter_x4
+X$57 gd vp \$213 \$230 inverter_x4
+X$58 gd vp \$143 in4 inverter_x4
+X$59 gd vp \$221 in1 inverter_x4
+X$61 gd vp out \$25 inverter_x4
+X$62 \$13 A0 A1 \$128 vp gd NAND_3in
+X$63 \$3 A0 A2 \$71 vp gd NAND_3in
+X$64 A2 A0 A1 \$19 vp gd NAND_3in
+X$65 \$3 A0 \$13 \$182 vp gd NAND_3in
+X$66 \$11 A2 \$3 \$111 vp gd NAND_3in
+X$67 \$11 A1 \$13 \$164 vp gd NAND_3in
+X$68 \$11 A1 A2 \$55 vp gd NAND_3in
+X$69 \$13 \$11 \$3 \$230 vp gd NAND_3in
+.ENDS MUX_8to1
+
+.SUBCKT pdiv VP gd d2 d3 d4 d5 clk d0 d1 out_div reset
+X$7 gd VP \$24 \$74 inverter_x8
+X$8 VP gd \$I137 d0 d1 d2 d4 d5 \$6 \$I138 d3 \$I139 \$10 \$12 \$74
++ count_data_check
+X$11 VP gd \$24 \$33 \$27 \$52 passgate
+X$12 gd \$6 \$I137 VP \$24 \$10 \$I138 \$12 \$I139 clk div_with_reset
+X$13 VP gd clk \$33 \$52 \$27 passgate
+X$14 gd VP \$56 reset inverter_x4
+X$16 gd VP \$52 \$27 inverter_x4
+X$17 \$56 \$33 out_div gd VP \$30 \$30 d_flip_flop_reset
+X$18 gd VP \$27 \$29 \$28 NOR_2in
+X$19 d0 d2 d1 \$28 VP gd NAND_3in
+X$20 d3 d5 d4 \$29 VP gd NAND_3in
+.ENDS pdiv
+
+.SUBCKT PFD_buffor in out vp gnd
+M$1 \$7 in gnd gnd sg13_lv_nmos L=0.75u W=0.4u AS=0.136p AD=0.076p PS=1.48u
++ PD=0.78u rfmode=0
+M$2 gnd \$7 out gnd sg13_lv_nmos L=0.75u W=0.4u AS=0.076p AD=0.136p PS=0.78u
++ PD=1.48u rfmode=0
+M$3 \$7 in vp vp sg13_lv_pmos L=0.75u W=0.4u AS=0.136p AD=0.076p PS=1.48u
++ PD=0.78u rfmode=0
+M$4 vp \$7 out vp sg13_lv_pmos L=0.75u W=0.4u AS=0.076p AD=0.136p PS=0.78u
++ PD=1.48u rfmode=0
+.ENDS PFD_buffor
+
+.SUBCKT PFD_flip_flop gd clk Q D rst vp
+X$39 vp gd post_NOR 1 clk_n clk PFD_passgate
+X$40 vp gd 2 3 clk_n clk PFD_passgate
+X$41 vp gd D 1 clk clk_n PFD_passgate
+X$43 gd vp clk_n clk PFD_inverter_x4
+X$44 gd vp NQ Q PFD_inverter_x8
+X$45 gd vp Q rst 3 PFD_NOR
+X$46 vp gd NQ 3 clk clk_n PFD_passgate
+X$48 gd vp post_NOR rst 2 PFD_NOR
+X$49 gd vp 2 1 PFD_inverter_x8
+M$1 gd 1 gd gd sg13_lv_nmos L=5u W=10u AS=3.4p AD=1.9p PS=20.68u PD=10.38u
++ rfmode=0
+M$2 gd 2 gd gd sg13_lv_nmos L=5u W=10u AS=1.9p AD=1.9p PS=10.38u PD=10.38u
++ rfmode=0
+M$3 gd 3 gd gd sg13_lv_nmos L=5u W=10u AS=1.9p AD=3.4p PS=10.38u PD=20.68u
++ rfmode=0
+.ENDS PFD_flip_flop
+
+.SUBCKT NAND_2in a y b VP GND
+M$1 GND b \$20 GND sg13_lv_nmos L=0.13u W=0.15u AS=0.1005p AD=0.0555p PS=1.34u
++ PD=0.74u rfmode=0
+M$2 \$20 a y GND sg13_lv_nmos L=0.13u W=0.15u AS=0.0555p AD=0.1005p PS=0.74u
++ PD=1.34u rfmode=0
+M$3 VP b y VP sg13_lv_pmos L=0.13u W=0.15u AS=0.1005p AD=0.0555p PS=1.34u
++ PD=0.74u rfmode=0
+M$4 y a VP VP sg13_lv_pmos L=0.13u W=0.15u AS=0.0555p AD=0.1005p PS=0.74u
++ PD=1.34u rfmode=0
+.ENDS NAND_2in
+
+.SUBCKT vco_passgate en en_ IO OI \$5 \$I28
+M$1 OI en IO \$5 sg13_lv_nmos L=0.13u W=2.5u AS=0.56875p AD=0.56875p PS=4.945u
++ PD=4.945u rfmode=0
+M$5 OI en_ IO \$I28 sg13_lv_pmos L=0.13u W=2.5u AS=0.56875p AD=0.56875p
++ PS=4.945u PD=4.945u rfmode=0
+.ENDS vco_passgate
+
+.SUBCKT vco_core_2 vp gnd nen11 en11 in en5 out nen5
+X$25 \$8 \$16 in \$3 vp gnd vco_delay_cell_2
+X$27 \$13 \$20 in \$3 vp gnd vco_delay_cell_2
+X$28 \$15 \$13 in \$3 vp gnd vco_delay_cell_2
+X$30 \$11 \$15 in \$3 vp gnd vco_delay_cell_2
+X$31 \$18 \$11 in \$3 vp gnd vco_delay_cell_2
+X$32 \$16 \$18 in \$3 vp gnd vco_delay_cell_2
+X$33 \$54 \$56 in \$3 vp gnd vco_delay_cell_2
+X$34 \$47 \$61 in \$3 vp gnd vco_delay_cell_2
+X$36 out \$12 in \$3 vp gnd vco_delay_cell_2
+X$37 \$56 out in \$3 vp gnd vco_delay_cell_2
+X$38 \$61 \$54 in \$3 vp gnd vco_delay_cell_2
+M$1 vp \$3 \$3 vp sg13_lv_pmos L=5.6u W=1.2u AS=0.408p AD=0.408p PS=3.08u
++ PD=3.08u rfmode=0
+M$2 gnd in \$3 gnd sg13_lv_nmos L=5.6u W=0.8u AS=0.272p AD=0.272p PS=2.28u
++ PD=2.28u rfmode=0
+M$3 \$47 nen5 \$12 vp sg13_lv_pmos L=0.15u W=0.3u AS=0.102p AD=0.102p PS=1.28u
++ PD=1.28u rfmode=0
+M$4 \$47 nen11 \$20 vp sg13_lv_pmos L=0.15u W=0.3u AS=0.102p AD=0.102p PS=1.28u
++ PD=1.28u rfmode=0
+M$5 \$8 nen11 \$12 vp sg13_lv_pmos L=0.15u W=0.3u AS=0.102p AD=0.102p PS=1.28u
++ PD=1.28u rfmode=0
+M$6 \$47 en5 \$12 gnd sg13_lv_nmos L=0.15u W=0.3u AS=0.102p AD=0.102p PS=1.28u
++ PD=1.28u rfmode=0
+M$7 \$47 en11 \$20 gnd sg13_lv_nmos L=0.15u W=0.3u AS=0.102p AD=0.102p PS=1.28u
++ PD=1.28u rfmode=0
+M$8 \$8 en11 \$12 gnd sg13_lv_nmos L=0.15u W=0.3u AS=0.102p AD=0.102p PS=1.28u
++ PD=1.28u rfmode=0
+.ENDS vco_core_2
+
+.SUBCKT vco_core_1 gnd vp nen11 in en11 out en5 nen5
+X$67 \$3 in \$19 \$20 vp gnd vco_delay_cell_1
+X$68 \$3 in \$22 \$17 vp gnd vco_delay_cell_1
+X$69 \$3 in \$15 \$19 vp gnd vco_delay_cell_1
+X$71 \$3 in \$20 \$21 vp gnd vco_delay_cell_1
+X$72 \$3 in \$21 \$22 vp gnd vco_delay_cell_1
+X$73 \$3 in \$51 \$41 vp gnd vco_delay_cell_1
+X$77 \$3 in \$17 \$34 vp gnd vco_delay_cell_1
+X$78 \$3 in \$41 \$42 vp gnd vco_delay_cell_1
+X$79 \$3 in out \$10 vp gnd vco_delay_cell_1
+X$80 \$3 in \$38 \$51 vp gnd vco_delay_cell_1
+X$87 \$3 in \$42 out vp gnd vco_delay_cell_1
+M$1 \$15 nen11 \$10 vp sg13_lv_pmos L=0.15u W=0.3u AS=0.102p AD=0.102p PS=1.28u
++ PD=1.28u rfmode=0
+M$2 \$38 nen5 \$10 vp sg13_lv_pmos L=0.15u W=0.3u AS=0.102p AD=0.102p PS=1.28u
++ PD=1.28u rfmode=0
+M$3 \$38 nen11 \$34 vp sg13_lv_pmos L=0.15u W=0.3u AS=0.102p AD=0.102p PS=1.28u
++ PD=1.28u rfmode=0
+M$4 \$15 en11 \$10 gnd sg13_lv_nmos L=0.15u W=0.3u AS=0.102p AD=0.102p PS=1.28u
++ PD=1.28u rfmode=0
+M$5 \$38 en5 \$10 gnd sg13_lv_nmos L=0.15u W=0.3u AS=0.102p AD=0.102p PS=1.28u
++ PD=1.28u rfmode=0
+M$6 \$38 en11 \$34 gnd sg13_lv_nmos L=0.15u W=0.3u AS=0.102p AD=0.102p PS=1.28u
++ PD=1.28u rfmode=0
+M$7 gnd in \$3 gnd sg13_lv_nmos L=1.4u W=0.8u AS=0.212p AD=0.212p PS=2.26u
++ PD=2.26u rfmode=0
+M$9 vp \$3 \$3 vp sg13_lv_pmos L=1.4u W=1.2u AS=0.318p AD=0.318p PS=2.86u
++ PD=2.86u rfmode=0
+.ENDS vco_core_1
+
+.SUBCKT 0_buf gnd out vp in
+M$1 \$5 \$4 vp vp sg13_lv_pmos L=0.13u W=2.5u AS=0.56875p AD=0.56875p PS=4.945u
++ PD=4.945u rfmode=0
+M$5 \$5 \$4 gnd gnd sg13_lv_nmos L=0.13u W=2.5u AS=0.56875p AD=0.56875p
++ PS=4.945u PD=4.945u rfmode=0
+M$9 \$4 \$3 vp vp sg13_lv_pmos L=0.13u W=2.4u AS=0.546p AD=0.546p PS=4.82u
++ PD=4.82u rfmode=0
+M$13 gnd \$3 \$4 gnd sg13_lv_nmos L=0.13u W=1.2u AS=0.318p AD=0.318p PS=2.86u
++ PD=2.86u rfmode=0
+M$15 \$3 in vp vp sg13_lv_pmos L=0.13u W=1.5u AS=0.34125p AD=0.34125p PS=3.695u
++ PD=3.695u rfmode=0
+M$19 gnd in \$3 gnd sg13_lv_nmos L=0.13u W=0.8u AS=0.212p AD=0.212p PS=2.26u
++ PD=2.26u rfmode=0
+M$21 \$6 \$5 gnd gnd sg13_lv_nmos L=0.13u W=5u AS=1.1375p AD=1.1375p PS=8.07u
++ PD=8.07u rfmode=0
+M$25 \$6 \$5 vp vp sg13_lv_pmos L=0.13u W=5u AS=1.1375p AD=1.1375p PS=8.07u
++ PD=8.07u rfmode=0
+M$29 out \$7 vp vp sg13_lv_pmos L=0.13u W=20u AS=3.9875p AD=3.9875p PS=27.63u
++ PD=27.63u rfmode=0
+M$45 out \$7 gnd gnd sg13_lv_nmos L=0.13u W=20u AS=3.9875p AD=3.9875p PS=27.63u
++ PD=27.63u rfmode=0
+M$61 \$7 \$6 gnd gnd sg13_lv_nmos L=0.13u W=10u AS=2.0875p AD=2.0875p PS=14.59u
++ PD=14.59u rfmode=0
+M$69 \$7 \$6 vp vp sg13_lv_pmos L=0.13u W=10u AS=2.0875p AD=2.0875p PS=14.59u
++ PD=14.59u rfmode=0
+.ENDS 0_buf
+
+.SUBCKT vco_core_3 gnd vp nen11 en11 in out en5 nen5
+X$76 \$14 in \$9 \$18 vp gnd vco_delay_cell_3
+X$79 \$18 in \$9 \$15 vp gnd vco_delay_cell_3
+X$80 \$15 in \$9 \$16 vp gnd vco_delay_cell_3
+X$81 \$16 in \$9 \$10 vp gnd vco_delay_cell_3
+X$82 \$12 in \$9 \$35 vp gnd vco_delay_cell_3
+X$84 \$10 in \$9 \$12 vp gnd vco_delay_cell_3
+X$85 out in \$9 \$7 vp gnd vco_delay_cell_3
+X$86 \$59 in \$9 \$51 vp gnd vco_delay_cell_3
+X$90 \$51 in \$9 \$47 vp gnd vco_delay_cell_3
+X$91 \$47 in \$9 \$42 vp gnd vco_delay_cell_3
+X$92 \$42 in \$9 out vp gnd vco_delay_cell_3
+M$1 \$59 en11 \$35 gnd sg13_lv_nmos L=0.15u W=0.3u AS=0.102p AD=0.102p PS=1.28u
++ PD=1.28u rfmode=0
+M$2 \$59 en5 \$7 gnd sg13_lv_nmos L=0.15u W=0.3u AS=0.102p AD=0.102p PS=1.28u
++ PD=1.28u rfmode=0
+M$3 \$14 en11 \$7 gnd sg13_lv_nmos L=0.15u W=0.3u AS=0.102p AD=0.102p PS=1.28u
++ PD=1.28u rfmode=0
+M$4 \$14 nen11 \$7 vp sg13_lv_pmos L=0.15u W=0.3u AS=0.102p AD=0.102p PS=1.28u
++ PD=1.28u rfmode=0
+M$5 \$59 nen5 \$7 vp sg13_lv_pmos L=0.15u W=0.3u AS=0.102p AD=0.102p PS=1.28u
++ PD=1.28u rfmode=0
+M$6 \$59 nen11 \$35 vp sg13_lv_pmos L=0.15u W=0.3u AS=0.102p AD=0.102p PS=1.28u
++ PD=1.28u rfmode=0
+M$7 \$9 in gnd gnd sg13_lv_nmos L=17u W=0.8u AS=0.272p AD=0.272p PS=2.28u
++ PD=2.28u rfmode=0
+M$8 \$9 \$9 vp vp sg13_lv_pmos L=17u W=1.2u AS=0.408p AD=0.408p PS=3.08u
++ PD=3.08u rfmode=0
+.ENDS vco_core_3
+
+.SUBCKT vco_core_4 out vp gnd in
+X$2 vp \$23 gnd \$32 pgt in vco_delay_cell_4
+X$14 vp \$29 gnd \$28 pgt in vco_delay_cell_4
+X$15 vp \$30 gnd \$29 pgt in vco_delay_cell_4
+X$16 vp \$31 gnd \$30 pgt in vco_delay_cell_4
+X$17 vp \$32 gnd \$31 pgt in vco_delay_cell_4
+X$18 vp \$28 gnd out pgt in vco_delay_cell_4
+X$19 vp out gnd \$27 pgt in vco_delay_cell_4
+X$20 vp \$27 gnd \$26 pgt in vco_delay_cell_4
+X$21 vp \$26 gnd \$25 pgt in vco_delay_cell_4
+X$22 vp \$25 gnd \$24 pgt in vco_delay_cell_4
+X$23 vp \$24 gnd \$23 pgt in vco_delay_cell_4
+M$1 pgt pgt vp vp sg13_lv_pmos L=23.6u W=1.2u AS=0.408p AD=0.408p PS=3.08u
++ PD=3.08u rfmode=0
+M$2 pgt in gnd gnd sg13_lv_nmos L=23.6u W=0.8u AS=0.272p AD=0.272p PS=2.28u
++ PD=2.28u rfmode=0
+.ENDS vco_core_4
+
+.SUBCKT VCO_decoder_cells gd c2 c1 c0 f0 f1 f2 f3 f4 f5 vp VCO3_11_sel
++ VCO3_5_sel VCO2_11_sel VCO4_5_sel VCO4_11_sel VCO_sel VCO5_11_sel VCO2_5_sel
+X$38 gd vp \$104 \$99 \$8 f1 f0 \$9 VCO4_5_sel \$25 \$6 \$13 \$7 VCO4_11_sel
++ \$97 \$38 VCO4_selection
+X$39 gd c0 vp c1 c2 \$101 \$109 \$62 \$63 \$99 \$104 \$97 \$38 3bit_to_8_outs
+X$40 gd vp \$10 \$109 \$62 f5 \$11 \$101 VCO_sel VCO_selection
+X$51 gd \$11 f5 vp \$109 \$104 \$99 \$101 \$6 VCO2_11_sel \$25 \$8 \$62 \$12
++ \$7 \$10 \$63 VCO2_5_sel \$13 VCO2_selection
+X$52 vp gd \$99 \$38 \$8 \$9 VCO5_11_sel VCO5_selection
+X$54 gd \$11 \$10 \$97 \$12 vp \$63 \$104 \$38 \$99 \$7 \$9 \$25 VCO3_11_sel
++ \$6 \$8 \$101 \$62 VCO3_5_sel \$13 f5 VCO3_selection
+X$106 gd vp f4 \$13 f5 \$6 \$12 \$7 f3 \$8 \$11 \$10 \$9 f2 f1 \$25 f0
++ row_section_decoding
+.ENDS VCO_decoder_cells
+
+.SUBCKT vco_core_0 in vp gnd out
+X$2 in \$3 \$10 \$I50 vp gnd vco_delay_cell_0
+X$3 in \$3 \$17 out vp gnd vco_delay_cell_0
+X$4 in \$3 \$I50 \$17 vp gnd vco_delay_cell_0
+X$5 in \$3 out \$I48 vp gnd vco_delay_cell_0
+X$6 in \$3 \$I48 \$10 vp gnd vco_delay_cell_0
+M$1 gnd in \$3 gnd sg13_lv_nmos L=0.56u W=0.8u AS=0.212p AD=0.212p PS=2.26u
++ PD=2.26u rfmode=0
+M$3 vp \$3 \$3 vp sg13_lv_pmos L=0.56u W=1.2u AS=0.318p AD=0.318p PS=2.86u
++ PD=2.86u rfmode=0
+.ENDS vco_core_0
+
+.SUBCKT VCO_MUX vp gd out VCO3_sel VCO2_sel VCO_in VCO4_sel VCO4_in VCO_sel
++ VCO3_in VCO5_sel VCO5_in VCO2_in
+X$5 out VCO5_in \$38 VCO5_sel gd vp passgate_scaled
+X$6 out VCO2_in \$41 VCO2_sel gd vp passgate_scaled
+X$7 VCO_sel \$6 VCO_in out gd vp vco_passgate_mux
+X$8 out VCO4_in \$31 VCO4_sel gd vp passgate_scaled
+X$9 vp \$6 VCO_sel gd inverter_dek
+X$10 vp \$31 VCO4_sel gd inverter_dek
+X$11 vp \$34 VCO3_sel gd inverter_dek
+X$12 out VCO3_in \$34 VCO3_sel gd vp passgate_scaled
+X$13 vp \$38 VCO5_sel gd inverter_dek
+X$14 vp \$41 VCO2_sel gd inverter_dek
+.ENDS VCO_MUX
+
+.SUBCKT count_data_check VP GND c5 d0 d1 d2 d4 d5 c4 c3 d3 c1 c2 c0 out
+X$17 \$24 \$9 \$26 \$107 VP GND NAND_3in
+X$18 GND d1 \$60 c1 VP XNOR
+X$19 GND d3 \$24 c3 VP XNOR
+X$20 GND d5 \$9 c5 VP XNOR
+X$21 GND d4 \$26 c4 VP XNOR
+X$22 GND d2 \$53 c2 VP XNOR
+X$29 GND VP out \$107 \$75 NOR_2in
+X$35 GND d0 \$71 c0 VP XNOR
+X$36 \$71 \$53 \$60 \$75 VP GND NAND_3in
+.ENDS count_data_check
+
+.SUBCKT div_with_reset gd r_div32 r_div64 vp reset r_div8 r_div16 r_div2 r_div4
++ in
+X$30 reset in \$65 gd vp r_div2 r_div2 d_flip_flop_reset
+X$34 reset \$65 \$40 gd vp r_div4 r_div4 d_flip_flop_reset
+X$35 reset \$40 \$32 gd vp r_div8 r_div8 d_flip_flop_reset
+X$36 reset \$15 \$I136 gd vp r_div64 r_div64 d_flip_flop_reset
+X$37 reset \$17 \$15 gd vp r_div32 r_div32 d_flip_flop_reset
+X$38 reset \$32 \$17 gd vp r_div16 r_div16 d_flip_flop_reset
+.ENDS div_with_reset
+
+.SUBCKT inverter_x8 GND VP OUT IN
+M$1 GND IN OUT GND sg13_lv_nmos L=0.13u W=0.6u AS=0.204p AD=0.204p PS=1.88u
++ PD=1.88u rfmode=0
+M$2 VP IN OUT VP sg13_lv_pmos L=0.13u W=1.2u AS=0.408p AD=0.408p PS=3.08u
++ PD=3.08u rfmode=0
+.ENDS inverter_x8
+
+.SUBCKT passgate vp gnd A B in_p in_n
+M$1 A in_n B gnd sg13_lv_nmos L=0.15u W=0.3u AS=0.102p AD=0.102p PS=1.28u
++ PD=1.28u rfmode=0
+M$2 A in_p B vp sg13_lv_pmos L=0.15u W=0.3u AS=0.102p AD=0.102p PS=1.28u
++ PD=1.28u rfmode=0
+.ENDS passgate
+
+.SUBCKT PFD_inverter_x4 GND VP OUT IN
+M$1 VP IN OUT VP sg13_lv_pmos L=0.13u W=0.6u AS=0.204p AD=0.204p PS=1.88u
++ PD=1.88u rfmode=0
+M$2 GND IN OUT GND sg13_lv_nmos L=0.13u W=0.6u AS=0.204p AD=0.204p PS=1.88u
++ PD=1.88u rfmode=0
+.ENDS PFD_inverter_x4
+
+.SUBCKT PFD_NOR gd vp Out A B
+M$1 Out B gd gd sg13_lv_nmos L=0.15u W=0.3u AS=0.102p AD=0.057p PS=1.28u
++ PD=0.68u rfmode=0
+M$2 gd A Out gd sg13_lv_nmos L=0.15u W=0.3u AS=0.057p AD=0.102p PS=0.68u
++ PD=1.28u rfmode=0
+M$3 vp B \$15 vp sg13_lv_pmos L=0.15u W=0.3u AS=0.102p AD=0.057p PS=1.28u
++ PD=0.68u rfmode=0
+M$4 \$15 A Out vp sg13_lv_pmos L=0.15u W=0.3u AS=0.057p AD=0.102p PS=0.68u
++ PD=1.28u rfmode=0
+.ENDS PFD_NOR
+
+.SUBCKT PFD_inverter_x8 GND VP OUT IN
+M$1 VP IN OUT VP sg13_lv_pmos L=0.13u W=1.2u AS=0.408p AD=0.408p PS=3.08u
++ PD=3.08u rfmode=0
+M$2 GND IN OUT GND sg13_lv_nmos L=0.13u W=1.2u AS=0.408p AD=0.408p PS=3.08u
++ PD=3.08u rfmode=0
+.ENDS PFD_inverter_x8
+
+.SUBCKT vco_delay_cell_2 out in ngt pgt vp gnd
+M$1 \$7 in out gnd sg13_lv_nmos L=2.8u W=0.8u AS=0.272p AD=0.272p PS=2.28u
++ PD=2.28u rfmode=0
+M$2 \$6 pgt vp vp sg13_lv_pmos L=5.6u W=1.2u AS=0.408p AD=0.408p PS=3.08u
++ PD=3.08u rfmode=0
+M$3 \$7 ngt gnd gnd sg13_lv_nmos L=5.6u W=0.8u AS=0.272p AD=0.272p PS=2.28u
++ PD=2.28u rfmode=0
+M$4 \$6 in out vp sg13_lv_pmos L=2.8u W=1.2u AS=0.408p AD=0.408p PS=3.08u
++ PD=3.08u rfmode=0
+.ENDS vco_delay_cell_2
+
+.SUBCKT vco_delay_cell_1 pgt ngt out in vp gnd
+M$1 \$8 in out vp sg13_lv_pmos L=0.7u W=1.2u AS=0.318p AD=0.318p PS=2.86u
++ PD=2.86u rfmode=0
+M$3 vp pgt \$8 vp sg13_lv_pmos L=1.4u W=1.2u AS=0.318p AD=0.318p PS=2.86u
++ PD=2.86u rfmode=0
+M$5 \$10 in out gnd sg13_lv_nmos L=0.7u W=0.8u AS=0.212p AD=0.212p PS=2.26u
++ PD=2.26u rfmode=0
+M$7 gnd ngt \$10 gnd sg13_lv_nmos L=1.4u W=0.8u AS=0.212p AD=0.212p PS=2.26u
++ PD=2.26u rfmode=0
+.ENDS vco_delay_cell_1
+
+.SUBCKT PFD_passgate vp gnd A B in_p in_n
+M$1 A in_n B gnd sg13_lv_nmos L=0.15u W=0.3u AS=0.102p AD=0.102p PS=1.28u
++ PD=1.28u rfmode=0
+M$2 A in_p B vp sg13_lv_pmos L=0.15u W=0.3u AS=0.102p AD=0.102p PS=1.28u
++ PD=1.28u rfmode=0
+.ENDS PFD_passgate
+
+.SUBCKT vco_delay_cell_3 out ngt pgt in vp gnd
+M$1 \$6 pgt vp vp sg13_lv_pmos L=17u W=1.2u AS=0.408p AD=0.408p PS=3.08u
++ PD=3.08u rfmode=0
+M$2 \$7 in out gnd sg13_lv_nmos L=8.5u W=0.8u AS=0.272p AD=0.272p PS=2.28u
++ PD=2.28u rfmode=0
+M$3 \$6 in out vp sg13_lv_pmos L=8.5u W=1.2u AS=0.408p AD=0.408p PS=3.08u
++ PD=3.08u rfmode=0
+M$4 \$7 ngt gnd gnd sg13_lv_nmos L=17u W=0.8u AS=0.272p AD=0.272p PS=2.28u
++ PD=2.28u rfmode=0
+.ENDS vco_delay_cell_3
+
+.SUBCKT vco_delay_cell_4 vp out gnd in pgt ngt
+M$1 up pgt vp vp sg13_lv_pmos L=23.6u W=1.2u AS=0.408p AD=0.408p PS=3.08u
++ PD=3.08u rfmode=0
+M$2 dn in out gnd sg13_lv_nmos L=11.8u W=0.8u AS=0.272p AD=0.272p PS=2.28u
++ PD=2.28u rfmode=0
+M$3 dn ngt gnd gnd sg13_lv_nmos L=23.6u W=0.8u AS=0.272p AD=0.272p PS=2.28u
++ PD=2.28u rfmode=0
+M$4 up in out vp sg13_lv_pmos L=11.8u W=1.2u AS=0.408p AD=0.408p PS=3.08u
++ PD=3.08u rfmode=0
+.ENDS vco_delay_cell_4
+
+.SUBCKT VCO3_selection gd after_001111 after_000111 001 f5_n vp 100 011 000 010
++ after_000011 000000 000000_n VCO3_11_sel after_000111_n after_000011_n 110
++ 101 VCO3_5_sel after_001111_n f5
+X$31 vp \$4 \$5 gd inverter_dek
+X$38 vp \$23 VCO3_11_sel \$28 \$30 \$4 gd NAND_4in_dek
+X$56 vp \$23 000000 100 gd NAND_2in_dek
+X$57 vp \$50 after_000011_n 101 gd NAND_2in_dek
+X$59 vp \$12 after_001111 000 gd NAND_2in_dek
+X$60 vp \$5 \$6 \$12 gd NAND_2in_dek
+X$61 vp \$104 f5 001 gd NAND_2in_dek
+X$62 vp \$68 VCO3_5_sel \$50 \$51 \$64 gd NAND_4in_dek
+X$64 vp 000000_n \$28 after_000111_n 011 gd NAND_3in_dek
+X$65 vp after_000111_n \$30 after_000011 010 gd NAND_3in_dek
+X$66 vp after_001111_n \$70 after_000111 011 gd NAND_3in_dek
+X$67 vp after_000111_n \$51 000000_n 100 gd NAND_3in_dek
+X$68 vp \$68 000000 110 gd NAND_2in_dek
+X$71 vp f5_n \$6 after_000111 001 gd NAND_3in_dek
+X$72 vp \$70 \$107 \$102 \$104 gd NAND_3in_dek
+X$73 vp \$64 \$107 gd inverter_dek
+X$75 vp f5_n \$102 after_000111 010 gd NAND_3in_dek
+.ENDS VCO3_selection
+
+.SUBCKT row_section_decoding gd vp f4 after_001111_n f5 after_000111_n f5_n
++ after_000011 f3 after_000011_n after_001111 after_000111 000000 f2 f1
++ 000000_n f0
+X$26 vp \$12 f5 f4 gd NOR_2in_dek
+X$27 vp f5 after_000111_n f4 f3 gd NOR_3in_dek
+X$29 vp \$83 f0 f1 gd NOR_2in_dek
+X$31 vp \$70 f3 f2 gd NOR_2in_dek
+X$32 vp after_001111_n f5 f4 gd NOR_2in_dek
+X$34 vp \$79 f5 f4 gd NOR_2in_dek
+X$37 vp \$56 f3 f2 gd NOR_2in_dek
+X$40 vp f5_n f5 gd inverter_dek
+X$41 vp after_001111 after_001111_n gd inverter_dek
+X$42 vp after_000011_n after_000011 gd inverter_dek
+X$46 vp after_000111 after_000111_n gd inverter_dek
+X$47 vp 000000 000000_n gd inverter_dek
+X$48 vp after_000011 \$12 \$56 gd NAND_2in_dek
+X$50 vp \$83 000000_n \$79 \$70 gd NAND_3in_dek
+.ENDS row_section_decoding
+
+.SUBCKT VCO4_selection gd vp 011 010 after_000011_n f1 f0 000000 VCO4_5_sel
++ 000000_n after_000111_n after_001111_n after_000011 VCO4_11_sel 001 000
+X$22 vp VCO4_11_sel \$54 gd inverter_dek
+X$23 vp \$17 VCO4_5_sel \$11 \$34 \$8 gd NAND_4in_dek
+X$26 vp \$32 after_000011_n \$33 gd NAND_2in_dek
+X$27 vp \$33 f0 f1 gd NAND_2in_dek
+X$28 vp \$17 000000 011 gd NAND_2in_dek
+X$30 vp 000000_n \$11 after_000011_n 010 gd NAND_3in_dek
+X$32 vp \$32 \$34 after_000111_n 001 gd NAND_3in_dek
+X$35 vp \$33 \$54 after_000011_n 001 gd NAND_3in_dek
+X$36 vp after_001111_n \$8 after_000011 000 gd NAND_3in_dek
+.ENDS VCO4_selection
+
+.SUBCKT VCO_selection gd vp after_000111 111 101 f5 after_001111 110 VCO_sel
+X$5 vp \$16 110 after_001111 gd NAND_2in_dek
+X$6 vp \$11 111 after_000111 gd NAND_2in_dek
+X$9 vp \$12 f5 101 gd NAND_2in_dek
+X$12 vp \$12 VCO_sel \$16 \$11 gd NAND_3in_dek
+.ENDS VCO_selection
+
+.SUBCKT VCO5_selection vp gd 010 000 after_000011_n 000000 VCO5_11_sel
+X$1 vp VCO5_11_sel \$11 \$10 gd NAND_2in_dek
+X$2 vp \$11 000000 010 gd NAND_2in_dek
+X$3 vp \$10 after_000011_n 000 gd NAND_2in_dek
+.ENDS VCO5_selection
+
+.SUBCKT VCO2_selection gd after_001111 f5 vp 111 011 010 110 after_000111_n
++ VCO2_11_sel 000000_n after_000011_n 101 f5_n after_000011 after_000111 100
++ VCO2_5_sel after_001111_n
+X$49 vp \$14 \$16 gd inverter_dek
+X$50 vp \$34 VCO2_11_sel \$31 \$25 \$14 gd NAND_4in_dek
+X$51 vp \$54 VCO2_5_sel \$73 \$70 \$72 gd NAND_4in_dek
+X$52 vp \$34 after_000011_n 111 gd NAND_2in_dek
+X$53 vp \$5 f5 010 gd NAND_2in_dek
+X$54 vp \$73 f5 100 gd NAND_2in_dek
+X$56 vp \$8 after_001111 011 gd NAND_2in_dek
+X$57 vp after_000111_n \$54 after_000011 111 gd NAND_3in_dek
+X$61 vp 000000_n \$31 after_000111_n 110 gd NAND_3in_dek
+X$62 vp f5_n \$70 after_000111 101 gd NAND_3in_dek
+X$64 vp \$3 \$16 \$8 \$5 gd NAND_3in_dek
+X$66 vp after_000111_n \$25 after_000011 101 gd NAND_3in_dek
+X$67 vp f5_n \$3 after_000111 100 gd NAND_3in_dek
+X$68 vp after_000111 \$72 after_001111_n 110 gd NAND_3in_dek
+.ENDS VCO2_selection
+
+.SUBCKT 3bit_to_8_outs gd c0 VP c1 c2 coarse_6 coarse_7 coarse_5 coarse_4
++ coarse_2 coarse_3 coarse_1 coarse_0
+X$55 VP coarse_6 \$23 gd inverter_dek
+X$56 VP coarse_3 \$89 gd inverter_dek
+X$58 VP coarse_2 \$68 gd inverter_dek
+X$59 VP c1_n c1 gd inverter_dek
+X$60 VP coarse_7 \$20 gd inverter_dek
+X$61 VP c2_n c2 gd inverter_dek
+X$63 VP c0_n c0 gd inverter_dek
+X$65 VP coarse_0 \$88 gd inverter_dek
+X$67 VP coarse_1 \$112 gd inverter_dek
+X$68 VP coarse_5 \$56 gd inverter_dek
+X$69 VP coarse_4 \$35 gd inverter_dek
+X$70 VP c2 \$20 c1 c0 gd NAND_3in_dek
+X$71 VP c2_n \$68 c1 c0_n gd NAND_3in_dek
+X$72 VP c2 \$23 c1 c0_n gd NAND_3in_dek
+X$73 VP c2_n \$89 c1 c0 gd NAND_3in_dek
+X$75 VP c2 \$56 c1_n c0 gd NAND_3in_dek
+X$76 VP c2_n \$112 c1_n c0 gd NAND_3in_dek
+X$77 VP c2_n \$88 c1_n c0_n gd NAND_3in_dek
+X$78 VP c2 \$35 c1_n c0_n gd NAND_3in_dek
+.ENDS 3bit_to_8_outs
+
+.SUBCKT vco_delay_cell_0 ngt pgt out in vp gnd
+M$1 gnd ngt \$9 gnd sg13_lv_nmos L=0.56u W=0.8u AS=0.212p AD=0.212p PS=2.26u
++ PD=2.26u rfmode=0
+M$3 \$9 in out gnd sg13_lv_nmos L=0.28u W=0.8u AS=0.212p AD=0.212p PS=2.26u
++ PD=2.26u rfmode=0
+M$5 vp pgt \$8 vp sg13_lv_pmos L=0.56u W=1.2u AS=0.318p AD=0.318p PS=2.86u
++ PD=2.86u rfmode=0
+M$7 \$8 in out vp sg13_lv_pmos L=0.28u W=1.2u AS=0.318p AD=0.318p PS=2.86u
++ PD=2.86u rfmode=0
+.ENDS vco_delay_cell_0
+
+.SUBCKT vco_passgate_mux en en_ IO OI gnd vp
+M$1 IO en OI gnd sg13_lv_nmos L=0.13u W=2.5u AS=0.55p AD=0.55p PS=5.2u PD=5.2u
++ rfmode=0
+M$6 IO en_ OI vp sg13_lv_pmos L=0.13u W=2.5u AS=0.55p AD=0.55p PS=5.2u PD=5.2u
++ rfmode=0
+.ENDS vco_passgate_mux
+
+.SUBCKT passgate_scaled OI IO en_ en GND VP
+M$1 IO en_ OI VP sg13_lv_pmos L=0.13u W=0.15u AS=0.1005p AD=0.1005p PS=1.34u
++ PD=1.34u rfmode=0
+M$2 IO en OI GND sg13_lv_nmos L=0.13u W=0.15u AS=0.1005p AD=0.1005p PS=1.34u
++ PD=1.34u rfmode=0
+.ENDS passgate_scaled
+
+.SUBCKT inverter_x4 GND VP OUT IN
+M$1 VP IN OUT VP sg13_lv_pmos L=0.13u W=0.6u AS=0.204p AD=0.204p PS=1.88u
++ PD=1.88u rfmode=0
+M$2 GND IN OUT GND sg13_lv_nmos L=0.13u W=0.6u AS=0.204p AD=0.204p PS=1.88u
++ PD=1.88u rfmode=0
+.ENDS inverter_x4
+
+.SUBCKT d_flip_flop q d clk q_ GND VP
+X$1 GND \$12 q q_ VP NAND_2in_x2
+X$3 GND q_ \$5 q VP NAND_2in_x2
+X$5 GND d \$12 \$7 VP NAND_2in_x2
+X$8 \$5 \$7 clk \$12 VP GND NAND_3in
+X$9 GND clk \$11 \$5 VP NAND_2in_x2
+X$11 GND \$5 \$7 \$11 VP NAND_2in_x2
+.ENDS d_flip_flop
+
+.SUBCKT XNOR GND a y b VP
+M$1 GND \$13 \$6 GND sg13_lv_nmos L=0.13u W=0.15u AS=0.1005p AD=0.0555p
++ PS=1.34u PD=0.74u rfmode=0
+M$2 \$6 a y GND sg13_lv_nmos L=0.13u W=0.15u AS=0.0555p AD=0.1005p PS=0.74u
++ PD=1.34u rfmode=0
+M$3 y \$7 \$8 GND sg13_lv_nmos L=0.13u W=0.15u AS=0.1005p AD=0.0555p PS=1.34u
++ PD=0.74u rfmode=0
+M$4 \$8 b GND GND sg13_lv_nmos L=0.13u W=0.15u AS=0.0555p AD=0.1005p PS=0.74u
++ PD=1.34u rfmode=0
+M$5 GND a \$7 GND sg13_lv_nmos L=0.13u W=0.15u AS=0.1005p AD=0.1005p PS=1.34u
++ PD=1.34u rfmode=0
+M$6 GND b \$13 GND sg13_lv_nmos L=0.13u W=0.15u AS=0.1005p AD=0.1005p PS=1.34u
++ PD=1.34u rfmode=0
+M$7 VP a \$I90 VP sg13_lv_pmos L=0.13u W=0.6u AS=0.204p AD=0.114p PS=1.88u
++ PD=0.98u rfmode=0
+M$8 \$I90 b y VP sg13_lv_pmos L=0.13u W=0.6u AS=0.114p AD=0.204p PS=0.98u
++ PD=1.88u rfmode=0
+M$9 y \$13 \$I91 VP sg13_lv_pmos L=0.13u W=0.6u AS=0.204p AD=0.114p PS=1.88u
++ PD=0.98u rfmode=0
+M$10 \$I91 \$7 VP VP sg13_lv_pmos L=0.13u W=0.6u AS=0.114p AD=0.204p PS=0.98u
++ PD=1.88u rfmode=0
+M$11 VP b \$13 VP sg13_lv_pmos L=0.13u W=0.15u AS=0.1005p AD=0.1005p PS=1.34u
++ PD=1.34u rfmode=0
+M$12 VP a \$7 VP sg13_lv_pmos L=0.13u W=0.15u AS=0.1005p AD=0.1005p PS=1.34u
++ PD=1.34u rfmode=0
+.ENDS XNOR
+
+.SUBCKT d_flip_flop_reset reset clk q GND VP d q_
+X$1 reset q_ VP q \$6 GND NAND_3in_x3
+X$2 reset \$7 VP \$6 d GND NAND_3in_x3
+X$3 reset \$4 VP \$5 clk GND NAND_3in_x3
+X$7 \$7 \$6 VP \$4 clk GND NAND_3in_x3
+X$11 GND q_ \$4 q VP NAND_2in_x2
+X$12 GND \$4 \$7 \$5 VP NAND_2in_x2
+.ENDS d_flip_flop_reset
+
+.SUBCKT NOR_2in gd vp Out B A
+M$1 vp A \$13 vp sg13_lv_pmos L=0.13u W=0.15u AS=0.1005p AD=0.0555p PS=1.34u
++ PD=0.74u rfmode=0
+M$2 \$13 B Out vp sg13_lv_pmos L=0.13u W=0.15u AS=0.0555p AD=0.1005p PS=0.74u
++ PD=1.34u rfmode=0
+M$3 Out A gd gd sg13_lv_nmos L=0.13u W=0.15u AS=0.1005p AD=0.0555p PS=1.34u
++ PD=0.74u rfmode=0
+M$4 gd B Out gd sg13_lv_nmos L=0.13u W=0.15u AS=0.0555p AD=0.1005p PS=0.74u
++ PD=1.34u rfmode=0
+.ENDS NOR_2in
+
+.SUBCKT NOR_3in_dek VP c y b a GND
+M$1 VP a \$24 VP sg13_lv_pmos L=0.13u W=0.15u AS=0.1005p AD=0.1005p PS=1.34u
++ PD=1.34u rfmode=0
+M$2 \$24 c \$21 VP sg13_lv_pmos L=0.13u W=0.15u AS=0.1005p AD=0.1005p PS=1.34u
++ PD=1.34u rfmode=0
+M$3 \$21 b y VP sg13_lv_pmos L=0.13u W=0.15u AS=0.1005p AD=0.1005p PS=1.34u
++ PD=1.34u rfmode=0
+M$4 y c GND GND sg13_lv_nmos L=0.13u W=0.15u AS=0.1005p AD=0.1005p PS=1.34u
++ PD=1.34u rfmode=0
+M$5 GND b y GND sg13_lv_nmos L=0.13u W=0.15u AS=0.1005p AD=0.1005p PS=1.34u
++ PD=1.34u rfmode=0
+M$6 GND a y GND sg13_lv_nmos L=0.13u W=0.15u AS=0.1005p AD=0.1005p PS=1.34u
++ PD=1.34u rfmode=0
+.ENDS NOR_3in_dek
+
+.SUBCKT NOR_2in_dek VP y b a GND
+M$1 VP a \$19 VP sg13_lv_pmos L=0.13u W=0.15u AS=0.1005p AD=0.1005p PS=1.34u
++ PD=1.34u rfmode=0
+M$2 \$19 b y VP sg13_lv_pmos L=0.13u W=0.15u AS=0.1005p AD=0.1005p PS=1.34u
++ PD=1.34u rfmode=0
+M$3 y b GND GND sg13_lv_nmos L=0.13u W=0.15u AS=0.1005p AD=0.1005p PS=1.34u
++ PD=1.34u rfmode=0
+M$4 GND a y GND sg13_lv_nmos L=0.13u W=0.15u AS=0.1005p AD=0.1005p PS=1.34u
++ PD=1.34u rfmode=0
+.ENDS NOR_2in_dek
+
+.SUBCKT NAND_4in_dek VP d y c b a GND
+M$1 y c VP VP sg13_lv_pmos L=0.13u W=0.15u AS=0.1005p AD=0.1005p PS=1.34u
++ PD=1.34u rfmode=0
+M$2 y a VP VP sg13_lv_pmos L=0.13u W=0.15u AS=0.1005p AD=0.1005p PS=1.34u
++ PD=1.34u rfmode=0
+M$3 VP d y VP sg13_lv_pmos L=0.13u W=0.15u AS=0.1005p AD=0.1005p PS=1.34u
++ PD=1.34u rfmode=0
+M$4 VP b y VP sg13_lv_pmos L=0.13u W=0.15u AS=0.1005p AD=0.1005p PS=1.34u
++ PD=1.34u rfmode=0
+M$5 GND d \$22 GND sg13_lv_nmos L=0.13u W=0.15u AS=0.1005p AD=0.1005p PS=1.34u
++ PD=1.34u rfmode=0
+M$6 \$27 a y GND sg13_lv_nmos L=0.13u W=0.15u AS=0.1005p AD=0.1005p PS=1.34u
++ PD=1.34u rfmode=0
+M$7 \$22 c \$24 GND sg13_lv_nmos L=0.13u W=0.15u AS=0.1005p AD=0.1005p PS=1.34u
++ PD=1.34u rfmode=0
+M$8 \$24 b \$27 GND sg13_lv_nmos L=0.13u W=0.15u AS=0.1005p AD=0.1005p PS=1.34u
++ PD=1.34u rfmode=0
+.ENDS NAND_4in_dek
+
+.SUBCKT NAND_2in_dek VP y b a GND
+M$1 y a VP VP sg13_lv_pmos L=0.13u W=0.15u AS=0.1005p AD=0.1005p PS=1.34u
++ PD=1.34u rfmode=0
+M$2 VP b y VP sg13_lv_pmos L=0.13u W=0.15u AS=0.1005p AD=0.1005p PS=1.34u
++ PD=1.34u rfmode=0
+M$3 \$18 a y GND sg13_lv_nmos L=0.13u W=0.15u AS=0.1005p AD=0.1005p PS=1.34u
++ PD=1.34u rfmode=0
+M$4 GND b \$18 GND sg13_lv_nmos L=0.13u W=0.15u AS=0.1005p AD=0.1005p PS=1.34u
++ PD=1.34u rfmode=0
+.ENDS NAND_2in_dek
+
+.SUBCKT NAND_3in_dek VP c y b a GND
+M$1 y b VP VP sg13_lv_pmos L=0.13u W=0.15u AS=0.1005p AD=0.1005p PS=1.34u
++ PD=1.34u rfmode=0
+M$2 VP a y VP sg13_lv_pmos L=0.13u W=0.15u AS=0.1005p AD=0.1005p PS=1.34u
++ PD=1.34u rfmode=0
+M$3 VP c y VP sg13_lv_pmos L=0.13u W=0.15u AS=0.1005p AD=0.1005p PS=1.34u
++ PD=1.34u rfmode=0
+M$4 GND c \$20 GND sg13_lv_nmos L=0.13u W=0.15u AS=0.1005p AD=0.1005p PS=1.34u
++ PD=1.34u rfmode=0
+M$5 \$22 a y GND sg13_lv_nmos L=0.13u W=0.15u AS=0.1005p AD=0.1005p PS=1.34u
++ PD=1.34u rfmode=0
+M$6 \$20 b \$22 GND sg13_lv_nmos L=0.13u W=0.15u AS=0.1005p AD=0.1005p PS=1.34u
++ PD=1.34u rfmode=0
+.ENDS NAND_3in_dek
+
+.SUBCKT inverter_dek VP out in GND
+M$1 VP in out VP sg13_lv_pmos L=0.13u W=0.15u AS=0.1005p AD=0.1005p PS=1.34u
++ PD=1.34u rfmode=0
+M$2 GND in out GND sg13_lv_nmos L=0.13u W=0.15u AS=0.1005p AD=0.1005p PS=1.34u
++ PD=1.34u rfmode=0
+.ENDS inverter_dek
+
+.SUBCKT NAND_3in a c b y VP GND
+M$1 y a VP VP sg13_lv_pmos L=0.13u W=0.15u AS=0.1005p AD=0.0555p PS=1.34u
++ PD=0.74u rfmode=0
+M$2 VP b y VP sg13_lv_pmos L=0.13u W=0.15u AS=0.0555p AD=0.0555p PS=0.74u
++ PD=0.74u rfmode=0
+M$3 y c VP VP sg13_lv_pmos L=0.13u W=0.15u AS=0.0555p AD=0.1005p PS=0.74u
++ PD=1.34u rfmode=0
+M$4 y a \$14 GND sg13_lv_nmos L=0.13u W=0.3u AS=0.102p AD=0.057p PS=1.28u
++ PD=0.68u rfmode=0
+M$5 \$14 b \$15 GND sg13_lv_nmos L=0.13u W=0.3u AS=0.057p AD=0.057p PS=0.68u
++ PD=0.68u rfmode=0
+M$6 \$15 c GND GND sg13_lv_nmos L=0.13u W=0.3u AS=0.057p AD=0.102p PS=0.68u
++ PD=1.28u rfmode=0
+.ENDS NAND_3in
+
+.SUBCKT NAND_3in_x3 c y VP a b GND
+M$1 y a VP VP sg13_lv_pmos L=0.13u W=0.3u AS=0.156p AD=0.156p PS=2.08u PD=2.08u
++ rfmode=0
+M$2 VP b y VP sg13_lv_pmos L=0.13u W=0.3u AS=0.111p AD=0.111p PS=1.48u PD=1.48u
++ rfmode=0
+M$3 y c VP VP sg13_lv_pmos L=0.13u W=0.3u AS=0.111p AD=0.111p PS=1.48u PD=1.48u
++ rfmode=0
+M$7 y a \$25 GND sg13_lv_nmos L=0.13u W=1.2u AS=0.318p AD=0.318p PS=2.86u
++ PD=2.86u rfmode=0
+M$8 \$25 b \$21 GND sg13_lv_nmos L=0.13u W=1.2u AS=0.228p AD=0.228p PS=1.96u
++ PD=1.96u rfmode=0
+M$9 \$21 c GND GND sg13_lv_nmos L=0.13u W=1.2u AS=0.228p AD=0.228p PS=1.96u
++ PD=1.96u rfmode=0
+.ENDS NAND_3in_x3
+
+.SUBCKT NAND_2in_x2 GND b a y VP
+M$1 y a \$12 GND sg13_lv_nmos L=0.13u W=0.6u AS=0.204p AD=0.114p PS=1.88u
++ PD=0.98u rfmode=0
+M$2 \$12 b GND GND sg13_lv_nmos L=0.13u W=0.6u AS=0.114p AD=0.204p PS=0.98u
++ PD=1.88u rfmode=0
+M$3 VP a y VP sg13_lv_pmos L=0.13u W=0.3u AS=0.102p AD=0.057p PS=1.28u PD=0.68u
++ rfmode=0
+M$4 y b VP VP sg13_lv_pmos L=0.13u W=0.3u AS=0.057p AD=0.102p PS=0.68u PD=1.28u
++ rfmode=0
+.ENDS NAND_2in_x2
