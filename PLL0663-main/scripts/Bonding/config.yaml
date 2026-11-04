@@ -106,7 +106,7 @@ IMAGE_REGION: full                # package (footprint + bond table) | full
 # relative to the label position.
 SHEET_KEEP: true
 SHEET_FIELDS:
-  Request: "JKU IICQC - {design}" # to be changed
+  Request: "MPW2026/99 - {design}" # to be changed
   Date: "{date}"
   MPW: "IHP SG13CMOS5L"
   Die: "{design} - v.{version}"
@@ -124,7 +124,7 @@ SHEET_FIELDS:
 # Lid option checkbox to mark with an X (Taped | Sealed | Glued | Glass).
 # Glued is the standard for open-molded plastic packages (OmPP): the die
 # sits in an open cavity and the cover is glued on after wire bonding.
-LID: Glued
+LID: Taped
 
 # Font scale factors for the sheet's own texts (label -> factor).
 # Note: the headline text is package-specific; a warning is printed if an
