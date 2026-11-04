@@ -87,21 +87,7 @@ C {lab_wire.sym} -130 410 0 0 {name=p8 sig_type=std_logic lab=VP
 }
 C {lab_wire.sym} 640 240 2 0 {name=p4 sig_type=std_logic lab=d0
 }
-C {vsource.sym} -60 450 0 0 {name=V3 value="PWL(
-+ 0 0 
-+ 142.5n 0 
-+ 142.51n 1.2
-+ 162.5n 1.2 
-+ 162.51n 0
-+ 172.5n 0
-+ 172.51n 1.2
-+ 182.5n 1.2
-+ 182.51n 0
-+ 212.5n 0
-+ 212.51n 1.2
-+ 222.5n 1.2
-+ 222.51n 0
-+ 232.5n 0)" savecurrent=false}
+C {vsource.sym} -60 450 0 0 {name=V3 value="PWL( 0n 0 142.5n 0 142.51n 1.2 162.5n 1.2 162.51n 0 172.5n 0 172.51n 1.2 182.5n 1.2 182.51n 0 212.5n 0 212.51n 1.2 242.5n 1.2 242.51n 0 252.5n 0 252.51n 1.2 262.5n 1.2 262.51n 0 272.5n 0)" savecurrent=false}
 C {lab_wire.sym} -60 400 0 0 {name=p6 sig_type=std_logic lab=d
 }
 C {capa.sym} 700 340 0 0 {name=C2
@@ -176,10 +162,7 @@ C {gnd.sym} -60 490 0 0 {name=l18 lab=0
 }
 C {gnd.sym} -130 490 0 0 {name=l19 lab=0
 }
-C {vsource.sym} -130 820 0 0 {name=V4 value="PWL(
-+ 0 1.2 
-+ 232.5n 1.2
-+ 232.51n 0)" savecurrent=false}
+C {vsource.sym} -130 820 0 0 {name=V4 value="PWL( 0 1.2 262.5n 1.2 262.51n 0)" savecurrent=false}
 C {lab_wire.sym} -130 770 0 0 {name=p5 sig_type=std_logic lab=data_en
 }
 C {gnd.sym} -130 860 0 0 {name=l21 lab=0
@@ -226,7 +209,7 @@ C {lab_wire.sym} 480 380 2 0 {name=p17 sig_type=std_logic lab=d7
 C {lab_wire.sym} 480 400 2 0 {name=p18 sig_type=std_logic lab=d8
 
 }
-C {/foss/designs/CHIP-PLL/schematics/divider/schematics/input_register.sym} 320 330 0 0 {name=x1}
+C {/foss/designs/IHP__PLL0663/schematics/divider/schematics/input_register.sym} 320 330 0 0 {name=x1}
 C {lab_wire.sym} 480 420 2 0 {name=p19 sig_type=std_logic lab=d9
 }
 C {lab_wire.sym} 480 440 2 0 {name=p21 sig_type=std_logic lab=d10
