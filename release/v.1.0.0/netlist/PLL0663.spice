@@ -1,5 +1,28 @@
-** sch_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/top/chip_top.sch
-**.subckt chip_top vp gd clk_in data_en data_in clk_ref rst out vout vph debug_out
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/top/PLL0663.sch
+**.subckt PLL0663 rst vp gd vph clk_ref clk_in data_en data_in debug_out out vout vp_bandgap vref_res vref_sb vph_debug
+*.ipin rst
+*.ipin vp
+*.ipin gd
+*.ipin vph
+*.ipin clk_ref
+*.ipin clk_in
+*.ipin data_en
+*.ipin data_in
+*.opin debug_out
+*.opin out
+*.opin vout
+*.ipin vp_bandgap
+*.opin vref_res
+*.opin vref_sb
+*.ipin vph_debug
+x1 vph vp gd rst vout clk_ref out clk_in data_en debug_out data_in vph_debug chip_top
+x2 vp_bandgap vref_res vref_sb gd bandgap_top
+**.ends
+
+* expanding   symbol:  chip_top.sym # of pins=12
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/top/chip_top.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/top/chip_top.sch
+.subckt chip_top vph vp gd rst vout clk_ref out clk_in data_en debug_out data_in vph_debug
 *.ipin vp
 *.ipin gd
 *.ipin clk_in
@@ -11,17 +34,33 @@
 *.opin vout
 *.ipin vph
 *.opin debug_out
+*.ipin vph_debug
 x2 vp vph gd clk_ref out net4 net6 net2 net7 net8 net9 net5 net1 net3 rst vout net19 net21 net20 net18 net17 net16 PLL_top
 x1 vp gd net12 net11 net10 net1 net2 net3 net4 net5 net6 net7 net8 net9 net13 net14 net15 input_register
 x3 vp data_in net10 gd buffer_hv
 x4 vp data_en net11 gd buffer_hv
 x5 vp clk_in net12 gd buffer_hv
-x6 net15 net14 net13 gd vp debug_out net16 net17 net18 net19 net20 net21 gd gd vph Test_mux
-**.ends
+x6 net15 net14 net13 gd vp debug_out net16 net17 net18 net19 net20 net21 gd gd vph_debug Test_mux
+.ends
 
-* expanding   symbol:  //foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/top/PLL_top.sym # of pins=22
-** sym_path: //foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/top/PLL_top.sym
-** sch_path: //foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/top/PLL_top.sch
+
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/bandgap/bandgap_top.sym # of pins=4
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/bandgap/bandgap_top.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/bandgap/bandgap_top.sch
+.subckt bandgap_top vp vref_res vref_sb gd
+*.ipin vp
+*.ipin gd
+*.opin vref_res
+*.opin vref_sb
+x1 vp vref_sb gd bandgap_selfbias_top
+x2 vp vref_res gd net1 bandgap_res_top
+* noconn #net1
+.ends
+
+
+* expanding   symbol:  PLL_top.sym # of pins=22
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/top/PLL_top.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/top/PLL_top.sch
 .subckt PLL_top vp vph gd clk_ref out d5 d3 a1 d2 d1 d0 d4 a2 a0 rst vout cref UP DOWN cvco vco_out_buffered out_PLL_divided
 *.ipin clk_ref
 *.opin out
@@ -61,9 +100,9 @@ XM1 gd vp gd gd sg13_lv_nmos w=240u l=5u ng=1 m=1 mm_ok=1
 .ends
 
 
-* expanding   symbol:  //foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/input_register.sym # of pins=17
-** sym_path: //foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/input_register.sym
-** sch_path: //foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/input_register.sch
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/input_register.sym # of pins=17
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/input_register.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/input_register.sch
 .subckt input_register VP GND clk_in data_en d d0 d1 d2 d3 d4 d5 d6 d7 d8 d9 d10 d11
 *.iopin VP
 *.ipin clk_in
@@ -111,9 +150,9 @@ x1 VP GND data_en _clk_un clk_in NAND_2in_x2
 .ends
 
 
-* expanding   symbol:  /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/misc/buffer_hv.sym # of pins=4
-** sym_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/misc/buffer_hv.sym
-** sch_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/misc/buffer_hv.sch
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/misc/buffer_hv.sym # of pins=4
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/misc/buffer_hv.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/misc/buffer_hv.sch
 .subckt buffer_hv vph in out gd
 *.ipin in
 *.opin out
@@ -138,9 +177,9 @@ XM16 out buf_stage_4 gd gd sg13_hv_nmos w=1u l=0.45u ng=1 m=1 mm_ok=1
 .ends
 
 
-* expanding   symbol:  //foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/misc/Test_mux.sym # of pins=15
-** sym_path: //foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/misc/Test_mux.sym
-** sch_path: //foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/misc/Test_mux.sch
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/misc/Test_mux.sym # of pins=15
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/misc/Test_mux.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/misc/Test_mux.sch
 .subckt Test_mux t0 t1 t2 ground VP debug_out in1 in2 in3 in4 in5 in6 in7 in8 VPHIGH
 *.iopin ground
 *.iopin VP
@@ -163,9 +202,33 @@ x3 VPHIGH net1 VP MUX_out ground debug_level_shifter
 .ends
 
 
-* expanding   symbol:  /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/PFD/PFD_cell_2.sym # of pins=7
-** sym_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/PFD/PFD_cell_2.sym
-** sch_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/PFD/PFD_cell_2.sch
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/bandgap/bandgap_selfbias_top.sym # of pins=3
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/bandgap/bandgap_selfbias_top.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/bandgap/bandgap_selfbias_top.sch
+.subckt bandgap_selfbias_top vp vref gd
+*.ipin gd
+*.ipin vp
+*.opin vref
+x1 vp vref gd bandgap_selfbias_core
+.ends
+
+
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/bandgap/bandgap_res_top.sym # of pins=4
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/bandgap/bandgap_res_top.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/bandgap/bandgap_res_top.sch
+.subckt bandgap_res_top vp vref gd vbias
+*.ipin vp
+*.ipin gd
+*.opin vref
+*.opin vbias
+x1 d1 d8 gd bandgap_res_diodes
+x2 vp vref gd d8 d1 vbias bandgap_res_core_wrapper
+.ends
+
+
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/PFD/PFD_cell_2.sym # of pins=7
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/PFD/PFD_cell_2.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/PFD/PFD_cell_2.sch
 .subckt PFD_cell_2 gnd vp cRef UP DOWN cVco rst
 *.iopin gnd
 *.iopin vp
@@ -193,9 +256,9 @@ x10 post_nand net4 vp gnd PFD_inverter_x4
 .ends
 
 
-* expanding   symbol:  /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/buf/buf.sym # of pins=4
-** sym_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/buf/buf.sym
-** sch_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/buf/buf.sch
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/buf/buf.sym # of pins=4
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/buf/buf.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/buf/buf.sch
 .subckt buf VDD INPUT OUT GND
 *.ipin INPUT
 *.iopin VDD
@@ -212,9 +275,9 @@ XM7 net1 INPUT GND GND sg13_hv_nmos w=10u l=0.45u ng=1 m=1 mm_ok=1
 .ends
 
 
-* expanding   symbol:  /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/Divider_top.sym # of pins=14
-** sym_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/Divider_top.sym
-** sch_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/Divider_top.sch
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/Divider_top.sym # of pins=14
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/Divider_top.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/Divider_top.sch
 .subckt Divider_top gd VP clk d0 d1 d2 d3 d4 d5 a0 a1 a2 out_div rst
 *.iopin gd
 *.ipin clk
@@ -236,9 +299,9 @@ x3 gd VP MUX_out rst d0 d1 d2 d3 d4 d5 out_div pdiv
 .ends
 
 
-* expanding   symbol:  /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/d_flip_flop.sym # of pins=6
-** sym_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/d_flip_flop.sym
-** sch_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/d_flip_flop.sch
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/d_flip_flop.sym # of pins=6
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/d_flip_flop.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/d_flip_flop.sch
 .subckt d_flip_flop q VP GND q_ clk d
 *.iopin GND
 *.ipin clk
@@ -255,9 +318,9 @@ x6 VP GND net3 net4 d NAND_2in_x2
 .ends
 
 
-* expanding   symbol:  /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/misc/level_shifter.sym # of pins=5
-** sym_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/misc/level_shifter.sym
-** sch_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/misc/level_shifter.sch
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/misc/level_shifter.sym # of pins=5
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/misc/level_shifter.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/misc/level_shifter.sch
 .subckt level_shifter vph out vpl in gd
 *.ipin in
 *.opin out
@@ -282,9 +345,9 @@ XM13 net5 3_stage_out gd gd sg13_hv_nmos w=1u l=0.45u ng=1 m=1 mm_ok=1
 .ends
 
 
-* expanding   symbol:  /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/inverter_x2.sym # of pins=4
-** sym_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/inverter_x2.sym
-** sch_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/inverter_x2.sch
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/inverter_x2.sym # of pins=4
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/inverter_x2.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/inverter_x2.sch
 .subckt inverter_x2 IN OUT VP GND
 *.ipin IN
 *.iopin VP
@@ -295,9 +358,9 @@ XM2 OUT IN VP VP sg13_lv_pmos w=0.30u l=0.13u ng=1 m=1 mm_ok=1
 .ends
 
 
-* expanding   symbol:  /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/inverter_x4_top.sym # of pins=4
-** sym_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/inverter_x4_top.sym
-** sch_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/inverter_x4_top.sch
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/inverter_x4_top.sym # of pins=4
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/inverter_x4_top.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/inverter_x4_top.sch
 .subckt inverter_x4_top IN OUT VP GND
 *.ipin IN
 *.iopin VP
@@ -308,9 +371,9 @@ XM2 OUT IN VP VP sg13_lv_pmos w=0.60u l=0.13u ng=1 m=1 mm_ok=1
 .ends
 
 
-* expanding   symbol:  /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/charge_pump/charge_pump_cell.sym # of pins=6
-** sym_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/charge_pump/charge_pump_cell.sym
-** sch_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/charge_pump/charge_pump_cell.sch
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/charge_pump/charge_pump_cell.sym # of pins=6
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/charge_pump/charge_pump_cell.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/charge_pump/charge_pump_cell.sch
 .subckt charge_pump_cell vp UP vout DN rst gd
 *.iopin UP
 *.iopin DN
@@ -351,9 +414,9 @@ XR1 gd gd gd rppd w=1u l=0.5u m=1 b=0 mm_ok=1
 .ends
 
 
-* expanding   symbol:  /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/inverter_x4.sym # of pins=4
-** sym_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/inverter_x4.sym
-** sch_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/inverter_x4.sch
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/inverter_x4.sym # of pins=4
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/inverter_x4.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/inverter_x4.sch
 .subckt inverter_x4 IN OUT VP GND
 *.ipin IN
 *.iopin VP
@@ -364,9 +427,9 @@ XM2 OUT IN VP VP sg13_lv_pmos w=0.60u l=0.13u ng=1 m=1 mm_ok=1
 .ends
 
 
-* expanding   symbol:  /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/vco/vco_top.sym # of pins=13
-** sym_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/vco/vco_top.sym
-** sch_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/vco/vco_top.sch
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/vco/vco_top.sym # of pins=13
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/vco/vco_top.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/vco/vco_top.sch
 .subckt vco_top out gd VP c0 c1 c2 f0 f1 f2 f3 f4 f5 vco_in
 *.iopin gd
 *.iopin VP
@@ -427,9 +490,9 @@ x32 VCO5_SEL_n VP gd VCO5_SEL VP VP_vco4 vco_passgate
 .ends
 
 
-* expanding   symbol:  /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/NAND_2in_x2.sym # of pins=5
-** sym_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/NAND_2in_x2.sym
-** sch_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/NAND_2in_x2.sch
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/NAND_2in_x2.sym # of pins=5
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/NAND_2in_x2.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/NAND_2in_x2.sch
 .subckt NAND_2in_x2 VP GND a y b
 *.opin y
 *.iopin GND
@@ -443,9 +506,9 @@ XM4 y a VP VP sg13_lv_pmos w=0.3u l=0.13u ng=1 m=1 mm_ok=1
 .ends
 
 
-* expanding   symbol:  /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/buf/buf_lp.sym # of pins=4
-** sym_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/buf/buf_lp.sym
-** sch_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/buf/buf_lp.sch
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/buf/buf_lp.sym # of pins=4
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/buf/buf_lp.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/buf/buf_lp.sch
 .subckt buf_lp VDD INPUT OUT GND
 *.ipin INPUT
 *.iopin VDD
@@ -462,9 +525,9 @@ XM7 net1 INPUT GND GND sg13_hv_nmos w=2u l=0.45u ng=1 m=1 mm_ok=1
 .ends
 
 
-* expanding   symbol:  /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/misc/mux8to1.sym # of pins=14
-** sym_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/misc/mux8to1.sym
-** sch_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/misc/mux8to1.sch
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/misc/mux8to1.sym # of pins=14
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/misc/mux8to1.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/misc/mux8to1.sch
 .subckt mux8to1 gd vp A0 out in1 in2 in3 in4 in5 in6 in7 A1 in8 A2
 *.iopin gd
 *.iopin vp
@@ -519,9 +582,9 @@ x8 en1_ vp gd en1 net11 out_unb passgate
 .ends
 
 
-* expanding   symbol:  /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/misc/debug_level_shifter.sym # of pins=5
-** sym_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/misc/debug_level_shifter.sym
-** sch_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/misc/debug_level_shifter.sch
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/misc/debug_level_shifter.sym # of pins=5
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/misc/debug_level_shifter.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/misc/debug_level_shifter.sch
 .subckt debug_level_shifter vph out vpl in gd
 *.ipin in
 *.opin out
@@ -546,9 +609,72 @@ XM13 net5 3_stage_out gd gd sg13_hv_nmos w=1u l=0.45u ng=1 m=1 mm_ok=1
 .ends
 
 
-* expanding   symbol:  /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/PFD/PFD_passgate.sym # of pins=6
-** sym_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/PFD/PFD_passgate.sym
-** sch_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/PFD/PFD_passgate.sch
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/bandgap/bandgap_selfbias_core.sym # of pins=3
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/bandgap/bandgap_selfbias_core.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/bandgap/bandgap_selfbias_core.sch
+.subckt bandgap_selfbias_core vp vref gd
+*.ipin gd
+*.ipin vp
+*.opin vref
+XM1 net1 net1 gd gd sg13_hv_nmos w=1.2u l=0.9u ng=1 m=2 mm_ok=1
+XM2 net3 net1 net5 gd sg13_hv_nmos w=1.2u l=0.9u ng=1 m=8 mm_ok=1
+XM7 net5 vref gd gd sg13_hv_nmos w=1.2u l=0.9u ng=1 m=4 mm_ok=1
+XM3 sense sense net1 gd sg13_hv_nmos w=1.2u l=0.9u ng=1 m=2 mm_ok=1
+XM4 net2 sense net3 gd sg13_hv_nmos w=1.2u l=0.9u ng=1 m=8 mm_ok=1
+XM6 net2 net2 vp vp sg13_hv_pmos w=1.2u l=0.9u ng=1 m=2 mm_ok=1
+XM5 sense net2 vp vp sg13_hv_pmos w=1.2u l=0.9u ng=1 m=2 mm_ok=1
+XM10 net6 net2 vp vp sg13_hv_pmos w=1.2u l=0.9u ng=1 m=2 mm_ok=1
+XM8 net7 net6 gd gd sg13_hv_nmos w=1.2u l=0.9u ng=1 m=20 mm_ok=1
+XM9 net6 net6 net7 gd sg13_hv_nmos w=1.2u l=0.9u ng=1 m=12 mm_ok=1
+XM13 net8 net2 vp vp sg13_hv_pmos w=1.2u l=0.9u ng=1 m=2 mm_ok=1
+XM11 net9 net8 net7 gd sg13_hv_nmos w=1.2u l=0.9u ng=1 m=20 mm_ok=1
+XM12 net8 net8 net9 gd sg13_hv_nmos w=1.2u l=0.9u ng=1 m=10 mm_ok=1
+XM14 vref vref net9 gd sg13_hv_nmos w=1.2u l=0.9u ng=1 m=8 mm_ok=1
+XM15 vref net2 vp vp sg13_hv_pmos w=1.2u l=0.9u ng=1 m=2 mm_ok=1
+XM16 stup sense gd gd sg13_hv_nmos w=1.2u l=0.9u ng=1 m=2 mm_ok=1
+XM17 stup gd vp vp sg13_hv_pmos w=1.2u l=4.0u ng=1 m=1 mm_ok=1
+XM18 net2 stup gd gd sg13_hv_nmos w=1.2u l=0.9u ng=1 m=2 mm_ok=1
+XM19 net9 gd gd gd sg13_hv_nmos w=1.2u l=0.9u ng=1 m=8 mm_ok=1
+XM20 net7 gd gd gd sg13_hv_nmos w=1.2u l=0.9u ng=1 m=4 mm_ok=1
+XM21 net9 gd net5 gd sg13_hv_nmos w=1.2u l=0.9u ng=1 m=2 mm_ok=1
+XM22 net8 gd gd gd sg13_hv_nmos w=1.2u l=0.9u ng=1 m=2 mm_ok=1
+XM23 net5 gd gd gd sg13_hv_nmos w=1.2u l=0.9u ng=1 m=2 mm_ok=1
+XM24 sense gd gd gd sg13_hv_nmos w=1.2u l=0.9u ng=1 m=1 mm_ok=1
+.ends
+
+
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/bandgap/bandgap_res_diodes.sym # of pins=3
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/bandgap/bandgap_res_diodes.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/bandgap/bandgap_res_diodes.sch
+.subckt bandgap_res_diodes d1 d8 gd
+*.ipin gd
+*.ipin d1
+*.ipin d8
+XQ1 gd gd d1 pnpMPA a=4e-12 p=8e-06
+XQ2 gd gd d8 pnpMPA a=4e-12 p=8e-06 m=8
+.ends
+
+
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/bandgap/bandgap_res_core_wrapper.sym # of pins=6
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/bandgap/bandgap_res_core_wrapper.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/bandgap/bandgap_res_core_wrapper.sch
+.subckt bandgap_res_core_wrapper vp vref gd d8 d1 vbias
+*.ipin vp
+*.ipin gd
+*.opin vref
+*.opin d1
+*.opin d8
+*.opin vbias
+xbandgap vp vbias vref gd d8 d1 bandgap_res_core
+xbias vp vbias gd pbias nbias const_gm_bias
+* noconn nbias
+* noconn pbias
+.ends
+
+
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/PFD/PFD_passgate.sym # of pins=6
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/PFD/PFD_passgate.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/PFD/PFD_passgate.sch
 .subckt PFD_passgate in_n vp A B gnd in_p
 *.ipin in_n
 *.ipin in_p
@@ -561,9 +687,9 @@ XM5 B in_n A gnd sg13_lv_nmos w=0.3u l=0.15u ng=1 m=1 mm_ok=1
 .ends
 
 
-* expanding   symbol:  /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/NAND_2in.sym # of pins=5
-** sym_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/NAND_2in.sym
-** sch_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/NAND_2in.sch
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/NAND_2in.sym # of pins=5
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/NAND_2in.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/NAND_2in.sch
 .subckt NAND_2in VP GND a y b
 *.opin y
 *.iopin GND
@@ -577,9 +703,9 @@ XM4 y a VP VP sg13_lv_pmos w=0.15u l=0.13u ng=1 m=1 mm_ok=1
 .ends
 
 
-* expanding   symbol:  /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/PFD/PFD_buffor.sym # of pins=4
-** sym_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/PFD/PFD_buffor.sym
-** sch_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/PFD/PFD_buffor.sch
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/PFD/PFD_buffor.sym # of pins=4
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/PFD/PFD_buffor.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/PFD/PFD_buffor.sch
 .subckt PFD_buffor gnd vp out in
 *.iopin gnd
 *.iopin vp
@@ -592,9 +718,9 @@ XM3 out out_stage1 vp vp sg13_lv_pmos w=0.4u l=0.75u ng=1 m=1 mm_ok=1
 .ends
 
 
-* expanding   symbol:  /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/PFD/PFD_flip_flop.sym # of pins=7
-** sym_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/PFD/PFD_flip_flop.sym
-** sch_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/PFD/PFD_flip_flop.sch
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/PFD/PFD_flip_flop.sym # of pins=7
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/PFD/PFD_flip_flop.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/PFD/PFD_flip_flop.sch
 .subckt PFD_flip_flop clk rst D Q NQ vp gd
 *.ipin D
 *.opin Q
@@ -618,9 +744,9 @@ x2 clk clk_n vp gd PFD_inverter_x4
 .ends
 
 
-* expanding   symbol:  /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/PFD/PFD_inverter_x4.sym # of pins=4
-** sym_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/PFD/PFD_inverter_x4.sym
-** sch_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/PFD/PFD_inverter_x4.sch
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/PFD/PFD_inverter_x4.sym # of pins=4
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/PFD/PFD_inverter_x4.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/PFD/PFD_inverter_x4.sch
 .subckt PFD_inverter_x4 IN OUT VP GND
 *.ipin IN
 *.iopin VP
@@ -631,9 +757,9 @@ XM2 OUT IN VP VP sg13_lv_pmos w=0.60u l=0.13u ng=1 m=1 mm_ok=1
 .ends
 
 
-* expanding   symbol:  /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/2Div.sym # of pins=10
-** sym_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/2Div.sym
-** sch_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/2Div.sch
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/2Div.sym # of pins=10
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/2Div.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/2Div.sch
 .subckt 2Div gd vp in div2 div4 div8 div16 div32 div64 div128
 *.iopin gd
 *.ipin in
@@ -655,9 +781,9 @@ x6 div16 vp gd net4 div8 net4 d_flip_flop
 .ends
 
 
-* expanding   symbol:  /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/MUX_8to1.sym # of pins=14
-** sym_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/MUX_8to1.sym
-** sch_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/MUX_8to1.sch
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/MUX_8to1.sym # of pins=14
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/MUX_8to1.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/MUX_8to1.sch
 .subckt MUX_8to1 gd vp A0 out in1 in2 in3 in4 in5 in6 in7 A1 in8 A2
 *.iopin gd
 *.iopin vp
@@ -712,9 +838,9 @@ x8 en1_ vp gd en1 net11 out_unb passgate
 .ends
 
 
-* expanding   symbol:  /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/pdiv.sym # of pins=11
-** sym_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/pdiv.sym
-** sch_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/pdiv.sch
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/pdiv.sym # of pins=11
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/pdiv.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/pdiv.sch
 .subckt pdiv gd VP clk reset d0 d1 d2 d3 d4 d5 out_div
 *.iopin gd
 *.ipin clk
@@ -741,9 +867,9 @@ x9 reset net4 VP gd inverter_x4
 .ends
 
 
-* expanding   symbol:  /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/NAND_3in.sym # of pins=6
-** sym_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/NAND_3in.sym
-** sch_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/NAND_3in.sch
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/NAND_3in.sym # of pins=6
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/NAND_3in.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/NAND_3in.sch
 .subckt NAND_3in VP GND a y b c
 *.opin y
 *.iopin GND
@@ -760,9 +886,9 @@ XM5 y b VP VP sg13_lv_pmos w=0.15u l=0.13u ng=1 m=1 mm_ok=1
 .ends
 
 
-* expanding   symbol:  /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/charge_pump/vbias.sym # of pins=3
-** sym_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/charge_pump/vbias.sym
-** sch_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/charge_pump/vbias.sch
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/charge_pump/vbias.sym # of pins=3
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/charge_pump/vbias.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/charge_pump/vbias.sch
 .subckt vbias vp gd vbias
 *.opin vbias
 *.iopin gd
@@ -777,9 +903,9 @@ x1 vp iref gd curr_source
 .ends
 
 
-* expanding   symbol:  /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/charge_pump//curr_source.sym # of pins=3
-** sym_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/charge_pump//curr_source.sym
-** sch_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/charge_pump//curr_source.sch
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/charge_pump/curr_source.sym # of pins=3
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/charge_pump/curr_source.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/charge_pump/curr_source.sch
 .subckt curr_source vp iref gd
 *.iopin vp
 *.iopin gd
@@ -796,9 +922,9 @@ XR2 net1 gd gd rppd w=1e-6 l=1.7e-6 m=1 b=0 mm_ok=1
 .ends
 
 
-* expanding   symbol:  /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/vco/vco_core_0.sym # of pins=4
-** sym_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/vco/vco_core_0.sym
-** sch_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/vco/vco_core_0.sch
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/vco/vco_core_0.sym # of pins=4
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/vco/vco_core_0.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/vco/vco_core_0.sch
 .subckt vco_core_0 vp gnd out in
 *.ipin in
 *.iopin vp
@@ -814,9 +940,9 @@ x7 vp pgt 4th out in gnd vco_delay_cell_0
 .ends
 
 
-* expanding   symbol:  /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/vco/vco_core_1.sym # of pins=8
-** sym_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/vco/vco_core_1.sym
-** sch_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/vco/vco_core_1.sch
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/vco/vco_core_1.sym # of pins=8
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/vco/vco_core_1.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/vco/vco_core_1.sch
 .subckt vco_core_1 vp gnd out en5 in nen11 nen5 en11
 *.ipin in
 *.iopin vp
@@ -848,9 +974,9 @@ XM8 5th en5 4th gnd sg13_lv_nmos w=0.3u l=0.15u ng=1 m=1 mm_ok=1
 .ends
 
 
-* expanding   symbol:  /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/vco/vco_core_2.sym # of pins=8
-** sym_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/vco/vco_core_2.sym
-** sch_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/vco/vco_core_2.sch
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/vco/vco_core_2.sym # of pins=8
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/vco/vco_core_2.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/vco/vco_core_2.sch
 .subckt vco_core_2 vp gnd out in en5 nen5 nen11 en11
 *.ipin in
 *.iopin vp
@@ -882,9 +1008,9 @@ XM8 5th en5 4th gnd sg13_lv_nmos w=0.3u l=0.15u ng=1 m=1 mm_ok=1
 .ends
 
 
-* expanding   symbol:  /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/vco/vco_core_3.sym # of pins=8
-** sym_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/vco/vco_core_3.sym
-** sch_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/vco/vco_core_3.sch
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/vco/vco_core_3.sym # of pins=8
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/vco/vco_core_3.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/vco/vco_core_3.sch
 .subckt vco_core_3 vp gnd out in en5 nen5 nen11 en11
 *.ipin in
 *.iopin vp
@@ -916,9 +1042,9 @@ XM8 5th en5 4th gnd sg13_lv_nmos w=0.3u l=0.15u ng=1 m=1 mm_ok=1
 .ends
 
 
-* expanding   symbol:  /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/vco/vco_core_4.sym # of pins=4
-** sym_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/vco/vco_core_4.sym
-** sch_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/vco/vco_core_4.sch
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/vco/vco_core_4.sym # of pins=4
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/vco/vco_core_4.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/vco/vco_core_4.sch
 .subckt vco_core_4 vp gnd out in
 *.ipin in
 *.iopin vp
@@ -940,9 +1066,9 @@ x13 vp pgt 9th 10th in gnd vco_delay_cell_4
 .ends
 
 
-* expanding   symbol:  /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/vco/0_buf.sym # of pins=4
-** sym_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/vco/0_buf.sym
-** sch_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/vco/0_buf.sch
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/vco/0_buf.sym # of pins=4
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/vco/0_buf.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/vco/0_buf.sch
 .subckt 0_buf vp gnd out in
 *.ipin in
 *.opin out
@@ -963,9 +1089,9 @@ XM8 1th in vp vp sg13_lv_pmos w=1.5u l=0.13u ng=1 m=1 mm_ok=1
 .ends
 
 
-* expanding   symbol:  /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/VCO_MUX_and_decoder.sym # of pins=28
-** sym_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/VCO_MUX_and_decoder.sym
-** sch_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/VCO_MUX_and_decoder.sch
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/VCO_MUX_and_decoder.sym # of pins=28
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/VCO_MUX_and_decoder.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/VCO_MUX_and_decoder.sch
 .subckt VCO_MUX_and_decoder gd VP c0 c1 c2 f0 f1 f2 f3 f4 f5 VCO_in VCO2_in VCO3_in VCO4_in VCO5_in VCO2_11_sel VCO2_5_sel
 + VCO3_11_sel VCO3_5_sel VCO4_11_sel VCO4_5_sel out VCO4_sel VCO3_sel VCO2_sel VCO_sel VCO5_sel
 *.iopin gd
@@ -1008,9 +1134,9 @@ x9 gd VP c0 c1 c2 f0 f1 f2 f3 f4 f5 VCO_sel VCO2_11_sel VCO2_5_sel VCO3_11_sel V
 .ends
 
 
-* expanding   symbol:  /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/inverter.sym # of pins=4
-** sym_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/inverter.sym
-** sch_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/inverter.sch
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/inverter.sym # of pins=4
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/inverter.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/inverter.sch
 .subckt inverter IN OUT VP GND
 *.ipin IN
 *.iopin VP
@@ -1021,9 +1147,9 @@ XM2 OUT IN VP VP sg13_lv_pmos w=0.15u l=0.13u ng=1 m=1 mm_ok=1
 .ends
 
 
-* expanding   symbol:  /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/vco/vco_passgate.sym # of pins=6
-** sym_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/vco/vco_passgate.sym
-** sch_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/vco/vco_passgate.sch
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/vco/vco_passgate.sym # of pins=6
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/vco/vco_passgate.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/vco/vco_passgate.sch
 .subckt vco_passgate en_ VP GND en IO OI
 *.iopin OI
 *.iopin IO
@@ -1036,9 +1162,9 @@ XM2 IO en_ OI VP sg13_lv_pmos w=2.5u l=0.13u ng=1 m=1 mm_ok=1
 .ends
 
 
-* expanding   symbol:  /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/passgate.sym # of pins=6
-** sym_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/passgate.sym
-** sch_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/passgate.sch
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/passgate.sym # of pins=6
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/passgate.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/passgate.sch
 .subckt passgate in_p vp gnd in_n A B
 *.ipin in_n
 *.ipin in_p
@@ -1051,9 +1177,49 @@ XM5 B in_n A gnd sg13_lv_nmos w=0.3u l=0.15u ng=1 m=1 mm_ok=1
 .ends
 
 
-* expanding   symbol:  /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/PFD/PFD_NOR.sym # of pins=5
-** sym_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/PFD/PFD_NOR.sym
-** sch_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/PFD/PFD_NOR.sch
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/bandgap/bandgap_res_core.sym # of pins=6
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/bandgap/bandgap_res_core.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/bandgap/bandgap_res_core.sch
+.subckt bandgap_res_core vp ibias vref gd d8 d1
+*.ipin gd
+*.ipin vp
+*.ipin ibias
+*.opin vref
+*.opin d1
+*.opin d8
+XM2 net1 vg vp vp sg13_hv_pmos w=3.6u l=0.9u ng=1 m=10 mm_ok=1
+XM1 d1 vg vp vp sg13_hv_pmos w=3.6u l=0.9u ng=1 m=10 mm_ok=1
+XM3 vref vg vp vp sg13_hv_pmos w=3.6u l=0.9u ng=1 m=10 mm_ok=1
+XR2 net1 gd gd rppd w=2e-6 l=112.48e-6 m=1 b=0 mm_ok=1
+XR3 d1 gd gd rppd w=2e-6 l=112.48e-6 m=1 b=0 mm_ok=1
+XR4 vref gd gd rppd w=2e-6 l=112.48e-6 m=1 b=0 mm_ok=1
+XR1 net1 d8 gd rppd w=5.8e-6 l=45.5e-6 m=1 b=0 mm_ok=1
+XR5 gd net2 gd rppd w=2e-6 l=42.18e-6 m=1 b=0 mm_ok=1
+XR6 net2 gd gd rppd w=2e-6 l=14.06e-6 m=1 b=0 mm_ok=1
+XR7 gd gd gd rppd w=2e-6 l=14.06e-6 m=2 b=0 mm_ok=1
+x1 vp net1 d1 vg ibias gd opamp_folded_pmos
+.ends
+
+
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/bandgap/const_gm_bias.sym # of pins=5
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/bandgap/const_gm_bias.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/bandgap/const_gm_bias.sch
+.subckt const_gm_bias vp ibias gd pbias nbias
+*.opin ibias
+*.ipin vp
+*.ipin gd
+*.opin pbias
+*.opin nbias
+xgm_core vp ibias gd vr pbias nbias const_gm_bias_core
+XRbias vr gd gd rppd w=1.2e-6 l=11.7e-6 m=1 b=0 mm_ok=1
+XR2 gd net1 gd rppd w=1.2e-6 l=3.9e-6 m=1 b=0 mm_ok=1
+XR3 net1 gd gd rppd w=1.2e-6 l=1.3e-6 m=1 b=0 mm_ok=1
+.ends
+
+
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/PFD/PFD_NOR.sym # of pins=5
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/PFD/PFD_NOR.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/PFD/PFD_NOR.sch
 .subckt PFD_NOR vp A B Out gd
 *.ipin vp
 *.ipin gd
@@ -1067,9 +1233,9 @@ XM3 Out B gd gd sg13_lv_nmos w=0.3u l=0.15u ng=1 m=1 mm_ok=1
 .ends
 
 
-* expanding   symbol:  /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/PFD/PFD_inverter_x8.sym # of pins=4
-** sym_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/PFD/PFD_inverter_x8.sym
-** sch_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/PFD/PFD_inverter_x8.sch
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/PFD/PFD_inverter_x8.sym # of pins=4
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/PFD/PFD_inverter_x8.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/PFD/PFD_inverter_x8.sch
 .subckt PFD_inverter_x8 IN OUT VP GND
 *.ipin IN
 *.iopin VP
@@ -1080,9 +1246,9 @@ XM2 OUT IN VP VP sg13_lv_pmos w=1.20u l=0.13u ng=1 m=1 mm_ok=1
 .ends
 
 
-* expanding   symbol:  /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/NOR_2in.sym # of pins=5
-** sym_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/NOR_2in.sym
-** sch_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/NOR_2in.sch
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/NOR_2in.sym # of pins=5
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/NOR_2in.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/NOR_2in.sch
 .subckt NOR_2in vp gd A Out B
 *.opin Out
 *.iopin gd
@@ -1096,9 +1262,9 @@ XM5 Out B gd gd sg13_lv_nmos w=0.15u l=0.13u ng=1 m=1 mm_ok=1
 .ends
 
 
-* expanding   symbol:  /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/div_with_reset.sym # of pins=10
-** sym_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/div_with_reset.sym
-** sch_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/div_with_reset.sch
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/div_with_reset.sym # of pins=10
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/div_with_reset.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/div_with_reset.sch
 .subckt div_with_reset gd vp in reset r_div2 r_div4 r_div8 r_div16 r_div32 r_div64
 *.iopin gd
 *.ipin in
@@ -1120,9 +1286,9 @@ x6 net3 vp gd r_div8 net1 r_div8 reset d_flip_flop_reset
 .ends
 
 
-* expanding   symbol:  /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/count_data_check.sym # of pins=15
-** sym_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/count_data_check.sym
-** sch_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/count_data_check.sch
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/count_data_check.sym # of pins=15
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/count_data_check.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/count_data_check.sch
 .subckt count_data_check out VP GND c0 c1 c2 c3 c4 c5 d0 d1 d2 d3 d4 d5
 *.iopin GND
 *.ipin c0
@@ -1151,9 +1317,9 @@ x6 VP GND d5 y5 c5 XNOR
 .ends
 
 
-* expanding   symbol:  /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/d_flip_flop_reset.sym # of pins=7
-** sym_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/d_flip_flop_reset.sym
-** sch_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/d_flip_flop_reset.sch
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/d_flip_flop_reset.sym # of pins=7
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/d_flip_flop_reset.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/d_flip_flop_reset.sch
 .subckt d_flip_flop_reset q VP GND q_ clk d reset
 *.iopin GND
 *.ipin clk
@@ -1171,9 +1337,9 @@ x1 VP GND net1 net3 clk net4 NAND_3in_x3
 .ends
 
 
-* expanding   symbol:  /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/inverter_x8.sym # of pins=4
-** sym_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/inverter_x8.sym
-** sch_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/inverter_x8.sch
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/inverter_x8.sym # of pins=4
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/inverter_x8.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/inverter_x8.sch
 .subckt inverter_x8 IN OUT VP GND
 *.ipin IN
 *.iopin VP
@@ -1184,9 +1350,9 @@ XM2 OUT IN VP VP sg13_lv_pmos w=1.20u l=0.13u ng=1 m=1 mm_ok=1
 .ends
 
 
-* expanding   symbol:  /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/vco/vco_delay_cell_0.sym # of pins=6
-** sym_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/vco/vco_delay_cell_0.sym
-** sch_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/vco/vco_delay_cell_0.sch
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/vco/vco_delay_cell_0.sym # of pins=6
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/vco/vco_delay_cell_0.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/vco/vco_delay_cell_0.sch
 .subckt vco_delay_cell_0 vp pgt in out ngt gnd
 *.ipin in
 *.opin out
@@ -1201,9 +1367,9 @@ XM26 dn ngt gnd gnd sg13_lv_nmos w=0.8u l=0.14*4u ng=1 m=1 mm_ok=1
 .ends
 
 
-* expanding   symbol:  /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/vco/vco_delay_cell_1.sym # of pins=6
-** sym_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/vco/vco_delay_cell_1.sym
-** sch_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/vco/vco_delay_cell_1.sch
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/vco/vco_delay_cell_1.sym # of pins=6
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/vco/vco_delay_cell_1.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/vco/vco_delay_cell_1.sch
 .subckt vco_delay_cell_1 vp pgt in out ngt gnd
 *.ipin in
 *.opin out
@@ -1218,9 +1384,9 @@ XM26 dn ngt gnd gnd sg13_lv_nmos w=0.8u l=0.35*4u ng=1 m=1 mm_ok=1
 .ends
 
 
-* expanding   symbol:  /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/vco/vco_delay_cell_2.sym # of pins=6
-** sym_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/vco/vco_delay_cell_2.sym
-** sch_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/vco/vco_delay_cell_2.sch
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/vco/vco_delay_cell_2.sym # of pins=6
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/vco/vco_delay_cell_2.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/vco/vco_delay_cell_2.sch
 .subckt vco_delay_cell_2 vp pgt in out ngt gnd
 *.ipin in
 *.opin out
@@ -1235,9 +1401,9 @@ XM26 dn ngt gnd gnd sg13_lv_nmos w=0.8u l=1.4*4u ng=1 m=1 mm_ok=1
 .ends
 
 
-* expanding   symbol:  /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/vco/vco_delay_cell_3.sym # of pins=6
-** sym_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/vco/vco_delay_cell_3.sym
-** sch_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/vco/vco_delay_cell_3.sch
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/vco/vco_delay_cell_3.sym # of pins=6
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/vco/vco_delay_cell_3.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/vco/vco_delay_cell_3.sch
 .subckt vco_delay_cell_3 vp pgt in out ngt gnd
 *.ipin in
 *.opin out
@@ -1252,9 +1418,9 @@ XM26 dn ngt gnd gnd sg13_lv_nmos w=0.8u l=4.25*4u ng=1 m=1 mm_ok=1
 .ends
 
 
-* expanding   symbol:  /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/vco/vco_delay_cell_4.sym # of pins=6
-** sym_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/vco/vco_delay_cell_4.sym
-** sch_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/vco/vco_delay_cell_4.sch
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/vco/vco_delay_cell_4.sym # of pins=6
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/vco/vco_delay_cell_4.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/vco/vco_delay_cell_4.sch
 .subckt vco_delay_cell_4 vp pgt in out ngt gnd
 *.ipin in
 *.opin out
@@ -1269,9 +1435,9 @@ XM26 dn ngt gnd gnd sg13_lv_nmos w=0.8u l=5.9*4u ng=1 m=1 mm_ok=1
 .ends
 
 
-* expanding   symbol:  /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/VCO_MUX.sym # of pins=13
-** sym_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/VCO_MUX.sym
-** sch_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/VCO_MUX.sch
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/VCO_MUX.sym # of pins=13
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/VCO_MUX.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/VCO_MUX.sch
 .subckt VCO_MUX gd VP VCO_in VCO2_in VCO3_in VCO4_in VCO5_in VCO_sel VCO2_sel VCO3_sel VCO4_sel VCO5_sel out
 *.iopin gd
 *.iopin VP
@@ -1299,9 +1465,9 @@ x1 net1 VP gd VCO_sel VCO_in out vco_passgate_mux
 .ends
 
 
-* expanding   symbol:  /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/VCO_decoder_cells.sym # of pins=19
-** sym_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/VCO_decoder_cells.sym
-** sch_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/VCO_decoder_cells.sch
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/VCO_decoder_cells.sym # of pins=19
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/VCO_decoder_cells.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/VCO_decoder_cells.sch
 .subckt VCO_decoder_cells gd VP c0 c1 c2 f0 f1 f2 f3 f4 f5 VCO_sel VCO2_11_sel VCO2_5_sel VCO3_11_sel VCO3_5_sel VCO4_11_sel
 + VCO4_5_sel VCO5_11_sel
 *.iopin gd
@@ -1337,9 +1503,69 @@ x3 gd VP VCO5_11_sel 000 after_000011_n 010 000000 VCO5_selection
 .ends
 
 
-* expanding   symbol:  /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/XNOR.sym # of pins=5
-** sym_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/XNOR.sym
-** sch_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/XNOR.sch
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/bandgap/opamp_folded_pmos.sym # of pins=6
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/bandgap/opamp_folded_pmos.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/bandgap/opamp_folded_pmos.sch
+.subckt opamp_folded_pmos vp inp inm out ibias gd
+*.ipin ibias
+*.ipin inp
+*.ipin inm
+*.opin out
+*.ipin gd
+*.ipin vp
+XM13 bias4 ibias gd gd sg13_hv_nmos w=1.2u l=0.9u ng=1 m=2 mm_ok=1
+XM12 ibias ibias gd gd sg13_hv_nmos w=1.2u l=0.9u ng=1 m=2 mm_ok=1
+XM14 bias4 bias4 vp vp sg13_hv_pmos w=3.6u l=0.9u ng=1 m=2 mm_ok=1
+XM11 pair_com bias4 vp vp sg13_hv_pmos w=3.6u l=0.9u ng=1 m=4 mm_ok=1
+XM1 inp_fold inp pair_com vp sg13_hv_pmos w=2.4u l=0.9u ng=1 m=12 mm_ok=1
+XM2 inm_fold inm pair_com vp sg13_hv_pmos w=2.4u l=0.9u ng=1 m=12 mm_ok=1
+XM9 tele_m tele_g vp vp sg13_hv_pmos w=3.6u l=0.9u ng=1 m=2 mm_ok=1
+XM10 tele_p tele_g vp vp sg13_hv_pmos w=3.6u l=0.9u ng=1 m=2 mm_ok=1
+XM7 tele_g bias3 tele_m vp sg13_hv_pmos w=3.6u l=0.9u ng=1 m=2 mm_ok=1
+XM8 out bias3 tele_p vp sg13_hv_pmos w=3.6u l=0.9u ng=1 m=2 mm_ok=1
+XM3 inp_fold ibias gd gd sg13_hv_nmos w=1.2u l=0.9u ng=1 m=4 mm_ok=1
+XM4 inm_fold ibias gd gd sg13_hv_nmos w=1.2u l=0.9u ng=1 m=4 mm_ok=1
+XM5 tele_g bias2 inp_fold gd sg13_hv_nmos w=1.2u l=0.9u ng=1 m=2 mm_ok=1
+XM6 out bias2 inm_fold gd sg13_hv_nmos w=1.2u l=0.9u ng=1 m=2 mm_ok=1
+XM15 bias3 ibias gd gd sg13_hv_nmos w=1.2u l=0.9u ng=1 m=4 mm_ok=1
+XM16 bias3 bias3 net1 vp sg13_hv_pmos w=3.6u l=0.9u ng=1 m=1 mm_ok=1
+XM17 net1 bias3 vp vp sg13_hv_pmos w=3.6u l=0.9u ng=1 m=1 mm_ok=1
+XM20 bias2 bias4 vp vp sg13_hv_pmos w=3.6u l=0.9u ng=1 m=4 mm_ok=1
+XM18 net2 bias2 gd gd sg13_hv_nmos w=1.2u l=0.9u ng=1 m=1 mm_ok=1
+XM19 bias2 bias2 net2 gd sg13_hv_nmos w=1.2u l=0.9u ng=1 m=1 mm_ok=1
+XM21 bias2 gd gd gd sg13_hv_nmos w=1.2u l=0.9u ng=1 m=1 mm_ok=1
+XM22 pair_com vp vp vp sg13_hv_pmos w=2.4u l=0.9u ng=1 m=2 mm_ok=1
+XM23 bias3 vp vp vp sg13_hv_pmos w=3.6u l=0.9u ng=1 m=1 mm_ok=1
+.ends
+
+
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/bandgap/const_gm_bias_core.sym # of pins=6
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/bandgap/const_gm_bias_core.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/bandgap/const_gm_bias_core.sch
+.subckt const_gm_bias_core vp ibias gd res pbias nbias
+*.ipin vp
+*.ipin gd
+*.opin ibias
+*.opin res
+*.opin nbias
+*.opin pbias
+XM1 nbias nbias gd gd sg13_hv_nmos w=0.6u l=4u ng=1 m=2 mm_ok=1
+XM2 pbias nbias res gd sg13_hv_nmos w=0.6u l=4u ng=1 m=4 mm_ok=1
+XM4 pbias pbias vp vp sg13_hv_pmos w=0.6u l=4u ng=1 m=2 mm_ok=1
+XM3 nbias pbias vp vp sg13_hv_pmos w=0.6u l=4u ng=1 m=2 mm_ok=1
+XM5 ibias pbias vp vp sg13_hv_pmos w=0.6u l=4u ng=1 m=1 mm_ok=1
+XM8 net1 gd vp vp sg13_hv_pmos w=0.6u l=4.38u ng=1 m=1 mm_ok=1
+XM6 stup nbias gd gd sg13_hv_nmos w=0.6u l=2u ng=1 m=4 mm_ok=1
+XM9 pbias stup gd gd sg13_hv_nmos w=0.6u l=2u ng=1 m=2 mm_ok=1
+XM7 stup gd net1 vp sg13_hv_pmos w=0.6u l=4.38u ng=1 m=1 mm_ok=1
+XM10 vp vp vp vp sg13_hv_pmos w=0.6u l=2u ng=1 m=2 mm_ok=1
+XM11 vp vp vp vp sg13_hv_pmos w=0.6u l=4u ng=1 m=1 mm_ok=1
+.ends
+
+
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/XNOR.sym # of pins=5
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/XNOR.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/XNOR.sch
 .subckt XNOR VP GND a y b
 *.opin y
 *.iopin GND
@@ -1359,9 +1585,9 @@ x2 b _b VP GND inverter
 .ends
 
 
-* expanding   symbol:  /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/NAND_3in_x3.sym # of pins=6
-** sym_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/NAND_3in_x3.sym
-** sch_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/NAND_3in_x3.sch
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/NAND_3in_x3.sym # of pins=6
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/NAND_3in_x3.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/NAND_3in_x3.sch
 .subckt NAND_3in_x3 VP GND a y b c
 *.opin y
 *.iopin GND
@@ -1378,9 +1604,9 @@ XM6 y c VP VP sg13_lv_pmos w=0.3u l=0.13u ng=1 m=1 mm_ok=1
 .ends
 
 
-* expanding   symbol:  /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/inverter_dek.sym # of pins=4
-** sym_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/inverter_dek.sym
-** sch_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/inverter_dek.sch
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/inverter_dek.sym # of pins=4
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/inverter_dek.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/inverter_dek.sch
 .subckt inverter_dek IN OUT VP GND
 *.ipin IN
 *.iopin VP
@@ -1391,9 +1617,9 @@ XM2 OUT IN VP VP sg13_lv_pmos w=0.15u l=0.13u ng=1 m=1 mm_ok=1
 .ends
 
 
-* expanding   symbol:  /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/passgate_scaled.sym # of pins=6
-** sym_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/passgate_scaled.sym
-** sch_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/passgate_scaled.sch
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/passgate_scaled.sym # of pins=6
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/passgate_scaled.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/passgate_scaled.sch
 .subckt passgate_scaled en_ VP GND en IO OI
 *.iopin OI
 *.iopin IO
@@ -1406,9 +1632,9 @@ XM2 IO en_ OI VP sg13_lv_pmos w=0.15u l=0.13u ng=1 m=1 mm_ok=1
 .ends
 
 
-* expanding   symbol:  /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/vco_passgate_mux.sym # of pins=6
-** sym_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/vco_passgate_mux.sym
-** sch_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/vco_passgate_mux.sch
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/vco_passgate_mux.sym # of pins=6
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/vco_passgate_mux.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/vco_passgate_mux.sch
 .subckt vco_passgate_mux en_ VP GND en IO OI
 *.iopin OI
 *.iopin IO
@@ -1421,9 +1647,9 @@ XM2 IO en_ OI VP sg13_lv_pmos w=2.5u l=0.13u ng=1 m=1 mm_ok=1
 .ends
 
 
-* expanding   symbol:  /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/3bit_to_8_outs.sym # of pins=13
-** sym_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/3bit_to_8_outs.sym
-** sch_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/3bit_to_8_outs.sch
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/3bit_to_8_outs.sym # of pins=13
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/3bit_to_8_outs.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/3bit_to_8_outs.sch
 .subckt 3bit_to_8_outs gd VP c0 c1 c2 coarse_0 coarse_1 coarse_2 coarse_3 coarse_4 coarse_5 coarse_6 coarse_7
 *.iopin gd
 *.iopin VP
@@ -1460,9 +1686,9 @@ x19 VP gd c0_n net5 c1_n c2 NAND_3in_dek
 .ends
 
 
-* expanding   symbol:  /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/row_section_decoding.sym # of pins=17
-** sym_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/row_section_decoding.sym
-** sch_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/row_section_decoding.sch
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/row_section_decoding.sym # of pins=17
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/row_section_decoding.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/row_section_decoding.sch
 .subckt row_section_decoding after_000011 after_000011_n 000000 f5_n gd after_000111 VP after_000111_n after_001111 after_001111_n
 + f1 f2 f3 f4 f5 000000_n f0
 *.ipin f1
@@ -1499,9 +1725,9 @@ x33 000000_n 000000 VP gd inverter_dek
 .ends
 
 
-* expanding   symbol:  /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/VCO2_selection.sym # of pins=19
-** sym_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/VCO2_selection.sym
-** sch_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/VCO2_selection.sch
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/VCO2_selection.sym # of pins=19
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/VCO2_selection.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/VCO2_selection.sch
 .subckt VCO2_selection gd VP 110 after_001111_n after_000111 111 000000_n 101 after_000011 after_001111 f5_n after_000111_n 010
 + 100 after_000011_n 011 f5 VCO2_5_sel VCO2_11_sel
 *.iopin gd
@@ -1540,9 +1766,9 @@ x10 VP gd net11 net9 net6 net5 NAND_3in_dek
 .ends
 
 
-* expanding   symbol:  /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/VCO4_selection.sym # of pins=16
-** sym_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/VCO4_selection.sym
-** sch_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/VCO4_selection.sch
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/VCO4_selection.sym # of pins=16
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/VCO4_selection.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/VCO4_selection.sch
 .subckt VCO4_selection gd VP 000000 000 000000_n after_001111_n 010 after_000011_n 011 001 after_000011 after_000111_n VCO4_11_sel
 + VCO4_5_sel f0 f1
 *.iopin gd
@@ -1573,9 +1799,9 @@ x6 VP gd net1 VCO4_5_sel net4 net2 net3 NAND_4in_dek
 .ends
 
 
-* expanding   symbol:  /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/VCO_selection.sym # of pins=9
-** sym_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/VCO_selection.sym
-** sch_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/VCO_selection.sch
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/VCO_selection.sym # of pins=9
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/VCO_selection.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/VCO_selection.sch
 .subckt VCO_selection VCO_sel after_000111 111 gd VP after_001111 110 101 f5
 *.iopin gd
 *.iopin VP
@@ -1593,9 +1819,9 @@ x2 VP gd 101 net3 f5 NAND_2in_dek
 .ends
 
 
-* expanding   symbol:  /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/VCO3_selection.sym # of pins=21
-** sym_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/VCO3_selection.sym
-** sch_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/VCO3_selection.sch
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/VCO3_selection.sym # of pins=21
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/VCO3_selection.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/VCO3_selection.sch
 .subckt VCO3_selection gd VP f5_n 000000 after_000111_n 001 000000_n 110 011 101 000 after_000011_n after_000111 after_001111 100
 + after_001111_n after_000011 010 VCO3_11_sel VCO3_5_sel f5
 *.iopin gd
@@ -1639,9 +1865,9 @@ x12 VP gd net15 VCO3_11_sel net10 net6 net9 NAND_4in_dek
 .ends
 
 
-* expanding   symbol:  /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/VCO5_selection.sym # of pins=7
-** sym_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/VCO5_selection.sym
-** sch_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/VCO5_selection.sch
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/VCO5_selection.sym # of pins=7
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/VCO5_selection.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/VCO5_selection.sch
 .subckt VCO5_selection gd VP VCO5_11_sel 000 after_000011_n 010 000000
 *.iopin gd
 *.iopin VP
@@ -1656,9 +1882,9 @@ x3 VP gd 000 net1 after_000011_n NAND_2in_dek
 .ends
 
 
-* expanding   symbol:  /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/NAND_3in_dek.sym # of pins=6
-** sym_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/NAND_3in_dek.sym
-** sch_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/NAND_3in_dek.sch
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/NAND_3in_dek.sym # of pins=6
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/NAND_3in_dek.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/NAND_3in_dek.sch
 .subckt NAND_3in_dek VP GND a y b c
 *.opin y
 *.iopin GND
@@ -1675,9 +1901,9 @@ XM5 y b VP VP sg13_lv_pmos w=0.15u l=0.13u ng=1 m=1 mm_ok=1
 .ends
 
 
-* expanding   symbol:  /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/NOR_2in_dek.sym # of pins=5
-** sym_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/NOR_2in_dek.sym
-** sch_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/NOR_2in_dek.sch
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/NOR_2in_dek.sym # of pins=5
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/NOR_2in_dek.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/NOR_2in_dek.sch
 .subckt NOR_2in_dek vp gd A Out B
 *.opin Out
 *.iopin gd
@@ -1691,9 +1917,9 @@ XM5 Out B gd gd sg13_lv_nmos w=0.15u l=0.13u ng=1 m=1 mm_ok=1
 .ends
 
 
-* expanding   symbol:  /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/NOR_3in_dek.sym # of pins=6
-** sym_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/NOR_3in_dek.sym
-** sch_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/NOR_3in_dek.sch
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/NOR_3in_dek.sym # of pins=6
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/NOR_3in_dek.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/NOR_3in_dek.sch
 .subckt NOR_3in_dek VP GND a y b c
 *.opin y
 *.iopin GND
@@ -1710,9 +1936,9 @@ XM6 net2 c net1 VP sg13_lv_pmos w=0.15u l=0.13u ng=1 m=1 mm_ok=1
 .ends
 
 
-* expanding   symbol:  /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/NAND_2in_dek.sym # of pins=5
-** sym_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/NAND_2in_dek.sym
-** sch_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/NAND_2in_dek.sch
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/NAND_2in_dek.sym # of pins=5
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/NAND_2in_dek.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/NAND_2in_dek.sch
 .subckt NAND_2in_dek VP GND a y b
 *.opin y
 *.iopin GND
@@ -1726,9 +1952,9 @@ XM4 y a VP VP sg13_lv_pmos w=0.15u l=0.13u ng=1 m=1 mm_ok=1
 .ends
 
 
-* expanding   symbol:  /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/NAND_4in_dek.sym # of pins=7
-** sym_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/NAND_4in_dek.sym
-** sch_path: /foss/designs/CHIP-PLL/PLL0663-main/schematic/xschem/divider/NAND_4in_dek.sch
+* expanding   symbol:  /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/NAND_4in_dek.sym # of pins=7
+** sym_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/NAND_4in_dek.sym
+** sch_path: /foss/designs/IHP__PLL0663/PLL0663-main/schematic/xschem/divider/NAND_4in_dek.sch
 .subckt NAND_4in_dek VP GND a y b c d
 *.opin y
 *.iopin GND

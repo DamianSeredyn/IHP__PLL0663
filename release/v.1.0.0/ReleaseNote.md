@@ -43,7 +43,7 @@ The loop filter is placed outside of the chip.
 ## Verification status
 
 Reports for this release are in `PLL0663-main/verification/`; summary with input hashes in
-`verification/verification_summary.md`. GDS SHA-256: `TODO`.
+`verification/verification_summary.md`. GDS SHA-256: `af1cd7230d668bee49ade49bfee07f34f5b07c11fe78f38a533892ef4f775d38`.
 
 | Check | Result | Notes |
 |---|---|---|
