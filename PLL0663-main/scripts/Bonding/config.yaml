@@ -146,29 +146,30 @@ SHEET_TEXT_SCALE:
 # (e.g. EPAD: ["VSS"]) only if spare ground pads are left unbonded.
 PINOUT:
   # Left side, top to bottom (pins 1-6) -> die west pads (top to bottom)
-  1:  ~                
-  2:  "rst"                
-  3:  "clk_ref"                
-  4:  "out"                     
-  5:  "vph"                    
-  6:  ~                      
+  1:  ~ 
+  2: "NC2"               
+  3:  "rst"                
+  4:  "clk_ref"                
+  5:  "out"                     
+  6:  "vph"                                         
 
   # Bottom side, left to right (pins 7-12) -> die south pads (left to right)
   7:  "data_in"                     
   8:  "data_en"         
-  9:  ~            
+  9:  "NC3"            
   10: "gd1"           
-  11: ~           
-  12: "gd2"           
+  11: "gd2"          
+  12: ~           
   
 
   # Right side, bottom to top (pins 13-18) -> die east pads (bottom to top)
-  13: "clk_in"            
-  14: "debug_out"        
-  15: "vout"           
-  16: "vph_debug"      
-  17: ~            
-  18: ~            
+  13: ~
+  14: "clk_in"            
+  15: "debug_out"        
+  16: "vout"           
+  17: "vph_debug"      
+  18: "NC1"            
+              
  
   # top side, right to left (pins 19-24) -> die north pads (right to left)
   19: "vref_res"            
