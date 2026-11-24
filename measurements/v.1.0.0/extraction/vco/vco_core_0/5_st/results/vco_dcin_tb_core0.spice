@@ -1,0 +1,117 @@
+** sch_path: /foss/designs/CHIP-PLL/schematics/vco/vco_tb/vco_dcin_tb.sch
+**.subckt vco_dcin_tb
+V1 in 0 {vin} ac 1
+.save i(v1)
+V2 vdd 0 {vdd}
+x2 out in vdd 0 vco_core_0
+V3 en5 0 0
+*connector(1,1) ?1 en5
+C3 out_pb 0 50f
+x14 en5 nen5 vdd 0 inverter
+*connector(1,1) ?1 nen5
+x3 en5 en11 vdd 0 inverter
+*connector(1,1) ?1 en11
+x4 en11 nen11 vdd 0 inverter
+*connector(1,1) ?1 nen11
+*connector(1,1) ?1 nen5
+*connector(1,1) ?1 en11
+*connector(1,1) ?1 nen11
+x1 vdd 0 out_pb out 0_buf
+*connector(1,1) ?1 en5
+**** begin user architecture code
+
+
+.param temp=27
+.param vdd=1.2
+.param vin=0.4
+
+.control
+
+tran 40p 700n
+write vco_tb.raw
+set appendwrite
+plot out
+plot out_pb
+.endc
+
+
+ .lib cornerMOSlv.lib mos_tt
+
+**** end user architecture code
+**.ends
+
+* expanding   symbol:  /foss/designs/CHIP-PLL/schematics/vco/vco_cell/vco_core_2.sym # of pins=8
+** sym_path: /foss/designs/CHIP-PLL/schematics/vco/vco_cell/vco_core_2.sym
+** sch_path: /foss/designs/CHIP-PLL/schematics/vco/vco_cell/vco_core_2.sch
+.subckt vco_core_0 out in vp gnd
+.ends
+
+
+* expanding   symbol:  /foss/designs/CHIP-PLL/schematics/divider/schematics/inverter.sym # of pins=4
+** sym_path: /foss/designs/CHIP-PLL/schematics/divider/schematics/inverter.sym
+** sch_path: /foss/designs/CHIP-PLL/schematics/divider/schematics/inverter.sch
+.subckt inverter IN OUT VP GND
+*.ipin IN
+*.iopin VP
+*.opin OUT
+*.iopin GND
+XM1 OUT IN GND GND sg13_lv_nmos w=0.15u l=0.13u ng=1 m=1 mm_ok=1
+XM2 OUT IN VP VP sg13_lv_pmos w=0.15u l=0.13u ng=1 m=1 mm_ok=1
+.ends
+
+
+* expanding   symbol:  /foss/designs/CHIP-PLL/schematics/vco/vco_cell/0_buf.sym # of pins=4
+** sym_path: /foss/designs/CHIP-PLL/schematics/vco/vco_cell/0_buf.sym
+** sch_path: /foss/designs/CHIP-PLL/schematics/vco/vco_cell/0_buf.sch
+.subckt 0_buf vp gnd out in
+*.ipin in
+*.opin out
+*.iopin vp
+*.iopin gnd
+XM9 3th 2th vp vp sg13_lv_pmos w=2.5u l=0.13u ng=1 m=1 mm_ok=1
+XM10 3th 2th gnd gnd sg13_lv_nmos w=2.5u l=0.13u ng=1 m=1 mm_ok=1
+XM11 2th 1th vp vp sg13_lv_pmos w=2.4u l=0.13u ng=1 m=1 mm_ok=1
+XM12 2th 1th gnd gnd sg13_lv_nmos w=1.2u l=0.13u ng=1 m=1 mm_ok=1
+XM1 4th 3th vp vp sg13_lv_pmos w=5u l=0.13u ng=1 m=1 mm_ok=1
+XM2 4th 3th gnd gnd sg13_lv_nmos w=5u l=0.13u ng=1 m=1 mm_ok=1
+XM3 5th 4th vp vp sg13_lv_pmos w=10u l=0.13u ng=1 m=1 mm_ok=1
+XM4 5th 4th gnd gnd sg13_lv_nmos w=10u l=0.13u ng=1 m=1 mm_ok=1
+XM5 out 5th vp vp sg13_lv_pmos w=10u l=0.13u ng=1 m=2 mm_ok=1
+XM6 out 5th gnd gnd sg13_lv_nmos w=10u l=0.13u ng=1 m=2 mm_ok=1
+XM7 1th in gnd gnd sg13_lv_nmos w=0.8u l=0.13u ng=1 m=1 mm_ok=1
+XM8 1th in vp vp sg13_lv_pmos w=1.5u l=0.13u ng=1 m=1 mm_ok=1
+.ends
+
+
+* expanding   symbol:  /foss/designs/CHIP-PLL/schematics/vco/vco_cell/vco_delay_cell_2.sym # of pins=6
+** sym_path: /foss/designs/CHIP-PLL/schematics/vco/vco_cell/vco_delay_cell_2.sym
+** sch_path: /foss/designs/CHIP-PLL/schematics/vco/vco_cell/vco_delay_cell_2.sch
+.subckt vco_delay_cell_2 vp pgt in out ngt gnd
+*.ipin in
+*.opin out
+*.iopin gnd
+*.iopin vp
+*.iopin pgt
+*.iopin ngt
+XM23 up pgt vp vp sg13_lv_pmos w=1.2u l=1.4*4u ng=1 m=1 mm_ok=1
+XM24 out in up vp sg13_lv_pmos w=1.2u l=1.4*2u ng=1 m=1 mm_ok=1
+XM25 out in dn gnd sg13_lv_nmos w=0.8u l=1.4*2u ng=1 m=1 mm_ok=1
+XM26 dn ngt gnd gnd sg13_lv_nmos w=0.8u l=1.4*4u ng=1 m=1 mm_ok=1
+.ends
+
+
+* expanding   symbol:  /foss/designs/CHIP-PLL/schematics/divider/schematics/passgate.sym # of pins=6
+** sym_path: /foss/designs/CHIP-PLL/schematics/divider/schematics/passgate.sym
+** sch_path: /foss/designs/CHIP-PLL/schematics/divider/schematics/passgate.sch
+.subckt passgate in_p vp gnd in_n A B
+*.ipin in_n
+*.ipin in_p
+*.iopin vp
+*.iopin gnd
+*.iopin B
+*.iopin A
+XM4 B in_p A vp sg13_lv_pmos w=0.3u l=0.15u ng=1 m=1 mm_ok=1
+XM5 B in_n A gnd sg13_lv_nmos w=0.3u l=0.15u ng=1 m=1 mm_ok=1
+.ends
+
+.end

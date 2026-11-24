@@ -1,0 +1,170 @@
+VCO
+5 stopni 
+Lcs = 0.18*4u
+Ldrv = 0.18*2u
+Fmin = 53 MHz
+Fmax = 372 MHz
+
+11 stopni
+Lcs = 0.18*4u
+Ldrv = 0.18*2u
+Fmin = 24 MHz
+Fmax = 163 MHz 
+
+
+VCO-1
+5 stopni 
+Lcs = 0.26*4u
+Ldrv = 0.26*2u
+Fmin = 33 MHz
+Fmax = 211 MHz
+
+11 stopni 
+Lcs = 0.26*4u
+Ldrv = 0.26*2u
+Fmin = 14 MHz
+Fmax = 96 MHz
+
+VCO-2
+5 stopni 
+Lcs = 0.32*4u
+Ldrv = 0.32*2u
+Fmin = 25 MHz
+Fmax = 152 MHz
+
+11 stopni 
+Lcs = 0.32*4u
+Ldrv = 0.32*2u
+Fmin = 11.54 MHz
+Fmax = 67.7 MHz
+
+
+VCO-3
+5 stopni 
+Lcs = 0.42*4u
+Ldrv = 0.42*2u
+Fmin = 16 MHz
+Fmax = 96.5 MHz
+
+11 stopni 
+Lcs = 0.42*4u
+Ldrv = 0.42*2u
+Fmin = 7.6 MHz
+Fmax = 42.9 MHz
+
+VCO-4
+5 stopni 
+Lcs = 0.52*4u
+Ldrv = 0.52*2u
+Fmin = 11.8 MHz
+Fmax = 66.9 MHz
+
+11 stopni 
+Lcs = 0.52*4u
+Ldrv = 0.52*2u
+Fmin = 5.4 MHz
+Fmax = 29.4 MHz
+
+VCO-5
+5 stopni 
+Lcs = 0.74*4u
+Ldrv = 0.74*2u
+Fmin = 6.59 MHz
+Fmax = 35.33 MHz
+
+11 stopni 
+Lcs = 0.74*4u
+Ldrv = 0.74*2u
+Fmin = 3 MHz
+Fmax = 15 MHz
+
+VCO-6
+5 stopni 
+Lcs = 1.1*4u
+Ldrv = 1.1*2u
+Fmin = 3.68 MHz
+Fmax = 18.5 MHz
+
+11 stopni 
+Lcs = 1.1*4u
+Ldrv = 1.1*2u
+Fmin = 1.63 MHz
+Fmax = 8.06 MHz
+
+VCO-7
+5 stopni 
+Lcs = 1.5*4u
+Ldrv = 1.5*2u
+Fmin = 1.91 MHz
+Fmax = 9.426 MHz
+
+11 stopni 
+Lcs = 1.51*4u
+Ldrv = 1.5*2u
+Fmin = 0.869 MHz
+Fmax = 4.096 MHz
+
+VCO-8
+5 stopni 
+Lcs = 2.45*4u
+Ldrv = 2.45*2u
+Fmin = 0.921 MHz
+Fmax = 4.320 MHz
+
+11 stopni 
+Lcs = 2.45*4u
+Ldrv = 2.45*2u
+Fmin = 0.417 MHz
+Fmax = 1.869 MHz
+
+VCO-9
+5 stopni 
+Lcs = 3.2*4u
+Ldrv = 3.2*2u
+Fmin = 0.483 MHz
+Fmax = 2.180 MHz
+
+11 stopni 
+Lcs = 3.2*4u
+Ldrv = 3.2*2u
+Fmin = 0.218 MHz
+Fmax = 0.940 MHz
+
+VCO-10
+5 stopni 
+Lcs = 4.7*4u
+Ldrv = 4.7*2u
+Fmin = 0.257 MHz
+Fmax = 1.119 MHz
+
+11 stopni 
+Lcs = 3.2*4u
+Ldrv = 3.2*2u
+Fmin = 0.116 MHz
+Fmax = 0.482 MHz
+
+VCO-11
+5 stopni 
+Lcs = 6*4u
+Ldrv = 6*2u
+Fmin = 0.151 MHz
+Fmax = 0.636 MHz
+
+11 stopni 
+Lcs = 6*4u
+Ldrv = 6*2u
+Fmin = 0.068 MHz
+Fmax = 0.273 MHz
+
+VCO-12
+5 stopni 
+Lcs = 8*4u
+Ldrv = 8*2u
+Fmin = 0.088 MHz
+Fmax = 0.361 MHz
+
+11 stopni 
+Lcs = 6*4u
+Ldrv = 6*2u
+Fmin = 0.068 MHz
+Fmax = 0.273 MHz

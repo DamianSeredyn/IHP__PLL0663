@@ -1,0 +1,2245 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>VCO Sweep Report</title>
+<style>
+    body { font-family: Arial, sans-serif; margin: 20px; background: #f0f2f5; }
+    h1 { color: #222; }
+    h2 { color: #333; border-bottom: 2px solid #27ae60; padding-bottom: 6px; }
+    h3 { color: #555; margin: 8px 0; }
+    .tabs { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 16px; }
+    .tab { padding: 8px 14px; background: #ddd; border: none; cursor: pointer;
+            border-radius: 4px; font-size: 12px; }
+    .tab:hover { background: #bbb; }
+    .tab.active { background: #27ae60; color: white; }
+    .panel { display: none; background: white; padding: 20px; border-radius: 8px;
+              box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+    .panel.active { display: block; }
+    .card { margin-bottom: 20px; border: 1px solid #ddd; border-radius: 6px; padding: 12px; }
+    table.summary { border-collapse: collapse; width: 100%; font-size: 13px; }
+    table.summary th { background: #27ae60; color: white; padding: 8px; text-align: center; }
+    table.summary td { padding: 6px 10px; border: 1px solid #ddd; text-align: center; }
+    tr.corner-header td { background: #e8f5e9; font-size: 14px; padding: 8px; text-align: left; }
+    tr.vin-header td { background: #f0f7ff; font-size: 12px; padding: 5px 10px; text-align: left; color: #555; font-style: italic; }
+    .legend { margin-top: 12px; display: flex; gap: 20px; font-size: 13px; }
+    .leg-ok   { color: #2a2; }
+    .leg-warn { color: #e80; }
+    .leg-err  { color: #d00; }
+    .metrics-grid { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 16px; }
+    .mcard { flex: 1; min-width: 200px; border: 1px solid #ddd; border-radius: 6px;
+              padding: 12px; background: #fafafa; }
+    .mcard-title { font-weight: bold; color: #27ae60; margin-bottom: 8px;
+                    font-size: 14px; border-bottom: 1px solid #ddd; padding-bottom: 4px; }
+    .mrow { display: flex; justify-content: space-between; padding: 4px 0;
+             font-size: 13px; border-bottom: 1px solid #f0f0f0; }
+    .mrow span:last-child { font-weight: bold; color: #333; }
+</style>
+</head>
+<body>
+<h1>VCO Sweep Report</h1>
+<div class="tabs">
+<button class="tab active" onclick="showTab('summary', this)">Podsumowanie</button>
+<button class="tab" onclick="showTab('mos_tt_T-25_Vp1.08_Vin0.4', this)">mos_tt T-25 1.08V Vin0.4V</button>
+<button class="tab" onclick="showTab('mos_tt_T-25_Vp1.2_Vin0.4', this)">mos_tt T-25 1.2V Vin0.4V</button>
+<button class="tab" onclick="showTab('mos_tt_T-25_Vp1.32_Vin0.4', this)">mos_tt T-25 1.32V Vin0.4V</button>
+<button class="tab" onclick="showTab('mos_tt_T27_Vp1.08_Vin0.4', this)">mos_tt T27 1.08V Vin0.4V</button>
+<button class="tab" onclick="showTab('mos_tt_T27_Vp1.2_Vin0.4', this)">mos_tt T27 1.2V Vin0.4V</button>
+<button class="tab" onclick="showTab('mos_tt_T27_Vp1.32_Vin0.4', this)">mos_tt T27 1.32V Vin0.4V</button>
+<button class="tab" onclick="showTab('mos_tt_T125_Vp1.08_Vin0.4', this)">mos_tt T125 1.08V Vin0.4V</button>
+<button class="tab" onclick="showTab('mos_tt_T125_Vp1.2_Vin0.4', this)">mos_tt T125 1.2V Vin0.4V</button>
+<button class="tab" onclick="showTab('mos_tt_T125_Vp1.32_Vin0.4', this)">mos_tt T125 1.32V Vin0.4V</button>
+<button class="tab" onclick="showTab('mos_tt_T-25_Vp1.08_Vin0.8', this)">mos_tt T-25 1.08V Vin0.8V</button>
+<button class="tab" onclick="showTab('mos_tt_T-25_Vp1.2_Vin0.8', this)">mos_tt T-25 1.2V Vin0.8V</button>
+<button class="tab" onclick="showTab('mos_tt_T-25_Vp1.32_Vin0.8', this)">mos_tt T-25 1.32V Vin0.8V</button>
+<button class="tab" onclick="showTab('mos_tt_T27_Vp1.08_Vin0.8', this)">mos_tt T27 1.08V Vin0.8V</button>
+<button class="tab" onclick="showTab('mos_tt_T27_Vp1.2_Vin0.8', this)">mos_tt T27 1.2V Vin0.8V</button>
+<button class="tab" onclick="showTab('mos_tt_T27_Vp1.32_Vin0.8', this)">mos_tt T27 1.32V Vin0.8V</button>
+<button class="tab" onclick="showTab('mos_tt_T125_Vp1.08_Vin0.8', this)">mos_tt T125 1.08V Vin0.8V</button>
+<button class="tab" onclick="showTab('mos_tt_T125_Vp1.2_Vin0.8', this)">mos_tt T125 1.2V Vin0.8V</button>
+<button class="tab" onclick="showTab('mos_tt_T125_Vp1.32_Vin0.8', this)">mos_tt T125 1.32V Vin0.8V</button>
+<button class="tab" onclick="showTab('mos_ss_T-25_Vp1.08_Vin0.4', this)">mos_ss T-25 1.08V Vin0.4V</button>
+<button class="tab" onclick="showTab('mos_ss_T-25_Vp1.2_Vin0.4', this)">mos_ss T-25 1.2V Vin0.4V</button>
+<button class="tab" onclick="showTab('mos_ss_T-25_Vp1.32_Vin0.4', this)">mos_ss T-25 1.32V Vin0.4V</button>
+<button class="tab" onclick="showTab('mos_ss_T27_Vp1.08_Vin0.4', this)">mos_ss T27 1.08V Vin0.4V</button>
+<button class="tab" onclick="showTab('mos_ss_T27_Vp1.2_Vin0.4', this)">mos_ss T27 1.2V Vin0.4V</button>
+<button class="tab" onclick="showTab('mos_ss_T27_Vp1.32_Vin0.4', this)">mos_ss T27 1.32V Vin0.4V</button>
+<button class="tab" onclick="showTab('mos_ss_T125_Vp1.08_Vin0.4', this)">mos_ss T125 1.08V Vin0.4V</button>
+<button class="tab" onclick="showTab('mos_ss_T125_Vp1.2_Vin0.4', this)">mos_ss T125 1.2V Vin0.4V</button>
+<button class="tab" onclick="showTab('mos_ss_T125_Vp1.32_Vin0.4', this)">mos_ss T125 1.32V Vin0.4V</button>
+<button class="tab" onclick="showTab('mos_ss_T-25_Vp1.08_Vin0.8', this)">mos_ss T-25 1.08V Vin0.8V</button>
+<button class="tab" onclick="showTab('mos_ss_T-25_Vp1.2_Vin0.8', this)">mos_ss T-25 1.2V Vin0.8V</button>
+<button class="tab" onclick="showTab('mos_ss_T-25_Vp1.32_Vin0.8', this)">mos_ss T-25 1.32V Vin0.8V</button>
+<button class="tab" onclick="showTab('mos_ss_T27_Vp1.08_Vin0.8', this)">mos_ss T27 1.08V Vin0.8V</button>
+<button class="tab" onclick="showTab('mos_ss_T27_Vp1.2_Vin0.8', this)">mos_ss T27 1.2V Vin0.8V</button>
+<button class="tab" onclick="showTab('mos_ss_T27_Vp1.32_Vin0.8', this)">mos_ss T27 1.32V Vin0.8V</button>
+<button class="tab" onclick="showTab('mos_ss_T125_Vp1.08_Vin0.8', this)">mos_ss T125 1.08V Vin0.8V</button>
+<button class="tab" onclick="showTab('mos_ss_T125_Vp1.2_Vin0.8', this)">mos_ss T125 1.2V Vin0.8V</button>
+<button class="tab" onclick="showTab('mos_ss_T125_Vp1.32_Vin0.8', this)">mos_ss T125 1.32V Vin0.8V</button>
+<button class="tab" onclick="showTab('mos_ff_T-25_Vp1.08_Vin0.4', this)">mos_ff T-25 1.08V Vin0.4V</button>
+<button class="tab" onclick="showTab('mos_ff_T-25_Vp1.2_Vin0.4', this)">mos_ff T-25 1.2V Vin0.4V</button>
+<button class="tab" onclick="showTab('mos_ff_T-25_Vp1.32_Vin0.4', this)">mos_ff T-25 1.32V Vin0.4V</button>
+<button class="tab" onclick="showTab('mos_ff_T27_Vp1.08_Vin0.4', this)">mos_ff T27 1.08V Vin0.4V</button>
+<button class="tab" onclick="showTab('mos_ff_T27_Vp1.2_Vin0.4', this)">mos_ff T27 1.2V Vin0.4V</button>
+<button class="tab" onclick="showTab('mos_ff_T27_Vp1.32_Vin0.4', this)">mos_ff T27 1.32V Vin0.4V</button>
+<button class="tab" onclick="showTab('mos_ff_T125_Vp1.08_Vin0.4', this)">mos_ff T125 1.08V Vin0.4V</button>
+<button class="tab" onclick="showTab('mos_ff_T125_Vp1.2_Vin0.4', this)">mos_ff T125 1.2V Vin0.4V</button>
+<button class="tab" onclick="showTab('mos_ff_T125_Vp1.32_Vin0.4', this)">mos_ff T125 1.32V Vin0.4V</button>
+<button class="tab" onclick="showTab('mos_ff_T-25_Vp1.08_Vin0.8', this)">mos_ff T-25 1.08V Vin0.8V</button>
+<button class="tab" onclick="showTab('mos_ff_T-25_Vp1.2_Vin0.8', this)">mos_ff T-25 1.2V Vin0.8V</button>
+<button class="tab" onclick="showTab('mos_ff_T-25_Vp1.32_Vin0.8', this)">mos_ff T-25 1.32V Vin0.8V</button>
+<button class="tab" onclick="showTab('mos_ff_T27_Vp1.08_Vin0.8', this)">mos_ff T27 1.08V Vin0.8V</button>
+<button class="tab" onclick="showTab('mos_ff_T27_Vp1.2_Vin0.8', this)">mos_ff T27 1.2V Vin0.8V</button>
+<button class="tab" onclick="showTab('mos_ff_T27_Vp1.32_Vin0.8', this)">mos_ff T27 1.32V Vin0.8V</button>
+<button class="tab" onclick="showTab('mos_ff_T125_Vp1.08_Vin0.8', this)">mos_ff T125 1.08V Vin0.8V</button>
+<button class="tab" onclick="showTab('mos_ff_T125_Vp1.2_Vin0.8', this)">mos_ff T125 1.2V Vin0.8V</button>
+<button class="tab" onclick="showTab('mos_ff_T125_Vp1.32_Vin0.8', this)">mos_ff T125 1.32V Vin0.8V</button>
+
+</div>
+
+<div id="summary" class="panel active">
+    <h2>Podsumowanie - VCO po cornerach</h2>
+    <table class="summary">
+        <thead><tr>
+            <th>TEMP</th><th>VDD</th><th>Vin</th>
+            <th>f<sub>out</sub> [MHz]</th><th>f<sub>out_pb</sub> [MHz]</th>
+            <th>t<sub>r</sub> out_pb [ps]</th><th>t<sub>f</sub> out_pb [ps]</th>
+            <th>DC out [%]</th><th>DC out_pb [%]</th>
+            <th>I<sub>avg</sub> VDD [mA]</th><th>I<sub>max</sub> VDD [mA]</th>
+        </tr></thead>
+        <tbody><tr class="corner-header"><td colspan="11"><b>mos_tt</b></td></tr>
+<tr class="vin-header"><td colspan="11">Vin = 0.4 V</td></tr>
+<tr>
+        <td>-25 C</td><td>1.08 V</td><td>0.4 V</td>
+        <td>0.139 MHz</td>
+        <td>0.139 MHz</td>
+        <td>219.4 ps</td>
+        <td>166.4 ps</td>
+        <td style="background:#ffffff !important">48.9 %</td>
+        <td style="background:#ffffff !important">48.7 %</td>
+        <td>0.001 mA</td>
+        <td>1.948 mA</td>
+    </tr><tr>
+        <td>-25 C</td><td>1.2 V</td><td>0.4 V</td>
+        <td>0.120 MHz</td>
+        <td>0.120 MHz</td>
+        <td>160.3 ps</td>
+        <td>228.3 ps</td>
+        <td style="background:#ffffff !important">49.1 %</td>
+        <td style="background:#ffffff !important">48.9 %</td>
+        <td>0.001 mA</td>
+        <td>2.380 mA</td>
+    </tr><tr>
+        <td>-25 C</td><td>1.32 V</td><td>0.4 V</td>
+        <td>0.103 MHz</td>
+        <td>0.103 MHz</td>
+        <td>200.2 ps</td>
+        <td>263.8 ps</td>
+        <td style="background:#ffffff !important">49.3 %</td>
+        <td style="background:#ffffff !important">49.0 %</td>
+        <td>0.002 mA</td>
+        <td>2.753 mA</td>
+    </tr><tr>
+        <td>27 C</td><td>1.08 V</td><td>0.4 V</td>
+        <td>0.142 MHz</td>
+        <td>0.142 MHz</td>
+        <td>185.6 ps</td>
+        <td>233.2 ps</td>
+        <td style="background:#ffffff !important">48.9 %</td>
+        <td style="background:#ffffff !important">48.7 %</td>
+        <td>0.001 mA</td>
+        <td>2.032 mA</td>
+    </tr><tr>
+        <td>27 C</td><td>1.2 V</td><td>0.4 V</td>
+        <td>0.123 MHz</td>
+        <td>0.123 MHz</td>
+        <td>200.0 ps</td>
+        <td>114.0 ps</td>
+        <td style="background:#ffffff !important">49.1 %</td>
+        <td style="background:#ffffff !important">48.9 %</td>
+        <td>0.002 mA</td>
+        <td>2.331 mA</td>
+    </tr><tr>
+        <td>27 C</td><td>1.32 V</td><td>0.4 V</td>
+        <td>0.107 MHz</td>
+        <td>0.107 MHz</td>
+        <td>199.6 ps</td>
+        <td>142.9 ps</td>
+        <td style="background:#ffffff !important">49.3 %</td>
+        <td style="background:#ffffff !important">49.0 %</td>
+        <td>0.002 mA</td>
+        <td>2.197 mA</td>
+    </tr><tr>
+        <td>125 C</td><td>1.08 V</td><td>0.4 V</td>
+        <td>0.138 MHz</td>
+        <td>0.138 MHz</td>
+        <td>154.9 ps</td>
+        <td>135.9 ps</td>
+        <td style="background:#ffffff !important">49.1 %</td>
+        <td style="background:#ffffff !important">48.6 %</td>
+        <td>0.002 mA</td>
+        <td>1.652 mA</td>
+    </tr><tr>
+        <td>125 C</td><td>1.2 V</td><td>0.4 V</td>
+        <td>0.122 MHz</td>
+        <td>0.122 MHz</td>
+        <td>265.1 ps</td>
+        <td>136.1 ps</td>
+        <td style="background:#ffffff !important">49.2 %</td>
+        <td style="background:#ffffff !important">48.8 %</td>
+        <td>0.002 mA</td>
+        <td>2.054 mA</td>
+    </tr><tr>
+        <td>125 C</td><td>1.32 V</td><td>0.4 V</td>
+        <td>0.108 MHz</td>
+        <td>0.108 MHz</td>
+        <td>205.5 ps</td>
+        <td>161.1 ps</td>
+        <td style="background:#ffffff !important">49.4 %</td>
+        <td style="background:#ffffff !important">49.0 %</td>
+        <td>0.003 mA</td>
+        <td>2.481 mA</td>
+    </tr><tr class="vin-header"><td colspan="11">Vin = 0.8 V</td></tr>
+<tr>
+        <td>-25 C</td><td>1.08 V</td><td>0.8 V</td>
+        <td>0.537 MHz</td>
+        <td>0.537 MHz</td>
+        <td>216.0 ps</td>
+        <td>100.9 ps</td>
+        <td style="background:#ffffff !important">48.4 %</td>
+        <td style="background:#ffffff !important">48.1 %</td>
+        <td>0.003 mA</td>
+        <td>1.956 mA</td>
+    </tr><tr>
+        <td>-25 C</td><td>1.2 V</td><td>0.8 V</td>
+        <td>0.591 MHz</td>
+        <td>0.591 MHz</td>
+        <td>149.2 ps</td>
+        <td>206.2 ps</td>
+        <td style="background:#ffffff !important">48.4 %</td>
+        <td style="background:#ffffff !important">48.1 %</td>
+        <td>0.004 mA</td>
+        <td>2.966 mA</td>
+    </tr><tr>
+        <td>-25 C</td><td>1.32 V</td><td>0.8 V</td>
+        <td>0.632 MHz</td>
+        <td>0.632 MHz</td>
+        <td>176.9 ps</td>
+        <td>131.0 ps</td>
+        <td style="background:#ffffff !important">48.4 %</td>
+        <td style="background:#ffffff !important">48.2 %</td>
+        <td>0.006 mA</td>
+        <td>3.088 mA</td>
+    </tr><tr>
+        <td>27 C</td><td>1.08 V</td><td>0.8 V</td>
+        <td>0.448 MHz</td>
+        <td>0.448 MHz</td>
+        <td>160.0 ps</td>
+        <td>208.7 ps</td>
+        <td style="background:#ffffff !important">48.4 %</td>
+        <td style="background:#ffffff !important">48.0 %</td>
+        <td>0.003 mA</td>
+        <td>2.007 mA</td>
+    </tr><tr>
+        <td>27 C</td><td>1.2 V</td><td>0.8 V</td>
+        <td>0.487 MHz</td>
+        <td>0.487 MHz</td>
+        <td>190.5 ps</td>
+        <td>169.4 ps</td>
+        <td style="background:#ffffff !important">48.4 %</td>
+        <td style="background:#ffffff !important">48.1 %</td>
+        <td>0.004 mA</td>
+        <td>2.460 mA</td>
+    </tr><tr>
+        <td>27 C</td><td>1.32 V</td><td>0.8 V</td>
+        <td>0.515 MHz</td>
+        <td>0.515 MHz</td>
+        <td>145.0 ps</td>
+        <td>115.0 ps</td>
+        <td style="background:#ffffff !important">48.5 %</td>
+        <td style="background:#ffffff !important">48.2 %</td>
+        <td>0.005 mA</td>
+        <td>3.163 mA</td>
+    </tr><tr>
+        <td>125 C</td><td>1.08 V</td><td>0.8 V</td>
+        <td>0.330 MHz</td>
+        <td>0.330 MHz</td>
+        <td>185.8 ps</td>
+        <td>144.0 ps</td>
+        <td style="background:#ffffff !important">48.4 %</td>
+        <td style="background:#ffffff !important">47.9 %</td>
+        <td>0.003 mA</td>
+        <td>1.920 mA</td>
+    </tr><tr>
+        <td>125 C</td><td>1.2 V</td><td>0.8 V</td>
+        <td>0.351 MHz</td>
+        <td>0.351 MHz</td>
+        <td>203.6 ps</td>
+        <td>168.5 ps</td>
+        <td style="background:#ffffff !important">48.5 %</td>
+        <td style="background:#ffffff !important">48.1 %</td>
+        <td>0.004 mA</td>
+        <td>2.769 mA</td>
+    </tr><tr>
+        <td>125 C</td><td>1.32 V</td><td>0.8 V</td>
+        <td>0.366 MHz</td>
+        <td>0.366 MHz</td>
+        <td>238.7 ps</td>
+        <td>143.3 ps</td>
+        <td style="background:#ffffff !important">48.6 %</td>
+        <td style="background:#ffffff !important">48.2 %</td>
+        <td>0.005 mA</td>
+        <td>3.082 mA</td>
+    </tr><tr class="corner-header"><td colspan="11"><b>mos_ss</b></td></tr>
+<tr class="vin-header"><td colspan="11">Vin = 0.4 V</td></tr>
+<tr>
+        <td>-25 C</td><td>1.08 V</td><td>0.4 V</td>
+        <td>0.139 MHz</td>
+        <td>0.139 MHz</td>
+        <td>219.4 ps</td>
+        <td>166.4 ps</td>
+        <td style="background:#ffffff !important">48.9 %</td>
+        <td style="background:#ffffff !important">48.7 %</td>
+        <td>0.001 mA</td>
+        <td>1.948 mA</td>
+    </tr><tr>
+        <td>-25 C</td><td>1.2 V</td><td>0.4 V</td>
+        <td>0.120 MHz</td>
+        <td>0.120 MHz</td>
+        <td>160.3 ps</td>
+        <td>228.3 ps</td>
+        <td style="background:#ffffff !important">49.1 %</td>
+        <td style="background:#ffffff !important">48.9 %</td>
+        <td>0.001 mA</td>
+        <td>2.380 mA</td>
+    </tr><tr>
+        <td>-25 C</td><td>1.32 V</td><td>0.4 V</td>
+        <td>0.103 MHz</td>
+        <td>0.103 MHz</td>
+        <td>200.2 ps</td>
+        <td>263.8 ps</td>
+        <td style="background:#ffffff !important">49.3 %</td>
+        <td style="background:#ffffff !important">49.0 %</td>
+        <td>0.002 mA</td>
+        <td>2.753 mA</td>
+    </tr><tr>
+        <td>27 C</td><td>1.08 V</td><td>0.4 V</td>
+        <td>0.142 MHz</td>
+        <td>0.142 MHz</td>
+        <td>185.6 ps</td>
+        <td>233.2 ps</td>
+        <td style="background:#ffffff !important">48.9 %</td>
+        <td style="background:#ffffff !important">48.7 %</td>
+        <td>0.001 mA</td>
+        <td>2.032 mA</td>
+    </tr><tr>
+        <td>27 C</td><td>1.2 V</td><td>0.4 V</td>
+        <td>0.123 MHz</td>
+        <td>0.123 MHz</td>
+        <td>200.0 ps</td>
+        <td>114.0 ps</td>
+        <td style="background:#ffffff !important">49.1 %</td>
+        <td style="background:#ffffff !important">48.9 %</td>
+        <td>0.002 mA</td>
+        <td>2.331 mA</td>
+    </tr><tr>
+        <td>27 C</td><td>1.32 V</td><td>0.4 V</td>
+        <td>0.107 MHz</td>
+        <td>0.107 MHz</td>
+        <td>199.6 ps</td>
+        <td>142.9 ps</td>
+        <td style="background:#ffffff !important">49.3 %</td>
+        <td style="background:#ffffff !important">49.0 %</td>
+        <td>0.002 mA</td>
+        <td>2.197 mA</td>
+    </tr><tr>
+        <td>125 C</td><td>1.08 V</td><td>0.4 V</td>
+        <td>0.138 MHz</td>
+        <td>0.138 MHz</td>
+        <td>154.9 ps</td>
+        <td>135.9 ps</td>
+        <td style="background:#ffffff !important">49.1 %</td>
+        <td style="background:#ffffff !important">48.6 %</td>
+        <td>0.002 mA</td>
+        <td>1.652 mA</td>
+    </tr><tr>
+        <td>125 C</td><td>1.2 V</td><td>0.4 V</td>
+        <td>0.122 MHz</td>
+        <td>0.122 MHz</td>
+        <td>265.1 ps</td>
+        <td>136.1 ps</td>
+        <td style="background:#ffffff !important">49.2 %</td>
+        <td style="background:#ffffff !important">48.8 %</td>
+        <td>0.002 mA</td>
+        <td>2.054 mA</td>
+    </tr><tr>
+        <td>125 C</td><td>1.32 V</td><td>0.4 V</td>
+        <td>0.108 MHz</td>
+        <td>0.108 MHz</td>
+        <td>205.5 ps</td>
+        <td>161.1 ps</td>
+        <td style="background:#ffffff !important">49.4 %</td>
+        <td style="background:#ffffff !important">49.0 %</td>
+        <td>0.003 mA</td>
+        <td>2.481 mA</td>
+    </tr><tr class="vin-header"><td colspan="11">Vin = 0.8 V</td></tr>
+<tr>
+        <td>-25 C</td><td>1.08 V</td><td>0.8 V</td>
+        <td>0.537 MHz</td>
+        <td>0.537 MHz</td>
+        <td>216.0 ps</td>
+        <td>100.9 ps</td>
+        <td style="background:#ffffff !important">48.4 %</td>
+        <td style="background:#ffffff !important">48.1 %</td>
+        <td>0.003 mA</td>
+        <td>1.956 mA</td>
+    </tr><tr>
+        <td>-25 C</td><td>1.2 V</td><td>0.8 V</td>
+        <td>0.591 MHz</td>
+        <td>0.591 MHz</td>
+        <td>149.2 ps</td>
+        <td>206.2 ps</td>
+        <td style="background:#ffffff !important">48.4 %</td>
+        <td style="background:#ffffff !important">48.1 %</td>
+        <td>0.004 mA</td>
+        <td>2.966 mA</td>
+    </tr><tr>
+        <td>-25 C</td><td>1.32 V</td><td>0.8 V</td>
+        <td>0.632 MHz</td>
+        <td>0.632 MHz</td>
+        <td>176.9 ps</td>
+        <td>131.0 ps</td>
+        <td style="background:#ffffff !important">48.4 %</td>
+        <td style="background:#ffffff !important">48.2 %</td>
+        <td>0.006 mA</td>
+        <td>3.088 mA</td>
+    </tr><tr>
+        <td>27 C</td><td>1.08 V</td><td>0.8 V</td>
+        <td>0.448 MHz</td>
+        <td>0.448 MHz</td>
+        <td>160.0 ps</td>
+        <td>208.7 ps</td>
+        <td style="background:#ffffff !important">48.4 %</td>
+        <td style="background:#ffffff !important">48.0 %</td>
+        <td>0.003 mA</td>
+        <td>2.007 mA</td>
+    </tr><tr>
+        <td>27 C</td><td>1.2 V</td><td>0.8 V</td>
+        <td>0.487 MHz</td>
+        <td>0.487 MHz</td>
+        <td>190.5 ps</td>
+        <td>169.4 ps</td>
+        <td style="background:#ffffff !important">48.4 %</td>
+        <td style="background:#ffffff !important">48.1 %</td>
+        <td>0.004 mA</td>
+        <td>2.460 mA</td>
+    </tr><tr>
+        <td>27 C</td><td>1.32 V</td><td>0.8 V</td>
+        <td>0.515 MHz</td>
+        <td>0.515 MHz</td>
+        <td>145.0 ps</td>
+        <td>115.0 ps</td>
+        <td style="background:#ffffff !important">48.5 %</td>
+        <td style="background:#ffffff !important">48.2 %</td>
+        <td>0.005 mA</td>
+        <td>3.163 mA</td>
+    </tr><tr>
+        <td>125 C</td><td>1.08 V</td><td>0.8 V</td>
+        <td>0.330 MHz</td>
+        <td>0.330 MHz</td>
+        <td>185.8 ps</td>
+        <td>144.0 ps</td>
+        <td style="background:#ffffff !important">48.4 %</td>
+        <td style="background:#ffffff !important">47.9 %</td>
+        <td>0.003 mA</td>
+        <td>1.920 mA</td>
+    </tr><tr>
+        <td>125 C</td><td>1.2 V</td><td>0.8 V</td>
+        <td>0.351 MHz</td>
+        <td>0.351 MHz</td>
+        <td>203.6 ps</td>
+        <td>168.5 ps</td>
+        <td style="background:#ffffff !important">48.5 %</td>
+        <td style="background:#ffffff !important">48.1 %</td>
+        <td>0.004 mA</td>
+        <td>2.769 mA</td>
+    </tr><tr>
+        <td>125 C</td><td>1.32 V</td><td>0.8 V</td>
+        <td>0.366 MHz</td>
+        <td>0.366 MHz</td>
+        <td>238.7 ps</td>
+        <td>143.3 ps</td>
+        <td style="background:#ffffff !important">48.6 %</td>
+        <td style="background:#ffffff !important">48.2 %</td>
+        <td>0.005 mA</td>
+        <td>3.082 mA</td>
+    </tr><tr class="corner-header"><td colspan="11"><b>mos_ff</b></td></tr>
+<tr class="vin-header"><td colspan="11">Vin = 0.4 V</td></tr>
+<tr>
+        <td>-25 C</td><td>1.08 V</td><td>0.4 V</td>
+        <td>0.139 MHz</td>
+        <td>0.139 MHz</td>
+        <td>219.4 ps</td>
+        <td>166.4 ps</td>
+        <td style="background:#ffffff !important">48.9 %</td>
+        <td style="background:#ffffff !important">48.7 %</td>
+        <td>0.001 mA</td>
+        <td>1.948 mA</td>
+    </tr><tr>
+        <td>-25 C</td><td>1.2 V</td><td>0.4 V</td>
+        <td>0.120 MHz</td>
+        <td>0.120 MHz</td>
+        <td>160.3 ps</td>
+        <td>228.3 ps</td>
+        <td style="background:#ffffff !important">49.1 %</td>
+        <td style="background:#ffffff !important">48.9 %</td>
+        <td>0.001 mA</td>
+        <td>2.380 mA</td>
+    </tr><tr>
+        <td>-25 C</td><td>1.32 V</td><td>0.4 V</td>
+        <td>0.103 MHz</td>
+        <td>0.103 MHz</td>
+        <td>200.2 ps</td>
+        <td>263.8 ps</td>
+        <td style="background:#ffffff !important">49.3 %</td>
+        <td style="background:#ffffff !important">49.0 %</td>
+        <td>0.002 mA</td>
+        <td>2.753 mA</td>
+    </tr><tr>
+        <td>27 C</td><td>1.08 V</td><td>0.4 V</td>
+        <td>0.142 MHz</td>
+        <td>0.142 MHz</td>
+        <td>185.6 ps</td>
+        <td>233.2 ps</td>
+        <td style="background:#ffffff !important">48.9 %</td>
+        <td style="background:#ffffff !important">48.7 %</td>
+        <td>0.001 mA</td>
+        <td>2.032 mA</td>
+    </tr><tr>
+        <td>27 C</td><td>1.2 V</td><td>0.4 V</td>
+        <td>0.123 MHz</td>
+        <td>0.123 MHz</td>
+        <td>200.0 ps</td>
+        <td>114.0 ps</td>
+        <td style="background:#ffffff !important">49.1 %</td>
+        <td style="background:#ffffff !important">48.9 %</td>
+        <td>0.002 mA</td>
+        <td>2.331 mA</td>
+    </tr><tr>
+        <td>27 C</td><td>1.32 V</td><td>0.4 V</td>
+        <td>0.107 MHz</td>
+        <td>0.107 MHz</td>
+        <td>199.6 ps</td>
+        <td>142.9 ps</td>
+        <td style="background:#ffffff !important">49.3 %</td>
+        <td style="background:#ffffff !important">49.0 %</td>
+        <td>0.002 mA</td>
+        <td>2.197 mA</td>
+    </tr><tr>
+        <td>125 C</td><td>1.08 V</td><td>0.4 V</td>
+        <td>0.138 MHz</td>
+        <td>0.138 MHz</td>
+        <td>154.9 ps</td>
+        <td>135.9 ps</td>
+        <td style="background:#ffffff !important">49.1 %</td>
+        <td style="background:#ffffff !important">48.6 %</td>
+        <td>0.002 mA</td>
+        <td>1.652 mA</td>
+    </tr><tr>
+        <td>125 C</td><td>1.2 V</td><td>0.4 V</td>
+        <td>0.122 MHz</td>
+        <td>0.122 MHz</td>
+        <td>265.1 ps</td>
+        <td>136.1 ps</td>
+        <td style="background:#ffffff !important">49.2 %</td>
+        <td style="background:#ffffff !important">48.8 %</td>
+        <td>0.002 mA</td>
+        <td>2.054 mA</td>
+    </tr><tr>
+        <td>125 C</td><td>1.32 V</td><td>0.4 V</td>
+        <td>0.108 MHz</td>
+        <td>0.108 MHz</td>
+        <td>205.5 ps</td>
+        <td>161.1 ps</td>
+        <td style="background:#ffffff !important">49.4 %</td>
+        <td style="background:#ffffff !important">49.0 %</td>
+        <td>0.003 mA</td>
+        <td>2.481 mA</td>
+    </tr><tr class="vin-header"><td colspan="11">Vin = 0.8 V</td></tr>
+<tr>
+        <td>-25 C</td><td>1.08 V</td><td>0.8 V</td>
+        <td>0.537 MHz</td>
+        <td>0.537 MHz</td>
+        <td>216.0 ps</td>
+        <td>100.9 ps</td>
+        <td style="background:#ffffff !important">48.4 %</td>
+        <td style="background:#ffffff !important">48.1 %</td>
+        <td>0.003 mA</td>
+        <td>1.956 mA</td>
+    </tr><tr>
+        <td>-25 C</td><td>1.2 V</td><td>0.8 V</td>
+        <td>0.591 MHz</td>
+        <td>0.591 MHz</td>
+        <td>149.2 ps</td>
+        <td>206.2 ps</td>
+        <td style="background:#ffffff !important">48.4 %</td>
+        <td style="background:#ffffff !important">48.1 %</td>
+        <td>0.004 mA</td>
+        <td>2.966 mA</td>
+    </tr><tr>
+        <td>-25 C</td><td>1.32 V</td><td>0.8 V</td>
+        <td>0.632 MHz</td>
+        <td>0.632 MHz</td>
+        <td>176.9 ps</td>
+        <td>131.0 ps</td>
+        <td style="background:#ffffff !important">48.4 %</td>
+        <td style="background:#ffffff !important">48.2 %</td>
+        <td>0.006 mA</td>
+        <td>3.088 mA</td>
+    </tr><tr>
+        <td>27 C</td><td>1.08 V</td><td>0.8 V</td>
+        <td>0.448 MHz</td>
+        <td>0.448 MHz</td>
+        <td>160.0 ps</td>
+        <td>208.7 ps</td>
+        <td style="background:#ffffff !important">48.4 %</td>
+        <td style="background:#ffffff !important">48.0 %</td>
+        <td>0.003 mA</td>
+        <td>2.007 mA</td>
+    </tr><tr>
+        <td>27 C</td><td>1.2 V</td><td>0.8 V</td>
+        <td>0.487 MHz</td>
+        <td>0.487 MHz</td>
+        <td>190.5 ps</td>
+        <td>169.4 ps</td>
+        <td style="background:#ffffff !important">48.4 %</td>
+        <td style="background:#ffffff !important">48.1 %</td>
+        <td>0.004 mA</td>
+        <td>2.460 mA</td>
+    </tr><tr>
+        <td>27 C</td><td>1.32 V</td><td>0.8 V</td>
+        <td>0.515 MHz</td>
+        <td>0.515 MHz</td>
+        <td>145.0 ps</td>
+        <td>115.0 ps</td>
+        <td style="background:#ffffff !important">48.5 %</td>
+        <td style="background:#ffffff !important">48.2 %</td>
+        <td>0.005 mA</td>
+        <td>3.163 mA</td>
+    </tr><tr>
+        <td>125 C</td><td>1.08 V</td><td>0.8 V</td>
+        <td>0.330 MHz</td>
+        <td>0.330 MHz</td>
+        <td>185.8 ps</td>
+        <td>144.0 ps</td>
+        <td style="background:#ffffff !important">48.4 %</td>
+        <td style="background:#ffffff !important">47.9 %</td>
+        <td>0.003 mA</td>
+        <td>1.920 mA</td>
+    </tr><tr>
+        <td>125 C</td><td>1.2 V</td><td>0.8 V</td>
+        <td>0.351 MHz</td>
+        <td>0.351 MHz</td>
+        <td>203.6 ps</td>
+        <td>168.5 ps</td>
+        <td style="background:#ffffff !important">48.5 %</td>
+        <td style="background:#ffffff !important">48.1 %</td>
+        <td>0.004 mA</td>
+        <td>2.769 mA</td>
+    </tr><tr>
+        <td>125 C</td><td>1.32 V</td><td>0.8 V</td>
+        <td>0.366 MHz</td>
+        <td>0.366 MHz</td>
+        <td>238.7 ps</td>
+        <td>143.3 ps</td>
+        <td style="background:#ffffff !important">48.6 %</td>
+        <td style="background:#ffffff !important">48.2 %</td>
+        <td>0.005 mA</td>
+        <td>3.082 mA</td>
+    </tr></tbody>
+    </table>
+    <div class="legend">
+        <span class="leg-ok">&#9632; DC OK (&lt;5% od 50%)</span>
+        <span class="leg-warn">&#9632; DC ostrzezenie (&gt;5%)</span>
+        <span class="leg-err">&#9632; DC przekroczenie (&gt;10%)</span>
+    </div>
+</div>
+
+
+<div id="mos_tt_T-25_Vp1.08_Vin0.4" class="panel">
+    <h2>mos_tt - T=-25C - VDD=1.08V - Vin=0.4V</h2>
+    <div class="card">
+        <h3>f<sub>out</sub> = <span style="color:#2a2;font-weight:bold">
+        0.139 MHz</span></h3>
+        <img src="vco_mos_tt_T-25_Vp1.08_Vin0.4.png" style="max-width:100%">
+    </div>
+    <div class="metrics-grid">
+        <div class="mcard">
+            <div class="mcard-title">v(out)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.139 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>901384.2 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>542207.2 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>48.9 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">v(out_pb)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.139 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>219.4 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>166.4 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>48.7 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">Zasilanie V2 (VDD=1.08V)</div>
+            <div class="mrow"><span>Avg I<sub>vdd</sub></span><span>0.001 mA</span></div>
+            <div class="mrow"><span>Max I<sub>vdd</sub></span><span>1.948 mA</span></div>
+            <div class="mrow"><span>Avg P<sub>diss</sub></span><span>0.001 mW</span></div>
+        </div>
+    </div></div>
+<div id="mos_tt_T-25_Vp1.2_Vin0.4" class="panel">
+    <h2>mos_tt - T=-25C - VDD=1.2V - Vin=0.4V</h2>
+    <div class="card">
+        <h3>f<sub>out</sub> = <span style="color:#2a2;font-weight:bold">
+        0.120 MHz</span></h3>
+        <img src="vco_mos_tt_T-25_Vp1.2_Vin0.4.png" style="max-width:100%">
+    </div>
+    <div class="metrics-grid">
+        <div class="mcard">
+            <div class="mcard-title">v(out)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.120 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>988820.7 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>610411.3 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>49.1 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">v(out_pb)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.120 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>160.3 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>228.3 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>48.9 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">Zasilanie V2 (VDD=1.2V)</div>
+            <div class="mrow"><span>Avg I<sub>vdd</sub></span><span>0.001 mA</span></div>
+            <div class="mrow"><span>Max I<sub>vdd</sub></span><span>2.380 mA</span></div>
+            <div class="mrow"><span>Avg P<sub>diss</sub></span><span>0.002 mW</span></div>
+        </div>
+    </div></div>
+<div id="mos_tt_T-25_Vp1.32_Vin0.4" class="panel">
+    <h2>mos_tt - T=-25C - VDD=1.32V - Vin=0.4V</h2>
+    <div class="card">
+        <h3>f<sub>out</sub> = <span style="color:#2a2;font-weight:bold">
+        0.103 MHz</span></h3>
+        <img src="vco_mos_tt_T-25_Vp1.32_Vin0.4.png" style="max-width:100%">
+    </div>
+    <div class="metrics-grid">
+        <div class="mcard">
+            <div class="mcard-title">v(out)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.103 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>1079251.3 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>679193.0 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>49.3 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">v(out_pb)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.103 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>200.2 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>263.8 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>49.0 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">Zasilanie V2 (VDD=1.32V)</div>
+            <div class="mrow"><span>Avg I<sub>vdd</sub></span><span>0.002 mA</span></div>
+            <div class="mrow"><span>Max I<sub>vdd</sub></span><span>2.753 mA</span></div>
+            <div class="mrow"><span>Avg P<sub>diss</sub></span><span>0.003 mW</span></div>
+        </div>
+    </div></div>
+<div id="mos_tt_T27_Vp1.08_Vin0.4" class="panel">
+    <h2>mos_tt - T=27C - VDD=1.08V - Vin=0.4V</h2>
+    <div class="card">
+        <h3>f<sub>out</sub> = <span style="color:#2a2;font-weight:bold">
+        0.142 MHz</span></h3>
+        <img src="vco_mos_tt_T27_Vp1.08_Vin0.4.png" style="max-width:100%">
+    </div>
+    <div class="metrics-grid">
+        <div class="mcard">
+            <div class="mcard-title">v(out)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.142 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>900895.1 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>544041.9 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>48.9 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">v(out_pb)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.142 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>185.6 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>233.2 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>48.7 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">Zasilanie V2 (VDD=1.08V)</div>
+            <div class="mrow"><span>Avg I<sub>vdd</sub></span><span>0.001 mA</span></div>
+            <div class="mrow"><span>Max I<sub>vdd</sub></span><span>2.032 mA</span></div>
+            <div class="mrow"><span>Avg P<sub>diss</sub></span><span>0.001 mW</span></div>
+        </div>
+    </div></div>
+<div id="mos_tt_T27_Vp1.2_Vin0.4" class="panel">
+    <h2>mos_tt - T=27C - VDD=1.2V - Vin=0.4V</h2>
+    <div class="card">
+        <h3>f<sub>out</sub> = <span style="color:#2a2;font-weight:bold">
+        0.123 MHz</span></h3>
+        <img src="vco_mos_tt_T27_Vp1.2_Vin0.4.png" style="max-width:100%">
+    </div>
+    <div class="metrics-grid">
+        <div class="mcard">
+            <div class="mcard-title">v(out)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.123 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>980626.2 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>607122.9 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>49.1 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">v(out_pb)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.123 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>200.0 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>114.0 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>48.9 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">Zasilanie V2 (VDD=1.2V)</div>
+            <div class="mrow"><span>Avg I<sub>vdd</sub></span><span>0.002 mA</span></div>
+            <div class="mrow"><span>Max I<sub>vdd</sub></span><span>2.331 mA</span></div>
+            <div class="mrow"><span>Avg P<sub>diss</sub></span><span>0.002 mW</span></div>
+        </div>
+    </div></div>
+<div id="mos_tt_T27_Vp1.32_Vin0.4" class="panel">
+    <h2>mos_tt - T=27C - VDD=1.32V - Vin=0.4V</h2>
+    <div class="card">
+        <h3>f<sub>out</sub> = <span style="color:#2a2;font-weight:bold">
+        0.107 MHz</span></h3>
+        <img src="vco_mos_tt_T27_Vp1.32_Vin0.4.png" style="max-width:100%">
+    </div>
+    <div class="metrics-grid">
+        <div class="mcard">
+            <div class="mcard-title">v(out)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.107 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>1069447.6 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>670466.3 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>49.3 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">v(out_pb)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.107 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>199.6 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>142.9 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>49.0 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">Zasilanie V2 (VDD=1.32V)</div>
+            <div class="mrow"><span>Avg I<sub>vdd</sub></span><span>0.002 mA</span></div>
+            <div class="mrow"><span>Max I<sub>vdd</sub></span><span>2.197 mA</span></div>
+            <div class="mrow"><span>Avg P<sub>diss</sub></span><span>0.003 mW</span></div>
+        </div>
+    </div></div>
+<div id="mos_tt_T125_Vp1.08_Vin0.4" class="panel">
+    <h2>mos_tt - T=125C - VDD=1.08V - Vin=0.4V</h2>
+    <div class="card">
+        <h3>f<sub>out</sub> = <span style="color:#2a2;font-weight:bold">
+        0.138 MHz</span></h3>
+        <img src="vco_mos_tt_T125_Vp1.08_Vin0.4.png" style="max-width:100%">
+    </div>
+    <div class="metrics-grid">
+        <div class="mcard">
+            <div class="mcard-title">v(out)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.138 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>935461.2 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>587236.3 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>49.1 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">v(out_pb)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.138 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>154.9 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>135.9 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>48.6 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">Zasilanie V2 (VDD=1.08V)</div>
+            <div class="mrow"><span>Avg I<sub>vdd</sub></span><span>0.002 mA</span></div>
+            <div class="mrow"><span>Max I<sub>vdd</sub></span><span>1.652 mA</span></div>
+            <div class="mrow"><span>Avg P<sub>diss</sub></span><span>0.002 mW</span></div>
+        </div>
+    </div></div>
+<div id="mos_tt_T125_Vp1.2_Vin0.4" class="panel">
+    <h2>mos_tt - T=125C - VDD=1.2V - Vin=0.4V</h2>
+    <div class="card">
+        <h3>f<sub>out</sub> = <span style="color:#2a2;font-weight:bold">
+        0.122 MHz</span></h3>
+        <img src="vco_mos_tt_T125_Vp1.2_Vin0.4.png" style="max-width:100%">
+    </div>
+    <div class="metrics-grid">
+        <div class="mcard">
+            <div class="mcard-title">v(out)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.122 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>1005159.6 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>638967.1 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>49.2 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">v(out_pb)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.122 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>265.1 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>136.1 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>48.8 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">Zasilanie V2 (VDD=1.2V)</div>
+            <div class="mrow"><span>Avg I<sub>vdd</sub></span><span>0.002 mA</span></div>
+            <div class="mrow"><span>Max I<sub>vdd</sub></span><span>2.054 mA</span></div>
+            <div class="mrow"><span>Avg P<sub>diss</sub></span><span>0.003 mW</span></div>
+        </div>
+    </div></div>
+<div id="mos_tt_T125_Vp1.32_Vin0.4" class="panel">
+    <h2>mos_tt - T=125C - VDD=1.32V - Vin=0.4V</h2>
+    <div class="card">
+        <h3>f<sub>out</sub> = <span style="color:#2a2;font-weight:bold">
+        0.108 MHz</span></h3>
+        <img src="vco_mos_tt_T125_Vp1.32_Vin0.4.png" style="max-width:100%">
+    </div>
+    <div class="metrics-grid">
+        <div class="mcard">
+            <div class="mcard-title">v(out)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.108 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>1082543.6 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>692121.3 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>49.4 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">v(out_pb)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.108 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>205.5 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>161.1 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>49.0 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">Zasilanie V2 (VDD=1.32V)</div>
+            <div class="mrow"><span>Avg I<sub>vdd</sub></span><span>0.003 mA</span></div>
+            <div class="mrow"><span>Max I<sub>vdd</sub></span><span>2.481 mA</span></div>
+            <div class="mrow"><span>Avg P<sub>diss</sub></span><span>0.004 mW</span></div>
+        </div>
+    </div></div>
+<div id="mos_tt_T-25_Vp1.08_Vin0.8" class="panel">
+    <h2>mos_tt - T=-25C - VDD=1.08V - Vin=0.8V</h2>
+    <div class="card">
+        <h3>f<sub>out</sub> = <span style="color:#2a2;font-weight:bold">
+        0.537 MHz</span></h3>
+        <img src="vco_mos_tt_T-25_Vp1.08_Vin0.8.png" style="max-width:100%">
+    </div>
+    <div class="metrics-grid">
+        <div class="mcard">
+            <div class="mcard-title">v(out)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.537 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>377307.1 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>120818.5 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>48.4 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">v(out_pb)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.537 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>216.0 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>100.9 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>48.1 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">Zasilanie V2 (VDD=1.08V)</div>
+            <div class="mrow"><span>Avg I<sub>vdd</sub></span><span>0.003 mA</span></div>
+            <div class="mrow"><span>Max I<sub>vdd</sub></span><span>1.956 mA</span></div>
+            <div class="mrow"><span>Avg P<sub>diss</sub></span><span>0.003 mW</span></div>
+        </div>
+    </div></div>
+<div id="mos_tt_T-25_Vp1.2_Vin0.8" class="panel">
+    <h2>mos_tt - T=-25C - VDD=1.2V - Vin=0.8V</h2>
+    <div class="card">
+        <h3>f<sub>out</sub> = <span style="color:#2a2;font-weight:bold">
+        0.591 MHz</span></h3>
+        <img src="vco_mos_tt_T-25_Vp1.2_Vin0.8.png" style="max-width:100%">
+    </div>
+    <div class="metrics-grid">
+        <div class="mcard">
+            <div class="mcard-title">v(out)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.591 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>342464.0 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>118630.8 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>48.4 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">v(out_pb)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.591 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>149.2 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>206.2 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>48.1 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">Zasilanie V2 (VDD=1.2V)</div>
+            <div class="mrow"><span>Avg I<sub>vdd</sub></span><span>0.004 mA</span></div>
+            <div class="mrow"><span>Max I<sub>vdd</sub></span><span>2.966 mA</span></div>
+            <div class="mrow"><span>Avg P<sub>diss</sub></span><span>0.005 mW</span></div>
+        </div>
+    </div></div>
+<div id="mos_tt_T-25_Vp1.32_Vin0.8" class="panel">
+    <h2>mos_tt - T=-25C - VDD=1.32V - Vin=0.8V</h2>
+    <div class="card">
+        <h3>f<sub>out</sub> = <span style="color:#2a2;font-weight:bold">
+        0.632 MHz</span></h3>
+        <img src="vco_mos_tt_T-25_Vp1.32_Vin0.8.png" style="max-width:100%">
+    </div>
+    <div class="metrics-grid">
+        <div class="mcard">
+            <div class="mcard-title">v(out)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.632 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>317169.4 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>118151.3 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>48.4 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">v(out_pb)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.632 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>176.9 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>131.0 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>48.2 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">Zasilanie V2 (VDD=1.32V)</div>
+            <div class="mrow"><span>Avg I<sub>vdd</sub></span><span>0.006 mA</span></div>
+            <div class="mrow"><span>Max I<sub>vdd</sub></span><span>3.088 mA</span></div>
+            <div class="mrow"><span>Avg P<sub>diss</sub></span><span>0.008 mW</span></div>
+        </div>
+    </div></div>
+<div id="mos_tt_T27_Vp1.08_Vin0.8" class="panel">
+    <h2>mos_tt - T=27C - VDD=1.08V - Vin=0.8V</h2>
+    <div class="card">
+        <h3>f<sub>out</sub> = <span style="color:#2a2;font-weight:bold">
+        0.448 MHz</span></h3>
+        <img src="vco_mos_tt_T27_Vp1.08_Vin0.8.png" style="max-width:100%">
+    </div>
+    <div class="metrics-grid">
+        <div class="mcard">
+            <div class="mcard-title">v(out)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.448 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>434042.2 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>155601.9 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>48.4 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">v(out_pb)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.448 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>160.0 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>208.7 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>48.0 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">Zasilanie V2 (VDD=1.08V)</div>
+            <div class="mrow"><span>Avg I<sub>vdd</sub></span><span>0.003 mA</span></div>
+            <div class="mrow"><span>Max I<sub>vdd</sub></span><span>2.007 mA</span></div>
+            <div class="mrow"><span>Avg P<sub>diss</sub></span><span>0.003 mW</span></div>
+        </div>
+    </div></div>
+<div id="mos_tt_T27_Vp1.2_Vin0.8" class="panel">
+    <h2>mos_tt - T=27C - VDD=1.2V - Vin=0.8V</h2>
+    <div class="card">
+        <h3>f<sub>out</sub> = <span style="color:#2a2;font-weight:bold">
+        0.487 MHz</span></h3>
+        <img src="vco_mos_tt_T27_Vp1.2_Vin0.8.png" style="max-width:100%">
+    </div>
+    <div class="metrics-grid">
+        <div class="mcard">
+            <div class="mcard-title">v(out)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.487 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>397920.3 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>154372.1 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>48.4 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">v(out_pb)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.487 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>190.5 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>169.4 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>48.1 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">Zasilanie V2 (VDD=1.2V)</div>
+            <div class="mrow"><span>Avg I<sub>vdd</sub></span><span>0.004 mA</span></div>
+            <div class="mrow"><span>Max I<sub>vdd</sub></span><span>2.460 mA</span></div>
+            <div class="mrow"><span>Avg P<sub>diss</sub></span><span>0.005 mW</span></div>
+        </div>
+    </div></div>
+<div id="mos_tt_T27_Vp1.32_Vin0.8" class="panel">
+    <h2>mos_tt - T=27C - VDD=1.32V - Vin=0.8V</h2>
+    <div class="card">
+        <h3>f<sub>out</sub> = <span style="color:#2a2;font-weight:bold">
+        0.515 MHz</span></h3>
+        <img src="vco_mos_tt_T27_Vp1.32_Vin0.8.png" style="max-width:100%">
+    </div>
+    <div class="metrics-grid">
+        <div class="mcard">
+            <div class="mcard-title">v(out)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.515 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>371296.8 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>158261.6 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>48.5 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">v(out_pb)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.515 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>145.0 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>115.0 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>48.2 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">Zasilanie V2 (VDD=1.32V)</div>
+            <div class="mrow"><span>Avg I<sub>vdd</sub></span><span>0.005 mA</span></div>
+            <div class="mrow"><span>Max I<sub>vdd</sub></span><span>3.163 mA</span></div>
+            <div class="mrow"><span>Avg P<sub>diss</sub></span><span>0.007 mW</span></div>
+        </div>
+    </div></div>
+<div id="mos_tt_T125_Vp1.08_Vin0.8" class="panel">
+    <h2>mos_tt - T=125C - VDD=1.08V - Vin=0.8V</h2>
+    <div class="card">
+        <h3>f<sub>out</sub> = <span style="color:#2a2;font-weight:bold">
+        0.330 MHz</span></h3>
+        <img src="vco_mos_tt_T125_Vp1.08_Vin0.8.png" style="max-width:100%">
+    </div>
+    <div class="metrics-grid">
+        <div class="mcard">
+            <div class="mcard-title">v(out)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.330 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>536206.6 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>243697.0 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>48.4 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">v(out_pb)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.330 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>185.8 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>144.0 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>47.9 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">Zasilanie V2 (VDD=1.08V)</div>
+            <div class="mrow"><span>Avg I<sub>vdd</sub></span><span>0.003 mA</span></div>
+            <div class="mrow"><span>Max I<sub>vdd</sub></span><span>1.920 mA</span></div>
+            <div class="mrow"><span>Avg P<sub>diss</sub></span><span>0.003 mW</span></div>
+        </div>
+    </div></div>
+<div id="mos_tt_T125_Vp1.2_Vin0.8" class="panel">
+    <h2>mos_tt - T=125C - VDD=1.2V - Vin=0.8V</h2>
+    <div class="card">
+        <h3>f<sub>out</sub> = <span style="color:#2a2;font-weight:bold">
+        0.351 MHz</span></h3>
+        <img src="vco_mos_tt_T125_Vp1.2_Vin0.8.png" style="max-width:100%">
+    </div>
+    <div class="metrics-grid">
+        <div class="mcard">
+            <div class="mcard-title">v(out)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.351 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>496316.2 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>373043.8 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>48.5 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">v(out_pb)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.351 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>203.6 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>168.5 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>48.1 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">Zasilanie V2 (VDD=1.2V)</div>
+            <div class="mrow"><span>Avg I<sub>vdd</sub></span><span>0.004 mA</span></div>
+            <div class="mrow"><span>Max I<sub>vdd</sub></span><span>2.769 mA</span></div>
+            <div class="mrow"><span>Avg P<sub>diss</sub></span><span>0.005 mW</span></div>
+        </div>
+    </div></div>
+<div id="mos_tt_T125_Vp1.32_Vin0.8" class="panel">
+    <h2>mos_tt - T=125C - VDD=1.32V - Vin=0.8V</h2>
+    <div class="card">
+        <h3>f<sub>out</sub> = <span style="color:#2a2;font-weight:bold">
+        0.366 MHz</span></h3>
+        <img src="vco_mos_tt_T125_Vp1.32_Vin0.8.png" style="max-width:100%">
+    </div>
+    <div class="metrics-grid">
+        <div class="mcard">
+            <div class="mcard-title">v(out)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.366 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>464134.4 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>362676.3 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>48.6 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">v(out_pb)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.366 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>238.7 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>143.3 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>48.2 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">Zasilanie V2 (VDD=1.32V)</div>
+            <div class="mrow"><span>Avg I<sub>vdd</sub></span><span>0.005 mA</span></div>
+            <div class="mrow"><span>Max I<sub>vdd</sub></span><span>3.082 mA</span></div>
+            <div class="mrow"><span>Avg P<sub>diss</sub></span><span>0.007 mW</span></div>
+        </div>
+    </div></div>
+<div id="mos_ss_T-25_Vp1.08_Vin0.4" class="panel">
+    <h2>mos_ss - T=-25C - VDD=1.08V - Vin=0.4V</h2>
+    <div class="card">
+        <h3>f<sub>out</sub> = <span style="color:#2a2;font-weight:bold">
+        0.139 MHz</span></h3>
+        <img src="vco_mos_ss_T-25_Vp1.08_Vin0.4.png" style="max-width:100%">
+    </div>
+    <div class="metrics-grid">
+        <div class="mcard">
+            <div class="mcard-title">v(out)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.139 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>901384.2 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>542207.2 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>48.9 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">v(out_pb)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.139 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>219.4 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>166.4 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>48.7 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">Zasilanie V2 (VDD=1.08V)</div>
+            <div class="mrow"><span>Avg I<sub>vdd</sub></span><span>0.001 mA</span></div>
+            <div class="mrow"><span>Max I<sub>vdd</sub></span><span>1.948 mA</span></div>
+            <div class="mrow"><span>Avg P<sub>diss</sub></span><span>0.001 mW</span></div>
+        </div>
+    </div></div>
+<div id="mos_ss_T-25_Vp1.2_Vin0.4" class="panel">
+    <h2>mos_ss - T=-25C - VDD=1.2V - Vin=0.4V</h2>
+    <div class="card">
+        <h3>f<sub>out</sub> = <span style="color:#2a2;font-weight:bold">
+        0.120 MHz</span></h3>
+        <img src="vco_mos_ss_T-25_Vp1.2_Vin0.4.png" style="max-width:100%">
+    </div>
+    <div class="metrics-grid">
+        <div class="mcard">
+            <div class="mcard-title">v(out)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.120 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>988820.7 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>610411.3 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>49.1 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">v(out_pb)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.120 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>160.3 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>228.3 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>48.9 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">Zasilanie V2 (VDD=1.2V)</div>
+            <div class="mrow"><span>Avg I<sub>vdd</sub></span><span>0.001 mA</span></div>
+            <div class="mrow"><span>Max I<sub>vdd</sub></span><span>2.380 mA</span></div>
+            <div class="mrow"><span>Avg P<sub>diss</sub></span><span>0.002 mW</span></div>
+        </div>
+    </div></div>
+<div id="mos_ss_T-25_Vp1.32_Vin0.4" class="panel">
+    <h2>mos_ss - T=-25C - VDD=1.32V - Vin=0.4V</h2>
+    <div class="card">
+        <h3>f<sub>out</sub> = <span style="color:#2a2;font-weight:bold">
+        0.103 MHz</span></h3>
+        <img src="vco_mos_ss_T-25_Vp1.32_Vin0.4.png" style="max-width:100%">
+    </div>
+    <div class="metrics-grid">
+        <div class="mcard">
+            <div class="mcard-title">v(out)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.103 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>1079251.3 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>679193.0 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>49.3 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">v(out_pb)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.103 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>200.2 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>263.8 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>49.0 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">Zasilanie V2 (VDD=1.32V)</div>
+            <div class="mrow"><span>Avg I<sub>vdd</sub></span><span>0.002 mA</span></div>
+            <div class="mrow"><span>Max I<sub>vdd</sub></span><span>2.753 mA</span></div>
+            <div class="mrow"><span>Avg P<sub>diss</sub></span><span>0.003 mW</span></div>
+        </div>
+    </div></div>
+<div id="mos_ss_T27_Vp1.08_Vin0.4" class="panel">
+    <h2>mos_ss - T=27C - VDD=1.08V - Vin=0.4V</h2>
+    <div class="card">
+        <h3>f<sub>out</sub> = <span style="color:#2a2;font-weight:bold">
+        0.142 MHz</span></h3>
+        <img src="vco_mos_ss_T27_Vp1.08_Vin0.4.png" style="max-width:100%">
+    </div>
+    <div class="metrics-grid">
+        <div class="mcard">
+            <div class="mcard-title">v(out)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.142 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>900895.1 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>544041.9 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>48.9 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">v(out_pb)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.142 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>185.6 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>233.2 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>48.7 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">Zasilanie V2 (VDD=1.08V)</div>
+            <div class="mrow"><span>Avg I<sub>vdd</sub></span><span>0.001 mA</span></div>
+            <div class="mrow"><span>Max I<sub>vdd</sub></span><span>2.032 mA</span></div>
+            <div class="mrow"><span>Avg P<sub>diss</sub></span><span>0.001 mW</span></div>
+        </div>
+    </div></div>
+<div id="mos_ss_T27_Vp1.2_Vin0.4" class="panel">
+    <h2>mos_ss - T=27C - VDD=1.2V - Vin=0.4V</h2>
+    <div class="card">
+        <h3>f<sub>out</sub> = <span style="color:#2a2;font-weight:bold">
+        0.123 MHz</span></h3>
+        <img src="vco_mos_ss_T27_Vp1.2_Vin0.4.png" style="max-width:100%">
+    </div>
+    <div class="metrics-grid">
+        <div class="mcard">
+            <div class="mcard-title">v(out)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.123 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>980626.2 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>607122.9 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>49.1 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">v(out_pb)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.123 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>200.0 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>114.0 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>48.9 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">Zasilanie V2 (VDD=1.2V)</div>
+            <div class="mrow"><span>Avg I<sub>vdd</sub></span><span>0.002 mA</span></div>
+            <div class="mrow"><span>Max I<sub>vdd</sub></span><span>2.331 mA</span></div>
+            <div class="mrow"><span>Avg P<sub>diss</sub></span><span>0.002 mW</span></div>
+        </div>
+    </div></div>
+<div id="mos_ss_T27_Vp1.32_Vin0.4" class="panel">
+    <h2>mos_ss - T=27C - VDD=1.32V - Vin=0.4V</h2>
+    <div class="card">
+        <h3>f<sub>out</sub> = <span style="color:#2a2;font-weight:bold">
+        0.107 MHz</span></h3>
+        <img src="vco_mos_ss_T27_Vp1.32_Vin0.4.png" style="max-width:100%">
+    </div>
+    <div class="metrics-grid">
+        <div class="mcard">
+            <div class="mcard-title">v(out)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.107 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>1069447.6 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>670466.3 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>49.3 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">v(out_pb)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.107 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>199.6 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>142.9 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>49.0 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">Zasilanie V2 (VDD=1.32V)</div>
+            <div class="mrow"><span>Avg I<sub>vdd</sub></span><span>0.002 mA</span></div>
+            <div class="mrow"><span>Max I<sub>vdd</sub></span><span>2.197 mA</span></div>
+            <div class="mrow"><span>Avg P<sub>diss</sub></span><span>0.003 mW</span></div>
+        </div>
+    </div></div>
+<div id="mos_ss_T125_Vp1.08_Vin0.4" class="panel">
+    <h2>mos_ss - T=125C - VDD=1.08V - Vin=0.4V</h2>
+    <div class="card">
+        <h3>f<sub>out</sub> = <span style="color:#2a2;font-weight:bold">
+        0.138 MHz</span></h3>
+        <img src="vco_mos_ss_T125_Vp1.08_Vin0.4.png" style="max-width:100%">
+    </div>
+    <div class="metrics-grid">
+        <div class="mcard">
+            <div class="mcard-title">v(out)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.138 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>935461.2 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>587236.3 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>49.1 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">v(out_pb)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.138 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>154.9 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>135.9 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>48.6 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">Zasilanie V2 (VDD=1.08V)</div>
+            <div class="mrow"><span>Avg I<sub>vdd</sub></span><span>0.002 mA</span></div>
+            <div class="mrow"><span>Max I<sub>vdd</sub></span><span>1.652 mA</span></div>
+            <div class="mrow"><span>Avg P<sub>diss</sub></span><span>0.002 mW</span></div>
+        </div>
+    </div></div>
+<div id="mos_ss_T125_Vp1.2_Vin0.4" class="panel">
+    <h2>mos_ss - T=125C - VDD=1.2V - Vin=0.4V</h2>
+    <div class="card">
+        <h3>f<sub>out</sub> = <span style="color:#2a2;font-weight:bold">
+        0.122 MHz</span></h3>
+        <img src="vco_mos_ss_T125_Vp1.2_Vin0.4.png" style="max-width:100%">
+    </div>
+    <div class="metrics-grid">
+        <div class="mcard">
+            <div class="mcard-title">v(out)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.122 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>1005159.6 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>638967.1 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>49.2 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">v(out_pb)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.122 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>265.1 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>136.1 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>48.8 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">Zasilanie V2 (VDD=1.2V)</div>
+            <div class="mrow"><span>Avg I<sub>vdd</sub></span><span>0.002 mA</span></div>
+            <div class="mrow"><span>Max I<sub>vdd</sub></span><span>2.054 mA</span></div>
+            <div class="mrow"><span>Avg P<sub>diss</sub></span><span>0.003 mW</span></div>
+        </div>
+    </div></div>
+<div id="mos_ss_T125_Vp1.32_Vin0.4" class="panel">
+    <h2>mos_ss - T=125C - VDD=1.32V - Vin=0.4V</h2>
+    <div class="card">
+        <h3>f<sub>out</sub> = <span style="color:#2a2;font-weight:bold">
+        0.108 MHz</span></h3>
+        <img src="vco_mos_ss_T125_Vp1.32_Vin0.4.png" style="max-width:100%">
+    </div>
+    <div class="metrics-grid">
+        <div class="mcard">
+            <div class="mcard-title">v(out)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.108 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>1082543.6 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>692121.3 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>49.4 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">v(out_pb)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.108 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>205.5 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>161.1 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>49.0 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">Zasilanie V2 (VDD=1.32V)</div>
+            <div class="mrow"><span>Avg I<sub>vdd</sub></span><span>0.003 mA</span></div>
+            <div class="mrow"><span>Max I<sub>vdd</sub></span><span>2.481 mA</span></div>
+            <div class="mrow"><span>Avg P<sub>diss</sub></span><span>0.004 mW</span></div>
+        </div>
+    </div></div>
+<div id="mos_ss_T-25_Vp1.08_Vin0.8" class="panel">
+    <h2>mos_ss - T=-25C - VDD=1.08V - Vin=0.8V</h2>
+    <div class="card">
+        <h3>f<sub>out</sub> = <span style="color:#2a2;font-weight:bold">
+        0.537 MHz</span></h3>
+        <img src="vco_mos_ss_T-25_Vp1.08_Vin0.8.png" style="max-width:100%">
+    </div>
+    <div class="metrics-grid">
+        <div class="mcard">
+            <div class="mcard-title">v(out)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.537 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>377307.1 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>120818.5 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>48.4 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">v(out_pb)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.537 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>216.0 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>100.9 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>48.1 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">Zasilanie V2 (VDD=1.08V)</div>
+            <div class="mrow"><span>Avg I<sub>vdd</sub></span><span>0.003 mA</span></div>
+            <div class="mrow"><span>Max I<sub>vdd</sub></span><span>1.956 mA</span></div>
+            <div class="mrow"><span>Avg P<sub>diss</sub></span><span>0.003 mW</span></div>
+        </div>
+    </div></div>
+<div id="mos_ss_T-25_Vp1.2_Vin0.8" class="panel">
+    <h2>mos_ss - T=-25C - VDD=1.2V - Vin=0.8V</h2>
+    <div class="card">
+        <h3>f<sub>out</sub> = <span style="color:#2a2;font-weight:bold">
+        0.591 MHz</span></h3>
+        <img src="vco_mos_ss_T-25_Vp1.2_Vin0.8.png" style="max-width:100%">
+    </div>
+    <div class="metrics-grid">
+        <div class="mcard">
+            <div class="mcard-title">v(out)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.591 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>342464.0 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>118630.8 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>48.4 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">v(out_pb)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.591 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>149.2 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>206.2 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>48.1 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">Zasilanie V2 (VDD=1.2V)</div>
+            <div class="mrow"><span>Avg I<sub>vdd</sub></span><span>0.004 mA</span></div>
+            <div class="mrow"><span>Max I<sub>vdd</sub></span><span>2.966 mA</span></div>
+            <div class="mrow"><span>Avg P<sub>diss</sub></span><span>0.005 mW</span></div>
+        </div>
+    </div></div>
+<div id="mos_ss_T-25_Vp1.32_Vin0.8" class="panel">
+    <h2>mos_ss - T=-25C - VDD=1.32V - Vin=0.8V</h2>
+    <div class="card">
+        <h3>f<sub>out</sub> = <span style="color:#2a2;font-weight:bold">
+        0.632 MHz</span></h3>
+        <img src="vco_mos_ss_T-25_Vp1.32_Vin0.8.png" style="max-width:100%">
+    </div>
+    <div class="metrics-grid">
+        <div class="mcard">
+            <div class="mcard-title">v(out)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.632 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>317169.4 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>118151.3 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>48.4 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">v(out_pb)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.632 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>176.9 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>131.0 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>48.2 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">Zasilanie V2 (VDD=1.32V)</div>
+            <div class="mrow"><span>Avg I<sub>vdd</sub></span><span>0.006 mA</span></div>
+            <div class="mrow"><span>Max I<sub>vdd</sub></span><span>3.088 mA</span></div>
+            <div class="mrow"><span>Avg P<sub>diss</sub></span><span>0.008 mW</span></div>
+        </div>
+    </div></div>
+<div id="mos_ss_T27_Vp1.08_Vin0.8" class="panel">
+    <h2>mos_ss - T=27C - VDD=1.08V - Vin=0.8V</h2>
+    <div class="card">
+        <h3>f<sub>out</sub> = <span style="color:#2a2;font-weight:bold">
+        0.448 MHz</span></h3>
+        <img src="vco_mos_ss_T27_Vp1.08_Vin0.8.png" style="max-width:100%">
+    </div>
+    <div class="metrics-grid">
+        <div class="mcard">
+            <div class="mcard-title">v(out)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.448 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>434042.2 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>155601.9 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>48.4 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">v(out_pb)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.448 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>160.0 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>208.7 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>48.0 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">Zasilanie V2 (VDD=1.08V)</div>
+            <div class="mrow"><span>Avg I<sub>vdd</sub></span><span>0.003 mA</span></div>
+            <div class="mrow"><span>Max I<sub>vdd</sub></span><span>2.007 mA</span></div>
+            <div class="mrow"><span>Avg P<sub>diss</sub></span><span>0.003 mW</span></div>
+        </div>
+    </div></div>
+<div id="mos_ss_T27_Vp1.2_Vin0.8" class="panel">
+    <h2>mos_ss - T=27C - VDD=1.2V - Vin=0.8V</h2>
+    <div class="card">
+        <h3>f<sub>out</sub> = <span style="color:#2a2;font-weight:bold">
+        0.487 MHz</span></h3>
+        <img src="vco_mos_ss_T27_Vp1.2_Vin0.8.png" style="max-width:100%">
+    </div>
+    <div class="metrics-grid">
+        <div class="mcard">
+            <div class="mcard-title">v(out)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.487 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>397920.3 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>154372.1 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>48.4 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">v(out_pb)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.487 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>190.5 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>169.4 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>48.1 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">Zasilanie V2 (VDD=1.2V)</div>
+            <div class="mrow"><span>Avg I<sub>vdd</sub></span><span>0.004 mA</span></div>
+            <div class="mrow"><span>Max I<sub>vdd</sub></span><span>2.460 mA</span></div>
+            <div class="mrow"><span>Avg P<sub>diss</sub></span><span>0.005 mW</span></div>
+        </div>
+    </div></div>
+<div id="mos_ss_T27_Vp1.32_Vin0.8" class="panel">
+    <h2>mos_ss - T=27C - VDD=1.32V - Vin=0.8V</h2>
+    <div class="card">
+        <h3>f<sub>out</sub> = <span style="color:#2a2;font-weight:bold">
+        0.515 MHz</span></h3>
+        <img src="vco_mos_ss_T27_Vp1.32_Vin0.8.png" style="max-width:100%">
+    </div>
+    <div class="metrics-grid">
+        <div class="mcard">
+            <div class="mcard-title">v(out)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.515 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>371296.8 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>158261.6 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>48.5 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">v(out_pb)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.515 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>145.0 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>115.0 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>48.2 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">Zasilanie V2 (VDD=1.32V)</div>
+            <div class="mrow"><span>Avg I<sub>vdd</sub></span><span>0.005 mA</span></div>
+            <div class="mrow"><span>Max I<sub>vdd</sub></span><span>3.163 mA</span></div>
+            <div class="mrow"><span>Avg P<sub>diss</sub></span><span>0.007 mW</span></div>
+        </div>
+    </div></div>
+<div id="mos_ss_T125_Vp1.08_Vin0.8" class="panel">
+    <h2>mos_ss - T=125C - VDD=1.08V - Vin=0.8V</h2>
+    <div class="card">
+        <h3>f<sub>out</sub> = <span style="color:#2a2;font-weight:bold">
+        0.330 MHz</span></h3>
+        <img src="vco_mos_ss_T125_Vp1.08_Vin0.8.png" style="max-width:100%">
+    </div>
+    <div class="metrics-grid">
+        <div class="mcard">
+            <div class="mcard-title">v(out)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.330 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>536206.6 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>243697.0 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>48.4 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">v(out_pb)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.330 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>185.8 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>144.0 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>47.9 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">Zasilanie V2 (VDD=1.08V)</div>
+            <div class="mrow"><span>Avg I<sub>vdd</sub></span><span>0.003 mA</span></div>
+            <div class="mrow"><span>Max I<sub>vdd</sub></span><span>1.920 mA</span></div>
+            <div class="mrow"><span>Avg P<sub>diss</sub></span><span>0.003 mW</span></div>
+        </div>
+    </div></div>
+<div id="mos_ss_T125_Vp1.2_Vin0.8" class="panel">
+    <h2>mos_ss - T=125C - VDD=1.2V - Vin=0.8V</h2>
+    <div class="card">
+        <h3>f<sub>out</sub> = <span style="color:#2a2;font-weight:bold">
+        0.351 MHz</span></h3>
+        <img src="vco_mos_ss_T125_Vp1.2_Vin0.8.png" style="max-width:100%">
+    </div>
+    <div class="metrics-grid">
+        <div class="mcard">
+            <div class="mcard-title">v(out)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.351 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>496316.2 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>373043.8 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>48.5 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">v(out_pb)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.351 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>203.6 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>168.5 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>48.1 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">Zasilanie V2 (VDD=1.2V)</div>
+            <div class="mrow"><span>Avg I<sub>vdd</sub></span><span>0.004 mA</span></div>
+            <div class="mrow"><span>Max I<sub>vdd</sub></span><span>2.769 mA</span></div>
+            <div class="mrow"><span>Avg P<sub>diss</sub></span><span>0.005 mW</span></div>
+        </div>
+    </div></div>
+<div id="mos_ss_T125_Vp1.32_Vin0.8" class="panel">
+    <h2>mos_ss - T=125C - VDD=1.32V - Vin=0.8V</h2>
+    <div class="card">
+        <h3>f<sub>out</sub> = <span style="color:#2a2;font-weight:bold">
+        0.366 MHz</span></h3>
+        <img src="vco_mos_ss_T125_Vp1.32_Vin0.8.png" style="max-width:100%">
+    </div>
+    <div class="metrics-grid">
+        <div class="mcard">
+            <div class="mcard-title">v(out)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.366 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>464134.4 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>362676.3 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>48.6 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">v(out_pb)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.366 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>238.7 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>143.3 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>48.2 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">Zasilanie V2 (VDD=1.32V)</div>
+            <div class="mrow"><span>Avg I<sub>vdd</sub></span><span>0.005 mA</span></div>
+            <div class="mrow"><span>Max I<sub>vdd</sub></span><span>3.082 mA</span></div>
+            <div class="mrow"><span>Avg P<sub>diss</sub></span><span>0.007 mW</span></div>
+        </div>
+    </div></div>
+<div id="mos_ff_T-25_Vp1.08_Vin0.4" class="panel">
+    <h2>mos_ff - T=-25C - VDD=1.08V - Vin=0.4V</h2>
+    <div class="card">
+        <h3>f<sub>out</sub> = <span style="color:#2a2;font-weight:bold">
+        0.139 MHz</span></h3>
+        <img src="vco_mos_ff_T-25_Vp1.08_Vin0.4.png" style="max-width:100%">
+    </div>
+    <div class="metrics-grid">
+        <div class="mcard">
+            <div class="mcard-title">v(out)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.139 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>901384.2 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>542207.2 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>48.9 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">v(out_pb)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.139 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>219.4 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>166.4 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>48.7 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">Zasilanie V2 (VDD=1.08V)</div>
+            <div class="mrow"><span>Avg I<sub>vdd</sub></span><span>0.001 mA</span></div>
+            <div class="mrow"><span>Max I<sub>vdd</sub></span><span>1.948 mA</span></div>
+            <div class="mrow"><span>Avg P<sub>diss</sub></span><span>0.001 mW</span></div>
+        </div>
+    </div></div>
+<div id="mos_ff_T-25_Vp1.2_Vin0.4" class="panel">
+    <h2>mos_ff - T=-25C - VDD=1.2V - Vin=0.4V</h2>
+    <div class="card">
+        <h3>f<sub>out</sub> = <span style="color:#2a2;font-weight:bold">
+        0.120 MHz</span></h3>
+        <img src="vco_mos_ff_T-25_Vp1.2_Vin0.4.png" style="max-width:100%">
+    </div>
+    <div class="metrics-grid">
+        <div class="mcard">
+            <div class="mcard-title">v(out)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.120 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>988820.7 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>610411.3 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>49.1 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">v(out_pb)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.120 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>160.3 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>228.3 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>48.9 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">Zasilanie V2 (VDD=1.2V)</div>
+            <div class="mrow"><span>Avg I<sub>vdd</sub></span><span>0.001 mA</span></div>
+            <div class="mrow"><span>Max I<sub>vdd</sub></span><span>2.380 mA</span></div>
+            <div class="mrow"><span>Avg P<sub>diss</sub></span><span>0.002 mW</span></div>
+        </div>
+    </div></div>
+<div id="mos_ff_T-25_Vp1.32_Vin0.4" class="panel">
+    <h2>mos_ff - T=-25C - VDD=1.32V - Vin=0.4V</h2>
+    <div class="card">
+        <h3>f<sub>out</sub> = <span style="color:#2a2;font-weight:bold">
+        0.103 MHz</span></h3>
+        <img src="vco_mos_ff_T-25_Vp1.32_Vin0.4.png" style="max-width:100%">
+    </div>
+    <div class="metrics-grid">
+        <div class="mcard">
+            <div class="mcard-title">v(out)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.103 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>1079251.3 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>679193.0 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>49.3 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">v(out_pb)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.103 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>200.2 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>263.8 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>49.0 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">Zasilanie V2 (VDD=1.32V)</div>
+            <div class="mrow"><span>Avg I<sub>vdd</sub></span><span>0.002 mA</span></div>
+            <div class="mrow"><span>Max I<sub>vdd</sub></span><span>2.753 mA</span></div>
+            <div class="mrow"><span>Avg P<sub>diss</sub></span><span>0.003 mW</span></div>
+        </div>
+    </div></div>
+<div id="mos_ff_T27_Vp1.08_Vin0.4" class="panel">
+    <h2>mos_ff - T=27C - VDD=1.08V - Vin=0.4V</h2>
+    <div class="card">
+        <h3>f<sub>out</sub> = <span style="color:#2a2;font-weight:bold">
+        0.142 MHz</span></h3>
+        <img src="vco_mos_ff_T27_Vp1.08_Vin0.4.png" style="max-width:100%">
+    </div>
+    <div class="metrics-grid">
+        <div class="mcard">
+            <div class="mcard-title">v(out)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.142 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>900895.1 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>544041.9 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>48.9 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">v(out_pb)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.142 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>185.6 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>233.2 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>48.7 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">Zasilanie V2 (VDD=1.08V)</div>
+            <div class="mrow"><span>Avg I<sub>vdd</sub></span><span>0.001 mA</span></div>
+            <div class="mrow"><span>Max I<sub>vdd</sub></span><span>2.032 mA</span></div>
+            <div class="mrow"><span>Avg P<sub>diss</sub></span><span>0.001 mW</span></div>
+        </div>
+    </div></div>
+<div id="mos_ff_T27_Vp1.2_Vin0.4" class="panel">
+    <h2>mos_ff - T=27C - VDD=1.2V - Vin=0.4V</h2>
+    <div class="card">
+        <h3>f<sub>out</sub> = <span style="color:#2a2;font-weight:bold">
+        0.123 MHz</span></h3>
+        <img src="vco_mos_ff_T27_Vp1.2_Vin0.4.png" style="max-width:100%">
+    </div>
+    <div class="metrics-grid">
+        <div class="mcard">
+            <div class="mcard-title">v(out)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.123 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>980626.2 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>607122.9 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>49.1 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">v(out_pb)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.123 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>200.0 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>114.0 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>48.9 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">Zasilanie V2 (VDD=1.2V)</div>
+            <div class="mrow"><span>Avg I<sub>vdd</sub></span><span>0.002 mA</span></div>
+            <div class="mrow"><span>Max I<sub>vdd</sub></span><span>2.331 mA</span></div>
+            <div class="mrow"><span>Avg P<sub>diss</sub></span><span>0.002 mW</span></div>
+        </div>
+    </div></div>
+<div id="mos_ff_T27_Vp1.32_Vin0.4" class="panel">
+    <h2>mos_ff - T=27C - VDD=1.32V - Vin=0.4V</h2>
+    <div class="card">
+        <h3>f<sub>out</sub> = <span style="color:#2a2;font-weight:bold">
+        0.107 MHz</span></h3>
+        <img src="vco_mos_ff_T27_Vp1.32_Vin0.4.png" style="max-width:100%">
+    </div>
+    <div class="metrics-grid">
+        <div class="mcard">
+            <div class="mcard-title">v(out)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.107 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>1069447.6 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>670466.3 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>49.3 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">v(out_pb)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.107 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>199.6 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>142.9 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>49.0 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">Zasilanie V2 (VDD=1.32V)</div>
+            <div class="mrow"><span>Avg I<sub>vdd</sub></span><span>0.002 mA</span></div>
+            <div class="mrow"><span>Max I<sub>vdd</sub></span><span>2.197 mA</span></div>
+            <div class="mrow"><span>Avg P<sub>diss</sub></span><span>0.003 mW</span></div>
+        </div>
+    </div></div>
+<div id="mos_ff_T125_Vp1.08_Vin0.4" class="panel">
+    <h2>mos_ff - T=125C - VDD=1.08V - Vin=0.4V</h2>
+    <div class="card">
+        <h3>f<sub>out</sub> = <span style="color:#2a2;font-weight:bold">
+        0.138 MHz</span></h3>
+        <img src="vco_mos_ff_T125_Vp1.08_Vin0.4.png" style="max-width:100%">
+    </div>
+    <div class="metrics-grid">
+        <div class="mcard">
+            <div class="mcard-title">v(out)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.138 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>935461.2 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>587236.3 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>49.1 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">v(out_pb)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.138 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>154.9 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>135.9 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>48.6 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">Zasilanie V2 (VDD=1.08V)</div>
+            <div class="mrow"><span>Avg I<sub>vdd</sub></span><span>0.002 mA</span></div>
+            <div class="mrow"><span>Max I<sub>vdd</sub></span><span>1.652 mA</span></div>
+            <div class="mrow"><span>Avg P<sub>diss</sub></span><span>0.002 mW</span></div>
+        </div>
+    </div></div>
+<div id="mos_ff_T125_Vp1.2_Vin0.4" class="panel">
+    <h2>mos_ff - T=125C - VDD=1.2V - Vin=0.4V</h2>
+    <div class="card">
+        <h3>f<sub>out</sub> = <span style="color:#2a2;font-weight:bold">
+        0.122 MHz</span></h3>
+        <img src="vco_mos_ff_T125_Vp1.2_Vin0.4.png" style="max-width:100%">
+    </div>
+    <div class="metrics-grid">
+        <div class="mcard">
+            <div class="mcard-title">v(out)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.122 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>1005159.6 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>638967.1 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>49.2 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">v(out_pb)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.122 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>265.1 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>136.1 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>48.8 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">Zasilanie V2 (VDD=1.2V)</div>
+            <div class="mrow"><span>Avg I<sub>vdd</sub></span><span>0.002 mA</span></div>
+            <div class="mrow"><span>Max I<sub>vdd</sub></span><span>2.054 mA</span></div>
+            <div class="mrow"><span>Avg P<sub>diss</sub></span><span>0.003 mW</span></div>
+        </div>
+    </div></div>
+<div id="mos_ff_T125_Vp1.32_Vin0.4" class="panel">
+    <h2>mos_ff - T=125C - VDD=1.32V - Vin=0.4V</h2>
+    <div class="card">
+        <h3>f<sub>out</sub> = <span style="color:#2a2;font-weight:bold">
+        0.108 MHz</span></h3>
+        <img src="vco_mos_ff_T125_Vp1.32_Vin0.4.png" style="max-width:100%">
+    </div>
+    <div class="metrics-grid">
+        <div class="mcard">
+            <div class="mcard-title">v(out)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.108 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>1082543.6 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>692121.3 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>49.4 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">v(out_pb)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.108 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>205.5 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>161.1 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>49.0 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">Zasilanie V2 (VDD=1.32V)</div>
+            <div class="mrow"><span>Avg I<sub>vdd</sub></span><span>0.003 mA</span></div>
+            <div class="mrow"><span>Max I<sub>vdd</sub></span><span>2.481 mA</span></div>
+            <div class="mrow"><span>Avg P<sub>diss</sub></span><span>0.004 mW</span></div>
+        </div>
+    </div></div>
+<div id="mos_ff_T-25_Vp1.08_Vin0.8" class="panel">
+    <h2>mos_ff - T=-25C - VDD=1.08V - Vin=0.8V</h2>
+    <div class="card">
+        <h3>f<sub>out</sub> = <span style="color:#2a2;font-weight:bold">
+        0.537 MHz</span></h3>
+        <img src="vco_mos_ff_T-25_Vp1.08_Vin0.8.png" style="max-width:100%">
+    </div>
+    <div class="metrics-grid">
+        <div class="mcard">
+            <div class="mcard-title">v(out)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.537 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>377307.1 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>120818.5 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>48.4 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">v(out_pb)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.537 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>216.0 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>100.9 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>48.1 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">Zasilanie V2 (VDD=1.08V)</div>
+            <div class="mrow"><span>Avg I<sub>vdd</sub></span><span>0.003 mA</span></div>
+            <div class="mrow"><span>Max I<sub>vdd</sub></span><span>1.956 mA</span></div>
+            <div class="mrow"><span>Avg P<sub>diss</sub></span><span>0.003 mW</span></div>
+        </div>
+    </div></div>
+<div id="mos_ff_T-25_Vp1.2_Vin0.8" class="panel">
+    <h2>mos_ff - T=-25C - VDD=1.2V - Vin=0.8V</h2>
+    <div class="card">
+        <h3>f<sub>out</sub> = <span style="color:#2a2;font-weight:bold">
+        0.591 MHz</span></h3>
+        <img src="vco_mos_ff_T-25_Vp1.2_Vin0.8.png" style="max-width:100%">
+    </div>
+    <div class="metrics-grid">
+        <div class="mcard">
+            <div class="mcard-title">v(out)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.591 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>342464.0 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>118630.8 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>48.4 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">v(out_pb)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.591 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>149.2 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>206.2 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>48.1 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">Zasilanie V2 (VDD=1.2V)</div>
+            <div class="mrow"><span>Avg I<sub>vdd</sub></span><span>0.004 mA</span></div>
+            <div class="mrow"><span>Max I<sub>vdd</sub></span><span>2.966 mA</span></div>
+            <div class="mrow"><span>Avg P<sub>diss</sub></span><span>0.005 mW</span></div>
+        </div>
+    </div></div>
+<div id="mos_ff_T-25_Vp1.32_Vin0.8" class="panel">
+    <h2>mos_ff - T=-25C - VDD=1.32V - Vin=0.8V</h2>
+    <div class="card">
+        <h3>f<sub>out</sub> = <span style="color:#2a2;font-weight:bold">
+        0.632 MHz</span></h3>
+        <img src="vco_mos_ff_T-25_Vp1.32_Vin0.8.png" style="max-width:100%">
+    </div>
+    <div class="metrics-grid">
+        <div class="mcard">
+            <div class="mcard-title">v(out)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.632 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>317169.4 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>118151.3 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>48.4 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">v(out_pb)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.632 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>176.9 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>131.0 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>48.2 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">Zasilanie V2 (VDD=1.32V)</div>
+            <div class="mrow"><span>Avg I<sub>vdd</sub></span><span>0.006 mA</span></div>
+            <div class="mrow"><span>Max I<sub>vdd</sub></span><span>3.088 mA</span></div>
+            <div class="mrow"><span>Avg P<sub>diss</sub></span><span>0.008 mW</span></div>
+        </div>
+    </div></div>
+<div id="mos_ff_T27_Vp1.08_Vin0.8" class="panel">
+    <h2>mos_ff - T=27C - VDD=1.08V - Vin=0.8V</h2>
+    <div class="card">
+        <h3>f<sub>out</sub> = <span style="color:#2a2;font-weight:bold">
+        0.448 MHz</span></h3>
+        <img src="vco_mos_ff_T27_Vp1.08_Vin0.8.png" style="max-width:100%">
+    </div>
+    <div class="metrics-grid">
+        <div class="mcard">
+            <div class="mcard-title">v(out)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.448 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>434042.2 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>155601.9 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>48.4 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">v(out_pb)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.448 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>160.0 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>208.7 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>48.0 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">Zasilanie V2 (VDD=1.08V)</div>
+            <div class="mrow"><span>Avg I<sub>vdd</sub></span><span>0.003 mA</span></div>
+            <div class="mrow"><span>Max I<sub>vdd</sub></span><span>2.007 mA</span></div>
+            <div class="mrow"><span>Avg P<sub>diss</sub></span><span>0.003 mW</span></div>
+        </div>
+    </div></div>
+<div id="mos_ff_T27_Vp1.2_Vin0.8" class="panel">
+    <h2>mos_ff - T=27C - VDD=1.2V - Vin=0.8V</h2>
+    <div class="card">
+        <h3>f<sub>out</sub> = <span style="color:#2a2;font-weight:bold">
+        0.487 MHz</span></h3>
+        <img src="vco_mos_ff_T27_Vp1.2_Vin0.8.png" style="max-width:100%">
+    </div>
+    <div class="metrics-grid">
+        <div class="mcard">
+            <div class="mcard-title">v(out)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.487 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>397920.3 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>154372.1 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>48.4 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">v(out_pb)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.487 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>190.5 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>169.4 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>48.1 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">Zasilanie V2 (VDD=1.2V)</div>
+            <div class="mrow"><span>Avg I<sub>vdd</sub></span><span>0.004 mA</span></div>
+            <div class="mrow"><span>Max I<sub>vdd</sub></span><span>2.460 mA</span></div>
+            <div class="mrow"><span>Avg P<sub>diss</sub></span><span>0.005 mW</span></div>
+        </div>
+    </div></div>
+<div id="mos_ff_T27_Vp1.32_Vin0.8" class="panel">
+    <h2>mos_ff - T=27C - VDD=1.32V - Vin=0.8V</h2>
+    <div class="card">
+        <h3>f<sub>out</sub> = <span style="color:#2a2;font-weight:bold">
+        0.515 MHz</span></h3>
+        <img src="vco_mos_ff_T27_Vp1.32_Vin0.8.png" style="max-width:100%">
+    </div>
+    <div class="metrics-grid">
+        <div class="mcard">
+            <div class="mcard-title">v(out)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.515 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>371296.8 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>158261.6 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>48.5 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">v(out_pb)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.515 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>145.0 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>115.0 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>48.2 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">Zasilanie V2 (VDD=1.32V)</div>
+            <div class="mrow"><span>Avg I<sub>vdd</sub></span><span>0.005 mA</span></div>
+            <div class="mrow"><span>Max I<sub>vdd</sub></span><span>3.163 mA</span></div>
+            <div class="mrow"><span>Avg P<sub>diss</sub></span><span>0.007 mW</span></div>
+        </div>
+    </div></div>
+<div id="mos_ff_T125_Vp1.08_Vin0.8" class="panel">
+    <h2>mos_ff - T=125C - VDD=1.08V - Vin=0.8V</h2>
+    <div class="card">
+        <h3>f<sub>out</sub> = <span style="color:#2a2;font-weight:bold">
+        0.330 MHz</span></h3>
+        <img src="vco_mos_ff_T125_Vp1.08_Vin0.8.png" style="max-width:100%">
+    </div>
+    <div class="metrics-grid">
+        <div class="mcard">
+            <div class="mcard-title">v(out)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.330 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>536206.6 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>243697.0 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>48.4 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">v(out_pb)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.330 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>185.8 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>144.0 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>47.9 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">Zasilanie V2 (VDD=1.08V)</div>
+            <div class="mrow"><span>Avg I<sub>vdd</sub></span><span>0.003 mA</span></div>
+            <div class="mrow"><span>Max I<sub>vdd</sub></span><span>1.920 mA</span></div>
+            <div class="mrow"><span>Avg P<sub>diss</sub></span><span>0.003 mW</span></div>
+        </div>
+    </div></div>
+<div id="mos_ff_T125_Vp1.2_Vin0.8" class="panel">
+    <h2>mos_ff - T=125C - VDD=1.2V - Vin=0.8V</h2>
+    <div class="card">
+        <h3>f<sub>out</sub> = <span style="color:#2a2;font-weight:bold">
+        0.351 MHz</span></h3>
+        <img src="vco_mos_ff_T125_Vp1.2_Vin0.8.png" style="max-width:100%">
+    </div>
+    <div class="metrics-grid">
+        <div class="mcard">
+            <div class="mcard-title">v(out)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.351 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>496316.2 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>373043.8 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>48.5 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">v(out_pb)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.351 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>203.6 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>168.5 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>48.1 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">Zasilanie V2 (VDD=1.2V)</div>
+            <div class="mrow"><span>Avg I<sub>vdd</sub></span><span>0.004 mA</span></div>
+            <div class="mrow"><span>Max I<sub>vdd</sub></span><span>2.769 mA</span></div>
+            <div class="mrow"><span>Avg P<sub>diss</sub></span><span>0.005 mW</span></div>
+        </div>
+    </div></div>
+<div id="mos_ff_T125_Vp1.32_Vin0.8" class="panel">
+    <h2>mos_ff - T=125C - VDD=1.32V - Vin=0.8V</h2>
+    <div class="card">
+        <h3>f<sub>out</sub> = <span style="color:#2a2;font-weight:bold">
+        0.366 MHz</span></h3>
+        <img src="vco_mos_ff_T125_Vp1.32_Vin0.8.png" style="max-width:100%">
+    </div>
+    <div class="metrics-grid">
+        <div class="mcard">
+            <div class="mcard-title">v(out)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.366 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>464134.4 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>362676.3 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>48.6 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">v(out_pb)</div>
+            <div class="mrow"><span>Czestotliwosc</span><span>0.366 MHz</span></div>
+            <div class="mrow"><span>Czas narastania</span><span>238.7 ps</span></div>
+            <div class="mrow"><span>Czas opadania</span><span>143.3 ps</span></div>
+            <div class="mrow"><span>Duty cycle</span><span>48.2 %</span></div>
+        </div>
+        <div class="mcard">
+            <div class="mcard-title">Zasilanie V2 (VDD=1.32V)</div>
+            <div class="mrow"><span>Avg I<sub>vdd</sub></span><span>0.005 mA</span></div>
+            <div class="mrow"><span>Max I<sub>vdd</sub></span><span>3.082 mA</span></div>
+            <div class="mrow"><span>Avg P<sub>diss</sub></span><span>0.007 mW</span></div>
+        </div>
+    </div></div>
+
+<script>
+function showTab(id, btn) {
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    if (btn) btn.classList.add('active');
+}
+</script>
+</body>
+</html>
